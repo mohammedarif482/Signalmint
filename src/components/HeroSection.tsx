@@ -45,10 +45,13 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
       const navRect = navSlot.getBoundingClientRect();
       const logoRect = floatingLogo.getBoundingClientRect();
 
+      // Scaled height inside the navbar slot (~22-24px height)
+      const targetScale = logoRect.height > 0 ? (navRect.height * 0.85) / logoRect.height : 0.25;
+      const scaledHeight = logoRect.height * targetScale;
+      const verticalPadding = (navRect.height - scaledHeight) / 2;
+
       const deltaX = navRect.left - logoRect.left;
-      const deltaY = navRect.top - logoRect.top;
-      // Target nav height is ~24-28px, floating logo height is measured dynamically
-      const targetScale = logoRect.height > 0 ? (navRect.height * 0.92) / logoRect.height : 0.28;
+      const deltaY = (navRect.top + verticalPadding) - logoRect.top;
 
       return { deltaX, deltaY, targetScale };
     };

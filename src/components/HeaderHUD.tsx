@@ -36,7 +36,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
       {/* 1. THE ONE AND ONLY BRAND LOGO & EYEBROW (Unified Hero -> Navbar) */}
       <div
         id="main-brand-block"
-        className="fixed top-16 sm:top-20 lg:top-24 left-6 sm:left-10 lg:left-14 z-50 pointer-events-none select-none w-fit flex flex-col items-end origin-top-left"
+        className="fixed top-16 sm:top-20 lg:top-24 left-6 sm:left-10 lg:left-14 z-[60] pointer-events-none select-none w-fit flex flex-col items-end origin-top-left"
       >
         {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Right-aligned to end of logo) */}
         <div
