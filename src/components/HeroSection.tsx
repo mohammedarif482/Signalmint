@@ -67,13 +67,16 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           onUpdate: (self) => {
             const progress = self.progress;
             const navDockedLogo = document.getElementById("nav-docked-logo");
+            const navInitialDot = document.getElementById("nav-initial-dot");
 
             // When user scrolls past 58%, seamlessly reveal docked nav wordmark
             if (progress >= 0.58) {
               if (navDockedLogo) navDockedLogo.style.opacity = "1";
+              if (navInitialDot) navInitialDot.style.opacity = "0";
               if (floatingLogo) floatingLogo.style.opacity = "0";
             } else {
               if (navDockedLogo) navDockedLogo.style.opacity = "0";
+              if (navInitialDot) navInitialDot.style.opacity = "1";
               if (floatingLogo) floatingLogo.style.opacity = "1";
             }
           },
@@ -251,9 +254,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         {/* TOP-LEFT DISPLAY BRAND SECTION                                           */}
         {/* ========================================================================= */}
         <div className="absolute top-16 sm:top-20 lg:top-24 left-6 sm:left-10 lg:left-14 z-20 w-fit flex flex-col items-end">
-          {/* Micro-eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Right-aligned to end of logo) */}
+          {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Right-aligned to end of logo, bold sans) */}
           <div ref={eyebrowRef} id="hero-eyebrow" className="mb-2 sm:mb-2.5 w-full text-right">
-            <span className="font-mono tracking-[0.16em] sm:tracking-[0.2em] text-[10px] sm:text-[11px] lg:text-xs font-bold text-[#1A0042]/75 uppercase inline-block">
+            <span className="font-sans font-bold tracking-[0.14em] text-[10px] sm:text-[11px] lg:text-xs text-[#1A0042] uppercase inline-block">
               THE AI CREATIVE THAT THINKS LIKE A CMO.
             </span>
           </div>
@@ -283,68 +286,73 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         <div
           ref={narrativeRef}
           id="hero-narrative"
-          className="hidden md:block absolute top-1/2 -translate-y-1/2 right-6 sm:right-10 lg:right-16 z-20 max-w-sm lg:max-w-md xl:max-w-lg text-left"
+          className="hidden md:block absolute top-[52%] -translate-y-1/2 right-6 sm:right-10 lg:right-16 xl:right-24 z-20 max-w-md lg:max-w-lg xl:max-w-xl text-left"
         >
           <div ref={narrativeInnerRef} className="will-change-transform">
-            <p className="text-xl sm:text-2xl lg:text-[1.65rem] font-medium text-[#1A0042] leading-[1.3] tracking-tight">
+            <p className="text-xl sm:text-2xl lg:text-[1.85rem] font-semibold text-[#1A0042] leading-[1.3] tracking-[-0.02em]">
               SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time. Designed to make every dollar convert.
             </p>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-LEFT EDITORIAL TRANSLUCENT GLASS CARD (Oryzo.ai style)            */}
+        {/* BOTTOM-LEFT EDITORIAL TRANSLUCENT GLASS CARD (Exact Oryzo.ai layout)     */}
         {/* ========================================================================= */}
         <div
           ref={cardLeftRef}
           id="hero-glass-card"
-          className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-6 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
+          className="absolute bottom-6 sm:bottom-10 lg:bottom-12 left-6 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-72 sm:w-80 lg:w-[21.5rem] h-64 sm:h-72 lg:h-[19.5rem] p-6 sm:p-7 lg:p-8 rounded-none bg-white/[0.16] hover:bg-white/[0.22] backdrop-blur-md border border-white/25 shadow-[0_12px_32px_rgba(26,0,66,0.04)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
+            className="w-72 sm:w-80 lg:w-[22rem] h-72 sm:h-80 lg:h-[22rem] p-6 sm:p-7 lg:p-8 rounded-none bg-[#1A0042]/[0.08] hover:bg-[#1A0042]/[0.12] backdrop-blur-md border border-[#1A0042]/12 shadow-[0_12px_32px_rgba(26,0,66,0.04)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
           >
-            {/* Top Bold Grotesque Header (Oryzo Style) */}
-            <div className="font-sans font-extrabold text-sm sm:text-[15px] lg:text-base uppercase tracking-tight text-[#1A0042] leading-[1.25] max-w-[240px]">
-              DESIGNED FOR PERFORMANCE-FIRST FOUNDERS &amp; MARKETERS.
+            {/* Top Bold Grotesque Header (Exact Oryzo 4-line editorial styling) */}
+            <div className="font-sans font-bold text-[15px] sm:text-base lg:text-[17px] uppercase tracking-[-0.01em] text-[#1A0042] leading-[1.2] max-w-[240px]">
+              DESIGNED FOR<br />
+              PERFORMANCE-FIRST<br />
+              FOUNDERS &amp;<br />
+              MARKETERS.
             </div>
 
             {/* Editorial Dotted Separator */}
-            <div className="w-full border-b border-dotted border-[#1A0042]/25 my-auto" />
+            <div className="w-full border-b border-dotted border-[#1A0042]/30 my-auto" />
 
-            {/* Bottom Right-Aligned Subtext */}
-            <div className="text-xs sm:text-[13px] text-[#1A0042]/85 font-sans leading-relaxed text-right max-w-[210px] ml-auto">
-              The autonomous intelligence system that eliminates ad guesswork.
+            {/* Bottom Right-Aligned Subtext (Exact Oryzo 3-line sentence-case styling) */}
+            <div className="text-xs sm:text-[13px] text-[#1A0042]/85 font-sans leading-[1.4] text-right max-w-[210px] ml-auto">
+              The autonomous<br />
+              intelligence system that<br />
+              eliminates ad guesswork.
             </div>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-CENTER SCROLL INDICATOR: ⌄ SCROLL TO EXPLORE                       */}
+        {/* BOTTOM-CENTER SCROLL INDICATOR: ⌄ SCROLL TO CONTINUE (Oryzo Style)        */}
         {/* ========================================================================= */}
         <div
           ref={scrollPillRef}
           id="hero-scroll-pill"
-          className="hidden md:flex absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.25em] text-[#1A0042]/70 uppercase font-semibold select-none animate-pulse"
+          className="hidden md:flex absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.25em] text-[#1A0042]/70 uppercase font-semibold select-none animate-pulse"
         >
           <span className="w-5 h-5 rounded-full border border-[#1A0042]/35 flex items-center justify-center text-[9px] font-bold">
             ⌄
           </span>
-          <span>SCROLL TO EXPLORE</span>
+          <span>SCROLL TO CONTINUE</span>
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-RIGHT FLOATING VIDEO CARD                                         */}
+        {/* BOTTOM-RIGHT FLOATING VIDEO CARD (Oryzo Video Thumbnail Box)             */}
         {/* ========================================================================= */}
         <div
           ref={videoCardRef}
           id="hero-video-card"
           onClick={() => setShowVideoModal(true)}
-          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 right-6 sm:right-10 lg:right-16 z-20 [perspective:1000px] cursor-pointer group"
+          className="absolute bottom-6 sm:bottom-10 lg:bottom-12 right-6 sm:right-10 lg:right-14 z-20 [perspective:1000px] cursor-pointer group"
         >
           <div
             ref={videoCardInnerRef}
-            className="w-52 sm:w-60 lg:w-64 bg-white/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/80 ring-1 ring-amber-400/40 shadow-2xl transition-transform duration-300 hover:scale-[1.03] will-change-transform"
+            className="w-56 sm:w-64 lg:w-72 bg-white/90 backdrop-blur-md p-1.5 rounded-2xl border-2 border-amber-500/70 ring-2 ring-amber-500/20 shadow-[0_10px_35px_rgba(245,158,11,0.2)] transition-transform duration-300 hover:scale-[1.03] will-change-transform"
           >
           {/* Video preview thumbnail box */}
           <div className="relative aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">

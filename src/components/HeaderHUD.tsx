@@ -46,11 +46,19 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           id="nav-logo-slot"
           className="w-44 h-8 flex items-center pointer-events-auto relative"
         >
+          {/* Subtle initial dot matching Oryzo top-left ● indicator */}
+          <div
+            id="nav-initial-dot"
+            className={`w-2 h-2 rounded-full bg-[#1A0042]/90 transition-opacity duration-300 ${
+              isScrolled ? "opacity-0" : "opacity-90"
+            }`}
+          />
+
           {/* Fallback persistent wordmark once scrolled past hero runway */}
           <a
             href="#"
             id="nav-docked-logo"
-            className="opacity-0 transition-opacity duration-300 flex items-center select-none pointer-events-auto"
+            className="opacity-0 transition-opacity duration-300 flex items-center select-none pointer-events-auto absolute inset-0"
           >
             <img
               src={signalMintLogo}
@@ -161,14 +169,14 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
         </div>
       )}
 
-      {/* 2. RIGHT EDGE VERTICAL SPINE BADGE (Oryzo Style) */}
+      {/* 2. RIGHT EDGE VERTICAL SPINE BADGE (Exact Oryzo Style) */}
       <aside
-        className="fixed right-0 top-20 sm:top-24 z-40 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-4 sm:py-5 rounded-l-xl border-l border-y border-[#1A0042]/10 shadow-sm pointer-events-auto select-none transition-transform duration-200 hover:-translate-x-1 group"
+        className="fixed right-0 top-16 sm:top-20 z-40 bg-[#FAF7F2] px-2.5 sm:px-3 py-4 sm:py-6 rounded-none border-l border-y border-[#1A0042]/15 shadow-sm pointer-events-auto select-none transition-transform duration-200 hover:-translate-x-0.5 group"
         title="SignalMint System Active"
       >
-        <div className="[writing-mode:vertical-rl] text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#1A0042] flex items-center gap-2 font-bold cursor-default">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mb-1"></span>
-          <span>● SIGNALMINT V2.6</span>
+        <div className="[writing-mode:vertical-rl] text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#1A0042] flex items-center gap-2 font-bold cursor-default">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#1A0042] mb-0.5"></span>
+          <span>SIGNALMINT-1 MODEL</span>
         </div>
       </aside>
     </>
