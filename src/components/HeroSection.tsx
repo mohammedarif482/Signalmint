@@ -265,7 +265,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         <div
           ref={eyebrowRef}
           id="hero-eyebrow"
-          className="absolute top-20 sm:top-24 lg:top-28 left-6 sm:left-10 lg:left-14 w-[300px] sm:w-[500px] lg:w-[670px] flex justify-end z-20 pointer-events-none"
+          className="absolute top-16 sm:top-20 lg:top-[5.5rem] left-6 sm:left-10 lg:left-14 w-[300px] sm:w-[500px] lg:w-[670px] flex justify-end z-20 pointer-events-none"
         >
           <span className="font-sans font-bold tracking-[0.14em] text-[11px] sm:text-xs lg:text-[13.5px] text-[#1A0042] uppercase inline-block text-right">
             THE AI CREATIVE THAT THINKS LIKE A CMO.
