@@ -163,7 +163,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
 
       {/* 2. RIGHT EDGE VERTICAL SPINE BADGE (Oryzo Style) */}
       <aside
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-5 sm:py-6 rounded-l-xl border-l border-y border-[#1A0042]/10 shadow-sm pointer-events-auto select-none transition-transform duration-200 hover:-translate-x-1 group"
+        className="fixed right-0 top-20 sm:top-24 z-40 bg-white/90 backdrop-blur-md px-2.5 sm:px-3 py-4 sm:py-5 rounded-l-xl border-l border-y border-[#1A0042]/10 shadow-sm pointer-events-auto select-none transition-transform duration-200 hover:-translate-x-1 group"
         title="SignalMint System Active"
       >
         <div className="[writing-mode:vertical-rl] text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#1A0042] flex items-center gap-2 font-bold cursor-default">

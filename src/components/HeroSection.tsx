@@ -138,13 +138,13 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
   return (
     <div id="hero-runway" ref={runwayRef} className="relative w-full h-[200vh]">
-      {/* PINNED INNER VIEWPORT (100vh Sticky Viewport) */}
+      {/* PINNED INNER VIEWPORT (100vh Sticky Viewport with Absolute Spatial HUD) */}
       <div
         ref={viewportRef}
-        className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between p-6 sm:p-8 lg:p-12 select-none"
+        className="sticky top-0 h-screen w-full overflow-hidden relative select-none"
       >
         {/* ========================================================================= */}
-        {/* BACKGROUND LAYER: Editorial Visual (herobg.jpeg)                         */}
+        {/* BACKGROUND LAYER: Full-screen Editorial Visual (herobg.jpeg)              */}
         {/* ========================================================================= */}
         <div
           ref={bgRef}
@@ -164,10 +164,10 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         {/* ========================================================================= */}
         {/* TOP-LEFT DISPLAY BRAND SECTION                                           */}
         {/* ========================================================================= */}
-        <div className="z-10 pt-16 sm:pt-20 lg:pt-20 max-w-5xl">
+        <div className="absolute top-16 sm:top-20 lg:top-24 left-6 sm:left-10 lg:left-14 z-20 max-w-2xl">
           {/* Micro-eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. */}
-          <div ref={eyebrowRef} id="hero-eyebrow" className="mb-2 sm:mb-3">
-            <span className="font-mono tracking-widest text-xs sm:text-sm font-bold text-[#1A0042]/80 uppercase inline-block">
+          <div ref={eyebrowRef} id="hero-eyebrow" className="mb-2.5 sm:mb-3">
+            <span className="font-mono tracking-[0.2em] text-[11px] sm:text-xs font-bold text-[#1A0042]/75 uppercase inline-block">
               THE AI CREATIVE THAT THINKS LIKE A CMO.
             </span>
           </div>
@@ -181,102 +181,106 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             <img
               src={signalMintLogo}
               alt="SignalMint"
-              className="h-9 sm:h-12 md:h-14 lg:h-16 xl:h-20 w-auto max-w-[82vw] sm:max-w-none object-contain"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 w-auto max-w-[85vw] sm:max-w-none object-contain"
             />
           </div>
+
+          {/* Mobile narrative text fallback */}
+          <p className="md:hidden text-xs sm:text-sm text-[#1A0042]/80 mt-4 leading-relaxed max-w-sm">
+            SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time.
+          </p>
         </div>
 
         {/* ========================================================================= */}
-        {/* CENTER-RIGHT NARRATIVE TEXT                                              */}
+        {/* CENTER-RIGHT NARRATIVE TEXT (Vertically Centered in Right Quadrant)       */}
         {/* ========================================================================= */}
         <div
           ref={narrativeRef}
           id="hero-narrative"
-          className="max-w-md ml-auto z-10 pr-2 lg:pr-12 my-auto text-right md:text-left"
+          className="hidden md:block absolute top-1/2 -translate-y-1/2 right-6 sm:right-10 lg:right-16 z-20 max-w-sm lg:max-w-md xl:max-w-lg text-left"
         >
-          <p className="text-lg sm:text-xl lg:text-2xl font-medium text-[#1A0042] leading-snug">
+          <p className="text-xl sm:text-2xl lg:text-[1.65rem] font-medium text-[#1A0042] leading-[1.3] tracking-tight">
             SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time. Designed to make every dollar convert.
           </p>
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM ROW: Left Glass Card | Center Scroll Indicator | Right Video Card */}
+        {/* BOTTOM-LEFT EDITORIAL GLASS CARD                                          */}
         {/* ========================================================================= */}
-        <div className="w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-4 sm:gap-6 z-10 pb-2 sm:pb-4">
-          
-          {/* Bottom-Left Editorial Glass Card */}
-          <div
-            ref={cardLeftRef}
-            id="hero-glass-card"
-            className="w-72 sm:w-80 bg-white/70 backdrop-blur-xl border border-white/60 p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between"
-          >
-            <div className="font-bold uppercase text-xs tracking-wider text-[#1A0042] leading-snug">
-              DESIGNED FOR PERFORMANCE-FIRST FOUNDERS &amp; MARKETERS.
+        <div
+          ref={cardLeftRef}
+          id="hero-glass-card"
+          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-6 sm:left-10 lg:left-14 z-20 w-68 sm:w-80 h-48 sm:h-56 lg:h-60 p-5 sm:p-6 rounded-2xl bg-white/65 backdrop-blur-xl border border-white/70 shadow-[0_16px_40px_rgba(26,0,66,0.06)] flex flex-col justify-between"
+        >
+          <div className="font-mono text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#1A0042] leading-snug">
+            DESIGNED FOR PERFORMANCE-FIRST FOUNDERS &amp; MARKETERS.
+          </div>
+          <div className="border-t border-dotted border-[#1A0042]/25 my-auto" />
+          <div className="text-xs text-[#1A0042]/80 font-sans leading-relaxed text-right max-w-[220px] ml-auto">
+            The autonomous intelligence system that eliminates ad guesswork.
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* BOTTOM-CENTER SCROLL INDICATOR: ⌄ SCROLL TO EXPLORE                       */}
+        {/* ========================================================================= */}
+        <div
+          ref={scrollPillRef}
+          id="hero-scroll-pill"
+          className="hidden md:flex absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.25em] text-[#1A0042]/70 uppercase font-semibold select-none animate-pulse"
+        >
+          <span className="w-5 h-5 rounded-full border border-[#1A0042]/35 flex items-center justify-center text-[9px] font-bold">
+            ⌄
+          </span>
+          <span>SCROLL TO EXPLORE</span>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* BOTTOM-RIGHT FLOATING VIDEO CARD                                         */}
+        {/* ========================================================================= */}
+        <div
+          ref={videoCardRef}
+          id="hero-video-card"
+          onClick={() => setShowVideoModal(true)}
+          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 right-6 sm:right-10 lg:right-16 z-20 w-52 sm:w-60 lg:w-64 bg-white/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/80 ring-1 ring-amber-400/40 shadow-2xl cursor-pointer group transition-transform duration-300 hover:scale-[1.03]"
+        >
+          {/* Video preview thumbnail box */}
+          <div className="relative aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
+            {/* Abstract telemetry radar thumbnail preview */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#1A0042] via-[#1516A8] to-[#4D0181] opacity-90" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <svg className="w-full h-full opacity-40" viewBox="0 0 160 90">
+                <path
+                  d="M 10 70 Q 40 20, 80 45 T 150 15"
+                  fill="none"
+                  stroke="#E7E6FB"
+                  strokeWidth="2"
+                />
+                <circle cx="80" cy="45" r="3" fill="#E7E6FB" />
+              </svg>
             </div>
-            <div className="my-3.5 sm:my-4 border-t border-dotted border-[#1A0042]/20" />
-            <div className="text-xs text-[#1A0042]/75 font-sans leading-relaxed">
-              The autonomous intelligence system that eliminates ad guesswork.
+
+            {/* Top Badge: ● LIVE RADAR */}
+            <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-sm text-[9px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>LIVE RADAR</span>
+            </div>
+
+            {/* Center Play Button Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-9 h-9 rounded-full bg-white text-[#1516A8] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                <Play className="w-4 h-4 fill-[#1516A8] ml-0.5" />
+              </div>
             </div>
           </div>
 
-          {/* Bottom-Center Minimal Pill: ⌄ SCROLL TO EXPLORE */}
-          <div
-            ref={scrollPillRef}
-            id="hero-scroll-pill"
-            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-white/75 backdrop-blur-md border border-white/80 shadow-xs font-mono text-xs tracking-widest text-[#1A0042]/70 uppercase animate-pulse select-none"
-          >
-            <span className="w-4 h-4 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center text-[10px] font-bold">
-              ⌄
+          {/* Bottom mini label */}
+          <div className="p-2 pt-2.5 flex items-center justify-between font-mono text-[10px] text-[#1A0042]">
+            <span className="font-bold uppercase tracking-wider">PRODUCT WALKTHROUGH</span>
+            <span className="text-[#1516A8] font-bold flex items-center gap-0.5">
+              PLAY <span>▶</span>
             </span>
-            <span>SCROLL TO EXPLORE</span>
           </div>
-
-          {/* Bottom-Right Interactive Floating Video Card */}
-          <div
-            ref={videoCardRef}
-            id="hero-video-card"
-            onClick={() => setShowVideoModal(true)}
-            className="w-56 sm:w-64 bg-white/90 backdrop-blur-md p-2 rounded-2xl border border-white/80 shadow-2xl z-20 cursor-pointer group transition-transform duration-300 hover:scale-[1.03]"
-          >
-            {/* Video preview thumbnail box */}
-            <div className="relative aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
-              {/* Abstract telemetry radar thumbnail preview */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#1A0042] via-[#1516A8] to-[#4D0181] opacity-90" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-full h-full opacity-40" viewBox="0 0 160 90">
-                  <path
-                    d="M 10 70 Q 40 20, 80 45 T 150 15"
-                    fill="none"
-                    stroke="#E7E6FB"
-                    strokeWidth="2"
-                  />
-                  <circle cx="80" cy="45" r="3" fill="#E7E6FB" />
-                </svg>
-              </div>
-
-              {/* Top Badge: ● LIVE RADAR */}
-              <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-sm text-[9px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>LIVE RADAR</span>
-              </div>
-
-              {/* Center Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-9 h-9 rounded-full bg-white text-[#1516A8] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                  <Play className="w-4 h-4 fill-[#1516A8] ml-0.5" />
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom mini label */}
-            <div className="p-2 pt-2.5 flex items-center justify-between font-mono text-[10px] text-[#1A0042]">
-              <span className="font-bold uppercase tracking-wider">PRODUCT WALKTHROUGH</span>
-              <span className="text-[#1516A8] font-bold flex items-center gap-0.5">
-                PLAY <span>▶</span>
-              </span>
-            </div>
-          </div>
-
         </div>
       </div>
 
