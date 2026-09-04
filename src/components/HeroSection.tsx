@@ -304,10 +304,10 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-56 sm:w-64 lg:w-72 h-56 sm:h-64 lg:h-72 p-4 sm:p-5 lg:p-6 rounded-none bg-white/[0.45] hover:bg-white/[0.55] backdrop-blur-md border border-white/60 shadow-[0_8px_24px_rgba(26,0,66,0.04)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
+            className="w-48 sm:w-56 lg:w-60 h-48 sm:h-56 lg:h-60 p-3.5 sm:p-4 lg:p-5 rounded-none bg-white/20 hover:bg-white/25 backdrop-blur-md shadow-[0_6px_20px_rgba(26,0,66,0.03)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
           >
-            {/* Top Bold Grotesque Header (Exact Oryzo 4-line editorial styling) */}
-            <div className="font-sans font-bold text-xs sm:text-[13px] lg:text-sm uppercase tracking-[-0.01em] text-[#1A0042] leading-[1.25] max-w-[200px]">
+            {/* Top Bold Grotesque Header (Exact Oryzo 4-line editorial styling - kept exact text size) */}
+            <div className="font-sans font-bold text-xs sm:text-[13px] lg:text-sm uppercase tracking-[-0.01em] text-[#1A0042] leading-[1.22] max-w-[200px]">
               DESIGNED FOR<br />
               PERFORMANCE-FIRST<br />
               FOUNDERS &amp;<br />
@@ -315,9 +315,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             </div>
 
             {/* Editorial Dotted Separator */}
-            <div className="w-full border-b border-dotted border-[#1A0042]/20 my-auto" />
+            <div className="w-full border-b border-dotted border-[#1A0042]/15 my-auto" />
 
-            {/* Bottom Right-Aligned Subtext (Exact Oryzo 3-line sentence-case styling) */}
+            {/* Bottom Right-Aligned Subtext (Exact Oryzo 3-line sentence-case styling - kept exact text size) */}
             <div className="text-[11px] sm:text-xs text-[#1A0042]/85 font-sans leading-[1.35] text-right max-w-[180px] ml-auto">
               The autonomous<br />
               intelligence system that<br />
