@@ -293,7 +293,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-LEFT EDITORIAL GLASS CARD                                          */}
+        {/* BOTTOM-LEFT EDITORIAL LIQUID GLASS CARD                                   */}
         {/* ========================================================================= */}
         <div
           ref={cardLeftRef}
@@ -302,13 +302,18 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-68 sm:w-80 h-48 sm:h-56 lg:h-60 p-5 sm:p-6 rounded-2xl bg-white/65 backdrop-blur-xl border border-white/70 shadow-[0_16px_40px_rgba(26,0,66,0.06)] flex flex-col justify-between will-change-transform"
+            className="relative w-68 sm:w-80 h-48 sm:h-56 lg:h-60 p-5 sm:p-6 rounded-2xl bg-white/20 hover:bg-white/28 backdrop-blur-2xl saturate-150 border border-white/40 border-t-white/75 border-l-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.75),inset_0_0_24px_rgba(255,255,255,0.12),0_20px_45px_-12px_rgba(26,0,66,0.08)] flex flex-col justify-between overflow-hidden will-change-transform transition-all duration-300"
           >
-            <div className="font-mono text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#1A0042] leading-snug">
+            {/* Liquid glass light refraction sheen */}
+            <div className="absolute -inset-full bg-gradient-to-tr from-transparent via-white/10 to-white/25 pointer-events-none rotate-12" />
+
+            <div className="relative z-10 font-mono text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#1A0042] leading-snug drop-shadow-[0_1px_1px_rgba(255,255,255,0.6)]">
               DESIGNED FOR PERFORMANCE-FIRST FOUNDERS &amp; MARKETERS.
             </div>
-            <div className="border-t border-dotted border-[#1A0042]/25 my-auto" />
-            <div className="text-xs text-[#1A0042]/80 font-sans leading-relaxed text-right max-w-[220px] ml-auto">
+
+            <div className="relative z-10 border-t border-dotted border-[#1A0042]/20 my-auto" />
+
+            <div className="relative z-10 text-xs text-[#1A0042]/90 font-sans font-medium leading-relaxed text-right max-w-[220px] ml-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">
               The autonomous intelligence system that eliminates ad guesswork.
             </div>
           </div>
