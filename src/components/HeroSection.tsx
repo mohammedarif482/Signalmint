@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Play } from "lucide-react";
 import signalMintLogo from "../assets/signalmintlogo.svg";
 import heroBgImage from "../assets/herobg.jpeg";
-import { ThreeHeroCanvas } from "./ThreeHeroCanvas";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -161,9 +160,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           <div className="absolute inset-0 bg-[#1A0042]/5 mix-blend-multiply pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#E7E6FB]/30 via-transparent to-[#E7E6FB]/20 pointer-events-none" />
         </div>
-
-        {/* 3D Antigravity Floating Model (Three.js + GLTFLoader oryzo_coaster.glb) */}
-        <ThreeHeroCanvas runwayId="hero-runway" />
 
         {/* ========================================================================= */}
         {/* TOP-LEFT DISPLAY BRAND SECTION                                           */}
