@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
 import { Play } from "lucide-react";
 import signalMintLogo from "../assets/signalmintlogo.svg";
 import heroBgImage from "../assets/herobg.jpeg";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, Observer);
 
 interface HeroSectionProps {
   onOpenDemoModal?: () => void;
@@ -19,10 +20,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
   const logoRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLDivElement>(null);
   const narrativeRef = useRef<HTMLDivElement>(null);
+  const narrativeInnerRef = useRef<HTMLDivElement>(null);
   const cardLeftRef = useRef<HTMLDivElement>(null);
+  const cardLeftInnerRef = useRef<HTMLDivElement>(null);
   const videoCardRef = useRef<HTMLDivElement>(null);
+  const videoCardInnerRef = useRef<HTMLDivElement>(null);
   const scrollPillRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
+  const bgInnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const runway = runwayRef.current;
@@ -122,6 +127,85 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         );
       }
 
+      // 4. GSAP OBSERVER: High-Performance Anti-Gravity Pointer & Touch Physics
+      if (bgInnerRef.current && cardLeftInnerRef.current && videoCardInnerRef.current) {
+        const xBg = gsap.quickTo(bgInnerRef.current, "x", { duration: 0.9, ease: "power2.out" });
+        const yBg = gsap.quickTo(bgInnerRef.current, "y", { duration: 0.9, ease: "power2.out" });
+
+        const xCard = gsap.quickTo(cardLeftInnerRef.current, "x", { duration: 0.7, ease: "power2.out" });
+        const yCard = gsap.quickTo(cardLeftInnerRef.current, "y", { duration: 0.7, ease: "power2.out" });
+        const rotXCard = gsap.quickTo(cardLeftInnerRef.current, "rotationX", { duration: 0.7, ease: "power2.out" });
+        const rotYCard = gsap.quickTo(cardLeftInnerRef.current, "rotationY", { duration: 0.7, ease: "power2.out" });
+
+        const xVideo = gsap.quickTo(videoCardInnerRef.current, "x", { duration: 0.65, ease: "power2.out" });
+        const yVideo = gsap.quickTo(videoCardInnerRef.current, "y", { duration: 0.65, ease: "power2.out" });
+        const rotXVideo = gsap.quickTo(videoCardInnerRef.current, "rotationX", { duration: 0.65, ease: "power2.out" });
+        const rotYVideo = gsap.quickTo(videoCardInnerRef.current, "rotationY", { duration: 0.65, ease: "power2.out" });
+
+        const xNarrative = narrativeInnerRef.current
+          ? gsap.quickTo(narrativeInnerRef.current, "x", { duration: 0.8, ease: "power2.out" })
+          : null;
+        const yNarrative = narrativeInnerRef.current
+          ? gsap.quickTo(narrativeInnerRef.current, "y", { duration: 0.8, ease: "power2.out" })
+          : null;
+
+        Observer.create({
+          target: window,
+          type: "pointer,touch",
+          onMove: (self) => {
+            if (self.x == null || self.y == null) return;
+            // Only apply while hero fold is visible
+            if (window.scrollY > window.innerHeight * 0.75) return;
+
+            const normX = (self.x / window.innerWidth - 0.5) * 2;
+            const normY = (self.y / window.innerHeight - 0.5) * 2;
+
+            // Deep spatial plane separation:
+            // Background drifts softly opposite for depth
+            xBg(normX * 18);
+            yBg(normY * 14);
+
+            // Left card floats forward with subtle 3D perspective tilt
+            xCard(normX * -14);
+            yCard(normY * -10);
+            rotXCard(normY * -5);
+            rotYCard(normX * 6);
+
+            // Floating video card floats with heightened responsiveness
+            xVideo(normX * -20);
+            yVideo(normY * -15);
+            rotXVideo(normY * -6);
+            rotYVideo(normX * 8);
+
+            // Editorial narrative shifts gently
+            if (xNarrative && yNarrative) {
+              xNarrative(normX * -9);
+              yNarrative(normY * -7);
+            }
+          },
+          onStop: () => {
+            // Smoothly glide back to neutral rest position
+            xCard(0);
+            yCard(0);
+            rotXCard(0);
+            rotYCard(0);
+
+            xVideo(0);
+            yVideo(0);
+            rotXVideo(0);
+            rotYVideo(0);
+
+            if (xNarrative && yNarrative) {
+              xNarrative(0);
+              yNarrative(0);
+            }
+
+            xBg(0);
+            yBg(0);
+          },
+        });
+      }
+
       // Refresh ScrollTrigger when window resizes
       const handleResize = () => {
         ScrollTrigger.refresh();
@@ -150,15 +234,17 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           ref={bgRef}
           className="absolute inset-0 z-0 origin-center pointer-events-none overflow-hidden bg-[#E7E6FB]"
         >
-          <img
-            src={heroBgImage}
-            alt="SignalMint Hero Background"
-            className="w-full h-full object-cover object-center select-none"
-          />
+          <div ref={bgInnerRef} className="w-full h-full will-change-transform scale-[1.06]">
+            <img
+              src={heroBgImage}
+              alt="SignalMint Hero Background"
+              className="w-full h-full object-cover object-center select-none"
+            />
 
-          {/* Faint ambient atmospheric tint ensuring text readability */}
-          <div className="absolute inset-0 bg-[#1A0042]/5 mix-blend-multiply pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#E7E6FB]/30 via-transparent to-[#E7E6FB]/20 pointer-events-none" />
+            {/* Faint ambient atmospheric tint ensuring text readability */}
+            <div className="absolute inset-0 bg-[#1A0042]/5 mix-blend-multiply pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#E7E6FB]/30 via-transparent to-[#E7E6FB]/20 pointer-events-none" />
+          </div>
         </div>
 
         {/* ========================================================================= */}
@@ -199,9 +285,11 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           id="hero-narrative"
           className="hidden md:block absolute top-1/2 -translate-y-1/2 right-6 sm:right-10 lg:right-16 z-20 max-w-sm lg:max-w-md xl:max-w-lg text-left"
         >
-          <p className="text-xl sm:text-2xl lg:text-[1.65rem] font-medium text-[#1A0042] leading-[1.3] tracking-tight">
-            SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time. Designed to make every dollar convert.
-          </p>
+          <div ref={narrativeInnerRef} className="will-change-transform">
+            <p className="text-xl sm:text-2xl lg:text-[1.65rem] font-medium text-[#1A0042] leading-[1.3] tracking-tight">
+              SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time. Designed to make every dollar convert.
+            </p>
+          </div>
         </div>
 
         {/* ========================================================================= */}
@@ -210,14 +298,19 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         <div
           ref={cardLeftRef}
           id="hero-glass-card"
-          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-6 sm:left-10 lg:left-14 z-20 w-68 sm:w-80 h-48 sm:h-56 lg:h-60 p-5 sm:p-6 rounded-2xl bg-white/65 backdrop-blur-xl border border-white/70 shadow-[0_16px_40px_rgba(26,0,66,0.06)] flex flex-col justify-between"
+          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-6 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
         >
-          <div className="font-mono text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#1A0042] leading-snug">
-            DESIGNED FOR PERFORMANCE-FIRST FOUNDERS &amp; MARKETERS.
-          </div>
-          <div className="border-t border-dotted border-[#1A0042]/25 my-auto" />
-          <div className="text-xs text-[#1A0042]/80 font-sans leading-relaxed text-right max-w-[220px] ml-auto">
-            The autonomous intelligence system that eliminates ad guesswork.
+          <div
+            ref={cardLeftInnerRef}
+            className="w-68 sm:w-80 h-48 sm:h-56 lg:h-60 p-5 sm:p-6 rounded-2xl bg-white/65 backdrop-blur-xl border border-white/70 shadow-[0_16px_40px_rgba(26,0,66,0.06)] flex flex-col justify-between will-change-transform"
+          >
+            <div className="font-mono text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#1A0042] leading-snug">
+              DESIGNED FOR PERFORMANCE-FIRST FOUNDERS &amp; MARKETERS.
+            </div>
+            <div className="border-t border-dotted border-[#1A0042]/25 my-auto" />
+            <div className="text-xs text-[#1A0042]/80 font-sans leading-relaxed text-right max-w-[220px] ml-auto">
+              The autonomous intelligence system that eliminates ad guesswork.
+            </div>
           </div>
         </div>
 
@@ -242,8 +335,12 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           ref={videoCardRef}
           id="hero-video-card"
           onClick={() => setShowVideoModal(true)}
-          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 right-6 sm:right-10 lg:right-16 z-20 w-52 sm:w-60 lg:w-64 bg-white/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/80 ring-1 ring-amber-400/40 shadow-2xl cursor-pointer group transition-transform duration-300 hover:scale-[1.03]"
+          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 right-6 sm:right-10 lg:right-16 z-20 [perspective:1000px] cursor-pointer group"
         >
+          <div
+            ref={videoCardInnerRef}
+            className="w-52 sm:w-60 lg:w-64 bg-white/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/80 ring-1 ring-amber-400/40 shadow-2xl transition-transform duration-300 hover:scale-[1.03] will-change-transform"
+          >
           {/* Video preview thumbnail box */}
           <div className="relative aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
             {/* Abstract telemetry radar thumbnail preview */}
@@ -283,6 +380,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
       </div>
+    </div>
 
       {/* 2-Min Demo Video Modal Walkthrough */}
       {showVideoModal && (
