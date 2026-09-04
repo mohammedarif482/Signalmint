@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
 import { Play } from "lucide-react";
-import signalMintLogo from "../assets/signalmintlogo.svg";
 import heroBgImage from "../assets/herobg.jpeg";
 
 gsap.registerPlugin(ScrollTrigger, Observer);
@@ -17,8 +16,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
   const runwayRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const eyebrowRef = useRef<HTMLDivElement>(null);
   const narrativeRef = useRef<HTMLDivElement>(null);
   const narrativeInnerRef = useRef<HTMLDivElement>(null);
   const cardLeftRef = useRef<HTMLDivElement>(null);
@@ -31,14 +28,17 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
   useEffect(() => {
     const runway = runwayRef.current;
-    const floatingLogo = logoRef.current;
     const bg = bgRef.current;
-    if (!runway || !floatingLogo) return;
+    if (!runway) return;
+
+    const floatingLogo = document.getElementById("main-brand-logo");
+    const eyebrow = document.getElementById("main-brand-eyebrow");
+    const navDot = document.getElementById("nav-initial-dot");
 
     // Helper: Calculate exact vector offset and scale from hero logo to nav-logo-slot
     const getDockOffsets = () => {
       const navSlot = document.getElementById("nav-logo-slot");
-      if (!navSlot || !floatingLogo) return { deltaX: -32, deltaY: -50, targetScale: 0.2 };
+      if (!navSlot || !floatingLogo) return { deltaX: -24, deltaY: -64, targetScale: 0.28 };
 
       // Temporarily clear inline transform to calculate true geometry
       gsap.set(floatingLogo, { clearProps: "transform" });
@@ -47,8 +47,8 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
       const deltaX = navRect.left - logoRect.left;
       const deltaY = navRect.top - logoRect.top;
-      // Target nav font is ~28px, floating logo height is measured dynamically
-      const targetScale = logoRect.height > 0 ? (navRect.height * 0.95) / logoRect.height : 0.2;
+      // Target nav height is ~24-28px, floating logo height is measured dynamically
+      const targetScale = logoRect.height > 0 ? (navRect.height * 0.92) / logoRect.height : 0.28;
 
       return { deltaX, deltaY, targetScale };
     };
@@ -64,60 +64,86 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           end: "bottom bottom",
           scrub: 0.8,
           invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            const navDockedLogo = document.getElementById("nav-docked-logo");
-            const navInitialDot = document.getElementById("nav-initial-dot");
-
-            // When user scrolls past 58%, seamlessly reveal docked nav wordmark
-            if (progress >= 0.58) {
-              if (navDockedLogo) navDockedLogo.style.opacity = "1";
-              if (navInitialDot) navInitialDot.style.opacity = "0";
-              if (floatingLogo) floatingLogo.style.opacity = "0";
-            } else {
-              if (navDockedLogo) navDockedLogo.style.opacity = "0";
-              if (navInitialDot) navInitialDot.style.opacity = "1";
-              if (floatingLogo) floatingLogo.style.opacity = "1";
-            }
-          },
         },
       });
 
-      // 1. BRAND LOGO TRANSITION (Shrink & Dock into #nav-logo-slot by 60% scroll)
-      scrubTl.to(
-        floatingLogo,
-        {
-          x: deltaX,
-          y: deltaY,
-          scale: targetScale,
-          transformOrigin: "left top",
-          ease: "power1.inOut",
-        },
-        0
-      );
+      // 1. THE ONE AND ONLY BRAND LOGO GLIDES & DOCKS INTO NAVBAR (0% to 55% scroll)
+      if (floatingLogo) {
+        scrubTl.to(
+          floatingLogo,
+          {
+            x: deltaX,
+            y: deltaY,
+            scale: targetScale,
+            transformOrigin: "left top",
+            ease: "power1.inOut",
+            duration: 0.55,
+          },
+          0
+        );
+      }
 
-      // 2. FADE & DISPERSE SECONDARY ELEMENTS (0% to 38% scroll)
-      const secondaryElements = [
-        eyebrowRef.current,
-        narrativeRef.current,
+      // 2. EYEBROW TRANSLATES UPWARDS & FADES OUT (Frame 1 & 2: 0% to 25% scroll)
+      if (eyebrow) {
+        scrubTl.to(
+          eyebrow,
+          {
+            y: -36,
+            opacity: 0,
+            ease: "power2.out",
+            duration: 0.25,
+          },
+          0
+        );
+      }
+
+      // 3. TOP-LEFT DOT FADES OUT AS LOGO APPROACHES NAVBAR (0.15 to 0.45 scroll)
+      if (navDot) {
+        scrubTl.to(
+          navDot,
+          {
+            opacity: 0,
+            ease: "power1.out",
+            duration: 0.3,
+          },
+          0.15
+        );
+      }
+
+      // 4. CENTER-RIGHT NARRATIVE EXITS EARLIEST (Frame 1: cleared by ~18% scroll)
+      if (narrativeRef.current) {
+        scrubTl.to(
+          narrativeRef.current,
+          {
+            opacity: 0,
+            y: -16,
+            duration: 0.18,
+            ease: "power2.out",
+          },
+          0
+        );
+      }
+
+      // 5. BOTTOM CARDS & SCROLL PILL DISSOLVE DOWNWARD (0.05 to 0.38 scroll)
+      const cardElements = [
         cardLeftRef.current,
         videoCardRef.current,
         scrollPillRef.current,
       ].filter(Boolean);
 
       scrubTl.to(
-        secondaryElements,
+        cardElements,
         {
           opacity: 0,
-          y: 28,
+          y: 20,
           stagger: 0.03,
-          duration: 0.38,
+          duration: 0.35,
           ease: "power2.out",
         },
-        0
+        0.05
       );
 
-      // 3. BACKGROUND WORKSPACE IMAGE / CANVAS PARALLAX SCRUB (0% to 100%)
+      // 6. BACKGROUND WORKSPACE IMAGE PARALLAX SCRUB (0% to 100%)
       if (bg) {
         scrubTl.to(
           bg,
@@ -250,32 +276,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* ========================================================================= */}
-        {/* TOP-LEFT DISPLAY BRAND SECTION                                           */}
-        {/* ========================================================================= */}
-        <div className="absolute top-16 sm:top-20 lg:top-24 left-6 sm:left-10 lg:left-14 z-20 w-fit flex flex-col items-end">
-          {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Right-aligned to end of logo, bold sans) */}
-          <div ref={eyebrowRef} id="hero-eyebrow" className="mb-2 sm:mb-2.5 w-full text-right">
-            <span className="font-sans font-bold tracking-[0.14em] text-[10px] sm:text-[11px] lg:text-xs text-[#1A0042] uppercase inline-block">
-              THE AI CREATIVE THAT THINKS LIKE A CMO.
-            </span>
-          </div>
-
-          {/* Giant Brand Wordmark (#hero-floating-logo): Uses signalmintlogo.svg */}
-          <div
-            id="hero-floating-logo"
-            ref={logoRef}
-            className="origin-top-left inline-block select-none cursor-default max-w-full"
-          >
-            <img
-              src={signalMintLogo}
-              alt="SignalMint"
-              className="h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 w-auto max-w-[85vw] sm:max-w-none object-contain block"
-            />
-          </div>
-
-          {/* Mobile narrative text fallback */}
-          <p className="md:hidden text-xs sm:text-sm text-[#1A0042]/80 mt-4 leading-relaxed max-w-sm self-start text-left">
+        {/* Mobile narrative text fallback */}
+        <div className="md:hidden absolute top-48 left-6 z-20 max-w-sm">
+          <p className="text-xs sm:text-sm text-[#1A0042]/80 leading-relaxed text-left">
             SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time.
           </p>
         </div>

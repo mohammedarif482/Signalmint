@@ -33,7 +33,37 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
 
   return (
     <>
-      {/* 1. FIXED TOP HEADER BAR (Oryzo Style) */}
+      {/* 1. THE ONE AND ONLY BRAND LOGO & EYEBROW (Unified Hero -> Navbar) */}
+      <div
+        id="main-brand-block"
+        className="fixed top-16 sm:top-20 lg:top-24 left-6 sm:left-10 lg:left-14 z-50 pointer-events-none select-none w-fit flex flex-col items-end origin-top-left"
+      >
+        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Right-aligned to end of logo) */}
+        <div
+          id="main-brand-eyebrow"
+          className="mb-2 sm:mb-2.5 w-full text-right will-change-transform pointer-events-auto"
+        >
+          <span className="font-sans font-bold tracking-[0.14em] text-[10px] sm:text-[11px] lg:text-xs text-[#1A0042] uppercase inline-block">
+            THE AI CREATIVE THAT THINKS LIKE A CMO.
+          </span>
+        </div>
+
+        {/* The ONE AND ONLY Brand Wordmark (Starts big on hero, glides into navbar on scroll) */}
+        <div
+          id="main-brand-logo"
+          className="origin-top-left will-change-transform pointer-events-auto"
+        >
+          <a href="#hero-runway" className="block cursor-pointer" title="SignalMint Home">
+            <img
+              src={signalMintLogo}
+              alt="SignalMint"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 w-auto max-w-[85vw] sm:max-w-none object-contain block"
+            />
+          </a>
+        </div>
+      </div>
+
+      {/* 2. FIXED TOP HEADER BAR (Oryzo Style) */}
       <header
         className={`fixed top-0 left-0 w-full z-50 px-6 sm:px-8 py-5 flex items-center justify-between pointer-events-none transition-all duration-300 ${
           isScrolled
@@ -41,31 +71,16 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             : ""
         }`}
       >
-        {/* Left: Empty target div id="nav-logo-slot" (w-44 h-8 flex items-center pointer-events-auto) */}
+        {/* Left: Target slot id="nav-logo-slot" for docking (w-40 h-8 flex items-center pointer-events-auto relative) */}
         <div
           id="nav-logo-slot"
-          className="w-44 h-8 flex items-center pointer-events-auto relative"
+          className="w-40 h-7 sm:h-8 flex items-center pointer-events-auto relative"
         >
           {/* Subtle initial dot matching Oryzo top-left ● indicator */}
           <div
             id="nav-initial-dot"
-            className={`w-2 h-2 rounded-full bg-[#1A0042]/90 transition-opacity duration-300 ${
-              isScrolled ? "opacity-0" : "opacity-90"
-            }`}
+            className="w-2 h-2 rounded-full bg-[#1A0042]/90 transition-opacity duration-300"
           />
-
-          {/* Fallback persistent wordmark once scrolled past hero runway */}
-          <a
-            href="#"
-            id="nav-docked-logo"
-            className="opacity-0 transition-opacity duration-300 flex items-center select-none pointer-events-auto absolute inset-0"
-          >
-            <img
-              src={signalMintLogo}
-              alt="SignalMint"
-              className="h-6 sm:h-7 w-auto object-contain"
-            />
-          </a>
         </div>
 
         {/* Right Nav Links: pointer-events-auto flex items-center gap-8 text-xs font-mono tracking-widest text-[#1A0042]/70 uppercase */}
