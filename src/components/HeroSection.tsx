@@ -40,9 +40,10 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
     const getHeroTransform = () => {
       const isDesktop = window.innerWidth >= 1024;
       const isTablet = window.innerWidth >= 640;
-      const heroY = isDesktop ? 80 : isTablet ? 72 : 62;
-      const heroX = isDesktop ? 20 : isTablet ? 8 : 0;
-      const heroScale = isDesktop ? 1.7 : isTablet ? 1.55 : 1.4;
+      // High-impact commanding hero wordmark (matching Oryzo typography scale)
+      const heroY = isDesktop ? 96 : isTablet ? 82 : 68;
+      const heroX = isDesktop ? 24 : isTablet ? 12 : 0;
+      const heroScale = isDesktop ? 2.55 : isTablet ? 2.05 : 1.65;
       return { heroX, heroY, heroScale };
     };
 
@@ -60,7 +61,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         },
       });
 
-      // 1. BRAND LOGO: Starts expanded in Hero, glides up into navbar as user scrolls (0% to 50%)
+      // 1. BRAND LOGO: Starts enlarged in Hero, glides up into navbar as user scrolls (0% to 50%)
       scrubTl.fromTo(
         brandLogo,
         {
@@ -260,13 +261,13 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. */}
+        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Right-aligned to the enlarged wordmark) */}
         <div
           ref={eyebrowRef}
           id="hero-eyebrow"
-          className="absolute top-14 sm:top-18 lg:top-20 left-6 sm:left-10 lg:left-14 z-20 pointer-events-none"
+          className="absolute top-12 sm:top-14 lg:top-16 left-6 sm:left-10 lg:left-14 w-[280px] sm:w-[480px] lg:w-[650px] flex justify-end z-20 pointer-events-none"
         >
-          <span className="font-sans font-bold tracking-[0.14em] text-[10px] sm:text-[11px] lg:text-xs text-[#1A0042] uppercase inline-block">
+          <span className="font-sans font-bold tracking-[0.14em] text-[10px] sm:text-[11px] lg:text-xs text-[#1A0042] uppercase inline-block text-right">
             THE AI CREATIVE THAT THINKS LIKE A CMO.
           </span>
         </div>
