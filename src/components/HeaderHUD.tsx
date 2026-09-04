@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import signalMintLogo from "../assets/signalmintlogo.svg";
 
 interface HeaderHUDProps {
   onOpenDemoModal?: () => void;
@@ -40,19 +41,22 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             : ""
         }`}
       >
-        {/* Left: Empty target div id="nav-logo-slot" (w-40 h-8 flex items-center pointer-events-auto) */}
+        {/* Left: Empty target div id="nav-logo-slot" (w-44 h-8 flex items-center pointer-events-auto) */}
         <div
           id="nav-logo-slot"
-          className="w-40 h-8 flex items-center pointer-events-auto relative"
+          className="w-44 h-8 flex items-center pointer-events-auto relative"
         >
           {/* Fallback persistent wordmark once scrolled past hero runway */}
           <a
             href="#"
             id="nav-docked-logo"
-            className="opacity-0 transition-opacity duration-300 font-black text-xl tracking-tight text-[#1A0042] uppercase flex items-center gap-1 group select-none pointer-events-auto"
+            className="opacity-0 transition-opacity duration-300 flex items-center select-none pointer-events-auto"
           >
-            <span>SIGNAL</span>
-            <span className="text-[#1516A8]">MINT</span>
+            <img
+              src={signalMintLogo}
+              alt="SignalMint"
+              className="h-6 sm:h-7 w-auto object-contain"
+            />
           </a>
         </div>
 

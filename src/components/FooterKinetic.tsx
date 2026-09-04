@@ -1,5 +1,6 @@
 import { Magnetic } from "./MagneticButton";
 import { ArrowRight, Play } from "lucide-react";
+import signalMintLogo from "../assets/signalmintlogo.svg";
 
 interface FooterKineticProps {
   onOpenDemoModal?: () => void;
@@ -75,27 +76,12 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
           
           {/* Left: SignalMint Logo + Description */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-            <a href="#" className="flex items-center gap-2 group select-none">
-              <div className="w-7 h-7 rounded-md bg-[#1A0042] flex items-center justify-center overflow-hidden shadow-xs transition-transform duration-200 group-hover:scale-105">
-                <svg
-                  viewBox="0 0 40 40"
-                  className="w-5 h-5 text-[#E7E6FB]"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="20" cy="20" r="14" stroke="#6495EB" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
-                  <path
-                    d="M10 20C13 14 17 14 20 20C23 26 27 26 30 20"
-                    stroke="#E7E6FB"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <circle cx="20" cy="20" r="3.5" fill="#1516A8" stroke="#E7E6FB" strokeWidth="1.5" />
-                </svg>
-              </div>
-              <span className="font-extrabold text-base tracking-tight text-[#1A0042]">
-                Signal<span className="text-[#1516A8]">Mint</span>
-              </span>
+            <a href="#" className="flex items-center select-none group">
+              <img
+                src={signalMintLogo}
+                alt="SignalMint"
+                className="h-6 sm:h-7 w-auto object-contain"
+              />
             </a>
             <span className="hidden sm:inline text-[#1A0042]/30 font-mono">|</span>
             <span className="font-mono text-xs text-[#1A0042]/70">

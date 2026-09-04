@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Play } from "lucide-react";
+import signalMintLogo from "../assets/signalmintlogo.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +15,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
   const runwayRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLHeadingElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLDivElement>(null);
   const narrativeRef = useRef<HTMLDivElement>(null);
   const cardLeftRef = useRef<HTMLDivElement>(null);
@@ -40,8 +41,8 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
       const deltaX = navRect.left - logoRect.left;
       const deltaY = navRect.top - logoRect.top;
-      // Target nav font is ~20px, massive hero font is ~120px -> scale is roughly 0.16 - 0.22
-      const targetScale = Math.min(Math.max((navRect.height * 0.9) / logoRect.height, 0.14), 0.25);
+      // Target nav font is ~28px, floating logo height is measured dynamically
+      const targetScale = logoRect.height > 0 ? (navRect.height * 0.95) / logoRect.height : 0.2;
 
       return { deltaX, deltaY, targetScale };
     };
@@ -290,14 +291,18 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             </span>
           </div>
 
-          {/* Giant Brand Wordmark (#hero-floating-logo): Massive, bold typography */}
-          <h1
+          {/* Giant Brand Wordmark (#hero-floating-logo): Uses signalmintlogo.svg */}
+          <div
             id="hero-floating-logo"
             ref={logoRef}
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-[9.5rem] xl:text-[10.5rem] font-black tracking-tight text-[#1A0042] leading-[0.9] uppercase origin-top-left inline-block select-none cursor-default"
+            className="origin-top-left inline-block select-none cursor-default max-w-full"
           >
-            SIGNALMINT
-          </h1>
+            <img
+              src={signalMintLogo}
+              alt="SignalMint"
+              className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto max-w-[88vw] sm:max-w-none object-contain"
+            />
+          </div>
         </div>
 
         {/* ========================================================================= */}
