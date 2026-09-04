@@ -41,7 +41,7 @@ export function ThreeHeroCanvas({ runwayId = "hero-runway" }: ThreeHeroCanvasPro
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
 
     // 3. Studio Lighting Rig (bouncing off coaster surface)
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
@@ -179,12 +179,12 @@ export function ThreeHeroCanvas({ runwayId = "hero-runway" }: ThreeHeroCanvasPro
 
     // 8. Animation & Physics Render Loop
     let animationFrameId: number;
-    const clock = new THREE.Clock();
+    const startTime = performance.now();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      const elapsedTime = clock.getElapsedTime();
+      const elapsedTime = (performance.now() - startTime) / 1000;
 
       // Fluid lag interpolation (lerp factor 0.025 for heavy floating physics)
       mouse.x += (targetMouse.x - mouse.x) * 0.025;
