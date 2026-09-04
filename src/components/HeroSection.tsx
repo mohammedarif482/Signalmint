@@ -16,6 +16,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
   const runwayRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const eyebrowRef = useRef<HTMLDivElement>(null);
   const narrativeRef = useRef<HTMLDivElement>(null);
   const narrativeInnerRef = useRef<HTMLDivElement>(null);
   const cardLeftRef = useRef<HTMLDivElement>(null);
@@ -29,35 +30,24 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
   useEffect(() => {
     const runway = runwayRef.current;
     const bg = bgRef.current;
+    const eyebrow = eyebrowRef.current;
     if (!runway) return;
 
-    const floatingLogo = document.getElementById("main-brand-logo");
-    const eyebrow = document.getElementById("main-brand-eyebrow");
-    const navDot = document.getElementById("nav-initial-dot");
+    const brandLogo = document.getElementById("brand-unified-logo");
+    if (!brandLogo) return;
 
-    // Helper: Calculate exact vector offset and scale from hero logo to nav-logo-slot
-    const getDockOffsets = () => {
-      const navSlot = document.getElementById("nav-logo-slot");
-      if (!navSlot || !floatingLogo) return { deltaX: -24, deltaY: -64, targetScale: 0.28 };
-
-      // Temporarily clear inline transform to calculate true geometry
-      gsap.set(floatingLogo, { clearProps: "transform" });
-      const navRect = navSlot.getBoundingClientRect();
-      const logoRect = floatingLogo.getBoundingClientRect();
-
-      // Scaled height inside the navbar slot (~22-24px height)
-      const targetScale = logoRect.height > 0 ? (navRect.height * 0.85) / logoRect.height : 0.25;
-      const scaledHeight = logoRect.height * targetScale;
-      const verticalPadding = (navRect.height - scaledHeight) / 2;
-
-      const deltaX = navRect.left - logoRect.left;
-      const deltaY = (navRect.top + verticalPadding) - logoRect.top;
-
-      return { deltaX, deltaY, targetScale };
+    // Calculate hero offset relative to navbar origin
+    const getHeroTransform = () => {
+      const isDesktop = window.innerWidth >= 1024;
+      const isTablet = window.innerWidth >= 640;
+      const heroY = isDesktop ? 80 : isTablet ? 72 : 62;
+      const heroX = isDesktop ? 20 : isTablet ? 8 : 0;
+      const heroScale = isDesktop ? 1.7 : isTablet ? 1.55 : 1.4;
+      return { heroX, heroY, heroScale };
     };
 
     const ctx = gsap.context(() => {
-      const { deltaX, deltaY, targetScale } = getDockOffsets();
+      const { heroX, heroY, heroScale } = getHeroTransform();
 
       // Master ScrollTrigger Scrub Timeline bound to the 200vh runway
       const scrubTl = gsap.timeline({
@@ -70,50 +60,41 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         },
       });
 
-      // 1. THE ONE AND ONLY BRAND LOGO GLIDES & DOCKS INTO NAVBAR (0% to 55% scroll)
-      if (floatingLogo) {
-        scrubTl.to(
-          floatingLogo,
-          {
-            x: deltaX,
-            y: deltaY,
-            scale: targetScale,
-            transformOrigin: "left top",
-            ease: "power1.inOut",
-            duration: 0.55,
-          },
-          0
-        );
-      }
+      // 1. BRAND LOGO: Starts expanded in Hero, glides up into navbar as user scrolls (0% to 50%)
+      scrubTl.fromTo(
+        brandLogo,
+        {
+          x: heroX,
+          y: heroY,
+          scale: heroScale,
+          transformOrigin: "left top",
+        },
+        {
+          x: 0,
+          y: 0,
+          scale: 1,
+          transformOrigin: "left top",
+          ease: "power1.inOut",
+          duration: 0.5,
+        },
+        0
+      );
 
-      // 2. EYEBROW TRANSLATES UPWARDS & FADES OUT (Frame 1 & 2: 0% to 25% scroll)
+      // 2. EYEBROW TRANSLATES UPWARDS & FADES OUT (0% to 22% scroll)
       if (eyebrow) {
         scrubTl.to(
           eyebrow,
           {
-            y: -36,
+            y: -32,
             opacity: 0,
+            duration: 0.22,
             ease: "power2.out",
-            duration: 0.25,
           },
           0
         );
       }
 
-      // 3. TOP-LEFT DOT FADES OUT AS LOGO APPROACHES NAVBAR (0.15 to 0.45 scroll)
-      if (navDot) {
-        scrubTl.to(
-          navDot,
-          {
-            opacity: 0,
-            ease: "power1.out",
-            duration: 0.3,
-          },
-          0.15
-        );
-      }
-
-      // 4. CENTER-RIGHT NARRATIVE EXITS EARLIEST (Frame 1: cleared by ~18% scroll)
+      // 3. CENTER-RIGHT NARRATIVE EXITS EARLIEST (Frame 1: cleared by ~18% scroll)
       if (narrativeRef.current) {
         scrubTl.to(
           narrativeRef.current,
@@ -127,7 +108,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         );
       }
 
-      // 5. BOTTOM CARDS & SCROLL PILL DISSOLVE DOWNWARD (0.05 to 0.38 scroll)
+      // 4. BOTTOM CARDS & SCROLL PILL DISSOLVE DOWNWARD (0.05 to 0.38 scroll)
       const cardElements = [
         cardLeftRef.current,
         videoCardRef.current,
@@ -146,7 +127,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         0.05
       );
 
-      // 6. BACKGROUND WORKSPACE IMAGE PARALLAX SCRUB (0% to 100%)
+      // 5. BACKGROUND WORKSPACE IMAGE PARALLAX SCRUB (0% to 100%)
       if (bg) {
         scrubTl.to(
           bg,
@@ -279,6 +260,17 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
+        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. */}
+        <div
+          ref={eyebrowRef}
+          id="hero-eyebrow"
+          className="absolute top-14 sm:top-18 lg:top-20 left-6 sm:left-10 lg:left-14 z-20 pointer-events-none"
+        >
+          <span className="font-sans font-bold tracking-[0.14em] text-[10px] sm:text-[11px] lg:text-xs text-[#1A0042] uppercase inline-block">
+            THE AI CREATIVE THAT THINKS LIKE A CMO.
+          </span>
+        </div>
+
         {/* Mobile narrative text fallback */}
         <div className="md:hidden absolute top-48 left-6 z-20 max-w-sm">
           <p className="text-xs sm:text-sm text-[#1A0042]/80 leading-relaxed text-left">
@@ -403,8 +395,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
       {/* 2-Min Demo Video Modal Walkthrough */}
       {showVideoModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1A0042]/50 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#FAFAFD] border border-[#1A0042]/20 rounded-2xl max-w-lg w-full p-6 sm:p-7 shadow-2xl relative">
+        <div
+          onClick={() => setShowVideoModal(false)}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#1A0042]/60 backdrop-blur-md animate-in fade-in duration-200"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-[#FAFAFD] border border-[#1A0042]/20 rounded-2xl max-w-lg w-full p-6 sm:p-7 shadow-2xl relative"
+          >
             <button
               onClick={() => setShowVideoModal(false)}
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#E7E6FB] text-[#1A0042] font-mono text-sm font-bold flex items-center justify-center hover:bg-[#1A0042] hover:text-white transition-colors cursor-pointer"
