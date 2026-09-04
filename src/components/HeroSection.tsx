@@ -300,14 +300,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         <div
           ref={cardLeftRef}
           id="hero-glass-card"
-          className="absolute bottom-6 sm:bottom-10 lg:bottom-12 left-6 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
+          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-6 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-72 sm:w-80 lg:w-[22rem] h-72 sm:h-80 lg:h-[22rem] p-6 sm:p-7 lg:p-8 rounded-none bg-[#1A0042]/[0.08] hover:bg-[#1A0042]/[0.12] backdrop-blur-md border border-[#1A0042]/12 shadow-[0_12px_32px_rgba(26,0,66,0.04)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
+            className="w-56 sm:w-64 lg:w-72 h-56 sm:h-64 lg:h-72 p-4 sm:p-5 lg:p-6 rounded-none bg-white/[0.45] hover:bg-white/[0.55] backdrop-blur-md border border-white/60 shadow-[0_8px_24px_rgba(26,0,66,0.04)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
           >
             {/* Top Bold Grotesque Header (Exact Oryzo 4-line editorial styling) */}
-            <div className="font-sans font-bold text-[15px] sm:text-base lg:text-[17px] uppercase tracking-[-0.01em] text-[#1A0042] leading-[1.2] max-w-[240px]">
+            <div className="font-sans font-bold text-xs sm:text-[13px] lg:text-sm uppercase tracking-[-0.01em] text-[#1A0042] leading-[1.25] max-w-[200px]">
               DESIGNED FOR<br />
               PERFORMANCE-FIRST<br />
               FOUNDERS &amp;<br />
@@ -315,10 +315,10 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             </div>
 
             {/* Editorial Dotted Separator */}
-            <div className="w-full border-b border-dotted border-[#1A0042]/30 my-auto" />
+            <div className="w-full border-b border-dotted border-[#1A0042]/20 my-auto" />
 
             {/* Bottom Right-Aligned Subtext (Exact Oryzo 3-line sentence-case styling) */}
-            <div className="text-xs sm:text-[13px] text-[#1A0042]/85 font-sans leading-[1.4] text-right max-w-[210px] ml-auto">
+            <div className="text-[11px] sm:text-xs text-[#1A0042]/85 font-sans leading-[1.35] text-right max-w-[180px] ml-auto">
               The autonomous<br />
               intelligence system that<br />
               eliminates ad guesswork.
