@@ -302,7 +302,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="relative w-68 sm:w-80 h-48 sm:h-56 lg:h-60 p-5 sm:p-6 rounded-2xl bg-white/20 hover:bg-white/28 backdrop-blur-2xl saturate-150 border border-white/40 border-t-white/75 border-l-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.75),inset_0_0_24px_rgba(255,255,255,0.12),0_20px_45px_-12px_rgba(26,0,66,0.08)] flex flex-col justify-between overflow-hidden will-change-transform transition-all duration-300"
+            className="relative w-68 sm:w-80 h-48 sm:h-56 lg:h-60 p-5 sm:p-6 rounded-none bg-white/20 hover:bg-white/28 backdrop-blur-2xl saturate-150 border border-white/40 border-t-white/75 border-l-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.75),inset_0_0_24px_rgba(255,255,255,0.12),0_20px_45px_-12px_rgba(26,0,66,0.08)] flex flex-col justify-between overflow-hidden will-change-transform transition-all duration-300"
           >
             {/* Liquid glass light refraction sheen */}
             <div className="absolute -inset-full bg-gradient-to-tr from-transparent via-white/10 to-white/25 pointer-events-none rotate-12" />
