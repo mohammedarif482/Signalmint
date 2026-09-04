@@ -42,7 +42,7 @@ export function App() {
         <ComparisonMatrix />
 
         {/* 6. Live Telemetry Sandbox: Bleed Protection & Model Simulator */}
-        <TelemetrySimulator />
+        <TelemetrySimulator onOpenDemoModal={handleOpenDemoModal} />
       </main>
 
       {/* 7. Kinetic Light-Theme Footer */}
