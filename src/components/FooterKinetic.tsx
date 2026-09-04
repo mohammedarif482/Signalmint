@@ -1,5 +1,5 @@
 import { Magnetic } from "./MagneticButton";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 interface FooterKineticProps {
   onOpenDemoModal?: () => void;
@@ -11,152 +11,124 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
       {/* Ambient background light gradients */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#E7E6FB] filter blur-[100px] pointer-events-none opacity-60" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Outro Kinetic Section */}
-        <div className="mb-16 sm:mb-24">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="font-mono text-xs font-bold text-[#1516A8] tracking-widest uppercase bg-[#E7E6FB] px-3 py-1 rounded-full border border-[#1A0042]/10">
-              FINAL CALL // AD EXCELLENCE
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        
+        {/* 1. CLOSING HERO BOX */}
+        <div className="mb-16 sm:mb-24 max-w-5xl">
+          {/* Eyebrow: FINAL CALL // YOUR MOVE */}
+          <div className="mb-4">
+            <span className="font-mono text-xs font-semibold text-[#4D0181] bg-[#4D0181]/10 px-3 py-1 rounded-full border border-[#4D0181]/20 inline-block uppercase tracking-widest">
+              FINAL CALL // YOUR MOVE
             </span>
-            <span className="font-mono text-xs text-[#1A0042]/60">ZERO BLEEDING SPEND GUARANTEE</span>
           </div>
 
-          {/* Giant Bold Outro Typography */}
-          <h2 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight text-[#1A0042] leading-[1.04] uppercase max-w-6xl select-none mb-10">
-            LAUNCH ADS THAT WIN —{" "}
-            <span className="bg-gradient-to-r from-[#1516A8] via-[#4D0181] to-[#1516A8] bg-clip-text text-transparent underline decoration-[#1516A8]/30 decoration-wavy decoration-2">
-              BECAUSE THEY ALREADY HAVE.
+          {/* H1 */}
+          <h2 className="font-black tracking-tight uppercase leading-[1.05] text-3xl sm:text-5xl lg:text-6xl text-[#1A0042] select-none">
+            THE COMPETITOR YOU&apos;RE ABOUT TO LOSE TO IS ALREADY USING THIS.
+            <span className="block text-2xl sm:text-3xl lg:text-4xl font-serif italic mt-2.5 opacity-80 normal-case tracking-normal text-[#4D0181]">
+              (Or they will be, in 6 weeks.)
             </span>
           </h2>
 
-          {/* Magnetic CTA Row */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <Magnetic strength={0.4} cursorLabel="BOOK">
+          {/* Subhead */}
+          <p className="font-montserrat text-sm sm:text-base text-[#1A0042]/80 max-w-2xl mt-5 leading-relaxed">
+            Every day you spend on manual audits, they&apos;re compounding Crown Winner insights. Every night you sleep, ATLAS is protecting their spend. Competitive advantage doesn&apos;t wait.
+          </p>
+
+          {/* Status Ticker */}
+          <div className="mt-5 inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/80 border border-[#1A0042]/10 text-xs font-mono text-[#1A0042] shadow-2xs">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="font-semibold">
+              ATLAS is running 24/7 for 340+ brands. It&apos;s ready for yours. In 6 weeks, your competitor will join.
+            </span>
+          </div>
+
+          {/* 2. CALL-TO-ACTION BUTTONS */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-8">
+            {/* Primary Action Button */}
+            <Magnetic strength={0.35} cursorLabel="GAP">
               <button
                 onClick={onOpenDemoModal}
-                className="px-8 py-5 rounded-full bg-[#1516A8] hover:bg-[#4D0181] text-white font-mono text-sm sm:text-base font-black tracking-widest uppercase transition-all shadow-[0_8px_30px_rgba(21,22,168,0.25)] hover:shadow-[0_12px_40px_rgba(77,1,129,0.35)] flex items-center gap-3 group cursor-pointer"
+                className="bg-[#1516A8] hover:bg-[#1A0042] text-white font-bold px-8 py-5 rounded-full text-base shadow-2xl transition-all active:scale-98 cursor-pointer flex items-center gap-2.5 group"
               >
-                <span>Book Telemetry Demo</span>
-                <ArrowUpRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                <span>See YOUR Competitive Gap (Takes 2 mins)</span>
+                <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
             </Magnetic>
 
-            <div className="flex items-center gap-3 text-xs font-mono text-[#1A0042]/70">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-              <span>Atlas Engine 24/7 Bleed Protection ready to deploy</span>
-            </div>
+            {/* Secondary Action Link */}
+            <button
+              onClick={onOpenDemoModal}
+              className="text-[#1A0042] hover:text-[#4D0181] font-semibold text-sm sm:text-base flex items-center gap-2 px-2 py-3 transition-colors cursor-pointer"
+            >
+              <Play className="w-3.5 h-3.5 fill-[#1A0042] text-[#1A0042]" />
+              <span>Or: Book a 15-Min Walkthrough of YOUR Data</span>
+            </button>
           </div>
         </div>
 
-        {/* Footer Navigation & Systems Grid */}
-        <div className="pt-12 border-t border-[#1A0042]/12 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          {/* Brand Column */}
-          <div className="md:col-span-4">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-[#1A0042] flex items-center justify-center text-white">
-                <Sparkles className="w-4 h-4 text-[#6495EB]" />
+        {/* 3. MINIMAL CLEAN LIGHT-MODE FOOTER */}
+        <div className="pt-10 border-t border-[#1A0042]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          
+          {/* Left: SignalMint Logo + Description */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <a href="#" className="flex items-center gap-2 group select-none">
+              <div className="w-7 h-7 rounded-md bg-[#1A0042] flex items-center justify-center overflow-hidden shadow-xs transition-transform duration-200 group-hover:scale-105">
+                <svg
+                  viewBox="0 0 40 40"
+                  className="w-5 h-5 text-[#E7E6FB]"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="20" cy="20" r="14" stroke="#6495EB" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
+                  <path
+                    d="M10 20C13 14 17 14 20 20C23 26 27 26 30 20"
+                    stroke="#E7E6FB"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <circle cx="20" cy="20" r="3.5" fill="#1516A8" stroke="#E7E6FB" strokeWidth="1.5" />
+                </svg>
               </div>
-              <span className="font-display font-black text-xl tracking-tight text-[#1A0042]">
-                SIGNAL<span className="text-[#1516A8]">MINT</span>
+              <span className="font-extrabold text-base tracking-tight text-[#1A0042]">
+                Signal<span className="text-[#1516A8]">Mint</span>
               </span>
-            </div>
-            <p className="font-body text-xs text-[#1A0042]/75 max-w-sm leading-relaxed mb-4">
-              The autonomous AI creative intelligence and budget optimization system. Built for performance marketers, media buyers, and hyper-growth brands.
-            </p>
-            <div className="font-mono text-[11px] text-[#1A0042]/60">
-              SYSTEM ARCHITECTURE: DUAL-AGENT REALTIME TELEMETRY
-            </div>
+            </a>
+            <span className="hidden sm:inline text-[#1A0042]/30 font-mono">|</span>
+            <span className="font-mono text-xs text-[#1A0042]/70">
+              AI Creative Performance &amp; Budget Protection Engine
+            </span>
           </div>
 
-          {/* Links Column 1 */}
-          <div className="md:col-span-3">
-            <div className="font-mono text-xs font-bold text-[#1A0042] uppercase tracking-wider mb-3">
-              PLATFORM ARSENAL
-            </div>
-            <ul className="space-y-2 font-mono text-xs text-[#1A0042]/80">
-              <li>
-                <a href="#agents" className="hover:text-[#1516A8] transition-colors">
-                  Agent 01: SCOUT (Radar Engine)
-                </a>
-              </li>
-              <li>
-                <a href="#agents" className="hover:text-[#1516A8] transition-colors">
-                  Agent 02: ATLAS (Budget Guardian)
-                </a>
-              </li>
-              <li>
-                <a href="#showcase" className="hover:text-[#1516A8] transition-colors">
-                  Crown Winners Reel
-                </a>
-              </li>
-              <li>
-                <a href="#simulator" className="hover:text-[#1516A8] transition-colors">
-                  Bleed Telemetry Sandbox
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Links Column 2 */}
-          <div className="md:col-span-3">
-            <div className="font-mono text-xs font-bold text-[#1A0042] uppercase tracking-wider mb-3">
-              INFRASTRUCTURE
-            </div>
-            <ul className="space-y-2 font-mono text-xs text-[#1A0042]/80">
-              <li>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  Meta Graph API v21.0
-                </span>
-              </li>
-              <li>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  TikTok Commercial API
-                </span>
-              </li>
-              <li>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  Computer Vision Hook Dissector
-                </span>
-              </li>
-              <li>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  30-Min Stop-Loss Daemon
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Status Column */}
-          <div className="md:col-span-2">
-            <div className="font-mono text-xs font-bold text-[#1A0042] uppercase tracking-wider mb-3">
-              TELEMETRY STATUS
-            </div>
-            <div className="p-3 rounded-xl bg-[#FAFAFD] border border-[#1A0042]/10 font-mono text-xs">
-              <div className="flex items-center gap-1.5 text-emerald-700 font-bold mb-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                ALL ENGINES LIVE
-              </div>
-              <div className="text-[10px] text-[#1A0042]/60">UPTIME: 99.98%</div>
-              <div className="text-[10px] text-[#1A0042]/60">LATENCY: &lt;140ms</div>
-            </div>
+          {/* Right: Quick Links */}
+          <div className="flex flex-wrap items-center gap-6 font-mono text-xs text-[#1A0042]/80">
+            <a href="#agents" className="hover:text-[#1516A8] transition-colors">
+              How It Works
+            </a>
+            <a href="#" className="hover:text-[#1516A8] transition-colors">
+              Terms
+            </a>
+            <a href="#" className="hover:text-[#1516A8] transition-colors">
+              Privacy
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#1516A8] transition-colors">
+              LinkedIn
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#1516A8] transition-colors">
+              Twitter
+            </a>
           </div>
         </div>
 
-        {/* Hairline Sub-Footer */}
-        <div className="mt-12 pt-6 border-t border-[#1A0042]/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-[#1A0042]/60 gap-4">
-          <div>
-            &copy; {new Date().getFullYear()} SIGNALMINT INC. ALL RIGHTS RESERVED. 100% LIGHT-THEME TELEMETRY OS.
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-[#1516A8]">Privacy Policy</a>
-            <a href="#" className="hover:text-[#1516A8]">Security Architecture</a>
-            <a href="#" className="hover:text-[#1516A8]">API Terms</a>
-          </div>
+        {/* Copyright */}
+        <div className="mt-8 pt-4 border-t border-[#1A0042]/8 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-[#1A0042]/50 gap-2">
+          <span>&copy; 2026 SignalMint. All rights reserved.</span>
+          <span>100% Light Theme Only // Built for High-Growth Performance Brands</span>
         </div>
+
       </div>
     </footer>
   );
