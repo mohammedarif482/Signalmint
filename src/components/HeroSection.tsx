@@ -181,7 +181,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             <img
               src={signalMintLogo}
               alt="SignalMint"
-              className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto max-w-[88vw] sm:max-w-none object-contain"
+              className="h-9 sm:h-12 md:h-14 lg:h-16 xl:h-20 w-auto max-w-[82vw] sm:max-w-none object-contain"
             />
           </div>
         </div>
