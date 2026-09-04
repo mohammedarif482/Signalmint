@@ -57,15 +57,15 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           </a>
         </div>
 
-        {/* Right Nav Links: pointer-events-auto flex items-center gap-8 text-xs font-mono tracking-widest text-[#1A0042]/70 uppercase */}
+        {/* Right Nav Links: pointer-events-auto flex items-center gap-6 lg:gap-8 font-sans uppercase */}
         <div className="pointer-events-auto flex items-center gap-6 lg:gap-8">
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-mono tracking-widest uppercase">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-sans tracking-[0.14em] uppercase">
             <a
               href="#hero-runway"
               className={`transition-colors duration-200 hover:text-[#4D0181] ${
                 activeSection === "intro"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70"
+                  : "text-[#1A0042]/70 font-semibold"
               }`}
             >
               INTRO
@@ -75,7 +75,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               className={`transition-colors duration-200 hover:text-[#4D0181] ${
                 activeSection === "features"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70"
+                  : "text-[#1A0042]/70 font-semibold"
               }`}
             >
               FEATURES
@@ -85,7 +85,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               className={`transition-colors duration-200 hover:text-[#4D0181] ${
                 activeSection === "agents"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70"
+                  : "text-[#1A0042]/70 font-semibold"
               }`}
             >
               AGENTS
@@ -95,7 +95,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               className={`transition-colors duration-200 hover:text-[#4D0181] cursor-pointer ${
                 activeSection === "contact"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70"
+                  : "text-[#1A0042]/70 font-semibold"
               }`}
             >
               CONTACT
@@ -105,7 +105,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           {/* Quick Book Demo button on larger screens */}
           <button
             onClick={onOpenDemoModal}
-            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1516A8] hover:bg-[#1A0042] text-white text-[11px] font-mono tracking-wider uppercase transition-all shadow-xs active:scale-95 cursor-pointer"
+            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1516A8] hover:bg-[#1A0042] text-white text-[11px] font-sans font-bold tracking-wider uppercase transition-all shadow-xs active:scale-95 cursor-pointer"
           >
             <span>Demo</span>
             <ArrowUpRight className="w-3 h-3" />
@@ -128,21 +128,21 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           <a
             href="#hero-runway"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-mono tracking-widest uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
+            className="text-xs font-sans font-semibold tracking-[0.14em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
           >
             INTRO
           </a>
           <a
             href="#showcase"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-mono tracking-widest uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
+            className="text-xs font-sans font-semibold tracking-[0.14em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
           >
             FEATURES
           </a>
           <a
             href="#agents"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-mono tracking-widest uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
+            className="text-xs font-sans font-semibold tracking-[0.14em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
           >
             AGENTS
           </a>
@@ -151,7 +151,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               setMobileMenuOpen(false);
               onOpenDemoModal?.();
             }}
-            className="mt-2 w-full py-2.5 rounded-full bg-[#1516A8] text-white text-xs font-mono uppercase tracking-wider font-bold text-center cursor-pointer shadow-md"
+            className="mt-2 w-full py-2.5 rounded-full bg-[#1516A8] text-white text-xs font-sans font-bold uppercase tracking-wider text-center cursor-pointer shadow-md"
           >
             BOOK DEMO
           </button>
