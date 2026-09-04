@@ -1,77 +1,109 @@
 import { useState } from "react";
-import { Check, X, Sparkles, AlertCircle } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
-interface MatrixRow {
+interface ComparisonRow {
   dimension: string;
-  category: string;
-  manual: string;
-  manualGood: boolean;
-  spyTools: string;
-  spyToolsGood: boolean;
-  signalMint: string;
-  signalMintHighlight: string;
+  dimensionSubtitle: string;
+  oldWay: {
+    primary: string;
+    detail: string;
+  };
+  betterWay: {
+    primary: string;
+    detail: string;
+  };
+  signalMint: {
+    primary: string;
+    detail: string;
+    badge: string;
+  };
 }
 
-const MATRIX_DATA: MatrixRow[] = [
+const COMPARISON_ROWS: ComparisonRow[] = [
   {
-    category: "DETECTION VELOCITY",
-    dimension: "Competitor Ad Discovery",
-    manual: "Manual weekly scrolling through Ad Library",
-    manualGood: false,
-    spyTools: "Scraped once every 24-48h, laggy updates",
-    spyToolsGood: false,
-    signalMint: "Real-time continuous webhook stream (< 12 mins)",
-    signalMintHighlight: "Live streaming",
+    dimension: "Speed to Crown Winner",
+    dimensionSubtitle: "Detection latency from ad launch",
+    oldWay: {
+      primary: "14+ days",
+      detail: "Email alert after 2 weeks of scroll in Ad Library",
+    },
+    betterWay: {
+      primary: "24–48 hrs",
+      detail: "Scraped data, lagging behind real scale",
+    },
+    signalMint: {
+      primary: "12 mins",
+      detail: "SCOUT flags 0–3 sec hook in real time. You see it before they've spent ₹50k.",
+      badge: "Real-Time Stream",
+    },
   },
   {
-    category: "CREATIVE DNA",
-    dimension: "Hook & Script Dissection",
-    manual: "Subjective gut-feel guessing in team meetings",
-    manualGood: false,
-    spyTools: "Static screenshots & raw video download only",
-    spyToolsGood: false,
-    signalMint: "Computer vision 3-sec hook drop curve + script breakdown",
-    signalMintHighlight: "Algorithmic X-Ray",
+    dimension: "Cost of Bleed (Per Hour)",
+    dimensionSubtitle: "Wasted capital during CPA spikes",
+    oldWay: {
+      primary: "₹850–2,400/hr",
+      detail: "Discovered next morning after budget burned",
+    },
+    betterWay: {
+      primary: "₹200–600/hr",
+      detail: "Passive monitoring only; zero automated action",
+    },
+    signalMint: {
+      primary: "₹0 Bleed",
+      detail: "ATLAS auto-cuts within 12 mins. Typical save: ₹3,400 per intervention.",
+      badge: "Auto Stop-Loss",
+    },
   },
   {
-    category: "CAPITAL PROTECTION",
-    dimension: "Budget Bleed Interception",
-    manual: "Discovered next morning after $2k-$10k wasted",
-    manualGood: false,
-    spyTools: "Zero budget connection; passive monitoring only",
-    spyToolsGood: false,
-    signalMint: "ATLAS 30-min automated check + stop-loss cut",
-    signalMintHighlight: "Autonomous Stop-Loss",
+    dimension: "Creative Pattern Recognition",
+    dimensionSubtitle: "Hook dissection methodology",
+    oldWay: {
+      primary: "Subjective",
+      detail: "Team meeting gut-feel votes and opinions",
+    },
+    betterWay: {
+      primary: "Pattern extraction",
+      detail: "Static screenshots and download rips only",
+    },
+    signalMint: {
+      primary: "Algorithmic X-Ray",
+      detail: "Computer vision traces the exact pixel, sound, and timing that caused +40% retention. Reproducible.",
+      badge: "Computer Vision",
+    },
   },
   {
-    category: "DECISION AUTOMATION",
-    dimension: "Winning Creative Flagging",
-    manual: "Blended spreadsheet math with 3-day attribution lag",
-    manualGood: false,
-    spyTools: "Ad duration proxy (assumes older = winning)",
-    spyToolsGood: false,
-    signalMint: "Crown Winner engine isolates spend scale + retention spikes",
-    signalMintHighlight: "Crown Winner Scoring",
+    dimension: "Your Competitive Advantage",
+    dimensionSubtitle: "Market positioning & agility",
+    oldWay: {
+      primary: "None",
+      detail: "Using same manual tool as 50,000 other brands",
+    },
+    betterWay: {
+      primary: "Marginal",
+      detail: "Seeing what competitors already scaled 24h ago",
+    },
+    signalMint: {
+      primary: "Information Asymmetry",
+      detail: "You see their move 48h before they scale it. You counter before they commit budget.",
+      badge: "48h Lead Time",
+    },
   },
   {
-    category: "CAPITAL EFFICIENCY",
-    dimension: "Budget Redistribution",
-    manual: "Manual campaign adjustments 2-3x per week",
-    manualGood: false,
-    spyTools: "No bid management capability",
-    spyToolsGood: false,
-    signalMint: "Automated capital shift from decaying ads to Crown Winners",
-    signalMintHighlight: "Dynamic Shift",
-  },
-  {
-    category: "HEALTH TELEMETRY",
-    dimension: "Ad Fatigue Forecasting",
-    manual: "Only noticed after CPA explodes 200%",
-    manualGood: false,
-    spyTools: "No fatigue telemetry",
-    spyToolsGood: false,
-    signalMint: "Predictive 0-100 Health Score triggers 48h before exhaustion",
-    signalMintHighlight: "Predictive 0-100 Score",
+    dimension: "ROI of Switching",
+    dimensionSubtitle: "Timeframe to 10x payback",
+    oldWay: {
+      primary: "3–6 months",
+      detail: "Break-even on expensive legacy SaaS tools",
+    },
+    betterWay: {
+      primary: "N/A",
+      detail: "Spy tools don't generate direct cost ROI",
+    },
+    signalMint: {
+      primary: "2 weeks",
+      detail: "Average save of ₹68,000/mo from bleed prevention alone + 2-3x creative win velocity.",
+      badge: "Immediate Payback",
+    },
   },
 ];
 
@@ -81,95 +113,109 @@ export function ComparisonMatrix() {
   return (
     <section
       id="matrix"
-      className="relative w-full py-20 sm:py-28 bg-[#FAFAFD] border-b border-[#1A0042]/8"
+      className="relative w-full py-20 sm:py-28 bg-[#FAFAFD] border-b border-[#E7E6FB]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        
+        {/* 1. SECTION HEADER */}
         <div className="max-w-3xl mb-14">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="font-mono text-xs font-bold text-[#1516A8] tracking-widest uppercase bg-[#E7E6FB] px-2.5 py-1 rounded-full">
-              04 // BENCHMARK MATRIX
+          {/* Eyebrow: 04 // THE COST OF GUESSING */}
+          <div className="mb-3.5">
+            <span className="font-mono text-xs font-semibold text-[#4D0181] bg-[#4D0181]/10 px-3 py-1 rounded-full border border-[#4D0181]/20 inline-block uppercase tracking-widest">
+              04 // THE COST OF GUESSING
             </span>
-            <span className="font-mono text-xs text-[#1A0042]/60">TRIONN HOVER ILLUMINATION</span>
           </div>
-          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#1A0042] tracking-tight uppercase">
-            THE UNFAIR ADVANTAGE
+
+          {/* H2: EVERY HOUR WITHOUT SCOUT & ATLAS COSTS YOU */}
+          <h2 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase">
+            EVERY HOUR WITHOUT SCOUT &amp; ATLAS COSTS YOU
           </h2>
-          <p className="font-body text-base sm:text-lg text-[#1A0042]/75 mt-3 leading-relaxed">
-            Why high-growth DTC & consumer brands are replacing fragmented spy tools and manual media buying guesswork with SignalMint’s autonomous dual engine.
+
+          {/* Subhead */}
+          <p className="font-montserrat text-sm sm:text-base text-[#1A0042]/80 mt-4 leading-relaxed max-w-2xl">
+            Here&apos;s what happens when you rely on Ad Library scrolling, gut-feel audits, and next-morning bleed discovery. Then here&apos;s what SignalMint changes.
           </p>
         </div>
 
-        {/* 3-Column Matrix Table */}
+        {/* 2. COMPARISON TABLE */}
         <div className="w-full overflow-x-auto">
-          <div className="min-w-[820px] bg-[#FAFAFD] rounded-2xl border border-[#1A0042]/12 overflow-hidden shadow-[0_8px_30px_rgba(26,0,66,0.03)]">
+          <div className="min-w-[900px] bg-white rounded-3xl border border-[#1A0042]/10 shadow-[0_12px_40px_rgba(26,0,66,0.04)] overflow-hidden">
             
-            {/* Table Header */}
-            <div className="grid grid-cols-12 bg-[#E7E6FB]/70 border-b border-[#1A0042]/10 py-4 px-6 font-mono text-xs font-bold uppercase tracking-wider text-[#1A0042]">
-              <div className="col-span-4 text-[#1A0042]/70">CAPABILITY // DIMENSION</div>
-              <div className="col-span-2 text-center text-[#1A0042]/70">MANUAL GUESSWORK</div>
-              <div className="col-span-3 text-center text-[#1A0042]/70">TRADITIONAL SPY TOOLS</div>
-              <div className="col-span-3 text-center text-[#1516A8] bg-[#FAFAFD] py-1 rounded-lg border border-[#1516A8]/20 flex items-center justify-center gap-1.5 shadow-xs">
-                <Sparkles className="w-3.5 h-3.5 text-[#1516A8]" />
-                <span>SIGNALMINT OS</span>
+            {/* Table Header: 4 Columns */}
+            <div className="grid grid-cols-12 border-b border-[#1A0042]/10 bg-[#FAFAFD]">
+              <div className="col-span-3 p-5 font-mono text-xs font-bold uppercase tracking-wider text-[#1A0042]/70 flex items-center">
+                Dimension
+              </div>
+              
+              <div className="col-span-3 p-5 font-mono text-xs font-bold uppercase tracking-wider text-rose-800 bg-rose-50/50 border-l border-[#1A0042]/8 flex items-center gap-1.5">
+                <span>❌ OLD LOOP (You&apos;re Behind)</span>
+              </div>
+              
+              <div className="col-span-3 p-5 font-mono text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50/50 border-l border-[#1A0042]/8 flex items-center gap-1.5">
+                <span>⚠️ BETTER LOOP (Still Reactive)</span>
+              </div>
+              
+              <div className="col-span-3 p-5 font-mono text-xs font-bold uppercase tracking-wider text-[#1516A8] bg-[#E7E6FB]/60 border-l border-[#1516A8]/30 border-t-4 border-t-[#1516A8] flex items-center justify-between">
+                <span>✅ SIGNALMINT LOOP (You Lead)</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               </div>
             </div>
 
-            {/* Matrix Rows with soft #6495EB/15 hover fill */}
+            {/* Table Data Rows */}
             <div className="divide-y divide-[#1A0042]/8">
-              {MATRIX_DATA.map((row, idx) => {
+              {COMPARISON_ROWS.map((row, idx) => {
                 const isHovered = hoveredRow === idx;
                 return (
                   <div
                     key={idx}
                     onMouseEnter={() => setHoveredRow(idx)}
                     onMouseLeave={() => setHoveredRow(null)}
-                    className={`grid grid-cols-12 items-center py-5 px-6 transition-colors duration-200 cursor-default ${
-                      isHovered ? "bg-[#6495EB]/15" : "bg-transparent"
+                    className={`grid grid-cols-12 items-stretch transition-colors duration-150 ${
+                      isHovered ? "bg-[#6495EB]/5" : "bg-white"
                     }`}
                   >
-                    {/* Dimension */}
-                    <div className="col-span-4 pr-4">
-                      <span className="font-mono text-[10px] text-[#1516A8] font-bold block mb-0.5">
-                        {row.category}
-                      </span>
-                      <h4 className="font-display font-bold text-base text-[#1A0042]">
+                    {/* Col 1: Dimension */}
+                    <div className="col-span-3 p-5 flex flex-col justify-center">
+                      <h4 className="font-display font-bold text-base text-[#1A0042] mb-0.5">
                         {row.dimension}
                       </h4>
+                      <span className="font-mono text-[11px] text-[#1A0042]/60">
+                        {row.dimensionSubtitle}
+                      </span>
                     </div>
 
-                    {/* Manual Guesswork */}
-                    <div className="col-span-2 text-center px-3">
-                      <div className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-rose-100 text-rose-700 mb-1.5">
-                        <X className="w-4 h-4" />
+                    {/* Col 2: Old Loop */}
+                    <div className="col-span-3 p-5 border-l border-[#1A0042]/8 flex flex-col justify-center bg-rose-50/20">
+                      <div className="font-mono font-bold text-sm text-rose-900 mb-1">
+                        {row.oldWay.primary}
                       </div>
-                      <p className="font-body text-xs text-[#1A0042]/70 leading-snug">
-                        {row.manual}
+                      <p className="font-body text-xs text-[#1A0042]/75 leading-relaxed">
+                        {row.oldWay.detail}
                       </p>
                     </div>
 
-                    {/* Traditional Spy Tools */}
-                    <div className="col-span-3 text-center px-4 border-x border-[#1A0042]/8">
-                      <div className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-100 text-amber-800 mb-1.5">
-                        <AlertCircle className="w-4 h-4" />
+                    {/* Col 3: Better Loop */}
+                    <div className="col-span-3 p-5 border-l border-[#1A0042]/8 flex flex-col justify-center bg-amber-50/20">
+                      <div className="font-mono font-bold text-sm text-amber-900 mb-1">
+                        {row.betterWay.primary}
                       </div>
-                      <p className="font-body text-xs text-[#1A0042]/70 leading-snug">
-                        {row.spyTools}
+                      <p className="font-body text-xs text-[#1A0042]/75 leading-relaxed">
+                        {row.betterWay.detail}
                       </p>
                     </div>
 
-                    {/* SignalMint */}
-                    <div className="col-span-3 text-left pl-6">
-                      <div className="flex items-center gap-2 mb-1">
-                        <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#1516A8] text-white">
-                          <Check className="w-3.5 h-3.5 stroke-[3]" />
-                        </div>
-                        <span className="font-mono text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-[#1516A8]/10 text-[#1516A8]">
-                          {row.signalMintHighlight}
+                    {/* Col 4: SignalMint Loop (Highlighted in #E7E6FB/60) */}
+                    <div className="col-span-3 p-5 border-l border-[#1516A8]/20 bg-[#E7E6FB]/50 flex flex-col justify-center relative">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <span className="font-mono font-black text-sm sm:text-base text-[#1516A8]">
+                          {row.signalMint.primary}
+                        </span>
+                        <span className="font-mono text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-white text-[#1516A8] border border-[#1516A8]/20 shadow-2xs">
+                          {row.signalMint.badge}
                         </span>
                       </div>
-                      <p className="font-body text-xs text-[#1A0042] font-semibold leading-snug">
-                        {row.signalMint}
+                      <p className="font-body text-xs text-[#1A0042] font-medium leading-relaxed">
+                        {row.signalMint.detail}
                       </p>
                     </div>
                   </div>
@@ -177,20 +223,25 @@ export function ComparisonMatrix() {
               })}
             </div>
 
-            {/* Bottom highlight footer */}
+            {/* Table Footer Bottom Banner */}
             <div className="bg-[#E7E6FB]/40 px-6 py-4 border-t border-[#1A0042]/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
-              <span className="text-[#1A0042]/70">
-                Average SignalMint customer reports <strong className="text-[#1A0042]">+41% ROAS uplift</strong> in 14 days.
-              </span>
+              <div className="flex items-center gap-2 text-[#1A0042]">
+                <ShieldCheck className="w-4 h-4 text-[#1516A8]" />
+                <span>
+                  Guaranteed Stop-Loss: <strong>₹0 bleed policy</strong> with autonomous budget cuts in &lt; 12 minutes.
+                </span>
+              </div>
               <a
-                href="#agents"
-                className="text-[#1516A8] font-bold hover:underline flex items-center gap-1"
+                href="#simulator"
+                className="text-[#1516A8] font-bold hover:underline flex items-center gap-1 shrink-0"
               >
-                Inspect Agent Architecture &rarr;
+                Simulate Your Monthly Bleed Savings &rarr;
               </a>
             </div>
+
           </div>
         </div>
+
       </div>
     </section>
   );
