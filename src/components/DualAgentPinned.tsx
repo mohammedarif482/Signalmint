@@ -234,11 +234,11 @@ export function DualAgentPinned() {
                   </div>
 
                   {/* Interactive Cue Markers Selector */}
-                  <div className="flex items-center justify-between gap-2 mb-4 bg-[#FAFAFD] p-2 rounded-xl border border-[#E7E6FB]">
-                    <span className="font-mono text-xs font-bold text-[#1A0042]/70 pl-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-4 bg-[#FAFAFD] p-2.5 sm:p-2 rounded-xl border border-[#E7E6FB]">
+                    <span className="font-mono text-xs font-bold text-[#1A0042]/70 pl-0.5">
                       Inspect Cadence Marker:
                     </span>
-                    <div className="flex gap-1.5">
+                    <div className="flex flex-wrap gap-1.5">
                       {[
                         { sec: 3, label: "0:03 Hook" },
                         { sec: 8, label: "0:08 Solution" },

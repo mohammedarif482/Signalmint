@@ -137,8 +137,13 @@ export function ComparisonMatrix() {
           </p>
         </div>
 
+        {/* Mobile horizontal scroll hint */}
+        <div className="lg:hidden text-xs font-mono text-[#1A0042]/75 mb-3.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/80 border border-[#1A0042]/10 shadow-2xs">
+          <span>👉 Swipe horizontally to view all 4 loops</span>
+        </div>
+
         {/* 2. COMPARISON TABLE */}
-        <div className="w-full overflow-x-auto">
+        <div className="w-full overflow-x-auto pb-2">
           <div className="min-w-[900px] bg-white rounded-3xl border border-[#1A0042]/10 shadow-[0_12px_40px_rgba(26,0,66,0.04)] overflow-hidden">
             
             {/* Table Header: 4 Columns */}

@@ -130,7 +130,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
   return (
     <section
       ref={containerRef}
-      className="h-screen w-full flex flex-col justify-between pt-24 pb-8 px-6 lg:px-12 bg-[#E7E6FB] overflow-hidden relative select-none"
+      className="min-h-screen lg:h-screen w-full flex flex-col justify-between pt-20 lg:pt-24 pb-8 px-4 sm:px-6 lg:px-12 bg-[#E7E6FB] overflow-x-hidden lg:overflow-hidden relative select-none"
     >
       {/* Subtle background: Faint SVG coordinate grid (1px solid rgba(26,0,66,0.06)) with low-opacity pulse nodes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -160,7 +160,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
       {/* Main 12-Column Split Layout */}
       <div className="flex-1 flex items-center w-full max-w-7xl mx-auto z-10 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center w-full">
           
           {/* LEFT COLUMN (Cols 1 to 7) — Editorial Kinetic Typography */}
           <div className="lg:col-span-7 flex flex-col justify-center">
@@ -173,7 +173,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             </div>
 
             {/* Headline (H1): Inter Black uppercase tracking-[-0.04em] leading-[0.92] */}
-            <h1 className="font-black tracking-[-0.04em] leading-[0.92] text-[#1A0042] text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-[4.75rem] uppercase">
+            <h1 className="font-black tracking-[-0.04em] leading-[0.92] text-[#1A0042] text-3xl sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-[4.75rem] uppercase">
               <div className="overflow-hidden">
                 <div className="hero-headline-item">
                   YOUR COMPETITOR SCALED

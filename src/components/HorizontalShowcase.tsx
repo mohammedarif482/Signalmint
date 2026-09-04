@@ -163,7 +163,7 @@ export function HorizontalShowcase() {
           {CROWN_CARDS.map((card, idx) => (
             <div
               key={card.id}
-              className="w-[360px] lg:w-[420px] bg-white rounded-2xl p-6 lg:p-7 border border-[#1A0042]/10 shadow-xl flex-shrink-0 flex flex-col justify-between hover:border-[#1516A8]/40 transition-all duration-300 relative group"
+              className="w-[86vw] max-w-[420px] sm:w-[380px] lg:w-[420px] bg-white rounded-2xl p-6 lg:p-7 border border-[#1A0042]/10 shadow-xl flex-shrink-0 flex flex-col justify-between hover:border-[#1516A8]/40 transition-all duration-300 relative group"
             >
               {/* Card Accent Top Bar */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#1516A8] via-[#4D0181] to-[#1516A8] rounded-t-2xl opacity-90" />
