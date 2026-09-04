@@ -126,7 +126,7 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
         {/* Copyright */}
         <div className="mt-8 pt-4 border-t border-[#1A0042]/8 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-[#1A0042]/50 gap-2">
           <span>&copy; 2026 SignalMint. All rights reserved.</span>
-          <span>100% Light Theme Only // Built for High-Growth Performance Brands</span>
+          <span>Built for High-Growth Performance Brands &amp; Media Buyers</span>
         </div>
 
       </div>

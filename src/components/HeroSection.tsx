@@ -382,7 +382,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
       {/* Viewport Anchor Bar */}
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between pt-2 border-t border-[#1A0042]/8 text-[11px] font-mono text-[#1A0042]/60 z-10">
         <span>01 // HERO & TELEMETRY FOLD</span>
-        <span className="hidden sm:inline">100% LIGHT THEME // SCOUT 48H DETECTION PROTOCOL</span>
+        <span className="hidden sm:inline">AUTONOMOUS AD ARSENAL // SCOUT 48H DETECTION PROTOCOL</span>
         <a href="#agents" className="text-[#1516A8] hover:underline font-semibold flex items-center gap-1">
           Scroll to Dual-Agent Engine ↓
         </a>
