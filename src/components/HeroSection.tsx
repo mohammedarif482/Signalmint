@@ -293,27 +293,27 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-LEFT EDITORIAL LIQUID GLASS CARD                                   */}
+        {/* BOTTOM-LEFT EDITORIAL TRANSLUCENT GLASS CARD (Oryzo.ai style)            */}
         {/* ========================================================================= */}
         <div
           ref={cardLeftRef}
           id="hero-glass-card"
-          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-6 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
+          className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-6 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
         >
           <div
             ref={cardLeftInnerRef}
-            className="relative w-68 sm:w-80 h-48 sm:h-56 lg:h-60 p-5 sm:p-6 rounded-none bg-white/20 hover:bg-white/28 backdrop-blur-2xl saturate-150 border border-white/40 border-t-white/75 border-l-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.75),inset_0_0_24px_rgba(255,255,255,0.12),0_20px_45px_-12px_rgba(26,0,66,0.08)] flex flex-col justify-between overflow-hidden will-change-transform transition-all duration-300"
+            className="w-72 sm:w-80 lg:w-[21.5rem] h-64 sm:h-72 lg:h-[19.5rem] p-6 sm:p-7 lg:p-8 rounded-none bg-white/[0.16] hover:bg-white/[0.22] backdrop-blur-md border border-white/25 shadow-[0_12px_32px_rgba(26,0,66,0.04)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
           >
-            {/* Liquid glass light refraction sheen */}
-            <div className="absolute -inset-full bg-gradient-to-tr from-transparent via-white/10 to-white/25 pointer-events-none rotate-12" />
-
-            <div className="relative z-10 font-mono text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#1A0042] leading-snug drop-shadow-[0_1px_1px_rgba(255,255,255,0.6)]">
+            {/* Top Bold Grotesque Header (Oryzo Style) */}
+            <div className="font-sans font-extrabold text-sm sm:text-[15px] lg:text-base uppercase tracking-tight text-[#1A0042] leading-[1.25] max-w-[240px]">
               DESIGNED FOR PERFORMANCE-FIRST FOUNDERS &amp; MARKETERS.
             </div>
 
-            <div className="relative z-10 border-t border-dotted border-[#1A0042]/20 my-auto" />
+            {/* Editorial Dotted Separator */}
+            <div className="w-full border-b border-dotted border-[#1A0042]/25 my-auto" />
 
-            <div className="relative z-10 text-xs text-[#1A0042]/90 font-sans font-medium leading-relaxed text-right max-w-[220px] ml-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">
+            {/* Bottom Right-Aligned Subtext */}
+            <div className="text-xs sm:text-[13px] text-[#1A0042]/85 font-sans leading-relaxed text-right max-w-[210px] ml-auto">
               The autonomous intelligence system that eliminates ad guesswork.
             </div>
           </div>
