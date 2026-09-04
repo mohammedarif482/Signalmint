@@ -164,10 +164,10 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         {/* ========================================================================= */}
         {/* TOP-LEFT DISPLAY BRAND SECTION                                           */}
         {/* ========================================================================= */}
-        <div className="absolute top-16 sm:top-20 lg:top-24 left-6 sm:left-10 lg:left-14 z-20 max-w-2xl">
-          {/* Micro-eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. */}
-          <div ref={eyebrowRef} id="hero-eyebrow" className="mb-2.5 sm:mb-3">
-            <span className="font-mono tracking-[0.2em] text-[11px] sm:text-xs font-bold text-[#1A0042]/75 uppercase inline-block">
+        <div className="absolute top-16 sm:top-20 lg:top-24 left-6 sm:left-10 lg:left-14 z-20 w-fit flex flex-col items-end">
+          {/* Micro-eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Right-aligned to end of logo) */}
+          <div ref={eyebrowRef} id="hero-eyebrow" className="mb-2 sm:mb-2.5 w-full text-right">
+            <span className="font-mono tracking-[0.16em] sm:tracking-[0.2em] text-[10px] sm:text-[11px] lg:text-xs font-bold text-[#1A0042]/75 uppercase inline-block">
               THE AI CREATIVE THAT THINKS LIKE A CMO.
             </span>
           </div>
@@ -181,12 +181,12 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             <img
               src={signalMintLogo}
               alt="SignalMint"
-              className="h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 w-auto max-w-[85vw] sm:max-w-none object-contain"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 w-auto max-w-[85vw] sm:max-w-none object-contain block"
             />
           </div>
 
           {/* Mobile narrative text fallback */}
-          <p className="md:hidden text-xs sm:text-sm text-[#1A0042]/80 mt-4 leading-relaxed max-w-sm">
+          <p className="md:hidden text-xs sm:text-sm text-[#1A0042]/80 mt-4 leading-relaxed max-w-sm self-start text-left">
             SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time.
           </p>
         </div>
