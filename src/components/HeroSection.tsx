@@ -261,13 +261,13 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Right-aligned to the enlarged wordmark) */}
+        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Vertically adjacent to logo, right-aligned to wordmark) */}
         <div
           ref={eyebrowRef}
           id="hero-eyebrow"
-          className="absolute top-12 sm:top-14 lg:top-16 left-6 sm:left-10 lg:left-14 w-[280px] sm:w-[480px] lg:w-[650px] flex justify-end z-20 pointer-events-none"
+          className="absolute top-20 sm:top-24 lg:top-28 left-6 sm:left-10 lg:left-14 w-[300px] sm:w-[500px] lg:w-[670px] flex justify-end z-20 pointer-events-none"
         >
-          <span className="font-sans font-bold tracking-[0.14em] text-[10px] sm:text-[11px] lg:text-xs text-[#1A0042] uppercase inline-block text-right">
+          <span className="font-sans font-bold tracking-[0.14em] text-[11px] sm:text-xs lg:text-[13.5px] text-[#1A0042] uppercase inline-block text-right">
             THE AI CREATIVE THAT THINKS LIKE A CMO.
           </span>
         </div>
