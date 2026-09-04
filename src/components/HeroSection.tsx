@@ -348,57 +348,57 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-RIGHT FLOATING VIDEO CARD (Oryzo Video Thumbnail Box)             */}
+        {/* BOTTOM-RIGHT FLOATING VIDEO CARD                                         */}
         {/* ========================================================================= */}
         <div
           ref={videoCardRef}
           id="hero-video-card"
           onClick={() => setShowVideoModal(true)}
-          className="absolute bottom-6 sm:bottom-10 lg:bottom-12 right-6 sm:right-10 lg:right-14 z-20 [perspective:1000px] cursor-pointer group"
+          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 right-6 sm:right-10 lg:right-14 z-20 [perspective:1000px] cursor-pointer group"
         >
           <div
             ref={videoCardInnerRef}
-            className="w-56 sm:w-64 lg:w-72 bg-white/90 backdrop-blur-md p-1.5 rounded-2xl border-2 border-amber-500/70 ring-2 ring-amber-500/20 shadow-[0_10px_35px_rgba(245,158,11,0.2)] transition-transform duration-300 hover:scale-[1.03] will-change-transform"
+            className="w-44 sm:w-48 lg:w-52 bg-white/85 backdrop-blur-xl p-1 rounded-xl border border-[#1A0042]/10 shadow-[0_12px_30px_rgba(26,0,66,0.06)] transition-transform duration-300 hover:scale-[1.03] will-change-transform"
           >
-          {/* Video preview thumbnail box */}
-          <div className="relative aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
-            {/* Abstract telemetry radar thumbnail preview */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#1A0042] via-[#1516A8] to-[#4D0181] opacity-90" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg className="w-full h-full opacity-40" viewBox="0 0 160 90">
-                <path
-                  d="M 10 70 Q 40 20, 80 45 T 150 15"
-                  fill="none"
-                  stroke="#E7E6FB"
-                  strokeWidth="2"
-                />
-                <circle cx="80" cy="45" r="3" fill="#E7E6FB" />
-              </svg>
-            </div>
+            {/* Video preview thumbnail box */}
+            <div className="relative aspect-video rounded-lg overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
+              {/* Abstract telemetry radar thumbnail preview */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#1A0042] via-[#1516A8] to-[#4D0181] opacity-90" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <svg className="w-full h-full opacity-40" viewBox="0 0 160 90">
+                  <path
+                    d="M 10 70 Q 40 20, 80 45 T 150 15"
+                    fill="none"
+                    stroke="#E7E6FB"
+                    strokeWidth="2"
+                  />
+                  <circle cx="80" cy="45" r="3" fill="#E7E6FB" />
+                </svg>
+              </div>
 
-            {/* Top Badge: ● LIVE RADAR */}
-            <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-sm text-[9px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>LIVE RADAR</span>
-            </div>
+              {/* Top Badge: ● LIVE RADAR */}
+              <div className="absolute top-1.5 left-1.5 flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[8px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>LIVE RADAR</span>
+              </div>
 
-            {/* Center Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-9 h-9 rounded-full bg-white text-[#1516A8] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                <Play className="w-4 h-4 fill-[#1516A8] ml-0.5" />
+              {/* Center Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-7 h-7 rounded-full bg-white text-[#1516A8] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-200">
+                  <Play className="w-3 h-3 fill-[#1516A8] ml-0.5" />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Bottom mini label */}
-          <div className="p-2 pt-2.5 flex items-center justify-between font-mono text-[10px] text-[#1A0042]">
-            <span className="font-bold uppercase tracking-wider">PRODUCT WALKTHROUGH</span>
-            <span className="text-[#1516A8] font-bold flex items-center gap-0.5">
-              PLAY <span>▶</span>
-            </span>
+            {/* Bottom mini label */}
+            <div className="p-1.5 pt-2 flex items-center justify-between font-mono text-[9px] text-[#1A0042]">
+              <span className="font-bold uppercase tracking-wider">WALKTHROUGH</span>
+              <span className="text-[#1516A8] font-bold flex items-center gap-0.5">
+                PLAY <span>▶</span>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
     </div>
 
       {/* 2-Min Demo Video Modal Walkthrough */}
