@@ -5,9 +5,12 @@ import { HeaderHUD } from "./components/HeaderHUD";
 import { HeroSection } from "./components/HeroSection";
 import { DualAgentPinned } from "./components/DualAgentPinned";
 import { HorizontalShowcase } from "./components/HorizontalShowcase";
-import { ComparisonMatrix } from "./components/ComparisonMatrix";
-import { TelemetrySimulator } from "./components/TelemetrySimulator";
-import { FooterKinetic } from "./components/FooterKinetic";
+// 04 // THE COST OF GUESSING
+// import { ComparisonMatrix } from "./components/ComparisonMatrix";
+// 05 // TRY IT (WITH YOUR NUMBERS)
+// import { TelemetrySimulator } from "./components/TelemetrySimulator";
+// FINAL CALL // YOUR MOVE
+// import { FooterKinetic } from "./components/FooterKinetic";
 import { DemoModal } from "./components/DemoModal";
 
 export function App() {
@@ -38,15 +41,15 @@ export function App() {
         {/* 4. Kinetic Horizontal Showcase: Crown Winners & Trends (GSAP ScrollTrigger scrub) */}
         <HorizontalShowcase />
 
-        {/* 5. The Unfair Advantage Comparison Matrix (Trionn Style) */}
-        <ComparisonMatrix />
+        {/* 5. 04 // THE COST OF GUESSING */}
+        {/* <ComparisonMatrix /> */}
 
-        {/* 6. Live Telemetry Sandbox: Bleed Protection & Model Simulator */}
-        <TelemetrySimulator onOpenDemoModal={handleOpenDemoModal} />
+        {/* 6. 05 // TRY IT (WITH YOUR NUMBERS) */}
+        {/* <TelemetrySimulator onOpenDemoModal={handleOpenDemoModal} /> */}
       </main>
 
-      {/* 7. Kinetic Light-Theme Footer */}
-      <FooterKinetic onOpenDemoModal={handleOpenDemoModal} />
+      {/* 7. FINAL CALL // YOUR MOVE */}
+      {/* <FooterKinetic onOpenDemoModal={handleOpenDemoModal} /> */}
 
       {/* Interactive VIP Demo Booking Modal */}
       <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemoModal} />
