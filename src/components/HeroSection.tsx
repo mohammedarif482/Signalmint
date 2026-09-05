@@ -303,7 +303,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-LEFT EDITORIAL TRANSLUCENT GLASS CARD (Exact Oryzo mobile layout) */}
+        {/* BOTTOM-LEFT EDITORIAL TRANSLUCENT GLASS CARD (Wider with lesser height)  */}
         {/* ========================================================================= */}
         <div
           ref={cardLeftRef}
@@ -312,26 +312,22 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-[49vw] max-w-[195px] sm:w-72 lg:w-[19.5rem] h-[255px] sm:h-88 lg:h-[24rem] p-3.5 sm:p-7 lg:p-8 rounded-none bg-white/[0.42] hover:bg-white/[0.52] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/40 sm:border-none"
+            className="w-[54vw] max-w-[218px] sm:w-[22rem] lg:w-[25.5rem] h-[205px] sm:h-64 lg:h-[17.5rem] p-3.5 sm:p-6 lg:p-7 rounded-none bg-white/[0.42] hover:bg-white/[0.52] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/40 sm:border-none"
           >
-            {/* Top Bold Grotesque Header (Exact Oryzo 4-line editorial styling) */}
-            <div className="font-sans font-bold text-[10.5px] sm:text-[15px] lg:text-base uppercase tracking-tight text-[#1A0042] leading-[1.22] max-w-[240px]">
-              DESIGNED FOR<br />
-              PERFORMANCE-FIRST<br />
-              FOUNDERS &amp;<br />
-              MARKETERS.
+            {/* Top Bold Grotesque Header (Wide editorial layout) */}
+            <div className="font-sans font-bold text-[10.5px] sm:text-[15px] lg:text-base uppercase tracking-tight text-[#1A0042] leading-[1.22] max-w-[260px] sm:max-w-none">
+              DESIGNED FOR<br className="sm:hidden" /> PERFORMANCE-FIRST<br />
+              FOUNDERS &amp; MARKETERS.
             </div>
 
             {/* Bottom section: Partial dotted hairline rule + Right-aligned subtext */}
-            <div className="flex flex-col gap-2.5 sm:gap-5 pt-2 sm:pt-4">
-              {/* Editorial Dotted Separator: ~45% width from left margin (exact Oryzo) */}
+            <div className="flex flex-col gap-2 sm:gap-3.5 pt-2 sm:pt-3">
+              {/* Editorial Dotted Separator: ~45% width from left margin */}
               <div className="w-[45%] border-b border-dotted border-[#1A0042]/35" />
 
-              {/* Bottom Right-Aligned Subtext (Exact Oryzo 3-line sentence-case styling) */}
-              <div className="text-[9.5px] sm:text-[13px] text-[#1A0042]/80 font-sans leading-[1.35] text-right max-w-[170px] ml-auto">
-                The autonomous<br />
-                intelligence system that<br />
-                eliminates ad guesswork.
+              {/* Bottom Right-Aligned Subtext */}
+              <div className="text-[9.5px] sm:text-[13px] text-[#1A0042]/80 font-sans leading-[1.35] text-right max-w-[190px] sm:max-w-[220px] ml-auto">
+                The autonomous intelligence system that eliminates ad guesswork.
               </div>
             </div>
           </div>
