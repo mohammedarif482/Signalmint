@@ -2,11 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
+import { SplitText } from "gsap/SplitText";
 import { Play } from "lucide-react";
 import heroBgImage from "../assets/herobg.jpeg";
 import demoThumbnailImage from "../assets/demothumbnail.jpeg";
 
-gsap.registerPlugin(ScrollTrigger, Observer);
+gsap.registerPlugin(ScrollTrigger, Observer, SplitText);
 
 interface HeroSectionProps {
   onOpenDemoModal?: () => void;
@@ -20,6 +21,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
   const eyebrowRef = useRef<HTMLDivElement>(null);
   const narrativeRef = useRef<HTMLDivElement>(null);
   const narrativeInnerRef = useRef<HTMLDivElement>(null);
+  const narrativeTextRef = useRef<HTMLParagraphElement>(null);
   const cardLeftRef = useRef<HTMLDivElement>(null);
   const cardLeftInnerRef = useRef<HTMLDivElement>(null);
   const videoCardRef = useRef<HTMLDivElement>(null);
@@ -235,6 +237,25 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         });
       }
 
+      // Responsive Line Splits on Load/Scroll (GSAP SplitText autoSplit + onSplit)
+      if (narrativeTextRef.current) {
+        new SplitText(narrativeTextRef.current, {
+          type: "lines",
+          autoSplit: true,
+          mask: "lines",
+          onSplit: (instance) => {
+            return gsap.from(instance.lines, {
+              yPercent: 110,
+              opacity: 0,
+              duration: 0.85,
+              stagger: 0.08,
+              ease: "power3.out",
+              delay: 0.2,
+            });
+          },
+        });
+      }
+
       // Refresh ScrollTrigger when window resizes
       const handleResize = () => {
         ScrollTrigger.refresh();
@@ -296,7 +317,10 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           className="absolute top-[22%] sm:top-[52%] sm:-translate-y-1/2 right-4 sm:right-10 lg:right-16 xl:right-24 z-20 max-w-[240px] sm:max-w-md lg:max-w-lg xl:max-w-xl text-right sm:text-left"
         >
           <div ref={narrativeInnerRef} className="will-change-transform">
-            <p className="text-xs sm:text-2xl lg:text-[1.85rem] font-semibold text-[#1A0042] leading-[1.3] tracking-tight">
+            <p
+              ref={narrativeTextRef}
+              className="text-xs sm:text-2xl lg:text-[1.85rem] font-semibold text-[#1A0042] leading-[1.3] tracking-tight"
+            >
               SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time.
             </p>
           </div>

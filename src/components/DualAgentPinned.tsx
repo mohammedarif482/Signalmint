@@ -1,18 +1,22 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import { Radar, ShieldAlert, ArrowUp } from "lucide-react";
 import heroBgImage from "../assets/herobg.jpeg";
 import heroBg1Image from "../assets/herobg1.jpeg";
 import heroDiskImage from "../assets/hero.png";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export function DualAgentPinned() {
   const runwayRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const scoutPanelRef = useRef<HTMLDivElement>(null);
   const atlasPanelRef = useRef<HTMLDivElement>(null);
+  const scoutHeadingRef = useRef<HTMLHeadingElement>(null);
+  const atlasHeadingRef = useRef<HTMLHeadingElement>(null);
+  const rightHeadlineRef = useRef<HTMLDivElement>(null);
   const bgScoutRef = useRef<HTMLDivElement>(null);
   const bgAtlasRef = useRef<HTMLDivElement>(null);
   const diskRef = useRef<HTMLDivElement>(null);
@@ -100,6 +104,73 @@ export function DualAgentPinned() {
 
       // 5. Hold Atlas active through 2.80 - 3.00 before releasing
       tl.to({}, { duration: 1.15 }, 1.85);
+
+      // Responsive Line Splits on Scroll (GSAP SplitText autoSplit + onSplit)
+      if (scoutHeadingRef.current) {
+        new SplitText(scoutHeadingRef.current, {
+          type: "lines",
+          autoSplit: true,
+          mask: "lines",
+          onSplit: (instance) => {
+            return gsap.from(instance.lines, {
+              yPercent: 110,
+              opacity: 0,
+              duration: 0.85,
+              stagger: 0.08,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: runway,
+                start: "top 75%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          },
+        });
+      }
+
+      if (atlasHeadingRef.current) {
+        new SplitText(atlasHeadingRef.current, {
+          type: "lines",
+          autoSplit: true,
+          mask: "lines",
+          onSplit: (instance) => {
+            return gsap.from(instance.lines, {
+              yPercent: 110,
+              opacity: 0,
+              duration: 0.75,
+              stagger: 0.07,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: runway,
+                start: "top top",
+                toggleActions: "play none none reverse",
+              },
+            });
+          },
+        });
+      }
+
+      if (rightHeadlineRef.current) {
+        new SplitText(rightHeadlineRef.current, {
+          type: "lines",
+          autoSplit: true,
+          mask: "lines",
+          onSplit: (instance) => {
+            return gsap.from(instance.lines, {
+              yPercent: 110,
+              opacity: 0,
+              duration: 0.85,
+              stagger: 0.08,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: runway,
+                start: "top 75%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          },
+        });
+      }
     }, runway);
 
     return () => ctx.revert();
@@ -196,7 +267,10 @@ export function DualAgentPinned() {
             <div className="space-y-2.5 sm:space-y-6 pt-3 sm:pb-12">
               <div className="hidden sm:block w-[45%] border-b border-dotted border-[#1A0042]/35" />
 
-              <h3 className="font-sans font-extrabold text-lg sm:text-3xl lg:text-[2rem] uppercase tracking-tight text-white sm:text-[#1A0042] leading-[1.1] max-w-[300px]">
+              <h3
+                ref={scoutHeadingRef}
+                className="font-sans font-extrabold text-lg sm:text-3xl lg:text-[2rem] uppercase tracking-tight text-white sm:text-[#1A0042] leading-[1.1] max-w-[300px]"
+              >
                 REVERSE-ENGINEER COMPETITORS
               </h3>
 
@@ -240,7 +314,10 @@ export function DualAgentPinned() {
             <div className="space-y-2.5 sm:space-y-6 pt-3 sm:pb-12">
               <div className="hidden sm:block w-[45%] border-b border-dotted border-[#1A0042]/35" />
 
-              <h3 className="font-sans font-extrabold text-lg sm:text-3xl lg:text-[2rem] uppercase tracking-tight text-white sm:text-[#1A0042] leading-[1.1] max-w-[300px]">
+              <h3
+                ref={atlasHeadingRef}
+                className="font-sans font-extrabold text-lg sm:text-3xl lg:text-[2rem] uppercase tracking-tight text-white sm:text-[#1A0042] leading-[1.1] max-w-[300px]"
+              >
                 AUTONOMOUS BUDGET GUARDIAN
               </h3>
 
@@ -264,7 +341,10 @@ export function DualAgentPinned() {
               THE TWINS (NOT TRAINED ON YOUR DATA)
             </div>
 
-            <div className="font-sans font-black text-sm sm:text-base lg:text-lg text-[#1A0042] uppercase tracking-tight leading-tight">
+            <div
+              ref={rightHeadlineRef}
+              className="font-sans font-black text-sm sm:text-base lg:text-lg text-[#1A0042] uppercase tracking-tight leading-tight"
+            >
               ONE FINDS WINNERS. ONE STOPS THE BLEEDING.
             </div>
 

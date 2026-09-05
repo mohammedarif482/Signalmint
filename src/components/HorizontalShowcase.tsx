@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import {
   Clock,
   Zap,
@@ -9,7 +10,7 @@ import {
   Check
 } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 interface CrownCard {
   id: string;
@@ -85,6 +86,8 @@ const CROWN_CARDS: CrownCard[] = [
 export function HorizontalShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
   const [selectedCard, setSelectedCard] = useState<CrownCard | null>(null);
   const [userCategory, setUserCategory] = useState<string>("Supplements");
   const [copiedScript, setCopiedScript] = useState<boolean>(false);
@@ -100,6 +103,51 @@ export function HorizontalShowcase() {
     };
 
     const ctx = gsap.context(() => {
+      // Responsive Line Splits on Scroll (Exact GSAP autoSplit + onSplit pattern)
+      if (headingRef.current) {
+        new SplitText(headingRef.current, {
+          type: "lines",
+          autoSplit: true,
+          mask: "lines",
+          onSplit: (instance) => {
+            return gsap.from(instance.lines, {
+              yPercent: 110,
+              opacity: 0,
+              duration: 0.85,
+              stagger: 0.1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: headingRef.current,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          },
+        });
+      }
+
+      if (descRef.current) {
+        new SplitText(descRef.current, {
+          type: "lines",
+          autoSplit: true,
+          mask: "lines",
+          onSplit: (instance) => {
+            return gsap.from(instance.lines, {
+              yPercent: 100,
+              opacity: 0,
+              duration: 0.75,
+              stagger: 0.08,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: descRef.current,
+                start: "top 90%",
+                toggleActions: "play none none reverse",
+              },
+            });
+          },
+        });
+      }
+
       const scrollDist = track.scrollWidth - window.innerWidth + 500;
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -151,16 +199,22 @@ export function HorizontalShowcase() {
             </span>
           </div>
 
-          {/* H2 */}
-          <h2 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase">
+          {/* H2 with Responsive Line Splits */}
+          <h2
+            ref={headingRef}
+            className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase"
+          >
             WATCH: EXACTLY HOW THEY DID IT
             <span className="block text-2xl sm:text-3xl font-serif italic text-[#1516A8] mt-1 normal-case tracking-normal">
               (Then steal the pattern.)
             </span>
           </h2>
 
-          {/* Instruction */}
-          <p className="font-montserrat text-sm sm:text-base text-[#1A0042]/75 mt-4 leading-relaxed max-w-2xl">
+          {/* Instruction with Responsive Line Splits */}
+          <p
+            ref={descRef}
+            className="font-montserrat text-sm sm:text-base text-[#1A0042]/75 mt-4 leading-relaxed max-w-2xl"
+          >
             Scroll to see what&apos;s scaling this week. Note the pattern. SCOUT will flag the exact moment your competitors try it in your vertical.
           </p>
         </div>
