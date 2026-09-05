@@ -35,11 +35,14 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1A0042]/35 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-[#FAFAFD] border border-[#1A0042]/15 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative overflow-hidden">
-        {/* Subtle accent border */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#1516A8] via-[#4D0181] to-[#6495EB]" />
-
+    <div
+      onClick={handleClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-white/15 backdrop-blur-xs animate-in fade-in duration-200"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-[#FAFAFD] border border-[#1A0042]/15 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative overflow-hidden"
+      >
         <button
           onClick={handleClose}
           className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#E7E6FB] text-[#1A0042] font-mono text-sm font-bold flex items-center justify-center hover:bg-[#1A0042] hover:text-white transition-colors cursor-pointer"

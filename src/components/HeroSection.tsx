@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
 import { Play } from "lucide-react";
 import heroBgImage from "../assets/herobg.jpeg";
+import demoThumbnailImage from "../assets/demothumbnail.jpeg";
 
 gsap.registerPlugin(ScrollTrigger, Observer);
 
@@ -50,18 +51,27 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
     const ctx = gsap.context(() => {
       const { heroX, heroY, heroScale } = getHeroTransform();
 
-      // Master ScrollTrigger Scrub Timeline bound to the 200vh runway
+      // Master ScrollTrigger Scrub Timeline with GSAP pinning (eliminates 150vh dead space)
       const scrubTl = gsap.timeline({
         scrollTrigger: {
           trigger: runway,
           start: "top top",
-          end: "bottom bottom",
-          scrub: 0.8,
+          end: "+=100%",
+          pin: true,
+          scrub: 0.7,
           invalidateOnRefresh: true,
         },
       });
 
-      // 1. BRAND LOGO: Starts enlarged in Hero, glides up into navbar as user scrolls (0% to 50%)
+      // Immediately position brand logo in its hero state at scroll=0
+      gsap.set(brandLogo, {
+        x: heroX,
+        y: heroY,
+        scale: heroScale,
+        transformOrigin: "left top",
+      });
+
+      // 1. BRAND LOGO: Starts enlarged in Hero, glides up into navbar as user scrolls (0% to 75%)
       scrubTl.fromTo(
         brandLogo,
         {
@@ -69,6 +79,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           y: heroY,
           scale: heroScale,
           transformOrigin: "left top",
+          immediateRender: true,
         },
         {
           x: 0,
@@ -76,40 +87,40 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           scale: 1,
           transformOrigin: "left top",
           ease: "power1.inOut",
-          duration: 0.5,
+          duration: 0.75,
         },
         0
       );
 
-      // 2. EYEBROW TRANSLATES UPWARDS & FADES OUT (0% to 22% scroll)
+      // 2. EYEBROW TRANSLATES UPWARDS & FADES OUT (0% to 28% scroll)
       if (eyebrow) {
         scrubTl.to(
           eyebrow,
           {
             y: -32,
             opacity: 0,
-            duration: 0.22,
+            duration: 0.28,
             ease: "power2.out",
           },
           0
         );
       }
 
-      // 3. CENTER-RIGHT NARRATIVE EXITS EARLIEST (Frame 1: cleared by ~18% scroll)
+      // 3. CENTER-RIGHT NARRATIVE EXITS (0% to 25% scroll)
       if (narrativeRef.current) {
         scrubTl.to(
           narrativeRef.current,
           {
             opacity: 0,
             y: -16,
-            duration: 0.18,
+            duration: 0.25,
             ease: "power2.out",
           },
           0
         );
       }
 
-      // 4. BOTTOM CARDS & SCROLL PILL DISSOLVE DOWNWARD (0.05 to 0.38 scroll)
+      // 4. BOTTOM CARDS & SCROLL PILL DISSOLVE DOWNWARD (0.05 to 0.42 scroll)
       const cardElements = [
         cardLeftRef.current,
         videoCardRef.current,
@@ -120,9 +131,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         cardElements,
         {
           opacity: 0,
-          y: 20,
+          y: 24,
           stagger: 0.03,
-          duration: 0.35,
+          duration: 0.4,
           ease: "power2.out",
         },
         0.05
@@ -235,11 +246,11 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
   }, []);
 
   return (
-    <div id="hero-runway" ref={runwayRef} className="relative w-full h-[200vh]">
-      {/* PINNED INNER VIEWPORT (100vh Sticky Viewport with Absolute Spatial HUD) */}
+    <section id="hero-runway" ref={runwayRef} className="relative w-full bg-[#E7E6FB]">
+      {/* PINNED INNER VIEWPORT (100vh Viewport pinned via GSAP) */}
       <div
         ref={viewportRef}
-        className="sticky top-0 h-screen w-full overflow-hidden relative select-none"
+        className="h-screen w-full overflow-hidden relative select-none"
       >
         {/* ========================================================================= */}
         {/* BACKGROUND LAYER: Full-screen Editorial Visual (herobg.jpeg)              */}
@@ -261,130 +272,109 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Vertically adjacent to logo, right-aligned to wordmark) */}
+        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Exact Oryzo mobile position) */}
         <div
           ref={eyebrowRef}
           id="hero-eyebrow"
-          className="absolute top-16 sm:top-20 lg:top-[5.5rem] left-6 sm:left-10 lg:left-14 w-[300px] sm:w-[500px] lg:w-[670px] flex justify-end z-20 pointer-events-none"
+          className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-4 sm:left-10 lg:left-14 right-4 sm:right-auto sm:w-[500px] lg:w-[670px] flex justify-end z-20 pointer-events-none"
         >
-          <span className="font-sans font-bold tracking-[0.14em] text-[11px] sm:text-xs lg:text-[13.5px] text-[#1A0042] uppercase inline-block text-right">
+          <span className="font-sans font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13.5px] text-[#1A0042] uppercase inline-block text-right">
             THE AI CREATIVE THAT THINKS LIKE A CMO.
           </span>
         </div>
 
-        {/* Mobile narrative text fallback */}
-        <div className="md:hidden absolute top-48 left-6 z-20 max-w-sm">
-          <p className="text-xs sm:text-sm text-[#1A0042]/80 leading-relaxed text-left">
-            SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time.
-          </p>
-        </div>
-
         {/* ========================================================================= */}
-        {/* CENTER-RIGHT NARRATIVE TEXT (Vertically Centered in Right Quadrant)       */}
+        {/* NARRATIVE TEXT: Right below wordmark on mobile, right quadrant on desktop */}
         {/* ========================================================================= */}
         <div
           ref={narrativeRef}
           id="hero-narrative"
-          className="hidden md:block absolute top-[52%] -translate-y-1/2 right-6 sm:right-10 lg:right-16 xl:right-24 z-20 max-w-md lg:max-w-lg xl:max-w-xl text-left"
+          className="absolute top-[22%] sm:top-[52%] sm:-translate-y-1/2 right-4 sm:right-10 lg:right-16 xl:right-24 z-20 max-w-[240px] sm:max-w-md lg:max-w-lg xl:max-w-xl text-right sm:text-left"
         >
           <div ref={narrativeInnerRef} className="will-change-transform">
-            <p className="text-xl sm:text-2xl lg:text-[1.85rem] font-semibold text-[#1A0042] leading-[1.3] tracking-[-0.02em]">
-              SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time. Designed to make every dollar convert.
+            <p className="text-xs sm:text-2xl lg:text-[1.85rem] font-semibold text-[#1A0042] leading-[1.3] tracking-tight">
+              SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time.
             </p>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-LEFT EDITORIAL TRANSLUCENT GLASS CARD (Exact Oryzo.ai layout)     */}
+        {/* BOTTOM-LEFT EDITORIAL TRANSLUCENT GLASS CARD (Exact Oryzo mobile layout) */}
         {/* ========================================================================= */}
         <div
           ref={cardLeftRef}
           id="hero-glass-card"
-          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-6 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
+          className="absolute bottom-3 sm:bottom-10 lg:bottom-12 left-3 sm:left-10 lg:left-14 z-20 [perspective:1000px]"
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-48 sm:w-56 lg:w-60 h-48 sm:h-56 lg:h-60 p-3.5 sm:p-4 lg:p-5 rounded-none bg-white/20 hover:bg-white/25 backdrop-blur-md shadow-[0_6px_20px_rgba(26,0,66,0.03)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
+            className="w-[49vw] max-w-[195px] sm:w-72 lg:w-[19.5rem] h-[255px] sm:h-88 lg:h-[24rem] p-3.5 sm:p-7 lg:p-8 rounded-none bg-white/[0.42] hover:bg-white/[0.52] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/40 sm:border-none"
           >
-            {/* Top Bold Grotesque Header (Exact Oryzo 4-line editorial styling - kept exact text size) */}
-            <div className="font-sans font-bold text-xs sm:text-[13px] lg:text-sm uppercase tracking-[-0.01em] text-[#1A0042] leading-[1.22] max-w-[200px]">
+            {/* Top Bold Grotesque Header (Exact Oryzo 4-line editorial styling) */}
+            <div className="font-sans font-bold text-[10.5px] sm:text-[15px] lg:text-base uppercase tracking-tight text-[#1A0042] leading-[1.22] max-w-[240px]">
               DESIGNED FOR<br />
               PERFORMANCE-FIRST<br />
               FOUNDERS &amp;<br />
               MARKETERS.
             </div>
 
-            {/* Editorial Dotted Separator */}
-            <div className="w-full border-b border-dotted border-[#1A0042]/15 my-auto" />
+            {/* Bottom section: Partial dotted hairline rule + Right-aligned subtext */}
+            <div className="flex flex-col gap-2.5 sm:gap-5 pt-2 sm:pt-4">
+              {/* Editorial Dotted Separator: ~45% width from left margin (exact Oryzo) */}
+              <div className="w-[45%] border-b border-dotted border-[#1A0042]/35" />
 
-            {/* Bottom Right-Aligned Subtext (Exact Oryzo 3-line sentence-case styling - kept exact text size) */}
-            <div className="text-[11px] sm:text-xs text-[#1A0042]/85 font-sans leading-[1.35] text-right max-w-[180px] ml-auto">
-              The autonomous<br />
-              intelligence system that<br />
-              eliminates ad guesswork.
+              {/* Bottom Right-Aligned Subtext (Exact Oryzo 3-line sentence-case styling) */}
+              <div className="text-[9.5px] sm:text-[13px] text-[#1A0042]/80 font-sans leading-[1.35] text-right max-w-[170px] ml-auto">
+                The autonomous<br />
+                intelligence system that<br />
+                eliminates ad guesswork.
+              </div>
             </div>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-CENTER SCROLL INDICATOR: ⌄ SCROLL TO CONTINUE (Oryzo Style)        */}
-        {/* ========================================================================= */}
-        <div
-          ref={scrollPillRef}
-          id="hero-scroll-pill"
-          className="hidden md:flex absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-[0.25em] text-[#1A0042]/70 uppercase font-semibold select-none animate-pulse"
-        >
-          <span className="w-5 h-5 rounded-full border border-[#1A0042]/35 flex items-center justify-center text-[9px] font-bold">
-            ⌄
-          </span>
-          <span>SCROLL TO CONTINUE</span>
-        </div>
-
-        {/* ========================================================================= */}
-        {/* BOTTOM-RIGHT FLOATING VIDEO CARD                                         */}
+        {/* BOTTOM-RIGHT FLOATING VIDEO CARD (Exact Oryzo mobile portrait card)      */}
         {/* ========================================================================= */}
         <div
           ref={videoCardRef}
           id="hero-video-card"
           onClick={() => setShowVideoModal(true)}
-          className="absolute bottom-6 sm:bottom-8 lg:bottom-10 right-6 sm:right-10 lg:right-14 z-20 [perspective:1000px] cursor-pointer group"
+          className="absolute bottom-8 sm:bottom-8 lg:bottom-10 right-3 sm:right-10 lg:right-14 z-20 [perspective:1000px] cursor-pointer group"
         >
           <div
             ref={videoCardInnerRef}
-            className="w-44 sm:w-48 lg:w-52 bg-white/85 backdrop-blur-xl p-1 rounded-xl border border-[#1A0042]/10 shadow-[0_12px_30px_rgba(26,0,66,0.06)] transition-transform duration-300 hover:scale-[1.03] will-change-transform"
+            className="w-[42vw] max-w-[165px] sm:w-48 lg:w-52 h-[195px] sm:h-auto bg-white/85 backdrop-blur-xl p-1 rounded-2xl border-2 border-[#f59e0b]/70 sm:border-[#1A0042]/10 shadow-[0_8px_24px_rgba(245,158,11,0.2)] sm:shadow-[0_12px_30px_rgba(26,0,66,0.06)] transition-transform duration-300 hover:scale-[1.03] will-change-transform flex flex-col overflow-hidden"
           >
             {/* Video preview thumbnail box */}
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
-              {/* Abstract telemetry radar thumbnail preview */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#1A0042] via-[#1516A8] to-[#4D0181] opacity-90" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-full h-full opacity-40" viewBox="0 0 160 90">
-                  <path
-                    d="M 10 70 Q 40 20, 80 45 T 150 15"
-                    fill="none"
-                    stroke="#E7E6FB"
-                    strokeWidth="2"
-                  />
-                  <circle cx="80" cy="45" r="3" fill="#E7E6FB" />
-                </svg>
-              </div>
+            <div className="relative flex-1 sm:aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
+              <img
+                src={demoThumbnailImage}
+                alt="SignalMint Radar Walkthrough Preview"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+              />
+              {/* Subtle ambient overlay */}
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
 
-              {/* Top Badge: ● LIVE RADAR */}
-              <div className="absolute top-1.5 left-1.5 flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[8px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
+              {/* Top Badge: ● LIVE RADAR (desktop only) */}
+              <div className="hidden sm:flex absolute top-1.5 left-1.5 items-center gap-1 px-1.5 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[8px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>LIVE RADAR</span>
               </div>
 
-              {/* Center Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-7 h-7 rounded-full bg-white text-[#1516A8] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-200">
-                  <Play className="w-3 h-3 fill-[#1516A8] ml-0.5" />
+              {/* Center Play Button Overlay (Exact Oryzo mobile PLAY display) */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+                <div className="w-8 h-8 rounded-full bg-white/95 text-[#1516A8] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                  <Play className="w-3.5 h-3.5 fill-[#1516A8] ml-0.5" />
                 </div>
+                <span className="font-sans font-black text-[9.5px] tracking-wider text-white uppercase drop-shadow-md">
+                  PLAY
+                </span>
               </div>
             </div>
 
-            {/* Bottom mini label */}
-            <div className="p-1.5 pt-2 flex items-center justify-between font-mono text-[9px] text-[#1A0042]">
+            {/* Bottom mini label (desktop only) */}
+            <div className="hidden sm:flex p-1.5 pt-2 items-center justify-between font-mono text-[9px] text-[#1A0042]">
               <span className="font-bold uppercase tracking-wider">WALKTHROUGH</span>
               <span className="text-[#1516A8] font-bold flex items-center gap-0.5">
                 PLAY <span>▶</span>
@@ -392,13 +382,27 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             </div>
           </div>
         </div>
-    </div>
+
+        {/* ========================================================================= */}
+        {/* BOTTOM SCROLL INDICATOR: ⌄ SCROLL TO CONTINUE (Exact Oryzo mobile pos)    */}
+        {/* ========================================================================= */}
+        <div
+          ref={scrollPillRef}
+          id="hero-scroll-pill"
+          className="absolute bottom-2 right-3 sm:bottom-9 sm:left-1/2 sm:-translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2 font-sans text-[8px] sm:text-[10.5px] tracking-[0.16em] sm:tracking-[0.2em] text-[#1A0042]/75 uppercase font-semibold select-none pointer-events-none"
+        >
+          <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border border-dotted border-[#1A0042]/50 flex items-center justify-center text-[8px] sm:text-[9px] leading-none pt-0.5 font-normal">
+            ⌄
+          </span>
+          <span>SCROLL TO CONTINUE</span>
+        </div>
+      </div>
 
       {/* 2-Min Demo Video Modal Walkthrough */}
       {showVideoModal && (
         <div
           onClick={() => setShowVideoModal(false)}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#1A0042]/60 backdrop-blur-md animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-white/15 backdrop-blur-xs animate-in fade-in duration-200"
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -419,11 +423,17 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             <h3 className="font-display font-bold text-xl text-[#1A0042] mb-3">
               How SCOUT reverse-engineers Crown Winners in real time
             </h3>
-            <div className="aspect-video bg-[#E7E6FB] rounded-xl border border-[#1A0042]/10 flex flex-col items-center justify-center p-6 text-center mb-4 relative overflow-hidden">
-              <div className="w-14 h-14 rounded-full bg-[#1516A8] text-white flex items-center justify-center shadow-lg mb-3">
+            <div className="aspect-video bg-[#E7E6FB] rounded-xl border border-[#1A0042]/10 flex flex-col items-center justify-center p-6 text-center mb-4 relative overflow-hidden group">
+              <img
+                src={demoThumbnailImage}
+                alt="Walkthrough Video Frame"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-[#1A0042]/35" />
+              <div className="w-14 h-14 rounded-full bg-[#1516A8] text-white flex items-center justify-center shadow-lg mb-3 z-10 hover:scale-110 transition-transform cursor-pointer">
                 <Play className="w-6 h-6 fill-white ml-0.5" />
               </div>
-              <p className="font-mono text-xs text-[#1A0042]/80 font-medium z-10">
+              <p className="font-mono text-xs text-white font-medium z-10 drop-shadow-sm">
                 Live simulation stream: Autonomous hook recognition &amp; real-time bleed stop engine.
               </p>
             </div>
@@ -447,6 +457,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }

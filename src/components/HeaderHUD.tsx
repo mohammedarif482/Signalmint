@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { X, ArrowUpRight } from "lucide-react";
 import signalMintLogo from "../assets/signalmintlogo.svg";
 
 interface HeaderHUDProps {
@@ -33,12 +33,18 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
 
   return (
     <>
+      {/* Top blur backdrop fading down with no bottom border, no color, and no shadow */}
+      <div
+        className={`fixed top-0 left-0 right-0 h-24 pointer-events-none z-40 backdrop-blur-md transition-opacity duration-300 [mask-image:linear-gradient(to_bottom,black_0px,black_60px,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0px,black_60px,transparent_100%)] ${
+          isScrolled ? "opacity-100" : "opacity-0"
+        }`}
+        aria-hidden="true"
+      />
+
       {/* 1. FIXED TOP HEADER BAR (Oryzo Style) */}
       <header
         className={`fixed top-0 left-0 w-full z-50 px-6 sm:px-8 py-5 flex items-center justify-between pointer-events-none transition-all duration-300 ${
-          isScrolled
-            ? "bg-[#E7E6FB]/75 backdrop-blur-md border-b border-[#1A0042]/8 py-4 shadow-xs"
-            : ""
+          isScrolled ? "py-4" : ""
         }`}
       >
         {/* Left: The Brand Wordmark (Origin in navbar, scaled/translated to Hero at scroll=0) */}
@@ -59,7 +65,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
 
         {/* Right Nav Links: pointer-events-auto flex items-center gap-6 lg:gap-8 font-sans uppercase */}
         <div className="pointer-events-auto flex items-center gap-6 lg:gap-8">
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-sans tracking-[0.14em] uppercase">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-sans tracking-[0.06em] uppercase">
             <a
               href="#hero-runway"
               className={`transition-colors duration-200 hover:text-[#4D0181] ${
@@ -105,19 +111,29 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           {/* Quick Book Demo button on larger screens */}
           <button
             onClick={onOpenDemoModal}
-            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1516A8] hover:bg-[#1A0042] text-white text-[11px] font-sans font-bold tracking-wider uppercase transition-all shadow-xs active:scale-95 cursor-pointer"
+            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1A0042] hover:bg-[#1516A8] text-white text-[11px] font-sans font-bold tracking-[0.04em] uppercase transition-all shadow-xs active:scale-95 cursor-pointer"
           >
             <span>Demo</span>
             <ArrowUpRight className="w-3 h-3" />
           </button>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile menu toggle: Oryzo reference dashed border • MENU pill */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg border border-[#1A0042]/15 bg-white/85 backdrop-blur-md text-[#1A0042] cursor-pointer shadow-xs"
+            className="md:hidden px-3.5 py-1.5 rounded-full border border-dashed border-[#1A0042]/35 bg-white/40 backdrop-blur-md text-[#1A0042] font-mono text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95 transition-all"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            {mobileMenuOpen ? (
+              <>
+                <X className="w-3 h-3" />
+                <span>CLOSE</span>
+              </>
+            ) : (
+              <>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1A0042]" />
+                <span>MENU</span>
+              </>
+            )}
           </button>
         </div>
       </header>
@@ -128,21 +144,21 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           <a
             href="#hero-runway"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-sans font-semibold tracking-[0.14em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
+            className="text-xs font-sans font-semibold tracking-[0.06em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
           >
             INTRO
           </a>
           <a
             href="#showcase"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-sans font-semibold tracking-[0.14em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
+            className="text-xs font-sans font-semibold tracking-[0.06em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
           >
             FEATURES
           </a>
           <a
             href="#agents"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-sans font-semibold tracking-[0.14em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
+            className="text-xs font-sans font-semibold tracking-[0.06em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
           >
             AGENTS
           </a>
@@ -151,7 +167,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               setMobileMenuOpen(false);
               onOpenDemoModal?.();
             }}
-            className="mt-2 w-full py-2.5 rounded-full bg-[#1516A8] text-white text-xs font-sans font-bold uppercase tracking-wider text-center cursor-pointer shadow-md"
+            className="mt-2 w-full py-2.5 rounded-full bg-[#1A0042] hover:bg-[#1516A8] text-white text-xs font-sans font-bold uppercase tracking-[0.04em] text-center cursor-pointer shadow-md transition-all"
           >
             BOOK DEMO
           </button>
@@ -163,7 +179,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
         className="fixed right-0 top-16 sm:top-20 z-40 bg-[#FAF7F2] px-2.5 sm:px-3 py-4 sm:py-6 rounded-none border-l border-y border-[#1A0042]/15 shadow-sm pointer-events-auto select-none transition-transform duration-200 hover:-translate-x-0.5 group"
         title="SignalMint System Active"
       >
-        <div className="[writing-mode:vertical-rl] text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#1A0042] flex items-center gap-2 font-bold cursor-default">
+        <div className="[writing-mode:vertical-rl] text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.08em] text-[#1A0042] flex items-center gap-2 font-black cursor-default">
           <span className="w-1.5 h-1.5 rounded-full bg-[#1A0042] mb-0.5"></span>
           <span>SIGNALMINT-1 MODEL</span>
         </div>
