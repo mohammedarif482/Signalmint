@@ -51,14 +51,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
     const ctx = gsap.context(() => {
       const { heroX, heroY, heroScale } = getHeroTransform();
 
-      // Master ScrollTrigger Scrub Timeline with GSAP pinning (eliminates 150vh dead space)
+      // Master ScrollTrigger Scrub Timeline with GSAP pinning & calibrated holding buffer
       const scrubTl = gsap.timeline({
         scrollTrigger: {
           trigger: runway,
           start: "top top",
-          end: "+=100%",
+          end: "+=120%",
           pin: true,
-          scrub: 0.7,
+          scrub: 0.8,
           invalidateOnRefresh: true,
         },
       });
@@ -71,7 +71,10 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         transformOrigin: "left top",
       });
 
-      // 1. BRAND LOGO: Starts enlarged in Hero, glides up into navbar as user scrolls (0% to 75%)
+      // 1. INITIAL REST / HOLD BUFFER (0% to 10% scroll holds hero stable)
+      scrubTl.to({}, { duration: 0.10 }, 0);
+
+      // 2. BRAND LOGO: Starts enlarged in Hero, glides smoothly into navbar as user scrolls (10% to 85%)
       scrubTl.fromTo(
         brandLogo,
         {
@@ -89,38 +92,38 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           ease: "power1.inOut",
           duration: 0.75,
         },
-        0
+        0.10
       );
 
-      // 2. EYEBROW TRANSLATES UPWARDS & FADES OUT (0% to 28% scroll)
+      // 3. EYEBROW TRANSLATES UPWARDS & FADES OUT (10% to 38% scroll)
       if (eyebrow) {
         scrubTl.to(
           eyebrow,
           {
-            y: -32,
+            y: -30,
             opacity: 0,
             duration: 0.28,
             ease: "power2.out",
           },
-          0
+          0.10
         );
       }
 
-      // 3. CENTER-RIGHT NARRATIVE EXITS (0% to 25% scroll)
+      // 4. NARRATIVE EXITS (10% to 35% scroll)
       if (narrativeRef.current) {
         scrubTl.to(
           narrativeRef.current,
           {
             opacity: 0,
-            y: -16,
+            y: -18,
             duration: 0.25,
             ease: "power2.out",
           },
-          0
+          0.10
         );
       }
 
-      // 4. BOTTOM CARDS & SCROLL PILL DISSOLVE DOWNWARD (0.05 to 0.42 scroll)
+      // 5. BOTTOM CARDS & SCROLL PILL DISSOLVE DOWNWARD (12% to 50% scroll)
       const cardElements = [
         cardLeftRef.current,
         videoCardRef.current,
@@ -131,15 +134,15 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         cardElements,
         {
           opacity: 0,
-          y: 24,
-          stagger: 0.03,
-          duration: 0.4,
+          y: 26,
+          stagger: 0.04,
+          duration: 0.38,
           ease: "power2.out",
         },
-        0.05
+        0.12
       );
 
-      // 5. BACKGROUND WORKSPACE IMAGE PARALLAX SCRUB (0% to 100%)
+      // 6. BACKGROUND WORKSPACE IMAGE PARALLAX SCRUB (10% to 100%)
       if (bg) {
         scrubTl.to(
           bg,
@@ -147,8 +150,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             scale: 1.08,
             filter: "blur(4px)",
             ease: "none",
+            duration: 0.9,
           },
-          0
+          0.10
         );
       }
 

@@ -100,18 +100,30 @@ export function HorizontalShowcase() {
     };
 
     const ctx = gsap.context(() => {
-      gsap.to(track, {
-        x: getScrollAmount,
-        ease: "none",
+      const scrollDist = track.scrollWidth - window.innerWidth + 500;
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           pin: true,
-          scrub: 1,
+          scrub: 0.8,
           start: "top top",
-          end: () => "+=" + (track.scrollWidth - window.innerWidth + 450),
+          end: () => "+=" + scrollDist,
           invalidateOnRefresh: true,
         },
       });
+
+      // 1. ENTRY HOLD: Holds Card 1 in rest state before track slides
+      tl.to({}, { duration: 0.15 });
+
+      // 2. HORIZONTAL SCRUB: Smoothly glides cards across viewport
+      tl.to(track, {
+        x: getScrollAmount,
+        ease: "none",
+        duration: 1.0,
+      });
+
+      // 3. EXIT HOLD: Holds final card steadily in place before unpinning
+      tl.to({}, { duration: 0.20 });
     }, section);
 
     return () => ctx.revert();

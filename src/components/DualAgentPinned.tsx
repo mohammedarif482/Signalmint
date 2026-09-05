@@ -23,42 +23,66 @@ export function DualAgentPinned() {
     if (!runway) return;
 
     const ctx = gsap.context(() => {
-      // Pin viewportRef for smooth scroll scrub through both agent states (0 to 100%)
+      // Pinned scrub timeline with deliberate holding intervals (Scout Hold -> Morph -> Atlas Hold)
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: runway,
           start: "top top",
-          end: "+=120%",
+          end: "+=180%",
           pin: true,
-          scrub: 0.6,
+          scrub: 0.8,
           invalidateOnRefresh: true,
         },
       });
 
-      // 1. Cross-fade Background from Scout Ambient to Atlas Infrared
+      // Total timeline duration = 3.0
+      // -------------------------------------------------------------
+      // 0.00 to 0.85: HOLD 1 (Scout Active & completely readable)
+      // 0.85 to 1.85: TRANSITION (Scout glides away, Atlas arrives, 3D core tilts)
+      // 1.85 to 2.80: HOLD 2 (Atlas Active & completely readable)
+      // 2.80 to 3.00: Smooth unpin handoff into Section 3
+      // -------------------------------------------------------------
+
+      // 1. Scout Panel: Holds until 0.85, then glides up and dissolves
+      tl.to(
+        scoutPanelRef.current,
+        {
+          opacity: 0,
+          y: -30,
+          ease: "power2.inOut",
+          duration: 0.65,
+        },
+        0.85
+      );
+
+      // 2. Background: Cross-fades from Scout Ambient to Atlas Infrared
       tl.to(
         bgAtlasRef.current,
         {
           opacity: 1,
           ease: "power1.inOut",
-          duration: 0.5,
+          duration: 0.75,
         },
-        0.3
+        0.95
       );
 
-      // 2. Scout panel glides up and dissolves
-      tl.to(
-        scoutPanelRef.current,
-        {
-          opacity: 0,
-          y: -32,
-          ease: "power1.inOut",
-          duration: 0.35,
-        },
-        0.2
-      );
+      // 3. Central 3D Disk: Tilts from Scout observation into active Atlas defense mode
+      if (diskRef.current) {
+        tl.to(
+          diskRef.current,
+          {
+            rotationY: 28,
+            rotationX: -14,
+            scale: 1.08,
+            y: -20,
+            ease: "power2.inOut",
+            duration: 0.9,
+          },
+          0.90
+        );
+      }
 
-      // 3. Atlas panel glides up from bottom into view
+      // 4. Atlas Panel: Glides up into view and locks in by 1.85
       tl.fromTo(
         atlasPanelRef.current,
         {
@@ -68,27 +92,14 @@ export function DualAgentPinned() {
         {
           opacity: 1,
           y: 0,
-          ease: "power1.inOut",
-          duration: 0.45,
+          ease: "power2.inOut",
+          duration: 0.7,
         },
-        0.4
+        1.15
       );
 
-      // 4. Central 3D visual tilts and transforms into active defense mode
-      if (diskRef.current) {
-        tl.to(
-          diskRef.current,
-          {
-            rotationY: 28,
-            rotationX: -14,
-            scale: 1.08,
-            y: -20,
-            ease: "power1.inOut",
-            duration: 0.8,
-          },
-          0.1
-        );
-      }
+      // 5. Hold Atlas active through 2.80 - 3.00 before releasing
+      tl.to({}, { duration: 1.15 }, 1.85);
     }, runway);
 
     return () => ctx.revert();
