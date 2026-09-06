@@ -297,14 +297,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Eyebrow: THE AI CREATIVE THAT THINKS LIKE A CMO. (Exact Oryzo mobile position) */}
+        {/* Eyebrow: 01 // PERFORMANCE MARKETING, DATA-FIRST */}
         <div
           ref={eyebrowRef}
           id="hero-eyebrow"
-          className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-4 sm:left-10 lg:left-14 right-4 sm:right-auto sm:w-[500px] lg:w-[670px] flex justify-end z-20 pointer-events-none"
+          className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-4 sm:left-10 lg:left-14 right-4 sm:right-auto sm:w-[540px] lg:w-[720px] flex justify-end z-20 pointer-events-none"
         >
           <span className="font-sans font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13.5px] text-[#1A0042] uppercase inline-block text-right">
-            THE AI CREATIVE THAT THINKS LIKE A CMO.
+            01 // PERFORMANCE MARKETING, DATA-FIRST
           </span>
         </div>
 
@@ -314,14 +314,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         <div
           ref={narrativeRef}
           id="hero-narrative"
-          className="absolute top-[22%] sm:top-[52%] sm:-translate-y-1/2 right-4 sm:right-10 lg:right-16 xl:right-24 z-20 max-w-[240px] sm:max-w-md lg:max-w-lg xl:max-w-xl text-right sm:text-left"
+          className="absolute top-[22%] sm:top-[52%] sm:-translate-y-1/2 right-4 sm:right-10 lg:right-16 xl:right-24 z-20 max-w-[260px] sm:max-w-md lg:max-w-lg xl:max-w-xl text-right sm:text-left"
         >
           <div ref={narrativeInnerRef} className="will-change-transform">
             <p
               ref={narrativeTextRef}
               className="text-xs sm:text-2xl lg:text-[1.85rem] font-semibold text-[#1A0042] leading-[1.3] tracking-tight"
             >
-              SignalMint audits your competitors, isolates winning hooks, and protects your spend in real time.
+              We read the signal in your ad spend before it burns the budget.
             </p>
           </div>
         </div>
@@ -336,23 +336,34 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-[54vw] max-w-[218px] sm:w-[22rem] lg:w-[25.5rem] h-[205px] sm:h-64 lg:h-[17.5rem] p-3.5 sm:p-6 lg:p-7 rounded-none bg-white/[0.24] hover:bg-white/[0.34] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
+            className="w-[54vw] max-w-[225px] sm:w-[23rem] lg:w-[26.5rem] h-[208px] sm:h-64 lg:h-[17.5rem] p-3.5 sm:p-6 lg:p-7 rounded-none bg-white/[0.24] hover:bg-white/[0.34] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
           >
             {/* Top Bold Grotesque Header (Wide editorial layout) */}
-            <div className="font-sans font-bold text-[10.5px] sm:text-[15px] lg:text-base uppercase tracking-tight text-[#1A0042] leading-[1.22] max-w-[260px] sm:max-w-none">
-              DESIGNED FOR<br className="sm:hidden" /> PERFORMANCE-FIRST<br />
-              FOUNDERS &amp; MARKETERS.
+            <div>
+              <div className="font-sans font-bold text-[10.5px] sm:text-[15px] lg:text-base uppercase tracking-tight text-[#1A0042] leading-[1.22] max-w-[260px] sm:max-w-none">
+                DESIGNED FOR<br className="sm:hidden" /> PERFORMANCE-FIRST<br />
+                FOUNDERS &amp; MARKETERS.
+              </div>
             </div>
 
-            {/* Bottom section: Partial dotted hairline rule + Right-aligned subtext */}
+            {/* Bottom section: Partial dotted hairline rule + Right-aligned subtext & CTA */}
             <div className="flex flex-col gap-2 sm:gap-3.5 pt-2 sm:pt-3">
               {/* Editorial Dotted Separator: ~45% width from left margin */}
               <div className="w-[45%] border-b border-dotted border-[#1A0042]/35" />
 
               {/* Bottom Right-Aligned Subtext */}
-              <div className="text-[9.5px] sm:text-[13px] text-[#1A0042]/80 font-sans leading-[1.35] text-right max-w-[190px] sm:max-w-[220px] ml-auto">
-                The autonomous intelligence system that eliminates ad guesswork.
+              <div className="text-[9.5px] sm:text-[12.5px] text-[#1A0042]/85 font-sans leading-[1.35] text-right max-w-[210px] sm:max-w-[250px] ml-auto">
+                Most agencies form an opinion and defend it. We audit first. Every recommendation comes from what your data proves works.
               </div>
+
+              {/* Instant Audit CTA */}
+              <button
+                onClick={onOpenDemoModal}
+                className="self-end inline-flex items-center gap-1 font-mono text-[9px] sm:text-[11px] font-bold text-[#1516A8] hover:text-[#4D0181] uppercase tracking-wider transition-colors cursor-pointer group"
+              >
+                <span>Book a 30-Min Audit</span>
+                <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+              </button>
             </div>
           </div>
         </div>
@@ -374,16 +385,16 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             <div className="relative flex-1 sm:aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
               <img
                 src={demoThumbnailImage}
-                alt="SignalMint Radar Walkthrough Preview"
+                alt="See How We Audit Walkthrough Preview"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
               />
               {/* Subtle ambient overlay */}
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
 
-              {/* Top Badge: ● LIVE RADAR (desktop only) */}
+              {/* Top Badge: ● 2-MIN AUDIT (desktop only) */}
               <div className="hidden sm:flex absolute top-1.5 left-1.5 items-center gap-1 px-1.5 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[8px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>LIVE RADAR</span>
+                <span>HOW WE AUDIT</span>
               </div>
 
               {/* Center Play Button Overlay (Exact Oryzo mobile PLAY display) */}
@@ -399,7 +410,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
             {/* Bottom mini label (desktop only) */}
             <div className="hidden sm:flex p-1.5 pt-2 items-center justify-between font-mono text-[9px] text-[#1A0042]">
-              <span className="font-bold uppercase tracking-wider">WALKTHROUGH</span>
+              <span className="font-bold uppercase tracking-wider">AUDIT DEEP-DIVE</span>
               <span className="text-[#1516A8] font-bold flex items-center gap-0.5">
                 PLAY <span>▶</span>
               </span>
@@ -422,6 +433,23 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
       </div>
 
+      {/* Hero Proof Ticker Ribbon */}
+      <div className="w-full bg-[#1A0042] text-white py-3 px-6 border-y border-white/10 overflow-hidden select-none">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 font-mono text-[10.5px] sm:text-xs">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-bold tracking-wider uppercase text-emerald-400">AGENCY PROOF METRICS</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-white/80">
+            <span>Audited 200+ D2C Accounts</span>
+            <span className="text-white/30 hidden sm:inline">·</span>
+            <span>₹500M+ Ad Spend Under Management</span>
+            <span className="text-white/30 hidden sm:inline">·</span>
+            <span className="text-white font-bold text-emerald-400">3.2x Avg ROAS Improvement</span>
+          </div>
+        </div>
+      </div>
+
       {/* 2-Min Demo Video Modal Walkthrough */}
       {showVideoModal && (
         <div
@@ -441,11 +469,11 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-[#1516A8] animate-pulse"></span>
               <span className="font-mono text-xs font-bold text-[#1516A8] uppercase">
-                SIGNALMINT RADAR WALKTHROUGH (2:04)
+                SEE HOW WE AUDIT (2:04)
               </span>
             </div>
             <h3 className="font-display font-bold text-xl text-[#1A0042] mb-3">
-              How SCOUT reverse-engineers Crown Winners in real time
+              How we diagnose account bleed &amp; creative fatigue before spending a dollar
             </h3>
             <div className="aspect-video bg-[#E7E6FB] rounded-xl border border-[#1A0042]/10 flex flex-col items-center justify-center p-6 text-center mb-4 relative overflow-hidden group">
               <img
@@ -458,7 +486,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
                 <Play className="w-6 h-6 fill-white ml-0.5" />
               </div>
               <p className="font-mono text-xs text-white font-medium z-10 drop-shadow-sm">
-                Live simulation stream: Autonomous hook recognition &amp; real-time bleed stop engine.
+                Watch our analysts break down a real D2C account architecture, uncover hidden audience cannibalization, and isolate winning hooks.
               </p>
             </div>
             <div className="flex gap-3">
@@ -469,7 +497,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
                 }}
                 className="flex-1 py-3 rounded-xl bg-[#1516A8] text-white font-mono text-xs font-bold uppercase hover:bg-[#4D0181] transition-colors cursor-pointer"
               >
-                Request Platform Access
+                Book a 30-Min Audit
               </button>
               <button
                 onClick={() => setShowVideoModal(false)}

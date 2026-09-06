@@ -4,12 +4,10 @@ import { CustomCursor } from "./components/CustomCursor";
 import { HeaderHUD } from "./components/HeaderHUD";
 import { HeroSection } from "./components/HeroSection";
 import { DualAgentPinned } from "./components/DualAgentPinned";
-import { HorizontalShowcase } from "./components/HorizontalShowcase";
-// 04 // THE COST OF GUESSING
-// import { ComparisonMatrix } from "./components/ComparisonMatrix";
-// 05 // TRY IT (WITH YOUR NUMBERS)
-// import { TelemetrySimulator } from "./components/TelemetrySimulator";
-// FINAL CALL // YOUR MOVE
+import { ServicesSection } from "./components/ServicesSection";
+import { CaseStudiesSection } from "./components/CaseStudiesSection";
+import { EngagementModelSection } from "./components/EngagementModelSection";
+import { FinalCTASection } from "./components/FinalCTASection";
 import { FooterKinetic } from "./components/FooterKinetic";
 import { DemoModal } from "./components/DemoModal";
 
@@ -24,7 +22,7 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#FAFAFD] text-[#1A0042] selection:bg-[#1516A8] selection:text-white relative overflow-x-hidden">
-      {/* Trionn benchmark: Magnetic Custom Cursor */}
+      {/* Magnetic Custom Cursor */}
       <CustomCursor />
 
       {/* 1. Sticky Kinetic HUD Header */}
@@ -32,26 +30,29 @@ export function App() {
 
       {/* Main Page Flow */}
       <main className="relative">
-        {/* 2. Hero Section: Kinetic Typographic Explosion (Codapress Style) */}
+        {/* Section 01: Hero Section */}
         <HeroSection onOpenDemoModal={handleOpenDemoModal} />
 
-        {/* 3. Viewport Pinned Slide: The Two AI Agents (Oddity Pinned Split 200vh) */}
+        {/* Section 02: Why We're Different (The Audit-First Approach) */}
         <DualAgentPinned />
 
-        {/* 4. Kinetic Horizontal Showcase: Crown Winners & Trends (GSAP ScrollTrigger scrub) */}
-        <HorizontalShowcase />
+        {/* Section 03: What We Do (Meta Ads + Creative Strategy + Audit Diagnostics) */}
+        <ServicesSection onOpenDemoModal={handleOpenDemoModal} />
 
-        {/* 5. 04 // THE COST OF GUESSING */}
-        {/* <ComparisonMatrix /> */}
+        {/* Section 04: Proof (Case Studies / Client Transformations) */}
+        <CaseStudiesSection onOpenDemoModal={handleOpenDemoModal} />
 
-        {/* 6. 05 // TRY IT (WITH YOUR NUMBERS) */}
-        {/* <TelemetrySimulator onOpenDemoModal={handleOpenDemoModal} /> */}
+        {/* Section 05: How We Work (The 4-Phase Engagement Model) */}
+        <EngagementModelSection onOpenDemoModal={handleOpenDemoModal} />
+
+        {/* Section 06: Final CTA (Bring Us the Account) */}
+        <FinalCTASection onOpenDemoModal={handleOpenDemoModal} />
       </main>
 
-      {/* 7. FINAL CALL // YOUR MOVE */}
+      {/* Kinetic Footer */}
       <FooterKinetic onOpenDemoModal={handleOpenDemoModal} />
 
-      {/* Interactive VIP Demo Booking Modal */}
+      {/* 30-Minute Account Audit Booking Modal */}
       <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemoModal} />
     </div>
   );
