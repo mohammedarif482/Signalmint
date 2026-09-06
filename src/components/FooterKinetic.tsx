@@ -52,6 +52,7 @@ const TICKER_DATA = {
 
 // Global Telemetry Nodes
 const TELEMETRY_NODES = [
+  { id: "bom", x: "69.0%", y: "48%", label: "Primary HQ (Mumbai, IN)", ping: "2ms", active: true },
   { id: "sf", x: "18.5%", y: "37%", label: "US-West Core (San Francisco)", ping: "4ms", active: true },
   { id: "nyc", x: "28.5%", y: "35%", label: "US-East Ingestion (New York)", ping: "11ms", active: true },
   { id: "lon", x: "48.2%", y: "27%", label: "EU-Central Engine (London)", ping: "16ms", active: true },
@@ -593,23 +594,31 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
             </div>
           </div>
 
-          {/* Column 2: Telemetry Labs HQ & Ingestion Zones */}
+          {/* Column 2: Locations & Headquarters */}
           <div className="md:col-span-3 space-y-6">
             <div>
-              <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-2 flex items-center gap-1">
+              <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-3 flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#1516A8]"></span>
-                <span>HEADQUARTERS</span>
+                <span>LOCATIONS (1)</span>
               </div>
-              <p className="font-sans font-medium text-sm text-[#1A0042] leading-snug">
-                SignalMint Telemetry Labs<br />
-                548 Market St, Suite 92000<br />
-                San Francisco, CA 94104, USA.
-              </p>
+              
+              <div className="space-y-0.5">
+                <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#1516A8]">
+                  Primary
+                </div>
+                <div className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#1A0042]/60">
+                  Headquarters
+                </div>
+                <p className="font-display font-extrabold text-xl sm:text-2xl text-[#1A0042] tracking-tight pt-0.5">
+                  Mumbai, IN
+                </p>
+              </div>
+
               <a
-                href="https://maps.google.com"
+                href="https://maps.google.com/?q=Mumbai,India"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1 font-sans text-xs text-[#1516A8] hover:underline mt-2 font-semibold"
+                className="inline-flex items-center gap-1 font-sans text-xs text-[#1516A8] hover:underline mt-2.5 font-semibold"
               >
                 <span>↳ Telemetry Command Center ↗</span>
               </a>
@@ -620,7 +629,7 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
                 PRIMARY INGESTION NODES
               </div>
               <p className="font-sans text-xs font-semibold text-[#1A0042]/80 leading-relaxed">
-                US-West (SF) <span className="text-[#1A0042]/30">/</span> US-East (NYC) <span className="text-[#1A0042]/30">/</span> EU-Central (LON) <span className="text-[#1A0042]/30">/</span> AP-East (HK) <span className="text-[#1A0042]/30">/</span> SG Gateway
+                IN-West (Mumbai) <span className="text-[#1A0042]/30">/</span> US-West (SF) <span className="text-[#1A0042]/30">/</span> US-East (NYC) <span className="text-[#1A0042]/30">/</span> EU-Central (LON) <span className="text-[#1A0042]/30">/</span> SG Gateway
               </p>
             </div>
           </div>
@@ -679,8 +688,18 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
                   className="absolute -translate-x-1/2 -translate-y-1/2 group cursor-pointer"
                 >
                   <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1516A8] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-[#1516A8] shadow-[0_0_10px_#1516A8]"></span>
+                    <span
+                      className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                        node.id === "bom" ? "bg-emerald-500" : "bg-[#1516A8]"
+                      }`}
+                    ></span>
+                    <span
+                      className={`relative inline-flex rounded-full h-3 w-3 ${
+                        node.id === "bom"
+                          ? "bg-emerald-500 shadow-[0_0_12px_#10b981]"
+                          : "bg-[#1516A8] shadow-[0_0_10px_#1516A8]"
+                      }`}
+                    ></span>
                   </span>
 
                   {/* High-Tech Telemetry Tooltip on Hover */}
