@@ -52,13 +52,7 @@ const TICKER_DATA = {
 
 // Global Telemetry Nodes
 const TELEMETRY_NODES = [
-  { id: "bom", x: "69.0%", y: "48%", label: "Primary HQ (Mumbai, IN)", ping: "2ms", active: true },
-  { id: "sf", x: "18.5%", y: "37%", label: "US-West Core (San Francisco)", ping: "4ms", active: true },
-  { id: "nyc", x: "28.5%", y: "35%", label: "US-East Ingestion (New York)", ping: "11ms", active: true },
-  { id: "lon", x: "48.2%", y: "27%", label: "EU-Central Engine (London)", ping: "16ms", active: true },
-  { id: "hk", x: "77.5%", y: "46%", label: "APAC Hardware Relay (Hong Kong)", ping: "28ms", active: true },
-  { id: "sg", x: "75.0%", y: "58%", label: "Southeast Asia Gateway (Singapore)", ping: "32ms", active: true },
-  { id: "syd", x: "87.5%", y: "81%", label: "Oceania Edge Monitor (Sydney)", ping: "41ms", active: true },
+  { id: "bom", x: "69.0%", y: "48%", label: "Primary Headquarters (Mumbai, IN)", ping: "2ms", active: true },
 ];
 
 export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
@@ -622,15 +616,6 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
               >
                 <span>↳ Telemetry Command Center ↗</span>
               </a>
-            </div>
-
-            <div>
-              <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-1.5">
-                PRIMARY INGESTION NODES
-              </div>
-              <p className="font-sans text-xs font-semibold text-[#1A0042]/80 leading-relaxed">
-                IN-West (Mumbai) <span className="text-[#1A0042]/30">/</span> US-West (SF) <span className="text-[#1A0042]/30">/</span> US-East (NYC) <span className="text-[#1A0042]/30">/</span> EU-Central (LON) <span className="text-[#1A0042]/30">/</span> SG Gateway
-              </p>
             </div>
           </div>
 
