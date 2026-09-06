@@ -169,9 +169,9 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
       offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
       offCtx.fillStyle = "#1A0042";
 
-      // Use GenericTechno font for "SIGNAL MINT"
-      const text = "SIGNAL MINT";
-      let fontSize = Math.floor(offscreen.width / 7.8);
+      // Use GenericTechno font for "SIGNALMINT"
+      const text = "SIGNALMINT";
+      let fontSize = Math.floor(offscreen.width / 7.0);
       offCtx.font = `900 ${fontSize}px 'GenericTechno', 'Syne', sans-serif`;
       let textWidth = offCtx.measureText(text).width;
 
