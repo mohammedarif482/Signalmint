@@ -271,12 +271,12 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
   }, []);
 
   return (
-    <footer className="relative w-full bg-[#FAFAFD] text-[#1A0042] pt-16 sm:pt-24 pb-8 overflow-hidden border-t border-[#1A0042]/10 selection:bg-[#1516A8] selection:text-white">
+    <footer className="relative w-full bg-[#FAFAFD] text-[#1A0042] pt-16 sm:pt-24 pb-0 overflow-hidden border-t border-[#1A0042]/10 selection:bg-[#1516A8] selection:text-white">
       {/* Ambient background light gradients */}
       <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[#E7E6FB] filter blur-[120px] pointer-events-none opacity-50" />
 
       {/* Outer Max Container */}
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 pb-8 sm:pb-12 relative z-10">
         
         {/* ========================================================================= */}
         {/* 1. TOP EDITORIAL TAGLINE & NAVIGATION GRID                                */}
@@ -747,6 +747,14 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
         </div>
 
       </div>
+
+      {/* End of Website Accent Line (#573681) */}
+      <div 
+        className="w-full h-1 sm:h-1.5 bg-[#573681]"
+        style={{ backgroundColor: "#573681" }}
+        role="separator"
+        aria-hidden="true"
+      />
     </footer>
   );
 }
