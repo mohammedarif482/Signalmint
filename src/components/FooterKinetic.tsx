@@ -3,6 +3,7 @@ import { ArrowUp, ArrowUpRight, ShieldCheck, Activity, Terminal } from "lucide-r
 import signalMintLogo from "../assets/signalmintlogo.svg";
 import footerTunnelImg from "../assets/footer-tunnel.jpg";
 import footerMapImg from "../assets/footer-map.png";
+import genericTechnoFontUrl from "../assets/font/GenericTechno.otf";
 
 interface FooterKineticProps {
   onOpenDemoModal?: () => void;
@@ -168,23 +169,23 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
       offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
       offCtx.fillStyle = "#1A0042";
 
-      // Use SignalMint's Syne / Grotesque font for commanding editorial punch
-      const text = "SIGNALMINT";
-      let fontSize = Math.floor(offscreen.width / 7.0);
-      offCtx.font = `900 ${fontSize}px 'Syne', 'Inter', -apple-system, sans-serif`;
+      // Use GenericTechno font for "SIGNAL MINT"
+      const text = "SIGNAL MINT";
+      let fontSize = Math.floor(offscreen.width / 7.8);
+      offCtx.font = `900 ${fontSize}px 'GenericTechno', 'Syne', sans-serif`;
       let textWidth = offCtx.measureText(text).width;
 
       if (textWidth > offscreen.width * 0.96) {
         fontSize = Math.floor(fontSize * ((offscreen.width * 0.96) / textWidth));
-        offCtx.font = `900 ${fontSize}px 'Syne', 'Inter', -apple-system, sans-serif`;
+        offCtx.font = `900 ${fontSize}px 'GenericTechno', 'Syne', sans-serif`;
         textWidth = offCtx.measureText(text).width;
       }
 
       const textX = (offscreen.width - textWidth) / 2;
-      const textY = offscreen.height * 0.76;
+      const textY = offscreen.height * 0.72;
 
       // Draw stroked outline + filled glyphs for solid dotted density
-      offCtx.lineWidth = 1.5 * dpr;
+      offCtx.lineWidth = 1.2 * dpr;
       offCtx.strokeText(text, textX, textY);
       offCtx.fillText(text, textX, textY);
 
@@ -192,7 +193,7 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
       const data = imgData.data;
 
       particles = [];
-      const gap = Math.round(4.6 * dpr);
+      const gap = Math.round(4.4 * dpr);
 
       for (let y = 0; y < offscreen.height; y += gap) {
         for (let x = 0; x < offscreen.width; x += gap) {
@@ -218,6 +219,23 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
 
     initParticles();
     render();
+
+    // Ensure GenericTechno font is fully parsed and re-rasterize once loaded
+    if (typeof FontFace !== "undefined") {
+      const font = new FontFace("GenericTechno", `url(${genericTechnoFontUrl})`);
+      font.load().then((loadedFont) => {
+        document.fonts.add(loadedFont);
+        initParticles();
+      }).catch(() => {
+        initParticles();
+      });
+    }
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        initParticles();
+      });
+    }
 
     // Mouse & Touch interaction handlers
     const handlePointerMove = (e: MouseEvent | TouchEvent) => {
@@ -705,7 +723,7 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
         <div
           ref={containerRef}
           className="relative w-full h-32 sm:h-44 lg:h-56 mt-4 flex items-center justify-center select-none overflow-hidden"
-          data-cursor="repel"
+          data-cursor=""
         >
           {/* Interactive Particle Canvas on top (disperse on hover/touch) */}
           <canvas
