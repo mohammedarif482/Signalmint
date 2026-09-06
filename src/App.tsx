@@ -10,7 +10,7 @@ import { HorizontalShowcase } from "./components/HorizontalShowcase";
 // 05 // TRY IT (WITH YOUR NUMBERS)
 // import { TelemetrySimulator } from "./components/TelemetrySimulator";
 // FINAL CALL // YOUR MOVE
-// import { FooterKinetic } from "./components/FooterKinetic";
+import { FooterKinetic } from "./components/FooterKinetic";
 import { DemoModal } from "./components/DemoModal";
 
 export function App() {
@@ -49,7 +49,7 @@ export function App() {
       </main>
 
       {/* 7. FINAL CALL // YOUR MOVE */}
-      {/* <FooterKinetic onOpenDemoModal={handleOpenDemoModal} /> */}
+      <FooterKinetic onOpenDemoModal={handleOpenDemoModal} />
 
       {/* Interactive VIP Demo Booking Modal */}
       <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemoModal} />
