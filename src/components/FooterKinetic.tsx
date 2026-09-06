@@ -529,7 +529,9 @@ export function FooterKinetic({ onOpenDemoModal }: FooterKineticProps) {
           {/* Marquee Ticker Track with SignalMint Syne Font */}
           <div className="relative overflow-hidden w-full select-none [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
             <div className="flex items-center gap-6 whitespace-nowrap animate-marquee">
-              {TICKER_DATA[activeTab].concat(TICKER_DATA[activeTab]).map((item, idx) => (
+              {((TICKER_DATA[activeTab] || TICKER_DATA.verticals) as string[]).concat(
+                (TICKER_DATA[activeTab] || TICKER_DATA.verticals) as string[]
+              ).map((item, idx) => (
                 <div
                   key={idx}
                   className="font-display font-semibold text-base sm:text-xl text-[#1A0042]/80 hover:text-[#1516A8] transition-colors flex items-center gap-4 cursor-default uppercase tracking-tight"
