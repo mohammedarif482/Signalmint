@@ -59,7 +59,7 @@ export function CustomCursor() {
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
       {/* Outer kinetic ring */}
       <motion.div
-        className="absolute rounded-full border border-[#1516A8]/40 bg-[#6495EB]/10 backdrop-blur-[2px] flex items-center justify-center pointer-events-none"
+        className="absolute rounded-full border border-[#573681]/40 bg-[#6495EB]/10 backdrop-blur-[2px] flex items-center justify-center pointer-events-none"
         style={{
           x: ringX,
           y: ringY,
@@ -69,12 +69,12 @@ export function CustomCursor() {
         animate={{
           width: isHovered ? (cursorText ? 76 : 52) : 28,
           height: isHovered ? (cursorText ? 76 : 52) : 28,
-          borderColor: isHovered ? "rgba(21, 22, 168, 0.7)" : "rgba(26, 0, 66, 0.25)",
+          borderColor: isHovered ? "rgba(87, 54, 129, 0.7)" : "rgba(26, 0, 66, 0.25)",
         }}
         transition={{ type: "spring", stiffness: 350, damping: 25 }}
       >
         {cursorText && (
-          <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-[#1516A8] select-none">
+          <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-[#573681] select-none">
             {cursorText}
           </span>
         )}
@@ -92,7 +92,7 @@ export function CustomCursor() {
         animate={{
           width: isHovered ? 4 : 6,
           height: isHovered ? 4 : 6,
-          backgroundColor: isHovered ? "#1516A8" : "#1A0042",
+          backgroundColor: isHovered ? "#573681" : "#1A0042",
         }}
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
       />

@@ -14,26 +14,67 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 120);
+      setIsScrolled(scrollY > 60);
 
-      // Active nav section tracker
-      if (scrollY < 600) {
-        setActiveSection("intro");
-      } else if (scrollY < 1600) {
-        setActiveSection("why-us");
-      } else if (scrollY < 2600) {
-        setActiveSection("services");
-      } else if (scrollY < 3800) {
-        setActiveSection("proof");
-      } else if (scrollY < 4800) {
-        setActiveSection("how-we-work");
-      } else {
+      // Section mapping by exact DOM ID in visual order
+      const sectionIds: Array<{ id: string; key: "intro" | "why-us" | "services" | "proof" | "how-we-work" | "contact" }> = [
+        { id: "hero-runway", key: "intro" },
+        { id: "agents", key: "why-us" },
+        { id: "services", key: "services" },
+        { id: "proof", key: "proof" },
+        { id: "how-we-work", key: "how-we-work" },
+        { id: "contact", key: "contact" },
+      ];
+
+      // Check if user is near bottom of the page
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
         setActiveSection("contact");
+        return;
       }
+
+      // Check if at the very top of the page
+      if (scrollY < 80) {
+        setActiveSection("intro");
+        return;
+      }
+
+      // Focal threshold: when section top reaches upper 35% of the viewport
+      const focalZone = window.innerHeight * 0.35;
+      let currentSection: "intro" | "why-us" | "services" | "proof" | "how-we-work" | "contact" = "intro";
+
+      for (const { id, key } of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // The last section that has reached or passed the focal line is active
+          if (rect.top <= focalZone) {
+            currentSection = key;
+          }
+        }
+      }
+
+      setActiveSection(currentSection);
     };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string, key: "intro" | "why-us" | "services" | "proof" | "how-we-work" | "contact") => {
+    e.preventDefault();
+    setActiveSection(key);
+    setMobileMenuOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", `#${id}`);
+    }
+  };
 
   return (
     <>
@@ -55,6 +96,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
         <div id="nav-logo-slot" className="flex items-center pointer-events-auto relative z-20">
           <a
             href="#hero-runway"
+            onClick={(e) => handleNavClick(e, "hero-runway", "intro")}
             id="brand-unified-logo"
             className="block origin-top-left will-change-transform cursor-pointer select-none"
             title="SignalMint Home"
@@ -72,7 +114,8 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-sans tracking-[0.06em] uppercase">
             <a
               href="#hero-runway"
-              className={`transition-colors duration-200 hover:text-[#1516A8] ${
+              onClick={(e) => handleNavClick(e, "hero-runway", "intro")}
+              className={`transition-colors duration-200 hover:text-[#573681] ${
                 activeSection === "intro"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
                   : "text-[#1A0042]/70 font-semibold"
@@ -82,7 +125,8 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             </a>
             <a
               href="#agents"
-              className={`transition-colors duration-200 hover:text-[#1516A8] ${
+              onClick={(e) => handleNavClick(e, "agents", "why-us")}
+              className={`transition-colors duration-200 hover:text-[#573681] ${
                 activeSection === "why-us"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
                   : "text-[#1A0042]/70 font-semibold"
@@ -92,7 +136,8 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             </a>
             <a
               href="#services"
-              className={`transition-colors duration-200 hover:text-[#1516A8] ${
+              onClick={(e) => handleNavClick(e, "services", "services")}
+              className={`transition-colors duration-200 hover:text-[#573681] ${
                 activeSection === "services"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
                   : "text-[#1A0042]/70 font-semibold"
@@ -102,7 +147,8 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             </a>
             <a
               href="#proof"
-              className={`transition-colors duration-200 hover:text-[#1516A8] ${
+              onClick={(e) => handleNavClick(e, "proof", "proof")}
+              className={`transition-colors duration-200 hover:text-[#573681] ${
                 activeSection === "proof"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
                   : "text-[#1A0042]/70 font-semibold"
@@ -112,7 +158,8 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             </a>
             <a
               href="#how-we-work"
-              className={`transition-colors duration-200 hover:text-[#1516A8] ${
+              onClick={(e) => handleNavClick(e, "how-we-work", "how-we-work")}
+              className={`transition-colors duration-200 hover:text-[#573681] ${
                 activeSection === "how-we-work"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
                   : "text-[#1A0042]/70 font-semibold"
@@ -120,18 +167,23 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             >
               HOW WE WORK
             </a>
-            <button
-              onClick={onOpenDemoModal}
-              className="transition-colors duration-200 hover:text-[#1516A8] cursor-pointer text-[#1A0042]/70 font-semibold"
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "contact", "contact")}
+              className={`transition-colors duration-200 hover:text-[#573681] ${
+                activeSection === "contact"
+                  ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
+                  : "text-[#1A0042]/70 font-semibold"
+              }`}
             >
               CONTACT
-            </button>
+            </a>
           </nav>
 
           {/* Quick Book Audit button on larger screens */}
           <button
             onClick={onOpenDemoModal}
-            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1A0042] hover:bg-[#1516A8] text-white text-[11px] font-sans font-bold tracking-[0.04em] uppercase transition-all shadow-xs active:scale-95 cursor-pointer"
+            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#573681] hover:bg-[#1A0042] text-white text-[11px] font-sans font-bold tracking-[0.04em] uppercase transition-all duration-200 shadow-xs active:scale-95 cursor-pointer"
           >
             <span>Book Audit</span>
             <ArrowUpRight className="w-3 h-3" />
@@ -158,53 +210,146 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
         </div>
       </header>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Full-Screen Menu Overlay with Backdrop Filter / Blur */}
       {mobileMenuOpen && (
-        <div className="fixed top-16 left-0 right-0 z-50 md:hidden border-b border-[#1A0042]/10 bg-[#FAFAFD]/95 backdrop-blur-xl px-6 py-5 flex flex-col gap-3 shadow-xl font-sans">
-          <a
-            href="#hero-runway"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-semibold tracking-[0.06em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
-          >
-            INTRO
-          </a>
-          <a
-            href="#agents"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-semibold tracking-[0.06em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
-          >
-            WHY US
-          </a>
-          <a
-            href="#services"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-semibold tracking-[0.06em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
-          >
-            SERVICES
-          </a>
-          <a
-            href="#proof"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-semibold tracking-[0.06em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
-          >
-            PROOF (CASE STUDIES)
-          </a>
-          <a
-            href="#how-we-work"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-semibold tracking-[0.06em] uppercase text-[#1A0042] py-2 border-b border-[#1A0042]/8"
-          >
-            HOW WE WORK
-          </a>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenDemoModal?.();
-            }}
-            className="mt-2 w-full py-2.5 rounded-full bg-[#1516A8] hover:bg-[#1A0042] text-white text-xs font-sans font-bold uppercase tracking-[0.04em] text-center cursor-pointer shadow-md transition-all"
-          >
-            BOOK 30-MIN AUDIT
-          </button>
+        <div 
+          className="fixed inset-0 z-50 md:hidden bg-[#FAFAFD]/25 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-8 animate-in fade-in duration-200"
+          style={{ overscrollBehavior: "contain" }}
+        >
+          {/* Top Bar inside Fullscreen overlay */}
+          <div className="flex items-center justify-between pt-2 pb-6 border-b border-[#1A0042]/10">
+            <a
+              href="#hero-runway"
+              onClick={(e) => handleNavClick(e, "hero-runway", "intro")}
+              className="flex items-center"
+            >
+              <img
+                src={signalMintLogo}
+                alt="SignalMint"
+                className="h-6 w-auto object-contain block"
+              />
+            </a>
+
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3.5 py-1.5 rounded-full border border-[#1A0042]/20 bg-white/70 backdrop-blur-md text-[#1A0042] font-mono text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95 transition-all"
+              aria-label="Close menu"
+            >
+              <X className="w-3.5 h-3.5" />
+              <span>CLOSE</span>
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="flex-1 flex flex-col justify-center py-6 space-y-3 sm:space-y-5">
+            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#573681] mb-2 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#573681]" />
+              <span>NAVIGATION DIRECTORY</span>
+            </div>
+
+            <a
+              href="#hero-runway"
+              onClick={(e) => handleNavClick(e, "hero-runway", "intro")}
+              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+                activeSection === "intro" ? "text-[#573681]" : "text-[#1A0042]"
+              }`}
+            >
+              <span className="flex items-center gap-2.5">
+                {activeSection === "intro" && <span className="w-2 h-2 rounded-full bg-[#573681]" />}
+                <span>Intro</span>
+              </span>
+              <span className="text-xs font-mono text-[#1A0042]/40 group-hover:text-[#573681] group-hover:translate-x-1 transition-all">↗</span>
+            </a>
+
+            <a
+              href="#agents"
+              onClick={(e) => handleNavClick(e, "agents", "why-us")}
+              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+                activeSection === "why-us" ? "text-[#573681]" : "text-[#1A0042]"
+              }`}
+            >
+              <span className="flex items-center gap-2.5">
+                {activeSection === "why-us" && <span className="w-2 h-2 rounded-full bg-[#573681]" />}
+                <span>Why Us</span>
+              </span>
+              <span className="text-xs font-mono text-[#1A0042]/40 group-hover:text-[#573681] group-hover:translate-x-1 transition-all">↗</span>
+            </a>
+
+            <a
+              href="#services"
+              onClick={(e) => handleNavClick(e, "services", "services")}
+              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+                activeSection === "services" ? "text-[#573681]" : "text-[#1A0042]"
+              }`}
+            >
+              <span className="flex items-center gap-2.5">
+                {activeSection === "services" && <span className="w-2 h-2 rounded-full bg-[#573681]" />}
+                <span>Services</span>
+              </span>
+              <span className="text-xs font-mono text-[#1A0042]/40 group-hover:text-[#573681] group-hover:translate-x-1 transition-all">↗</span>
+            </a>
+
+            <a
+              href="#proof"
+              onClick={(e) => handleNavClick(e, "proof", "proof")}
+              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+                activeSection === "proof" ? "text-[#573681]" : "text-[#1A0042]"
+              }`}
+            >
+              <span className="flex items-center gap-2.5">
+                {activeSection === "proof" && <span className="w-2 h-2 rounded-full bg-[#573681]" />}
+                <span>Proof</span>
+              </span>
+              <span className="text-xs font-mono text-[#1A0042]/40 group-hover:text-[#573681] group-hover:translate-x-1 transition-all">↗</span>
+            </a>
+
+            <a
+              href="#how-we-work"
+              onClick={(e) => handleNavClick(e, "how-we-work", "how-we-work")}
+              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+                activeSection === "how-we-work" ? "text-[#573681]" : "text-[#1A0042]"
+              }`}
+            >
+              <span className="flex items-center gap-2.5">
+                {activeSection === "how-we-work" && <span className="w-2 h-2 rounded-full bg-[#573681]" />}
+                <span>How We Work</span>
+              </span>
+              <span className="text-xs font-mono text-[#1A0042]/40 group-hover:text-[#573681] group-hover:translate-x-1 transition-all">↗</span>
+            </a>
+
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "contact", "contact")}
+              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+                activeSection === "contact" ? "text-[#573681]" : "text-[#1A0042]"
+              }`}
+            >
+              <span className="flex items-center gap-2.5">
+                {activeSection === "contact" && <span className="w-2 h-2 rounded-full bg-[#573681]" />}
+                <span>Contact</span>
+              </span>
+              <span className="text-xs font-mono text-[#1A0042]/40 group-hover:text-[#573681] group-hover:translate-x-1 transition-all">↗</span>
+            </a>
+          </div>
+
+          {/* Bottom Action & Footer Meta in Full-Screen Menu */}
+          <div className="pt-6 border-t border-[#1A0042]/10 flex flex-col gap-4">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenDemoModal?.();
+              }}
+              className="w-full py-4 rounded-2xl bg-[#573681] hover:bg-[#1A0042] text-white text-xs font-mono font-bold uppercase tracking-wider text-center cursor-pointer shadow-lg active:scale-98 transition-all flex items-center justify-center gap-2"
+            >
+              <span>BOOK 30-MIN AUDIT</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#1A0042]/60 px-1">
+              <span>BOM-01 // AUDIT PIPELINE</span>
+              <span>AI NATIVE, PERFORMANCE MARKETING</span>
+            </div>
+          </div>
         </div>
       )}
 
@@ -214,7 +359,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
         title="SignalMint Performance Marketing Agency"
       >
         <div className="[writing-mode:vertical-rl] text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.08em] text-[#1A0042] flex items-center gap-2 font-black cursor-default">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#1516A8] mb-0.5"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#573681] mb-0.5"></span>
           <span>AUDIT-FIRST AGENCY</span>
         </div>
       </aside>

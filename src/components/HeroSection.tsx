@@ -73,6 +73,18 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         transformOrigin: "left top",
       });
 
+      // Align eyebrow width and origin to match logo right edge
+      const alignEyebrow = () => {
+        if (!eyebrow || !brandLogo) return;
+        const rect = brandLogo.getBoundingClientRect();
+        if (rect.width > 0) {
+          eyebrow.style.left = `${rect.left}px`;
+          eyebrow.style.width = `${rect.width}px`;
+        }
+      };
+      alignEyebrow();
+      window.addEventListener("resize", alignEyebrow);
+
       // 1. INITIAL REST / HOLD BUFFER (0% to 10% scroll holds hero stable)
       scrubTl.to({}, { duration: 0.10 }, 0);
 
@@ -297,14 +309,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Eyebrow: 01 // PERFORMANCE MARKETING, DATA-FIRST */}
+        {/* Eyebrow: AI NATIVE, PERFORMANCE MARKETING */}
         <div
           ref={eyebrowRef}
           id="hero-eyebrow"
-          className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-4 sm:left-10 lg:left-14 right-4 sm:right-auto sm:w-[540px] lg:w-[720px] flex justify-end z-20 pointer-events-none"
+          className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-6 sm:left-11 lg:left-14 w-[calc(100vw-3rem)] sm:w-[532px] lg:w-[662px] flex justify-end z-20 pointer-events-none"
         >
-          <span className="font-sans font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13.5px] text-[#1A0042] uppercase inline-block text-right">
-            01 // PERFORMANCE MARKETING, DATA-FIRST
+          <span className="font-sans font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13px] text-[#1A0042] uppercase inline-block text-right">
+            AI NATIVE, PERFORMANCE MARKETING
           </span>
         </div>
 
@@ -359,7 +371,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
               {/* Instant Audit CTA */}
               <button
                 onClick={onOpenDemoModal}
-                className="self-end inline-flex items-center gap-1 font-mono text-[9px] sm:text-[11px] font-bold text-[#1516A8] hover:text-[#4D0181] uppercase tracking-wider transition-colors cursor-pointer group"
+                className="self-end inline-flex items-center gap-1 font-mono text-[9px] sm:text-[11px] font-bold text-[#573681] hover:text-[#1A0042] uppercase tracking-wider transition-colors cursor-pointer group"
               >
                 <span>Book a 30-Min Audit</span>
                 <span className="group-hover:translate-x-0.5 transition-transform">→</span>
@@ -399,8 +411,8 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
 
               {/* Center Play Button Overlay (Exact Oryzo mobile PLAY display) */}
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-                <div className="w-8 h-8 rounded-full bg-white/95 text-[#1516A8] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                  <Play className="w-3.5 h-3.5 fill-[#1516A8] ml-0.5" />
+                <div className="w-8 h-8 rounded-full bg-white/95 text-[#573681] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                  <Play className="w-3.5 h-3.5 fill-[#573681] ml-0.5" />
                 </div>
                 <span className="font-sans font-black text-[9.5px] tracking-wider text-white uppercase drop-shadow-md">
                   PLAY
@@ -411,7 +423,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             {/* Bottom mini label (desktop only) */}
             <div className="hidden sm:flex p-1.5 pt-2 items-center justify-between font-mono text-[9px] text-[#1A0042]">
               <span className="font-bold uppercase tracking-wider">AUDIT DEEP-DIVE</span>
-              <span className="text-[#1516A8] font-bold flex items-center gap-0.5">
+              <span className="text-[#573681] font-bold flex items-center gap-0.5">
                 PLAY <span>▶</span>
               </span>
             </div>
@@ -467,8 +479,8 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
               ✕
             </button>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#1516A8] animate-pulse"></span>
-              <span className="font-mono text-xs font-bold text-[#1516A8] uppercase">
+              <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse"></span>
+              <span className="font-mono text-xs font-bold text-[#573681] uppercase">
                 SEE HOW WE AUDIT (2:04)
               </span>
             </div>
@@ -482,7 +494,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-[#1A0042]/35" />
-              <div className="w-14 h-14 rounded-full bg-[#1516A8] text-white flex items-center justify-center shadow-lg mb-3 z-10 hover:scale-110 transition-transform cursor-pointer">
+              <div className="w-14 h-14 rounded-full bg-[#573681] text-white flex items-center justify-center shadow-lg mb-3 z-10 hover:scale-110 transition-transform cursor-pointer">
                 <Play className="w-6 h-6 fill-white ml-0.5" />
               </div>
               <p className="font-mono text-xs text-white font-medium z-10 drop-shadow-sm">
@@ -495,7 +507,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
                   setShowVideoModal(false);
                   onOpenDemoModal?.();
                 }}
-                className="flex-1 py-3 rounded-xl bg-[#1516A8] text-white font-mono text-xs font-bold uppercase hover:bg-[#4D0181] transition-colors cursor-pointer"
+                className="flex-1 py-3 rounded-xl bg-[#573681] text-white font-mono text-xs font-bold uppercase hover:bg-[#1A0042] transition-colors cursor-pointer"
               >
                 Book a 30-Min Audit
               </button>

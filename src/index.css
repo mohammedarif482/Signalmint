@@ -13,13 +13,16 @@
   --color-canvas-white: #FAFAFD;
   --color-canvas-outro: #DCDAFD;
   --color-ink-primary: #1A0042;
-  --color-accent-purple: #4D0181;
-  --color-accent-signal: #1516A8;
+  --color-accent-purple: #573681;
+  --color-accent-signal: #573681;
   --color-accent-periwinkle: #6495EB;
-  --font-display: 'Syne', sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-headline: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-techno: 'GenericTechno', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-pjs: 'Plus Jakarta Sans', sans-serif;
   --font-inter: 'Inter', sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -31,8 +34,8 @@
   --bg-white: #FAFAFD;
   --bg-outro: #DCDAFD;
   --ink-primary: #1A0042;
-  --accent-purple: #4D0181;
-  --accent-signal: #1516A8;
+  --accent-purple: #573681;
+  --accent-signal: #573681;
   --border-hairline: rgba(26, 0, 66, 0.08);
 }
 
@@ -43,7 +46,7 @@
 html, body {
   background-color: #FAFAFD;
   color: #1A0042;
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -71,8 +74,25 @@ html, body {
 }
 
 /* Font family utility classes */
-.font-display {
-  font-family: 'Syne', sans-serif;
+.font-display,
+.font-headline {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Elegant title & heading typography: reduce bulky ultra-heavy weights to refined semibold/bold */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.font-black {
+  font-weight: 700 !important;
+}
+
+.font-extrabold {
+  font-weight: 600 !important;
 }
 
 .font-techno {
@@ -84,6 +104,10 @@ html, body {
 }
 
 .font-body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-pjs {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -135,7 +159,7 @@ html.lenis, html.lenis body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #1516A8;
+  background: #573681;
 }
 
 /* Infinite Horizontal Marquee */
@@ -156,5 +180,71 @@ html.lenis, html.lenis body {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Fast & smooth telemetry ticker loop for mobile */
+.animate-telemetry-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+}
+
+.animate-telemetry-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Brand cards mobile loop marquee */
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-brand-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+
+.animate-brand-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 26s linear infinite;
+}
+
+.animate-brand-marquee:hover,
+.animate-brand-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================================================= */
+/* DEDICATED SEPARATED FOOTER & INNER-PAGE TEXTURED BACKGROUNDS              */
+/* ========================================================================= */
+.footer-separated-bg {
+  background-color: #F2ECF9;
+  background-image: 
+    radial-gradient(circle at 14% 12%, rgba(176, 139, 224, 0.28) 0%, transparent 46%),
+    radial-gradient(circle at 86% 18%, rgba(87, 54, 129, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 88%, rgba(212, 200, 240, 0.32) 0%, transparent 58%),
+    linear-gradient(rgba(87, 54, 129, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 54, 129, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, #EFE8F7 0%, #F5F0FA 35%, #FAF7FC 100%);
+  background-size: auto, auto, auto, 36px 36px, 36px 36px, auto;
+  position: relative;
+}
+
+/* Subtle architectural signal divider band */
+.footer-signal-divider {
+  background: linear-gradient(90deg, transparent 0%, rgba(87, 54, 129, 0.25) 25%, rgba(87, 54, 129, 0.5) 50%, rgba(87, 54, 129, 0.25) 75%, transparent 100%);
+}
+
+.inner-page-hero-mesh {
+  background-color: #FAFAFD;
+  background-image:
+    radial-gradient(circle at 85% 15%, rgba(176, 139, 224, 0.20) 0%, transparent 45%),
+    radial-gradient(circle at 15% 35%, rgba(87, 54, 129, 0.10) 0%, transparent 50%);
 }
 

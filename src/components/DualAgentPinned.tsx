@@ -204,15 +204,15 @@ export function DualAgentPinned() {
             alt="SignalMint Atlas Budget Guardian Environment"
             className="w-full h-full object-cover object-center select-none mix-blend-screen opacity-70 scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#1A0042]/90 via-[#4D0181]/40 to-[#1516A8]/50 mix-blend-color-burn pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#1A0042]/90 via-[#573681]/40 to-[#573681]/50 mix-blend-color-burn pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1A0042]/80 via-transparent to-transparent pointer-events-none" />
         </div>
 
         {/* Top Centered Floating Pill: ↑ 02 // THE DIFFERENCE */}
         <div className="absolute top-18 sm:top-24 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
           <div className="px-3.5 py-1.5 rounded-full bg-white/40 sm:bg-[#1A0042]/10 backdrop-blur-md border border-[#1A0042]/15 text-[#1A0042] text-[10px] sm:text-xs font-sans font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-2xs">
-            <ArrowUp className="w-3 h-3 text-[#1516A8]" />
-            <span>02 // THE DIFFERENCE</span>
+            <ArrowUp className="w-3 h-3 text-[#573681]" />
+            <span>THE DIFFERENCE</span>
           </div>
         </div>
 
@@ -222,7 +222,7 @@ export function DualAgentPinned() {
             ref={diskRef}
             className="w-52 sm:w-80 lg:w-[26rem] aspect-square flex items-center justify-center relative [perspective:1000px] will-change-transform -translate-y-16 sm:translate-y-0"
           >
-            <div className="absolute inset-0 bg-[#1516A8]/15 rounded-full blur-3xl" />
+            <div className="absolute inset-0 bg-[#573681]/15 rounded-full blur-3xl" />
             <img
               src={heroDiskImage}
               alt="SignalMint Diagnostic Core"
@@ -385,7 +385,7 @@ export function DualAgentPinned() {
 
           <div className="flex items-center gap-3 pt-2 border-t border-[#1A0042]/15 font-mono text-[11px] text-[#1A0042]/65">
             <span className="tracking-widest uppercase text-[10px]">DIAGNOSTIC CADENCE:</span>
-            <span className="font-sans font-serif italic font-bold text-sm text-[#1516A8]">
+            <span className="font-body italic font-bold text-sm text-[#573681]">
               Daily Checks &middot; Weekly Re-tunes
             </span>
           </div>

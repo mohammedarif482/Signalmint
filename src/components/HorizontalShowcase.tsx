@@ -194,7 +194,7 @@ export function HorizontalShowcase() {
         <div className="max-w-3xl">
           {/* Eyebrow: 03 // CROWN WINNERS (THIS WEEK) */}
           <div className="mb-3.5">
-            <span className="font-mono text-xs font-semibold text-[#4D0181] bg-[#4D0181]/10 px-3 py-1 rounded-full border border-[#4D0181]/20 inline-block uppercase tracking-widest">
+            <span className="font-mono text-xs font-semibold text-[#573681] bg-[#573681]/10 px-3 py-1 rounded-full border border-[#573681]/20 inline-block uppercase tracking-widest">
               03 // CROWN WINNERS (THIS WEEK)
             </span>
           </div>
@@ -205,7 +205,7 @@ export function HorizontalShowcase() {
             className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase"
           >
             WATCH: EXACTLY HOW THEY DID IT
-            <span className="block text-2xl sm:text-3xl font-serif italic text-[#1516A8] mt-1 normal-case tracking-normal">
+            <span className="block text-2xl sm:text-3xl font-body italic font-semibold text-[#573681] mt-1 normal-case tracking-normal">
               (Then steal the pattern.)
             </span>
           </h2>
@@ -229,35 +229,35 @@ export function HorizontalShowcase() {
           {CROWN_CARDS.map((card, idx) => (
             <div
               key={card.id}
-              className="w-[86vw] max-w-[420px] sm:w-[380px] lg:w-[420px] bg-white rounded-2xl p-6 lg:p-7 border border-[#1A0042]/10 shadow-xl flex-shrink-0 flex flex-col justify-between hover:border-[#1516A8]/40 transition-all duration-300 relative group"
+              className="w-[86vw] max-w-[420px] sm:w-[380px] lg:w-[420px] bg-white rounded-2xl p-6 lg:p-7 border border-[#1A0042]/10 shadow-xl flex-shrink-0 flex flex-col justify-between hover:border-[#573681]/40 transition-all duration-300 relative group"
             >
               {/* Card Accent Top Bar */}
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#1516A8] via-[#4D0181] to-[#1516A8] rounded-t-2xl opacity-90" />
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#573681] via-[#573681] to-[#573681] rounded-t-2xl opacity-90" />
 
               <div>
                 {/* Pattern Title & Brand Badge */}
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#E7E6FB] text-[#4D0181] border border-[#4D0181]/20">
+                  <span className="font-mono text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#E7E6FB] text-[#573681] border border-[#573681]/20">
                     PATTERN #{idx + 1}
                   </span>
                   <div className="flex items-center gap-1 font-mono text-xs text-[#1A0042]/60">
-                    <Clock className="w-3.5 h-3.5 text-[#1516A8]" />
+                    <Clock className="w-3.5 h-3.5 text-[#573681]" />
                     <span>{card.scalingDuration}</span>
                   </div>
                 </div>
 
-                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#1A0042] mb-1 group-hover:text-[#1516A8] transition-colors">
+                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#1A0042] mb-1 group-hover:text-[#573681] transition-colors">
                   {card.patternTitle}
                 </h3>
-                <div className="font-mono text-xs text-[#1516A8] font-bold uppercase tracking-wider mb-4">
+                <div className="font-mono text-xs text-[#573681] font-bold uppercase tracking-wider mb-4">
                   Brand: {card.brand}
                 </div>
 
-                {/* Outcome Metrics Row: ROAS in #1516A8, Spend, Days Scaling */}
+                {/* Outcome Metrics Row: ROAS in #573681, Spend, Days Scaling */}
                 <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-[#FAFAFD] border border-[#E7E6FB] mb-5 text-center font-mono">
                   <div>
                     <div className="text-[10px] text-[#1A0042]/60 font-semibold">ROAS</div>
-                    <div className="font-black text-lg text-[#1516A8]">{card.roas}</div>
+                    <div className="font-black text-lg text-[#573681]">{card.roas}</div>
                   </div>
                   <div className="border-x border-[#E7E6FB]">
                     <div className="text-[10px] text-[#1A0042]/60 font-semibold">SPEND</div>
@@ -271,8 +271,8 @@ export function HorizontalShowcase() {
 
                 {/* The Hook (In Human Terms) */}
                 <div className="mb-4 p-3.5 rounded-xl bg-[#E7E6FB]/40 border border-[#1A0042]/8">
-                  <div className="font-mono text-[11px] font-bold text-[#1516A8] uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#1516A8]" />
+                  <div className="font-mono text-[11px] font-bold text-[#573681] uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-[#573681]" />
                     <span>THE HOOK (IN HUMAN TERMS)</span>
                   </div>
                   <p className="font-body text-xs text-[#1A0042]/85 leading-relaxed">
@@ -282,7 +282,7 @@ export function HorizontalShowcase() {
 
                 {/* Why It Works */}
                 <div className="mb-5 p-3.5 rounded-xl bg-white border border-[#1A0042]/10 text-xs">
-                  <div className="font-mono text-[11px] font-bold text-[#4D0181] uppercase tracking-wider mb-1">
+                  <div className="font-mono text-[11px] font-bold text-[#573681] uppercase tracking-wider mb-1">
                     WHY IT WORKS // TELEMETRY
                   </div>
                   <p className="font-body text-xs text-[#1A0042]/80 leading-relaxed">
@@ -311,7 +311,7 @@ export function HorizontalShowcase() {
 
                 <button
                   onClick={() => setSelectedCard(card)}
-                  className="w-full py-3 rounded-xl bg-[#1516A8] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm active:scale-98"
+                  className="w-full py-3 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm active:scale-98"
                 >
                   <span>{card.actionText}</span>
                 </button>
@@ -320,9 +320,9 @@ export function HorizontalShowcase() {
           ))}
 
           {/* End Reel CTA Card */}
-          <div className="w-[340px] lg:w-[380px] bg-[#E7E6FB]/90 rounded-2xl p-7 border border-[#1516A8]/20 shadow-lg flex-shrink-0 flex flex-col justify-between text-center">
+          <div className="w-[340px] lg:w-[380px] bg-[#E7E6FB]/90 rounded-2xl p-7 border border-[#573681]/20 shadow-lg flex-shrink-0 flex flex-col justify-between text-center">
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#1516A8] text-white flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-[#573681] text-white flex items-center justify-center mx-auto mb-4 shadow-sm">
                 <Zap className="w-6 h-6" />
               </div>
               <h3 className="font-display font-extrabold text-2xl text-[#1A0042] uppercase mb-2">
@@ -336,7 +336,7 @@ export function HorizontalShowcase() {
             <div className="space-y-3">
               <a
                 href="#simulator"
-                className="w-full py-3 rounded-xl bg-[#1516A8] hover:bg-[#4D0181] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-sm block"
+                className="w-full py-3 rounded-xl bg-[#573681] hover:bg-[#573681] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-sm block"
               >
                 <span>Launch Telemetry Sandbox</span>
                 <ArrowRight className="w-4 h-4" />
@@ -361,8 +361,8 @@ export function HorizontalShowcase() {
             </button>
 
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#1516A8] animate-pulse"></span>
-              <span className="font-mono text-xs font-bold text-[#1516A8] uppercase">
+              <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse"></span>
+              <span className="font-mono text-xs font-bold text-[#573681] uppercase">
                 SCOUT CREATIVE BLUEPRINT // {selectedCard.brand}
               </span>
             </div>
@@ -370,7 +370,7 @@ export function HorizontalShowcase() {
             <h3 className="font-display font-black text-2xl text-[#1A0042] mb-1">
               {selectedCard.patternTitle}
             </h3>
-            <p className="font-mono text-xs text-[#4D0181] font-semibold mb-4">
+            <p className="font-mono text-xs text-[#573681] font-semibold mb-4">
               {selectedCard.roas} | {selectedCard.spend} | {selectedCard.scalingDuration}
             </p>
 
@@ -379,7 +379,7 @@ export function HorizontalShowcase() {
                 <span>CADENCE TIMELINE (0–15s):</span>
                 <button
                   onClick={() => handleCopyScript(selectedCard.scriptDNA)}
-                  className="text-[11px] text-[#1516A8] font-bold hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-[11px] text-[#573681] font-bold hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   {copiedScript ? <><Check className="w-3 h-3 text-emerald-600 inline mr-1" /> Copied</> : "Copy Blueprint"}
                 </button>
@@ -393,13 +393,13 @@ export function HorizontalShowcase() {
             </div>
 
             <div className="p-3 bg-[#E7E6FB]/50 rounded-xl border border-[#1A0042]/10 font-mono text-xs text-[#1A0042]/80 mb-5">
-              <strong className="text-[#1516A8] block mb-0.5">SCOUT RECOMMENDATION:</strong>
+              <strong className="text-[#573681] block mb-0.5">SCOUT RECOMMENDATION:</strong>
               Adapt this hook for <strong className="text-[#1A0042]">{userCategory}</strong> by replicating the acoustic break in the first 1.8s.
             </div>
 
             <button
               onClick={() => setSelectedCard(null)}
-              className="w-full py-3 rounded-xl bg-[#1516A8] text-white font-mono text-xs font-bold uppercase hover:bg-[#1A0042] transition-colors cursor-pointer"
+              className="w-full py-3 rounded-xl bg-[#573681] text-white font-mono text-xs font-bold uppercase hover:bg-[#1A0042] transition-colors cursor-pointer"
             >
               Close Telemetry Inspector
             </button>

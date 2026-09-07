@@ -62,16 +62,16 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14 sm:mb-20">
           <div className="max-w-2xl">
-            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#1516A8] mb-3 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#1516A8]" />
-              <span>03 // WHAT WE DO (THE THREE SERVICES)</span>
+            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#573681]" />
+              <span>WHAT WE DO (THE THREE SERVICES)</span>
             </div>
             <h2
               ref={headingRef}
               className="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] uppercase"
             >
               Full-Funnel Execution. <br />
-              <span className="text-[#1516A8]">One Diagnostic Philosophy.</span>
+              <span className="text-[#573681]">One Diagnostic Philosophy.</span>
             </h2>
           </div>
 
@@ -123,7 +123,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
         {activeTab === 0 && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-in fade-in duration-300">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1516A8]/10 text-[#1516A8] border border-[#1516A8]/20 font-mono text-xs font-bold uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#573681]/10 text-[#573681] border border-[#573681]/20 font-mono text-xs font-bold uppercase">
                 <Target className="w-3 h-3" />
                 <span>CAMPAIGN ARCHITECTURE BUILT FOR SCALE</span>
               </div>
@@ -138,19 +138,19 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
 
               <div className="space-y-3 pt-2 font-sans text-sm text-[#1A0042]/90">
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>30+ Day Attribution Windows:</strong> Campaign architecture structured for delayed conversion cycles and post-iOS tracking reality.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Unit Economics-Tied Audience Modeling:</strong> Broad and segment targets mapped directly to your blended CPA and contribution margin.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Fatigue-Based Creative Rotation:</strong> Systematic swap cadence driven by hook frequency saturation, not intuition.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Weekly Bid Strategy Re-Tuning:</strong> Live pacing adjustments that prevent algorithm bid inflation and budget burn.</span>
                 </div>
               </div>
@@ -158,12 +158,12 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
               <div className="pt-4 flex flex-wrap items-center gap-4">
                 <div className="p-4 rounded-xl bg-white border border-[#1A0042]/15 shadow-sm">
                   <div className="font-mono text-xs text-[#1A0042]/60 uppercase font-semibold">VERIFIED CLIENT IMPACT</div>
-                  <div className="font-display font-extrabold text-2xl text-[#1516A8]">2.1x Avg ROAS Lift</div>
+                  <div className="font-display font-extrabold text-2xl text-[#573681]">2.1x Avg ROAS Lift</div>
                   <div className="text-xs text-[#1A0042]/75">Within first 60 days of restructure</div>
                 </div>
                 <button
                   onClick={onOpenDemoModal}
-                  className="px-6 py-4 rounded-xl bg-[#1A0042] hover:bg-[#1516A8] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] cursor-pointer"
+                  className="px-6 py-4 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] cursor-pointer"
                 >
                   Audit My Meta Ads →
                 </button>
@@ -172,7 +172,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
 
             <div className="lg:col-span-6">
               <div className="p-6 sm:p-8 rounded-3xl bg-[#1A0042] text-white border border-white/10 shadow-2xl space-y-6 relative overflow-hidden">
-                <div className="absolute -right-16 -top-16 w-60 h-60 bg-[#1516A8]/40 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute -right-16 -top-16 w-60 h-60 bg-[#573681]/40 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
                   <div className="flex items-center gap-2 font-mono text-xs font-bold text-emerald-400">
@@ -188,7 +188,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
                     <span className="text-emerald-400 font-bold">4.2x ROAS</span>
                   </div>
                   <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                    <div className="bg-gradient-to-r from-[#1516A8] to-[#6495EB] h-full w-[72%]" />
+                    <div className="bg-gradient-to-r from-[#573681] to-[#6495EB] h-full w-[72%]" />
                   </div>
                   <div className="flex justify-between font-mono text-[10.5px] text-white/70">
                     <span>Broad ASC+ // 3s Hook Rate: 48%</span>
@@ -202,7 +202,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
                     <span className="text-emerald-400 font-bold">5.8x ROAS</span>
                   </div>
                   <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                    <div className="bg-gradient-to-r from-[#4D0181] to-purple-400 h-full w-[84%]" />
+                    <div className="bg-gradient-to-r from-[#573681] to-purple-400 h-full w-[84%]" />
                   </div>
                   <div className="flex justify-between font-mono text-[10.5px] text-white/70">
                     <span>High-Intent Video Viewers // Retention: 54%</span>
@@ -233,7 +233,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
         {activeTab === 1 && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-in fade-in duration-300">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1516A8]/10 text-[#1516A8] border border-[#1516A8]/20 font-mono text-xs font-bold uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#573681]/10 text-[#573681] border border-[#573681]/20 font-mono text-xs font-bold uppercase">
                 <Sparkles className="w-3 h-3" />
                 <span>DATA-INFORMED PRODUCTION BRIEFS</span>
               </div>
@@ -248,19 +248,19 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
 
               <div className="space-y-3 pt-2 font-sans text-sm text-[#1A0042]/90">
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Creative Lifecycle Analysis:</strong> Mapped per format across 0–7 days, 8–30 days, and 30+ day longevity windows.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Hook Type Reverse-Engineering:</strong> Sensory shock, contrarian teardowns, and immediate proof cadences extracted from historical winners.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Audience-Specific Variation:</strong> Separate creative architectures for net-new cold traffic versus high-LTV repeat buyers.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Proactive Refresh Pipeline:</strong> Replacement assets deployed before fatigue sets in, eliminating ROAS cliff drops.</span>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
                 </div>
                 <button
                   onClick={onOpenDemoModal}
-                  className="px-6 py-4 rounded-xl bg-[#1A0042] hover:bg-[#1516A8] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] cursor-pointer"
+                  className="px-6 py-4 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] cursor-pointer"
                 >
                   Audit My Creatives →
                 </button>
@@ -297,7 +297,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
                   </div>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-[#1A0042] border-2 border-[#1516A8] text-white space-y-3 shadow-xl relative">
+                <div className="p-5 rounded-2xl bg-[#1A0042] border-2 border-[#573681] text-white space-y-3 shadow-xl relative">
                   <div className="absolute -top-3 right-4 px-2 py-0.5 rounded bg-emerald-500 text-black font-mono text-[9px] font-extrabold uppercase">
                     PROVEN WINNER
                   </div>
@@ -318,7 +318,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
 
               <div className="p-4 rounded-xl bg-[#E7E6FB]/70 border border-[#1A0042]/15 font-mono text-xs flex items-center justify-between">
                 <span className="text-[#1A0042]/70 font-bold">HOOK RETENTION OVERLAY:</span>
-                <span className="text-[#1516A8] font-bold">0:00–0:03 Sensory Cliff Overcome (+120% Watch Time)</span>
+                <span className="text-[#573681] font-bold">0:00–0:03 Sensory Cliff Overcome (+120% Watch Time)</span>
               </div>
             </div>
           </div>
@@ -328,7 +328,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
         {activeTab === 2 && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-in fade-in duration-300">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1516A8]/10 text-[#1516A8] border border-[#1516A8]/20 font-mono text-xs font-bold uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#573681]/10 text-[#573681] border border-[#573681]/20 font-mono text-xs font-bold uppercase">
                 <Activity className="w-3 h-3" />
                 <span>SYSTEMATIC DIAGNOSTIC RIGOR</span>
               </div>
@@ -343,19 +343,19 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
 
               <div className="space-y-3 pt-2 font-sans text-sm text-[#1A0042]/90">
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Campaign Architecture Audit:</strong> Layering integrity, broad vs. lookalike cannibalization, and budget distribution checks.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Pixel &amp; CAPI Health:</strong> Event deduplication, consent mode firing, and checkout drop-off attribution verification.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Creative Fatigue Scoring:</strong> Hook saturation curves per audience to calculate exact days until CPA degradation.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#1516A8]/10 text-[#1516A8] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#573681]/10 text-[#573681] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
                   <span><strong>Attribution Integrity Check:</strong> Reconciling Meta Ads Manager reporting against true Shopify bank-settled revenue.</span>
                 </div>
               </div>
@@ -368,7 +368,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
                 </div>
                 <button
                   onClick={onOpenDemoModal}
-                  className="px-6 py-4 rounded-xl bg-[#1A0042] hover:bg-[#1516A8] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] cursor-pointer"
+                  className="px-6 py-4 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:scale-[1.02] cursor-pointer"
                 >
                   Request Diagnostic Audit →
                 </button>
@@ -379,7 +379,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
               <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#1A0042]/15 shadow-xl space-y-4">
                 <div className="flex items-center justify-between border-b border-[#1A0042]/10 pb-3 font-mono text-xs">
                   <span className="font-bold text-[#1A0042] uppercase">DIAGNOSTIC AUDIT MATRIX (6 CHECKPOINTS)</span>
-                  <span className="text-[#1516A8] font-bold">STATUS REPORT</span>
+                  <span className="text-[#573681] font-bold">STATUS REPORT</span>
                 </div>
 
                 <div className="space-y-2.5 font-mono text-xs">
@@ -427,7 +427,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
                 <div className="pt-2 text-center">
                   <a
                     href="#proof"
-                    className="font-mono text-xs text-[#1516A8] hover:underline font-bold"
+                    className="font-mono text-xs text-[#573681] hover:underline font-bold"
                   >
                     See how we solved this for clients in Section 04 ↓
                   </a>

@@ -122,16 +122,16 @@ export function EngagementModelSection({ onOpenDemoModal }: EngagementModelProps
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
           <div className="max-w-2xl">
-            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#1516A8] mb-3 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#1516A8]" />
-              <span>05 // THE ENGAGEMENT MODEL</span>
+            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#573681]" />
+              <span>THE ENGAGEMENT MODEL</span>
             </div>
             <h2
               ref={headingRef}
               className="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] uppercase"
             >
               From "Just Hired" <br />
-              <span className="text-[#1516A8]">To Running Optimally.</span>
+              <span className="text-[#573681]">To Running Optimally.</span>
             </h2>
           </div>
 
@@ -153,13 +153,13 @@ export function EngagementModelSection({ onOpenDemoModal }: EngagementModelProps
                 className={`p-6 sm:p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between select-none ${
                   isSelected
                     ? "bg-[#1A0042] text-white border-[#1A0042] shadow-2xl scale-[1.02]"
-                    : "bg-white text-[#1A0042] border-[#1A0042]/15 hover:border-[#1516A8]/50 hover:shadow-md"
+                    : "bg-white text-[#1A0042] border-[#1A0042]/15 hover:border-[#573681]/50 hover:shadow-md"
                 }`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className={`font-mono text-xs font-bold px-2.5 py-1 rounded-full ${
-                      isSelected ? "bg-white/10 text-emerald-400" : "bg-[#1516A8]/10 text-[#1516A8]"
+                      isSelected ? "bg-white/10 text-emerald-400" : "bg-[#573681]/10 text-[#573681]"
                     }`}>
                       {phase.timeframe}
                     </span>
@@ -169,7 +169,7 @@ export function EngagementModelSection({ onOpenDemoModal }: EngagementModelProps
                   </div>
 
                   <div className="w-10 h-10 rounded-2xl flex items-center justify-center border shadow-xs">
-                    <Icon className={`w-5 h-5 ${isSelected ? "text-emerald-400" : "text-[#1516A8]"}`} />
+                    <Icon className={`w-5 h-5 ${isSelected ? "text-emerald-400" : "text-[#573681]"}`} />
                   </div>
 
                   <div>
@@ -197,7 +197,7 @@ export function EngagementModelSection({ onOpenDemoModal }: EngagementModelProps
         <div className="p-6 sm:p-10 rounded-3xl bg-[#E7E6FB]/60 border border-[#1A0042]/15 shadow-md">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             <div className="md:col-span-8 space-y-4">
-              <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#1516A8]">
+              <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#573681]">
                 <Clock className="w-4 h-4" />
                 <span>{PHASES[activePhase].badge} &middot; {PHASES[activePhase].timeframe} ({PHASES[activePhase].duration})</span>
               </div>
@@ -220,7 +220,7 @@ export function EngagementModelSection({ onOpenDemoModal }: EngagementModelProps
             <div className="md:col-span-4 flex flex-col justify-center items-start md:items-end gap-3 pt-4 md:pt-0">
               <button
                 onClick={onOpenDemoModal}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#1A0042] hover:bg-[#1516A8] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Book Phase 1 Kickoff</span>
                 <ArrowRight className="w-4 h-4" />

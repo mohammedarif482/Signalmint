@@ -66,7 +66,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
       phase: 4,
       time: "12:45:03 UTC",
       badge: "🚀 REALLOCATION",
-      badgeColor: "bg-[#E7E6FB] text-[#1516A8] border-[#1516A8]/20",
+      badgeColor: "bg-[#E7E6FB] text-[#573681] border-[#573681]/20",
       message: "Capital reallocated to Crown Winner #CW-884 (5.8x ROAS)",
     },
   ];
@@ -91,7 +91,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
         particleCount: 65,
         spread: 70,
         origin: { y: 0.65 },
-        colors: ["#1516A8", "#4D0181", "#6495EB", "#E7E6FB"],
+        colors: ["#573681", "#573681", "#6495EB", "#E7E6FB"],
       });
     }, 2100);
   };
@@ -112,7 +112,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
         <div className="max-w-3xl mb-12">
           {/* Eyebrow: 05 // TRY IT (WITH YOUR NUMBERS) */}
           <div className="mb-3.5">
-            <span className="font-mono text-xs font-semibold text-[#4D0181] bg-[#4D0181]/10 px-3 py-1 rounded-full border border-[#4D0181]/20 inline-block uppercase tracking-widest">
+            <span className="font-mono text-xs font-semibold text-[#573681] bg-[#573681]/10 px-3 py-1 rounded-full border border-[#573681]/20 inline-block uppercase tracking-widest">
               05 // TRY IT (WITH YOUR NUMBERS)
             </span>
           </div>
@@ -147,7 +147,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
                   <span className="font-mono text-xs font-bold text-[#1A0042] uppercase">
                     Monthly Paid Spend:
                   </span>
-                  <span className="font-mono text-base sm:text-lg font-black text-[#1516A8]">
+                  <span className="font-mono text-base sm:text-lg font-black text-[#573681]">
                     ₹{monthlySpend.toLocaleString("en-IN")}{" "}
                     <span className="text-xs text-[#1A0042]/60 font-semibold">
                       / ${usdEquivalent.toLocaleString()}
@@ -162,7 +162,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
                   step={50000}
                   value={monthlySpend}
                   onChange={(e) => setMonthlySpend(Number(e.target.value))}
-                  className="w-full h-2 bg-[#E7E6FB] rounded-lg appearance-none cursor-pointer accent-[#1516A8] my-3"
+                  className="w-full h-2 bg-[#E7E6FB] rounded-lg appearance-none cursor-pointer accent-[#573681] my-3"
                 />
 
                 <div className="flex justify-between font-mono text-[10px] text-[#1A0042]/50 mb-2">
@@ -194,7 +194,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
                       onClick={() => setSelectedVertical(vert)}
                       className={`px-3.5 py-2 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer border ${
                         selectedVertical === vert
-                          ? "bg-[#1516A8] text-white border-[#1516A8] shadow-xs"
+                          ? "bg-[#573681] text-white border-[#573681] shadow-xs"
                           : "bg-[#FAFAFD] text-[#1A0042]/80 hover:bg-white border-[#E7E6FB]"
                       }`}
                     >
@@ -231,7 +231,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
               {currentPhase > 0 && !isRunning && (
                 <button
                   onClick={resetSimulation}
-                  className="w-full text-center mt-2 font-mono text-xs text-[#1516A8] font-bold hover:underline flex items-center justify-center gap-1 cursor-pointer"
+                  className="w-full text-center mt-2 font-mono text-xs text-[#573681] font-bold hover:underline flex items-center justify-center gap-1 cursor-pointer"
                 >
                   <RefreshCw className="w-3 h-3" /> Reset Simulation
                 </button>
@@ -330,10 +330,10 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
 
                 {/* Projected Monthly Capital Saved (8% of spend) */}
                 <div className="font-mono sm:text-right">
-                  <span className="text-[10px] text-[#4D0181] uppercase font-bold block mb-0.5">
+                  <span className="text-[10px] text-[#573681] uppercase font-bold block mb-0.5">
                     PROJECTED MONTHLY CAPITAL SAVED (8%)
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-[#1516A8]">
+                  <span className="text-xl sm:text-2xl font-black text-[#573681]">
                     ₹{projectedMonthlySave.toLocaleString("en-IN")}/mo
                   </span>
                 </div>
@@ -342,7 +342,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
               {/* Direct CTA */}
               <button
                 onClick={onOpenDemoModal}
-                className="w-full py-4 rounded-2xl bg-[#1516A8] hover:bg-[#1A0042] text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer group"
+                className="w-full py-4 rounded-2xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer group"
               >
                 <span>
                   Your Save: ₹{projectedMonthlySave.toLocaleString("en-IN")}/mo. Ready to automate this?

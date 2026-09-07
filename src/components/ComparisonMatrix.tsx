@@ -121,7 +121,7 @@ export function ComparisonMatrix() {
         <div className="max-w-3xl mb-14">
           {/* Eyebrow: 04 // THE COST OF GUESSING */}
           <div className="mb-3.5">
-            <span className="font-mono text-xs font-semibold text-[#4D0181] bg-[#4D0181]/10 px-3 py-1 rounded-full border border-[#4D0181]/20 inline-block uppercase tracking-widest">
+            <span className="font-mono text-xs font-semibold text-[#573681] bg-[#573681]/10 px-3 py-1 rounded-full border border-[#573681]/20 inline-block uppercase tracking-widest">
               04 // THE COST OF GUESSING
             </span>
           </div>
@@ -160,7 +160,7 @@ export function ComparisonMatrix() {
                 <span>⚠️ BETTER LOOP (Still Reactive)</span>
               </div>
               
-              <div className="col-span-3 p-5 font-mono text-xs font-bold uppercase tracking-wider text-[#1516A8] bg-[#E7E6FB]/60 border-l border-[#1516A8]/30 border-t-4 border-t-[#1516A8] flex items-center justify-between">
+              <div className="col-span-3 p-5 font-mono text-xs font-bold uppercase tracking-wider text-[#573681] bg-[#E7E6FB]/60 border-l border-[#573681]/30 border-t-4 border-t-[#573681] flex items-center justify-between">
                 <span>✅ SIGNALMINT LOOP (You Lead)</span>
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               </div>
@@ -210,12 +210,12 @@ export function ComparisonMatrix() {
                     </div>
 
                     {/* Col 4: SignalMint Loop (Highlighted in #E7E6FB/60) */}
-                    <div className="col-span-3 p-5 border-l border-[#1516A8]/20 bg-[#E7E6FB]/50 flex flex-col justify-center relative">
+                    <div className="col-span-3 p-5 border-l border-[#573681]/20 bg-[#E7E6FB]/50 flex flex-col justify-center relative">
                       <div className="flex items-center justify-between gap-2 mb-1">
-                        <span className="font-mono font-black text-sm sm:text-base text-[#1516A8]">
+                        <span className="font-mono font-black text-sm sm:text-base text-[#573681]">
                           {row.signalMint.primary}
                         </span>
-                        <span className="font-mono text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-white text-[#1516A8] border border-[#1516A8]/20 shadow-2xs">
+                        <span className="font-mono text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-white text-[#573681] border border-[#573681]/20 shadow-2xs">
                           {row.signalMint.badge}
                         </span>
                       </div>
@@ -231,14 +231,14 @@ export function ComparisonMatrix() {
             {/* Table Footer Bottom Banner */}
             <div className="bg-[#E7E6FB]/40 px-6 py-4 border-t border-[#1A0042]/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
               <div className="flex items-center gap-2 text-[#1A0042]">
-                <ShieldCheck className="w-4 h-4 text-[#1516A8]" />
+                <ShieldCheck className="w-4 h-4 text-[#573681]" />
                 <span>
                   Guaranteed Stop-Loss: <strong>₹0 bleed policy</strong> with autonomous budget cuts in &lt; 12 minutes.
                 </span>
               </div>
               <a
                 href="#simulator"
-                className="text-[#1516A8] font-bold hover:underline flex items-center gap-1 shrink-0"
+                className="text-[#573681] font-bold hover:underline flex items-center gap-1 shrink-0"
               >
                 Simulate Your Monthly Bleed Savings &rarr;
               </a>

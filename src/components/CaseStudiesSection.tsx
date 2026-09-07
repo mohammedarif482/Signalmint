@@ -162,16 +162,16 @@ export function CaseStudiesSection({ onOpenDemoModal }: CaseStudiesSectionProps)
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 sm:mb-16">
           <div className="max-w-2xl">
-            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#1516A8] mb-3 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#1516A8]" />
-              <span>04 // PROOF &amp; CLIENT TRANSFORMATIONS</span>
+            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#573681]" />
+              <span>PROOF &amp; CLIENT TRANSFORMATIONS</span>
             </div>
             <h2
               ref={headingRef}
               className="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] uppercase"
             >
               Audited Accounts. <br />
-              <span className="text-[#1516A8]">Quantified Results.</span>
+              <span className="text-[#573681]">Quantified Results.</span>
             </h2>
           </div>
 
@@ -206,7 +206,7 @@ export function CaseStudiesSection({ onOpenDemoModal }: CaseStudiesSectionProps)
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <span className="font-display font-black text-2xl sm:text-3xl text-[#1A0042]">{active.brand}</span>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#1516A8]/10 text-[#1516A8] font-mono text-[10px] font-bold uppercase">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[10px] font-bold uppercase">
                   {active.category}
                 </span>
               </div>
@@ -242,14 +242,14 @@ export function CaseStudiesSection({ onOpenDemoModal }: CaseStudiesSectionProps)
 
               {/* What We Did */}
               <div className="space-y-3 pt-2">
-                <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#1516A8] flex items-center gap-1.5">
+                <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#573681] flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>THE AUDIT-FIRST SOLUTION</span>
                 </div>
                 <div className="space-y-2">
                   {active.whatWeDid.map((step, sIdx) => (
                     <div key={sIdx} className="p-3 rounded-xl bg-[#E7E6FB]/40 border border-[#1A0042]/8 flex items-start gap-3 text-xs sm:text-sm text-[#1A0042]">
-                      <span className="w-5 h-5 rounded-full bg-[#1516A8] text-white flex items-center justify-center font-mono font-bold text-[11px] shrink-0 mt-0.5">
+                      <span className="w-5 h-5 rounded-full bg-[#573681] text-white flex items-center justify-center font-mono font-bold text-[11px] shrink-0 mt-0.5">
                         {sIdx + 1}
                       </span>
                       <span>{step}</span>
@@ -259,8 +259,8 @@ export function CaseStudiesSection({ onOpenDemoModal }: CaseStudiesSectionProps)
               </div>
 
               {/* Quote */}
-              <div className="p-5 rounded-2xl bg-[#1A0042]/5 border-l-4 border-[#1516A8] space-y-2">
-                <Quote className="w-5 h-5 text-[#1516A8]/50" />
+              <div className="p-5 rounded-2xl bg-[#1A0042]/5 border-l-4 border-[#573681] space-y-2">
+                <Quote className="w-5 h-5 text-[#573681]/50" />
                 <p className="font-sans italic text-xs sm:text-sm text-[#1A0042]/90 leading-relaxed">
                   "{active.quote}"
                 </p>
@@ -310,7 +310,7 @@ export function CaseStudiesSection({ onOpenDemoModal }: CaseStudiesSectionProps)
                 {/* Audit Action */}
                 <button
                   onClick={onOpenDemoModal}
-                  className="w-full py-3.5 rounded-xl bg-[#1516A8] hover:bg-[#4D0181] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  className="w-full py-3.5 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
                 >
                   <span>Audit My Account Like This</span>
                   <ArrowRight className="w-4 h-4" />
