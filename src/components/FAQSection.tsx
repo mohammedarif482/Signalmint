@@ -3,8 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { 
   Plus, 
-  Minus, 
-  MessageCircleQuestion
+  Minus 
 } from "lucide-react";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -175,14 +174,12 @@ export function FAQSection({ onOpenDemoModal: _onOpenDemoModal }: FAQSectionProp
         
         {/* Section Header */}
         <div ref={headerRef} className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#573681]/10 text-[#573681] text-[11px] font-mono font-bold tracking-widest uppercase mb-4 border border-[#573681]/25">
-            <MessageCircleQuestion className="w-3.5 h-3.5 text-[#573681]" />
-            <span>FREQUENTLY ASKED QUESTIONS</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-sans text-[#1A0042] leading-[1.15]">
-            Everything you need to know before bringing us your ad account.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-sans text-[#1A0042] leading-[1.15] mb-4">
+            Frequently Asked Questions
           </h2>
+          <p className="font-sans text-sm sm:text-base text-[#1A0042]/75 max-w-2xl leading-relaxed">
+            Everything you need to know before bringing us your ad account.
+          </p>
         </div>
 
         {/* Category Filter Pills */}

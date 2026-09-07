@@ -421,11 +421,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
         
         {/* Section Header */}
         <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#1A0042]/10 mb-10 sm:mb-14">
-          <div className="space-y-3">
-            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] flex items-center gap-2">
-              <span className="w-2 h-2 rounded-none bg-[#573681]" />
-              <span>04 // PROOF &amp; CLIENT TRANSFORMATIONS</span>
-            </div>
+          <div>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] uppercase leading-[1.05]">
               Proof &amp; Transformations
             </h2>

@@ -651,8 +651,7 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
 
           {/* Column 3: API Infrastructure, Ad Networks & Security Badges */}
           <div className="lg:col-span-3">
-            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-2.5 flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#573681]" />
+            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-2.5">
               <span>SECURITY &amp; INTEGRITY</span>
             </div>
             

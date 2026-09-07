@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { ArrowUpRight, ShieldCheck } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import heroBgImage from "../assets/herobg.jpeg";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -133,8 +133,7 @@ export function FinalCTASection({ onOpenDemoModal }: FinalCTASectionProps) {
           className="max-w-4xl mx-auto px-6 sm:px-12 py-10 sm:py-14 rounded-3xl bg-white/[0.30] hover:bg-white/[0.40] backdrop-blur-md border border-white/50 text-center relative z-10 space-y-6 sm:space-y-8 will-change-transform text-[#1A0042] shadow-[0_8px_32px_rgba(26,0,66,0.06)] transition-colors duration-300"
         >
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/70 text-[#573681] border border-[#1A0042]/15 font-mono text-xs font-bold uppercase tracking-widest shadow-2xs backdrop-blur-sm">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#573681]" />
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/70 text-[#573681] border border-[#1A0042]/15 font-mono text-xs font-bold uppercase tracking-widest shadow-2xs backdrop-blur-sm">
             <span>READY TO AUDIT YOUR SPEND?</span>
           </div>
 
