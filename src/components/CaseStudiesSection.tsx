@@ -1,147 +1,408 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect, type ReactElement } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  AlertCircle, 
-  ShieldCheck, 
-  Clock, 
-  Building2, 
-  Quote 
-} from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import type { InnerPageKey } from "../data/innerPagesData";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger);
 
 interface CaseStudiesSectionProps {
   onOpenDemoModal?: () => void;
+  onNavigate?: (key: InnerPageKey | null, hash?: string) => void;
 }
 
-interface CaseStudy {
+interface CaseStudyCardItem {
   id: string;
+  pageKey: InnerPageKey;
   brand: string;
   category: string;
-  engagement: string;
-  problemHeadline: string;
-  problemBody: string;
-  whatWeDid: string[];
-  metrics: {
-    roasBefore: string;
-    roasAfter: string;
-    cpaBefore: string;
-    cpaAfter: string;
-    scale: string;
-    timeToResult: string;
-  };
-  quote: string;
-  author: string;
-  title: string;
+  headline: string;
+  summary: string;
+  metricBadge: string;
+  renderSvg: () => ReactElement;
 }
 
-const CASE_STUDIES: CaseStudy[] = [
+const CASE_STUDY_CARDS: CaseStudyCardItem[] = [
   {
     id: "aerosleep",
+    pageKey: "case-aerosleep",
     brand: "Aerosleep Labs",
-    category: "DTC Wellness // Sleep Tech",
-    engagement: "3 Months Engagement",
-    problemHeadline: "Budget was burning on creative fatigue. Couldn't scale past ₹500k/mo without a 35% CPA spike.",
-    problemBody: "Every new ad fatigued within 7 days. Customer acquisition cost skyrocketed on broad Meta targeting, and the client was trapped in an endless production cycle of guessing which creative would hit next.",
-    whatWeDid: [
-      "Audited account structure → Found 3 core audiences cannibalizing each other in broad targeting.",
-      "Refreshed creative strategy → Mapped top 2 hook patterns (Sensory Shock ASMR + thermal layer proof).",
-      "Re-tuned bid strategy → Tightened pacing and shifted to dynamic cost-cap stabilization."
-    ],
-    metrics: {
-      roasBefore: "1.8x",
-      roasAfter: "5.4x",
-      cpaBefore: "₹410",
-      cpaAfter: "₹192",
-      scale: "₹120k → ₹750k/mo",
-      timeToResult: "38 Days"
-    },
-    quote: "SignalMint didn't just run ads. They understood why our old approach was failing within 48 hours, restructured our entire account, and gave us briefs that actually convert. The speed of the result surprised us.",
-    author: "Rohit V.",
-    title: "Founder & CEO, Aerosleep Labs"
+    category: "DTC Sleep Tech",
+    headline: "Aerosleep Labs: The 38-Day ROAS Recovery",
+    summary: "Dismantled 3 cannibalizing broad audiences, mapped sensory-shock video hooks, and scaled spend to ₹750k/mo at 5.4x blended ROAS.",
+    metricBadge: "1.8x → 5.4x ROAS",
+    renderSvg: () => (
+      <svg 
+        viewBox="0 0 400 400" 
+        className="w-full h-full text-[#1A0042] stroke-current select-none" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="400" height="400" fill="#E7E6FB" fillOpacity="0.45" />
+        <g stroke="#1A0042" strokeWidth="1" strokeOpacity="0.12">
+          <line x1="0" y1="200" x2="400" y2="200" />
+          <line x1="200" y1="0" x2="200" y2="400" />
+          <line x1="0" y1="100" x2="400" y2="100" strokeDasharray="4 4" />
+          <line x1="0" y1="300" x2="400" y2="300" strokeDasharray="4 4" />
+          <line x1="100" y1="0" x2="100" y2="400" strokeDasharray="4 4" />
+          <line x1="300" y1="0" x2="300" y2="400" strokeDasharray="4 4" />
+        </g>
+        <g stroke="#1A0042" strokeWidth="2" strokeOpacity="0.85">
+          <path d="M 0 200 A 200 200 0 0 1 400 200" />
+          <path d="M 50 200 A 150 150 0 0 1 350 200" strokeWidth="1.5" strokeOpacity="0.6" />
+          <path d="M 100 200 A 100 100 0 0 1 300 200" strokeWidth="1.5" strokeOpacity="0.4" />
+        </g>
+        <path 
+          d="M 0 200 Q 50 80, 100 200 T 200 200 T 300 200 T 400 200" 
+          stroke="#573681" 
+          strokeWidth="3" 
+        />
+        <g stroke="#1A0042" strokeWidth="1.5" strokeOpacity="0.5">
+          <line x1="200" y1="200" x2="60" y2="60" />
+          <line x1="200" y1="200" x2="340" y2="60" />
+          <line x1="200" y1="200" x2="200" y2="40" />
+        </g>
+        <line x1="0" y1="350" x2="350" y2="0" stroke="#573681" strokeWidth="1.5" strokeDasharray="6 6" strokeOpacity="0.7" />
+        <line x1="0" y1="400" x2="400" y2="0" stroke="#1A0042" strokeWidth="1.5" strokeOpacity="0.7" />
+        <circle cx="200" cy="200" r="6" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
+        <circle cx="340" cy="60" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
+        <circle cx="60" cy="60" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
+        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="monospace" letterSpacing="0.1em">
+          [FREQ // 432Hz]
+        </text>
+        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.08em">
+          ROAS 5.4x
+        </text>
+        <rect x="0.75" y="0.75" width="398.5" height="398.5" stroke="#1A0042" strokeOpacity="0.1" strokeWidth="1.5" />
+      </svg>
+    )
   },
   {
     id: "methodiq",
+    pageKey: "case-methodiq",
     brand: "MethodIQ",
-    category: "Clean Skincare // DTC Beauty",
-    engagement: "4 Months Engagement",
-    problemHeadline: "Top-of-funnel acquisition bleeding money. Retinol ads skipped in under 2 seconds.",
-    problemBody: "Strong customer retention, but cold prospecting on Meta had collapsed to 1.4x ROAS. Standard lifestyle shoots were failing to overcome consumer skepticism in a saturated beauty market.",
-    whatWeDid: [
-      "Pixel & CAPI audit → Identified 22% dropped purchase events on custom checkout.",
-      "Creative re-engineering → Deployed 'Contrarian Tear-Down' script ('Stop using retinol like it's 2019').",
-      "Fatigue prevention cadence → Pre-built 8 variant hooks before primary creative hit frequency 2.4."
-    ],
-    metrics: {
-      roasBefore: "1.4x",
-      roasAfter: "4.1x",
-      cpaBefore: "₹560",
-      cpaAfter: "₹230",
-      scale: "₹140k/mo bleed stopped",
-      timeToResult: "42 Days"
-    },
-    quote: "The audit uncovered ₹1.4L of monthly spend that was essentially paying for customers who were already in our email flow. That insight alone paid for their engagement 10x over.",
-    author: "Ananya S.",
-    title: "Head of Growth, MethodIQ"
+    category: "DTC Skincare",
+    headline: "MethodIQ: Halting the CAC Bleed",
+    summary: "Eliminated ₹1.4L/mo budget bleed on organic retargeting, repaired 22% dropped checkout CAPI signals, and restored blended ROAS to 4.1x.",
+    metricBadge: "₹140k/mo Bleed Stopped",
+    renderSvg: () => (
+      <svg 
+        viewBox="0 0 400 400" 
+        className="w-full h-full text-[#1A0042] stroke-current select-none" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="400" height="400" fill="#E7E6FB" fillOpacity="0.45" />
+        <g stroke="#1A0042" strokeWidth="1.5" strokeOpacity="0.2">
+          <line x1="200" y1="40" x2="350" y2="130" />
+          <line x1="350" y1="130" x2="350" y2="280" />
+          <line x1="350" y1="280" x2="200" y2="370" />
+          <line x1="200" y1="370" x2="50" y2="280" />
+          <line x1="50" y1="280" x2="50" y2="130" />
+          <line x1="50" y1="130" x2="200" y2="40" />
+          <line x1="200" y1="40" x2="200" y2="370" />
+          <line x1="50" y1="130" x2="350" y2="130" />
+          <line x1="50" y1="280" x2="350" y2="280" />
+        </g>
+        <g stroke="#573681" strokeWidth="2">
+          <path d="M 50 130 Q 200 240, 350 130" />
+          <path d="M 80 150 Q 200 250, 320 150" strokeWidth="1.5" strokeOpacity="0.75" />
+          <path d="M 110 170 Q 200 260, 290 170" strokeWidth="1.5" strokeOpacity="0.5" />
+        </g>
+        <g stroke="#1A0042" strokeWidth="1.5">
+          <line x1="50" y1="50" x2="350" y2="350" stroke="#573681" strokeWidth="2.5" />
+          <line x1="200" y1="40" x2="350" y2="350" strokeDasharray="4 4" strokeOpacity="0.4" />
+          <line x1="200" y1="40" x2="50" y2="350" strokeDasharray="4 4" strokeOpacity="0.4" />
+        </g>
+        <circle cx="200" cy="200" r="6" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
+        <circle cx="200" cy="130" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
+        <circle cx="200" cy="280" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
+        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="monospace" letterSpacing="0.1em">
+          [CAPI v21.0 // 99.4%]
+        </text>
+        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.08em">
+          ROAS 4.1x
+        </text>
+        <rect x="0.75" y="0.75" width="398.5" height="398.5" stroke="#1A0042" strokeOpacity="0.1" strokeWidth="1.5" />
+      </svg>
+    )
   },
   {
     id: "monolith",
+    pageKey: "case-monolith",
     brand: "Monolith Apparel",
-    category: "Performance Athleisure // Apparel",
-    engagement: "60 Days Engagement",
-    problemHeadline: "Scaling plateaued at 2.1x ROAS. Previous agency pushed lifestyle shoots that bombed in 72 hours.",
-    problemBody: "Over-fragmented account structure with 14 competing ad sets. Budget was spread so thin that Meta's machine learning couldn't exit the learning phase on any single ad.",
-    whatWeDid: [
-      "Account consolidation → Condensed 14 fragmented ad sets into 3 clean compound tiers.",
-      "Format winner mapping → Swapped generic lifestyle photos for macro-tensile tear-down video tests.",
-      "Retention curve optimization → Front-loaded proof in seconds 0–3, locking scroll retention."
-    ],
-    metrics: {
-      roasBefore: "2.1x",
-      roasAfter: "4.9x",
-      cpaBefore: "₹380",
-      cpaAfter: "₹210",
-      scale: "+185% Net Profit",
-      timeToResult: "45 Days"
-    },
-    quote: "Every other agency gave us fancy slide decks and excuses about algorithm updates. SignalMint gave us a systematic audit report on day 7, fixed the leak on day 12, and scaled our revenue.",
-    author: "Vikram M.",
-    title: "Co-Founder, Monolith Apparel"
+    category: "Performance Apparel",
+    headline: "Monolith Apparel: The +185% Profit Scale",
+    summary: "Consolidated 14 fragmented ad sets into 3 compound tiers, unlocking machine learning liquidity and scaling net contribution margins by +185%.",
+    metricBadge: "+185% Net Profit",
+    renderSvg: () => (
+      <svg 
+        viewBox="0 0 400 400" 
+        className="w-full h-full text-[#1A0042] stroke-current select-none" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="400" height="400" fill="#E7E6FB" fillOpacity="0.45" />
+        <g stroke="#1A0042" strokeWidth="1.5" strokeOpacity="0.3">
+          <rect x="0" y="0" width="400" height="400" strokeWidth="1.5" />
+          <line x1="247" y1="0" x2="247" y2="400" strokeWidth="1.5" />
+          <line x1="247" y1="247" x2="0" y2="247" strokeWidth="1.5" />
+          <line x1="94" y1="247" x2="94" y2="400" strokeWidth="1.5" />
+          <line x1="94" y1="342" x2="247" y2="342" strokeWidth="1.5" />
+        </g>
+        <path 
+          d="M 0 0 A 247 247 0 0 1 247 247 A 153 153 0 0 1 94 400" 
+          stroke="#573681" 
+          strokeWidth="3" 
+        />
+        <g stroke="#1A0042" strokeWidth="1.5" strokeOpacity="0.3">
+          <line x1="0" y1="0" x2="400" y2="400" />
+          <line x1="0" y1="400" x2="400" y2="0" strokeDasharray="5 5" />
+          <line x1="247" y1="0" x2="0" y2="247" stroke="#6495EB" strokeWidth="2" />
+          <line x1="400" y1="247" x2="247" y2="400" stroke="#6495EB" strokeWidth="2" />
+        </g>
+        <line x1="247" y1="80" x2="400" y2="80" stroke="#1A0042" strokeWidth="1" strokeOpacity="0.25" />
+        <line x1="247" y1="140" x2="400" y2="140" stroke="#1A0042" strokeWidth="1" strokeOpacity="0.25" />
+        <line x1="247" y1="200" x2="400" y2="200" stroke="#1A0042" strokeWidth="1" strokeOpacity="0.25" />
+        <circle cx="247" cy="247" r="6" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
+        <circle cx="94" cy="342" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
+        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="monospace" letterSpacing="0.1em">
+          [TENSILE // 3-TIER]
+        </text>
+        <text x="260" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.08em">
+          PROFIT +185%
+        </text>
+        <rect x="0.75" y="0.75" width="398.5" height="398.5" stroke="#1A0042" strokeOpacity="0.1" strokeWidth="1.5" />
+      </svg>
+    )
+  },
+  {
+    id: "boldedge",
+    pageKey: "case-boldedge",
+    brand: "Bold Edge",
+    category: "Consumer Tech // Audio",
+    headline: "Bold Edge: Scaling to ₹1.4M/mo with Telemetry",
+    summary: "Connected inventory and margin telemetry directly into spend pacing, scaling 5x in 60 days while reducing blended CPA by 44%.",
+    metricBadge: "5x Revenue Scale",
+    renderSvg: () => (
+      <svg 
+        viewBox="0 0 400 400" 
+        className="w-full h-full text-[#1A0042] stroke-current select-none" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="400" height="400" fill="#E7E6FB" fillOpacity="0.45" />
+        <g stroke="#1A0042" strokeWidth="1.5" strokeOpacity="0.4">
+          <line x1="40" y1="360" x2="380" y2="360" />
+          <line x1="40" y1="20" x2="40" y2="360" />
+          <polyline points="370,355 380,360 370,365" fill="#1A0042" stroke="none" />
+          <polyline points="35,30 40,20 45,30" fill="#1A0042" stroke="none" />
+        </g>
+        <path 
+          d="M 40 340 Q 220 320, 360 40" 
+          stroke="#573681" 
+          strokeWidth="3.5" 
+        />
+        <g stroke="#6495EB" strokeWidth="1.5" strokeOpacity="0.8">
+          <path d="M 40 180 Q 90 120, 140 180 T 240 180 T 340 180" />
+          <path d="M 40 180 Q 90 240, 140 180 T 240 180 T 340 180" strokeDasharray="3 3" />
+        </g>
+        <line x1="40" y1="40" x2="360" y2="360" stroke="#1A0042" strokeWidth="1" strokeOpacity="0.15" />
+        <line x1="40" y1="200" x2="380" y2="200" stroke="#1A0042" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.25" />
+        <line x1="200" y1="20" x2="200" y2="360" stroke="#1A0042" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.25" />
+        <circle cx="360" cy="40" r="6" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
+        <circle cx="200" cy="180" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
+        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="monospace" letterSpacing="0.1em">
+          [ANC // AUTO-PACE]
+        </text>
+        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.08em">
+          SCALE 5.0x
+        </text>
+        <rect x="0.75" y="0.75" width="398.5" height="398.5" stroke="#1A0042" strokeOpacity="0.1" strokeWidth="1.5" />
+      </svg>
+    )
   }
 ];
 
-export function CaseStudiesSection({ onOpenDemoModal }: CaseStudiesSectionProps) {
-  const [selectedStudy, setSelectedStudy] = useState<number>(0);
+interface CaseStudyCardProps {
+  study: CaseStudyCardItem;
+  onNavigate?: (key: InnerPageKey | null, hash?: string) => void;
+}
+
+function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
+  const zoneRef = useRef<HTMLDivElement>(null);
+  const bgContainerRef = useRef<HTMLDivElement>(null);
+  const artworkRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const zone = zoneRef.current;
+    const bgContainer = bgContainerRef.current;
+    const artwork = artworkRef.current;
+    if (!zone || !bgContainer) return;
+
+    const strength = 0.16;
+
+    // magnetic pull — LONG duration on mousemove
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = zone.getBoundingClientRect();
+      const x = gsap.utils.mapRange(rect.left, rect.right, -rect.width / 2, rect.width / 2, e.clientX);
+      const y = gsap.utils.mapRange(rect.top, rect.bottom, -rect.height / 2, rect.height / 2, e.clientY);
+
+      gsap.to(bgContainer, {
+        x: x * strength,
+        y: y * strength,
+        duration: 1.5,        // slow follow
+        ease: "power2.out",
+        overwrite: false       // default — won't kill anything
+      });
+
+      if (artwork) {
+        gsap.to(artwork, {
+          x: x * 0.08,
+          y: y * 0.08,
+          duration: 1.5,
+          ease: "power2.out",
+          overwrite: false
+        });
+      }
+    };
+
+    // SHORT snappy mouseleave — finishes fast,
+    // but the old long mousemove tween is still going
+    // and reclaims x/y → visible snap-back!
+    const handleMouseLeave = () => {
+      gsap.to(bgContainer, {
+        x: 0,
+        y: 0,
+        duration: 0.15,
+        ease: "power2.out",
+        overwrite: false
+      });
+
+      if (artwork) {
+        gsap.to(artwork, {
+          x: 0,
+          y: 0,
+          duration: 0.15,
+          ease: "power2.out",
+          overwrite: false
+        });
+      }
+    };
+
+    zone.addEventListener("mousemove", handleMouseMove);
+    zone.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      zone.removeEventListener("mousemove", handleMouseMove);
+      zone.removeEventListener("mouseleave", handleMouseLeave);
+      gsap.killTweensOf(bgContainer);
+      if (artwork) gsap.killTweensOf(artwork);
+    };
+  }, []);
+
+  return (
+    <article 
+      className="flex flex-col gap-4 group cursor-pointer"
+      onClick={() => onNavigate?.(study.pageKey)}
+    >
+      {/* Zone frame */}
+      <div 
+        ref={zoneRef}
+        className="relative aspect-square w-full"
+        data-cursor="READ"
+      >
+        {/* Geometric Wireframe Visual in BG Container (with Dynamic GSAP Tween & Sharp edges) */}
+        <div 
+          ref={bgContainerRef}
+          className="w-full h-full rounded-none overflow-hidden border border-[#1A0042]/12 bg-[#E7E6FB]/40 shadow-xs transition-colors duration-300 group-hover:border-[#573681]/50 group-hover:shadow-md will-change-transform relative z-0"
+        >
+          {/* SVG Blueprint Artwork */}
+          <div 
+            ref={artworkRef}
+            className="w-full h-full scale-[1.08] will-change-transform"
+          >
+            {study.renderSvg()}
+          </div>
+
+          {/* Top Category Tag (Sharp rectangular tag, no rounded edges) */}
+          <div className="absolute top-3 left-3 pointer-events-none z-10">
+            <span className="px-2.5 py-1 rounded-none bg-white/90 backdrop-blur-md text-[#573681] font-mono text-[9px] font-bold uppercase tracking-wider border border-[#573681]/25 shadow-xs">
+              {study.category}
+            </span>
+          </div>
+
+          {/* Metric Badge in Bottom-Right (Sharp rectangular badge, no rounded edges) */}
+          <div className="absolute bottom-3 right-3 pointer-events-none z-10">
+            <span className="px-2.5 py-1 rounded-none bg-white/95 backdrop-blur-md text-[#573681] font-mono text-[10px] font-bold border border-[#573681]/30 shadow-xs">
+              {study.metricBadge}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Card Narrative Text & Action */}
+      <div className="flex flex-col gap-2 pt-1">
+        <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#573681]">
+          {study.brand}
+        </div>
+
+        <h3 className="font-sans font-bold text-base sm:text-[17px] text-[#1A0042] group-hover:text-[#573681] transition-colors leading-snug">
+          {study.headline}
+        </h3>
+
+        <p className="font-sans text-xs text-[#1A0042]/75 leading-relaxed line-clamp-3">
+          {study.summary}
+        </p>
+
+        {/* Underlined Interactive Link */}
+        <div className="pt-1.5 flex items-center gap-1 font-mono text-xs font-bold text-[#1A0042] group-hover:text-[#573681] transition-colors">
+          <span className="underline underline-offset-4 decoration-[#1A0042]/30 group-hover:decoration-[#573681]">
+            Read case study
+          </span>
+          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
     const ctx = gsap.context(() => {
-      if (headingRef.current) {
-        new SplitText(headingRef.current, {
-          type: "lines",
-          autoSplit: true,
-          mask: "lines",
-          onSplit: (instance) => {
-            return gsap.from(instance.lines, {
-              yPercent: 110,
-              opacity: 0,
-              duration: 0.85,
-              stagger: 0.08,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: headingRef.current,
-                start: "top 80%",
-                toggleActions: "play none none reverse",
-              },
-            });
+      if (headerRef.current) {
+        gsap.from(headerRef.current, {
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      }
+
+      if (gridRef.current) {
+        const cards = gridRef.current.children;
+        gsap.from(cards, {
+          y: 40,
+          opacity: 0,
+          duration: 0.85,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
           },
         });
       }
@@ -150,175 +411,68 @@ export function CaseStudiesSection({ onOpenDemoModal }: CaseStudiesSectionProps)
     return () => ctx.revert();
   }, []);
 
-  const active = CASE_STUDIES[selectedStudy];
-
   return (
     <section 
       id="proof" 
       ref={sectionRef} 
-      className="relative w-full py-20 sm:py-28 lg:py-36 bg-[#E7E6FB]/40 text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden"
+      className="relative w-full py-20 sm:py-28 lg:py-36 bg-[#FAFAFD] text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 sm:mb-16">
-          <div className="max-w-2xl">
-            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-3 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#573681]" />
-              <span>PROOF &amp; CLIENT TRANSFORMATIONS</span>
+        <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#1A0042]/10 mb-10 sm:mb-14">
+          <div className="space-y-3">
+            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-none bg-[#573681]" />
+              <span>04 // PROOF &amp; CLIENT TRANSFORMATIONS</span>
             </div>
-            <h2
-              ref={headingRef}
-              className="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] uppercase"
-            >
-              Audited Accounts. <br />
-              <span className="text-[#573681]">Quantified Results.</span>
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] uppercase leading-[1.05]">
+              Proof &amp; Transformations
             </h2>
           </div>
 
-          <p className="font-sans text-sm sm:text-base text-[#1A0042]/75 max-w-md leading-relaxed">
-            Every case follows the same audit trajectory: identify the root architectural bleed, re-engineer the creative brief from performance data, and scale without margin collapse.
-          </p>
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={onOpenDemoModal}
+              className="px-5 py-2.5 rounded-none bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer flex items-center gap-2 active:scale-95"
+            >
+              <span>Audit Your Account</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
 
-        {/* Case Study Switcher Pills */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-8 sm:mb-10">
-          {CASE_STUDIES.map((study, idx) => (
-            <button
-              key={study.id}
-              onClick={() => setSelectedStudy(idx)}
-              className={`px-4 sm:px-5 py-2.5 rounded-full font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center gap-2 border ${
-                selectedStudy === idx
-                  ? "bg-[#1A0042] text-white border-[#1A0042] shadow-sm"
-                  : "bg-white/80 text-[#1A0042]/70 border-[#1A0042]/15 hover:bg-white hover:text-[#1A0042]"
-              }`}
-            >
-              <Building2 className="w-3.5 h-3.5" />
-              <span>{study.brand}</span>
-              <span className="text-[10px] opacity-70 hidden sm:inline">({study.category.split("//")[0].trim()})</span>
-            </button>
+        {/* 4-Column Technical Wireframe Cards Grid */}
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start">
+          {CASE_STUDY_CARDS.map((study) => (
+            <CaseStudyCard 
+              key={study.id} 
+              study={study} 
+              onNavigate={onNavigate} 
+            />
           ))}
         </div>
 
-        {/* Detailed Case Study Card (Oryzo & Moonshot Media style) */}
-        <div className="bg-white rounded-3xl border border-[#1A0042]/15 shadow-xl p-6 sm:p-10 lg:p-12 transition-all duration-300">
-          {/* Header Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#1A0042]/10">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <span className="font-display font-black text-2xl sm:text-3xl text-[#1A0042]">{active.brand}</span>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[10px] font-bold uppercase">
-                  {active.category}
-                </span>
-              </div>
-              <div className="font-mono text-xs text-[#1A0042]/60 flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5" />
-                <span>{active.engagement}</span>
-              </div>
+        {/* Bottom Banner Callout */}
+        <div className="mt-16 sm:mt-20 p-6 sm:p-8 rounded-none bg-[#E7E6FB]/50 border border-[#1A0042]/10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center md:text-left">
+            <div className="font-mono text-[11px] font-bold uppercase text-[#573681] tracking-wider">
+              ZERO ESTIMATION // AUDITED DATA ONLY
             </div>
-
-            <div className="px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 font-mono text-xs font-bold flex items-center gap-1.5 shadow-2xs">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>VERIFIED AUDIT TRANSFORMATION</span>
-            </div>
+            <p className="font-sans text-sm sm:text-base text-[#1A0042] font-semibold">
+              Every metric above is verified through Shopify settled revenue and Meta Graph API telemetry.
+            </p>
           </div>
 
-          {/* Main Grid: Problem & Solution vs Quantified Results */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-8 items-start">
-            {/* Left: Problem & What We Did */}
-            <div className="lg:col-span-7 space-y-6">
-              {/* The Problem */}
-              <div className="space-y-2">
-                <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-rose-600 flex items-center gap-1.5">
-                  <AlertCircle className="w-3.5 h-3.5" />
-                  <span>THE PROBLEM // WHAT WAS BURNING SPEND</span>
-                </div>
-                <h4 className="font-display font-bold text-lg sm:text-xl text-[#1A0042] leading-snug">
-                  "{active.problemHeadline}"
-                </h4>
-                <p className="font-sans text-sm text-[#1A0042]/80 leading-relaxed">
-                  {active.problemBody}
-                </p>
-              </div>
-
-              {/* What We Did */}
-              <div className="space-y-3 pt-2">
-                <div className="font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#573681] flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>THE AUDIT-FIRST SOLUTION</span>
-                </div>
-                <div className="space-y-2">
-                  {active.whatWeDid.map((step, sIdx) => (
-                    <div key={sIdx} className="p-3 rounded-xl bg-[#E7E6FB]/40 border border-[#1A0042]/8 flex items-start gap-3 text-xs sm:text-sm text-[#1A0042]">
-                      <span className="w-5 h-5 rounded-full bg-[#573681] text-white flex items-center justify-center font-mono font-bold text-[11px] shrink-0 mt-0.5">
-                        {sIdx + 1}
-                      </span>
-                      <span>{step}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quote */}
-              <div className="p-5 rounded-2xl bg-[#1A0042]/5 border-l-4 border-[#573681] space-y-2">
-                <Quote className="w-5 h-5 text-[#573681]/50" />
-                <p className="font-sans italic text-xs sm:text-sm text-[#1A0042]/90 leading-relaxed">
-                  "{active.quote}"
-                </p>
-                <div className="font-mono text-xs font-bold text-[#1A0042] pt-1">
-                  — {active.author}, <span className="text-[#1A0042]/70 font-normal">{active.title}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Quantified Results Dashboard */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="p-6 sm:p-7 rounded-2xl bg-[#1A0042] text-white space-y-5 shadow-lg">
-                <div className="font-mono text-xs font-bold text-[#6495EB] uppercase tracking-wider flex items-center justify-between">
-                  <span>AUDIT SCORECARD</span>
-                  <span className="text-emerald-400">● VERIFIED ROI</span>
-                </div>
-
-                {/* Primary Metric: ROAS */}
-                <div className="p-4 rounded-xl bg-white/10 space-y-1">
-                  <div className="font-mono text-[10.5px] text-white/60 uppercase">BLENDED ROAS PROGRESSION</div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-display font-semibold text-2xl text-white/50 line-through">{active.metrics.roasBefore}</span>
-                    <span className="text-white/40 text-lg">→</span>
-                    <span className="font-display font-black text-4xl text-emerald-400">{active.metrics.roasAfter}</span>
-                  </div>
-                </div>
-
-                {/* Secondary Metrics */}
-                <div className="grid grid-cols-2 gap-3 font-mono">
-                  <div className="p-3 rounded-xl bg-white/5">
-                    <div className="text-[10px] text-white/60 uppercase">BLENDED CPA</div>
-                    <div className="font-bold text-base text-white mt-0.5">{active.metrics.cpaBefore} → <span className="text-emerald-400">{active.metrics.cpaAfter}</span></div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-white/5">
-                    <div className="text-[10px] text-white/60 uppercase">TIME TO RESULT</div>
-                    <div className="font-bold text-base text-white mt-0.5">{active.metrics.timeToResult}</div>
-                  </div>
-                </div>
-
-                {/* Scale Metric */}
-                <div className="p-3 rounded-xl bg-white/5 font-mono">
-                  <div className="text-[10px] text-white/60 uppercase">SCALE / BLEED RECOVERY</div>
-                  <div className="font-bold text-base text-[#6495EB] mt-0.5">{active.metrics.scale}</div>
-                </div>
-
-                {/* Audit Action */}
-                <button
-                  onClick={onOpenDemoModal}
-                  className="w-full py-3.5 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
-                >
-                  <span>Audit My Account Like This</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
+          <button
+            onClick={onOpenDemoModal}
+            className="shrink-0 px-6 py-3 rounded-none bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2 active:scale-95"
+          >
+            <span>Bring Us Your Ad Account</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
+
       </div>
     </section>
   );

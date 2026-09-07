@@ -74,7 +74,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
           <div className="flex items-center gap-2.5 sm:gap-3">
             {/* Back button */}
             <button
-              onClick={() => onNavigate(null)}
+              onClick={() => onNavigate(null, page.isCaseStudy ? "proof" : undefined)}
               className="px-3 sm:px-3.5 py-1.5 rounded-full border border-[#1A0042]/15 bg-white/70 hover:bg-[#573681]/10 hover:border-[#573681]/40 text-[#1A0042] text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
             >
               <ArrowLeft className="w-3.5 h-3.5 text-[#573681]" />
@@ -112,8 +112,8 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
 
           <div className="flex items-center gap-4 text-[#1A0042]/60">
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-semibold text-emerald-700">{page.telemetryStatus}</span>
+              <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
+              <span className="font-semibold text-[#573681]">{page.telemetryStatus}</span>
             </div>
             <span className="hidden md:inline text-[#1A0042]/20">|</span>
             <span className="hidden md:inline font-mono text-[10px]">UPDATED: {page.lastUpdated}</span>
@@ -127,7 +127,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
               <IconComponent className="w-4 h-4" />
             </div>
             <span className="font-mono text-xs font-bold text-[#573681] uppercase tracking-widest">
-              SIGNALMINT SPECIFICATION DOSSIER
+              {page.isCaseStudy ? "CLIENT TRANSFORMATION DOSSIER" : "SIGNALMINT SPECIFICATION DOSSIER"}
             </span>
           </div>
 
@@ -138,6 +138,43 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
           <p className="text-base sm:text-lg lg:text-xl text-[#1A0042]/80 font-sans leading-relaxed">
             {page.summary}
           </p>
+
+          {/* If Case Study: Render Primary Scoreboard Banner */}
+          {page.isCaseStudy && page.caseData && (
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-5 sm:p-6 rounded-none bg-[#E7E6FB]/70 text-[#1A0042] shadow-xs border border-[#573681]/20">
+              <div className="p-3.5 rounded-none bg-white border border-[#1A0042]/10 space-y-1">
+                <div className="font-mono text-[10px] text-[#573681] font-bold uppercase tracking-wider">BLENDED ROAS</div>
+                <div className="flex items-baseline gap-2">
+                  <span className="font-mono text-sm text-[#1A0042]/40 line-through">{page.caseData.metrics.roasBefore}</span>
+                  <span className="text-[#1A0042]/40 text-xs">→</span>
+                  <span className="font-display font-black text-2xl text-[#573681]">{page.caseData.metrics.roasAfter}</span>
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-none bg-white border border-[#1A0042]/10 space-y-1">
+                <div className="font-mono text-[10px] text-[#573681] font-bold uppercase tracking-wider">BLENDED CPA</div>
+                <div className="flex items-baseline gap-2">
+                  <span className="font-mono text-sm text-[#1A0042]/40 line-through">{page.caseData.metrics.cpaBefore}</span>
+                  <span className="text-[#1A0042]/40 text-xs">→</span>
+                  <span className="font-display font-bold text-xl text-[#573681]">{page.caseData.metrics.cpaAfter}</span>
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-none bg-white border border-[#1A0042]/10 space-y-1">
+                <div className="font-mono text-[10px] text-[#573681] font-bold uppercase tracking-wider">SCALE / BLEED RECOVERY</div>
+                <div className="font-display font-bold text-lg sm:text-xl text-[#1A0042] truncate">
+                  {page.caseData.metrics.scale}
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-none bg-white border border-[#1A0042]/10 space-y-1">
+                <div className="font-mono text-[10px] text-[#573681] font-bold uppercase tracking-wider">TIME TO RESULT</div>
+                <div className="font-display font-bold text-lg sm:text-xl text-[#1A0042]">
+                  {page.caseData.metrics.timeToResult}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Two-Column Structured Layout */}
@@ -145,6 +182,85 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
           
           {/* Main Content Column (8 cols) */}
           <div className="lg:col-span-8 space-y-8 sm:space-y-10">
+            {/* If Case Study: Problem & Architectural Bleed Breakdown */}
+            {page.isCaseStudy && page.caseData && (
+              <>
+                {/* The Problem Statement */}
+                <div className="bg-white rounded-none p-6 sm:p-8 border border-[#1A0042]/10 shadow-xs space-y-4">
+                  <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-none bg-[#573681]" />
+                    <span>THE BOTTLENECK // WHAT WAS BURNING SPEND</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#1A0042] font-sans leading-snug">
+                    "{page.caseData.problemHeadline}"
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#1A0042]/80 leading-relaxed font-sans">
+                    {page.caseData.problemBody}
+                  </p>
+                </div>
+
+                {/* Architectural Bleed Teardown */}
+                {page.caseData.architecturalBleed && (
+                  <div className="space-y-3">
+                    <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-none bg-[#573681]" />
+                      <span>IDENTIFIED ARCHITECTURAL BLEED POINTS</span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {page.caseData.architecturalBleed.map((bleed, bIdx) => (
+                        <div key={bIdx} className="p-4 rounded-none bg-white border border-[#1A0042]/10 shadow-xs space-y-2">
+                          <div className="font-mono text-xs font-bold text-[#573681]">{bIdx + 1}. {bleed.title}</div>
+                          <p className="font-sans text-xs text-[#1A0042]/75 leading-relaxed">{bleed.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Winning Hook Formulas & Creative Analysis */}
+                {page.caseData.winningHooks && (
+                  <div className="bg-white rounded-none p-6 sm:p-8 border border-[#1A0042]/10 shadow-xs space-y-4">
+                    <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-none bg-[#573681]" />
+                      <span>PERFORMANCE CREATIVE // WINNING HOOK BLUEPRINT</span>
+                    </div>
+                    <div className="space-y-3">
+                      {page.caseData.winningHooks.map((hook, hIdx) => (
+                        <div key={hIdx} className="p-4 rounded-none bg-[#FAFAFD] border border-[#1A0042]/8 space-y-1.5">
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <span className="font-sans font-bold text-sm text-[#1A0042]">{hook.pattern}</span>
+                            <span className="px-2.5 py-0.5 rounded-none bg-[#573681]/10 text-[#573681] font-mono text-[10px] font-bold border border-[#573681]/25">
+                              {hook.retentionScore}
+                            </span>
+                          </div>
+                          <p className="font-sans text-xs text-[#1A0042]/75 leading-relaxed">
+                            {hook.breakdown}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Founder Testimonial Card */}
+                <div className="p-6 sm:p-8 rounded-none bg-white border-l-4 border-[#573681] border-y border-r border-[#1A0042]/10 shadow-xs space-y-3">
+                  <p className="font-sans italic text-sm sm:text-base text-[#1A0042]/90 leading-relaxed">
+                    "{page.caseData.quote}"
+                  </p>
+                  <div className="font-mono text-xs font-bold text-[#1A0042] pt-2 border-t border-[#1A0042]/10 flex items-center justify-between">
+                    <div>
+                      — {page.caseData.author},{" "}
+                      <span className="text-[#1A0042]/70 font-normal">{page.caseData.authorTitle}</span>
+                    </div>
+                    <div className="px-2.5 py-1 rounded-none bg-[#573681]/10 text-[#573681] text-[10px] font-mono font-bold uppercase border border-[#573681]/20">
+                      Verified Client
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* Standard Sections */}
             {page.sections.map((section, idx) => (
               <div 
                 key={idx}
@@ -183,7 +299,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
                 <span>AGENCY EXECUTION DIRECTIVE</span>
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#1A0042] mb-2 font-sans">
-                Deploy this framework directly into your ad accounts
+                {page.isCaseStudy ? "Audit your account using this exact framework" : "Deploy this framework directly into your ad accounts"}
               </h3>
               <p className="text-xs sm:text-sm text-[#1A0042]/75 mb-5 font-sans leading-relaxed max-w-2xl">
                 SignalMint audits, executes, and scales Meta and omnichannel ad spend with zero algorithmic hallucination and sub-12min intervention cooldowns.

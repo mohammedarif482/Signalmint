@@ -101,7 +101,10 @@ export function App() {
             <TrustedBySection onOpenDemoModal={handleOpenDemoModal} />
 
             {/* Section 05: Proof (Case Studies / Client Transformations) */}
-            <CaseStudiesSection onOpenDemoModal={handleOpenDemoModal} />
+            <CaseStudiesSection 
+              onOpenDemoModal={handleOpenDemoModal} 
+              onNavigate={(key) => handleNavigate(key)}
+            />
 
             {/* Section 05: How We Work (The 4-Phase Engagement Model) */}
             <EngagementModelSection onOpenDemoModal={handleOpenDemoModal} />
