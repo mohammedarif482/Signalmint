@@ -56,7 +56,7 @@ export function CustomCursor() {
   if (!isVisible) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden hidden md:block">
       {/* Outer kinetic ring */}
       <motion.div
         className="absolute rounded-full border border-[#573681]/40 bg-[#6495EB]/10 backdrop-blur-[2px] flex items-center justify-center pointer-events-none"
