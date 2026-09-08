@@ -630,19 +630,19 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
           </div>
 
           {/* ========================================================================= */}
-          {/* CARD 04: One System. Applied Everywhere. (zIndex 10 - Bottom card)        */}
+          {/* CARD 04: One System. Applied Everywhere. (zIndex 10 - Finale Card)        */}
           {/* ========================================================================= */}
           <div
             ref={card4Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#8B5CF6]/55 via-[#573681]/50 to-[#1A0042]/65 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(139,92,246,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
+            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#0B132B]/75 via-[#064E3B]/65 to-[#022C22]/80 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(6,78,59,0.40),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-emerald-400/35 flex flex-col justify-between overflow-hidden will-change-transform"
           >
             {/* Top Text Content */}
             <div className="relative z-10 space-y-1.5 sm:space-y-2">
               <div className="flex items-center justify-between">
-                <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-white/15 text-white/90 font-mono text-[8.5px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
+                <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[8.5px] sm:text-[10px] font-bold tracking-widest uppercase border border-emerald-400/30">
                   04 // UNIFIED SYSTEM
                 </span>
-                <span className="font-mono text-[9.5px] sm:text-[10px] text-emerald-300 font-bold flex items-center gap-1">
+                <span className="font-mono text-[9.5px] sm:text-[10px] text-emerald-300 font-bold flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                   SYSTEMATIC
                 </span>
@@ -652,12 +652,12 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                 One System. Applied Everywhere.
               </h3>
 
-              <p className="font-sans text-[11px] xs:text-xs sm:text-sm text-white/90 leading-relaxed font-normal">
+              <p className="font-sans text-[11px] xs:text-xs sm:text-sm text-emerald-100/90 leading-relaxed font-normal">
                 Same diagnostic framework. Same checkpoints. Same standard. Whether you're spending ₹10k/mo or ₹500k/mo, the findings hold. It's systematic. Not subjective.
               </p>
             </div>
 
-            {/* 3D-styled Vector Illustration (Ascending Rocket & Scaling Trajectory) */}
+            {/* High-Tech Vector Illustration (Unified Diagnostic System Architecture) */}
             <div className="relative w-full h-34 xs:h-38 sm:h-48 flex items-center justify-center my-auto">
               <svg
                 viewBox="0 0 320 220"
@@ -665,33 +665,57 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <ellipse cx="160" cy="160" rx="100" ry="25" fill="#C084FC" fillOpacity="0.2" />
-                <path
-                  d="M50 180 C120 170, 180 120, 240 30"
-                  stroke="#A855F7"
-                  strokeWidth="2"
-                  strokeDasharray="4 4"
-                  fill="none"
-                />
+                {/* Foundation Ground Radar */}
+                <ellipse cx="160" cy="155" rx="115" ry="32" fill="#10B981" fillOpacity="0.10" stroke="#10B981" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="4 4" />
+                <ellipse cx="160" cy="155" rx="75" ry="20" fill="#34D399" fillOpacity="0.08" stroke="#34D399" strokeOpacity="0.3" strokeWidth="1" />
 
-                <g transform="translate(175, 95) rotate(-35)">
-                  <path d="M-12 50 Q0 85 12 50 Z" fill="#F59E0B" />
-                  <path d="M-6 50 Q0 70 6 50 Z" fill="#FBBF24" />
-                  <path d="M-22 30 L-32 45 L-12 40 Z" fill="#6B21A8" stroke="#FFFFFF" strokeWidth="1.5" />
-                  <path d="M22 30 L32 45 L12 40 Z" fill="#6B21A8" stroke="#FFFFFF" strokeWidth="1.5" />
-                  <ellipse cx="0" cy="10" rx="20" ry="38" fill="#FFFFFF" />
-                  <path d="M-20 10 Q0 -40 20 10 Z" fill="#A855F7" />
-                  <path d="M0 -30 Q12 -10 12 25" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
-                  <circle cx="0" cy="5" r="9" fill="#1E1B4B" stroke="#A855F7" strokeWidth="2.5" />
-                  <circle cx="0" cy="5" r="5" fill="#60A5FA" />
+                {/* Vertical Central Telemetry Beam */}
+                <line x1="160" y1="40" x2="160" y2="155" stroke="#34D399" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.7" />
+
+                {/* Tier 1: Base Execution Layer (Audit Foundation) */}
+                <path d="M90 140 L160 168 L230 140 L160 112 Z" fill="#064E3B" fillOpacity="0.85" stroke="#34D399" strokeWidth="1.5" />
+                <path d="M90 140 L90 148 L160 176 L160 168 Z" fill="#022C22" stroke="#34D399" strokeWidth="1" />
+                <path d="M230 140 L230 148 L160 176 L160 168 Z" fill="#033C2E" stroke="#34D399" strokeWidth="1" />
+
+                {/* Tier 2: Middle Diagnostic Layer (Telemetry Engine) */}
+                <path d="M106 114 L160 136 L214 114 L160 92 Z" fill="#047857" fillOpacity="0.8" stroke="#6EE7B7" strokeWidth="1.5" />
+                <path d="M106 114 L106 120 L160 142 L160 136 Z" fill="#064E3B" stroke="#6EE7B7" strokeWidth="1" />
+                <path d="M214 114 L214 120 L160 142 L160 136 Z" fill="#055B42" stroke="#6EE7B7" strokeWidth="1" />
+
+                {/* Tier 3: Top Unit Economics Core */}
+                <path d="M122 88 L160 104 L198 88 L160 72 Z" fill="#10B981" fillOpacity="0.9" stroke="#A7F3D0" strokeWidth="2" />
+
+                {/* Core Top Beacon Ring */}
+                <g transform="translate(160, 50)">
+                  <circle cx="0" cy="0" r="16" fill="#10B981" fillOpacity="0.25" stroke="#34D399" strokeWidth="2" />
+                  <circle cx="0" cy="0" r="8" fill="#34D399" />
+                  <circle cx="0" cy="0" r="3" fill="#FFFFFF" />
+                  <line x1="-22" y1="0" x2="-16" y2="0" stroke="#34D399" strokeWidth="2" />
+                  <line x1="16" y1="0" x2="22" y2="0" stroke="#34D399" strokeWidth="2" />
+                  <line x1="0" y1="-22" x2="0" y2="-16" stroke="#34D399" strokeWidth="2" />
                 </g>
 
-                <path d="M70 60 L73 70 L83 73 L73 76 L70 86 L67 76 L57 73 L67 70 Z" fill="#FFFFFF" fillOpacity="0.8" />
-                <path d="M260 50 L262 56 L268 58 L262 60 L260 66 L258 60 L252 58 L258 56 Z" fill="#FDE047" />
+                {/* Satellite Benchmark Nodes */}
+                <g transform="translate(48, 75)">
+                  <rect x="-32" y="-12" width="64" height="24" rx="6" fill="#022C22" fillOpacity="0.9" stroke="#34D399" strokeWidth="1.5" />
+                  <text x="0" y="4" fill="#A7F3D0" fontSize="8.5" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle">
+                    ₹10K / MO
+                  </text>
+                  <line x1="32" y1="0" x2="65" y2="15" stroke="#34D399" strokeWidth="1.5" strokeDasharray="2 2" strokeOpacity="0.6" />
+                </g>
 
-                <rect x="25" y="160" width="105" height="24" rx="6" fill="#FFFFFF" fillOpacity="0.15" stroke="#FFFFFF" strokeOpacity="0.3" />
-                <text x="77" y="176" fill="#A7F3D0" fontSize="10" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle" letterSpacing="0.08em">
-                  ROAS: 5.4x ↑
+                <g transform="translate(272, 75)">
+                  <rect x="-36" y="-12" width="72" height="24" rx="6" fill="#022C22" fillOpacity="0.9" stroke="#34D399" strokeWidth="1.5" />
+                  <text x="0" y="4" fill="#A7F3D0" fontSize="8.5" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle">
+                    ₹500K+ / MO
+                  </text>
+                  <line x1="-36" y1="0" x2="-68" y2="15" stroke="#34D399" strokeWidth="1.5" strokeDasharray="2 2" strokeOpacity="0.6" />
+                </g>
+
+                {/* System Telemetry Metric Tag */}
+                <rect x="50" y="174" width="220" height="24" rx="6" fill="#022C22" fillOpacity="0.85" stroke="#34D399" strokeWidth="1.5" strokeOpacity="0.4" />
+                <text x="160" y="190" fill="#6EE7B7" fontSize="9" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle" letterSpacing="0.09em">
+                  [ STANDARDIZED DIAGNOSTIC CODES ]
                 </text>
               </svg>
             </div>
@@ -700,7 +724,7 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
             <div className="pt-1 sm:pt-2">
               <button
                 onClick={onOpenDemoModal}
-                className="w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-xl sm:rounded-2xl bg-white text-[#573681] hover:text-[#1A0042] hover:bg-white/95 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95 touch-manipulation group"
+                className="w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 hover:from-white hover:to-white text-[#022C22] font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2 cursor-pointer active:scale-95 touch-manipulation group"
               >
                 <span>Book a 30-Min Audit</span>
                 <ArrowUpRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
