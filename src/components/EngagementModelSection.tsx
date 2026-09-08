@@ -343,7 +343,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
               {/* Tag / Eyebrow */}
               <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-3 sm:mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
-                <span>THE ENGAGEMENT MODEL</span>
+                <span>HOW WE WORK</span>
               </div>
 
               {/* Main Display Headline */}
@@ -351,19 +351,19 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                 ref={headingRef}
                 className="font-display font-black text-3xl sm:text-4xl xl:text-5xl tracking-tight leading-[1.08] uppercase text-[#1A0042]"
               >
-                From "Just Hired" <br />
-                <span className="text-[#573681]">To Running Optimally.</span>
+                From Day One <br />
+                <span className="text-[#573681]">To Steady Scale.</span>
               </h2>
 
               {/* Subtitle / Philosophy */}
               <p className="font-sans text-sm sm:text-base text-[#1A0042]/75 leading-relaxed mt-4 sm:mt-5 mb-6 lg:mb-8 max-w-lg">
-                No 6-month lock-ins. No 40-page onboarding decks. A structured 4-phase roadmap that gets your account stabilized and scaling in under 45 days.
+                We audit what's broken, test fresh creative, and scale what works. Clear weekly milestones with no guesswork.
               </p>
 
               {/* Desktop Interactive Phase Navigation Track (Inspired by CipherDigital & Cheese & Pixels) */}
               <div className="hidden lg:flex flex-col gap-1.5 mb-6">
                 <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A0042]/45 px-2 pt-1 pb-1">
-                  ENGAGEMENT PHASES &middot; CLICK TO INSPECT
+                  PHASES &middot; CLICK TO JUMP
                 </div>
                 {PHASES.map((phase, idx) => {
                   const isActive = activePhase === idx;
