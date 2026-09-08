@@ -446,11 +446,11 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
       </div>
 
       {/* Hero Proof Ticker Ribbon */}
-      <div className="w-full bg-[#1A0042] text-white py-3 px-6 border-y border-white/10 overflow-hidden select-none">
+      <div className="w-full bg-[#573681] text-white py-3 px-6 border-y border-white/15 overflow-hidden select-none shadow-xs">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 font-mono text-[10.5px] sm:text-xs">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-bold tracking-wider uppercase text-emerald-400">AGENCY PROOF METRICS</span>
+            <span className="font-bold tracking-wider uppercase text-emerald-300">AGENCY PROOF METRICS</span>
           </div>
           <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-white/80">
             <span>Audited 200+ D2C Accounts</span>
