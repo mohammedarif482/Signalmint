@@ -228,7 +228,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
           {/* ================================================================= */}
           <div 
             ref={leftColRef}
-            className="order-2 lg:order-1 w-full lg:col-span-7 flex flex-col gap-8 sm:gap-10 pt-10 lg:pt-0 pb-12 sm:pb-16 lg:pb-24"
+            className="order-2 lg:order-1 w-full lg:col-span-7 flex flex-col divide-y divide-[#1A0042]/15 pt-8 lg:pt-0 pb-12 sm:pb-16 lg:pb-24"
           >
             {PHASES.map((phase, idx) => {
               const Icon = phase.icon;
@@ -239,19 +239,12 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                   key={phase.number}
                   id={`phase-card-${idx}`}
                   data-phase-index={idx}
-                  className={`p-6 sm:p-8 lg:p-10 rounded-3xl border transition-all duration-500 relative overflow-hidden ${
-                    isActive
-                      ? "bg-transparent border-[#573681]/40 shadow-[0_20px_50px_rgba(87,54,129,0.08)] ring-1 ring-[#573681]/25"
-                      : "bg-transparent border-[#1A0042]/10 hover:border-[#573681]/30 hover:shadow-sm"
+                  className={`py-10 sm:py-14 first:pt-0 last:pb-0 transition-opacity duration-300 relative ${
+                    isActive ? "opacity-100" : "opacity-75 hover:opacity-95"
                   }`}
                 >
-                  {/* Subtle top indicator bar */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 transition-colors duration-500 ${
-                    isActive ? "bg-gradient-to-r from-[#573681] to-[#7C3AED]" : "bg-transparent"
-                  }`} />
-
                   {/* Watermark Number */}
-                  <div className="absolute top-4 right-6 sm:top-6 sm:right-8 font-display font-black text-5xl sm:text-6xl text-[#1A0042]/5 select-none pointer-events-none">
+                  <div className="absolute top-0 right-2 sm:top-2 sm:right-4 font-display font-black text-5xl sm:text-6xl text-[#1A0042]/5 select-none pointer-events-none">
                     {phase.number}
                   </div>
 
@@ -266,7 +259,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                       </span>
                     </div>
 
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#1A0042]/15 font-mono text-[10.5px] sm:text-[11px] font-bold text-[#1A0042]/75">
+                    <div className="inline-flex items-center gap-1.5 font-mono text-[10.5px] sm:text-[11px] font-bold text-[#1A0042]/75">
                       <Clock className="w-3.5 h-3.5 text-[#573681]" />
                       <span>{phase.timeframe} &middot; {phase.duration}</span>
                     </div>
@@ -274,12 +267,12 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
 
                   {/* Icon & Title Row */}
                   <div className="flex items-start gap-4 mb-4 relative z-10">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border shrink-0 transition-colors duration-300 ${
+                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
                       isActive 
-                        ? "bg-[#573681] text-white border-[#573681] shadow-md shadow-[#573681]/25" 
-                        : "bg-[#573681]/10 text-[#573681] border-[#573681]/20"
+                        ? "bg-[#573681] text-white shadow-md shadow-[#573681]/25" 
+                        : "bg-[#573681]/10 text-[#573681]"
                     }`}>
-                      <Icon className="w-6 h-6" />
+                      <Icon className="w-5 h-5" />
                     </div>
 
                     <div>
@@ -305,11 +298,11 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                     </div>
 
                     {/* Key Deliverables Checklist */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                       {phase.deliverables.map((item, dIdx) => (
                         <div 
                           key={dIdx}
-                          className="flex items-start gap-2.5 p-3 rounded-2xl border border-[#1A0042]/10 text-xs text-[#1A0042]/85 font-medium leading-snug hover:border-[#573681]/30 transition-colors"
+                          className="flex items-start gap-2.5 text-xs text-[#1A0042]/85 font-medium leading-snug"
                         >
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{item}</span>
@@ -318,8 +311,8 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                     </div>
                   </div>
 
-                  {/* Why It Matters Callout Box */}
-                  <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-[#573681]/5 border border-[#573681]/15 space-y-1 relative z-10">
+                  {/* Why It Matters Callout */}
+                  <div className="mt-5 pl-4 border-l-2 border-[#573681]/40 py-1 space-y-1 relative z-10">
                     <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#573681] flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#573681]" />
                       <span>WHY IT MATTERS</span>
