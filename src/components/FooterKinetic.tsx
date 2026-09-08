@@ -908,7 +908,7 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
                   </span>
 
                   {/* High-Tech Telemetry Tooltip on Hover */}
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 hidden group-hover:flex flex-col gap-0.5 px-2.5 py-1 rounded-md bg-white text-[#1A0042] text-[9.5px] font-mono whitespace-nowrap shadow-xl border border-[#1A0042]/15 pointer-events-none z-30">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 hidden group-hover:flex flex-col gap-0.5 px-2.5 py-1 rounded-md bg-white text-[#1A0042] text-[9.5px] font-mono whitespace-nowrap shadow-xl border border-black pointer-events-none z-30">
                     <span className="font-bold text-[#1A0042]">{node.label}</span>
                     <span className="text-[#573681] font-semibold text-[8.5px]">LATENCY: {node.ping} // ZERO PACKET LOSS</span>
                   </div>
