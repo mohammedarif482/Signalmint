@@ -518,16 +518,24 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
 
           {/* Column 2: Platform Directory (3 Sub-Columns in SignalMint Context) */}
           <div className="lg:col-span-5">
-            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-4">
+            <div className="font-inter text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-4">
               PLATFORM DIRECTORY
             </div>
-            <div className="grid grid-cols-3 gap-4 text-xs font-sans">
+            <div className="grid grid-cols-3 gap-4 text-xs font-inter">
               
               {/* Sub-Col 1: Agency Solutions & Proof */}
               <div className="flex flex-col gap-2.5">
-                <span className="font-mono text-[9px] font-extrabold uppercase text-[#573681] tracking-widest pb-1 border-b border-[#1A0042]/10">
+                <span className="font-inter text-[9px] font-extrabold uppercase text-[#573681] tracking-widest pb-1 border-b border-[#1A0042]/10">
                   SERVICES
                 </span>
+                <a 
+                  href="#why-us" 
+                  onClick={(e) => handleAnchorLink(e, "#why-us")}
+                  className="font-semibold text-[#1A0042] hover:text-[#573681] transition-colors flex items-center gap-1 group"
+                >
+                  <span>Why Us</span>
+                  <ArrowUpRight className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
                 <a 
                   href="#services" 
                   onClick={(e) => handleAnchorLink(e, "#services")}
@@ -572,7 +580,7 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
 
               {/* Sub-Col 2: Workflows & Intelligence */}
               <div className="flex flex-col gap-2.5">
-                <span className="font-mono text-[9px] font-extrabold uppercase text-[#573681] tracking-widest pb-1 border-b border-[#1A0042]/10">
+                <span className="font-inter text-[9px] font-extrabold uppercase text-[#573681] tracking-widest pb-1 border-b border-[#1A0042]/10">
                   INTELLIGENCE
                 </span>
                 <button
@@ -611,7 +619,7 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
 
               {/* Sub-Col 3: Enterprise & Protocols */}
               <div className="flex flex-col gap-2.5">
-                <span className="font-mono text-[9px] font-extrabold uppercase text-[#1A0042]/60 tracking-widest pb-1 border-b border-[#1A0042]/10">
+                <span className="font-inter text-[9px] font-extrabold uppercase text-[#1A0042]/60 tracking-widest pb-1 border-b border-[#1A0042]/10">
                   PROTOCOLS
                 </span>
                 <button
@@ -834,31 +842,31 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
           {/* Column 3: Contact Details & Telemetry Hours */}
           <div className="md:col-span-2 space-y-5">
             <div>
-              <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-1">
+              <div className="font-inter text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-1">
                 INTEL DESK
               </div>
               <a
                 href="mailto:intel@signalmint.com"
-                className="font-mono font-bold text-xs sm:text-[13px] text-[#573681] hover:underline"
+                className="font-inter font-bold text-xs sm:text-[13px] text-[#573681] hover:underline"
               >
                 intel@signalmint.com
               </a>
             </div>
 
             <div>
-              <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-1">
+              <div className="font-inter text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-1">
                 DIRECT CONTACT
               </div>
               <a
                 href="tel:+917045451951"
-                className="font-mono font-bold text-xs sm:text-sm text-[#1A0042] hover:text-[#573681] transition-colors"
+                className="font-inter font-bold text-xs sm:text-sm text-[#1A0042] hover:text-[#573681] transition-colors"
               >
                 +91 70454 51951
               </a>
             </div>
 
             <div>
-              <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-1 flex items-center gap-1">
+              <div className="font-inter text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-1 flex items-center gap-1">
                 <Activity className="w-3 h-3 text-emerald-600" />
                 <span>ENGINE STATUS</span>
               </div>
@@ -913,7 +921,7 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
         {/* ========================================================================= */}
         {/* 4. SUB-FOOTER LEGAL & METADATA BAR (SignalMint Protocol)                  */}
         {/* ========================================================================= */}
-        <div className="py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[10.5px] font-mono text-[#1A0042]/65">
+        <div className="py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[10.5px] font-inter text-[#1A0042]/65">
           <div>
             &copy; 2026 SignalMint Inc. Built for performance-first founders &amp; media buyers.
           </div>
@@ -964,7 +972,7 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
             </button>
           </div>
 
-          <div className="text-[#1A0042]/50 font-mono text-[10px]">
+          <div className="text-[#1A0042]/50 font-inter text-[10px]">
             Autonomous cooldown Δt ≤ 12 min. SignalMint Growth &amp; Intelligence Labs.
           </div>
         </div>

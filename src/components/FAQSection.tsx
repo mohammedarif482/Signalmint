@@ -168,9 +168,27 @@ export function FAQSection({ onOpenDemoModal: _onOpenDemoModal }: FAQSectionProp
     <section 
       id="faq" 
       ref={containerRef}
-      className="py-20 sm:py-28 lg:py-32 bg-[#FAFAFD] text-[#1A0042] relative border-t border-[#1A0042]/10"
+      className="py-20 sm:py-28 lg:py-32 bg-[#F9F7FC] text-[#1A0042] relative border-t border-[#1A0042]/10 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* 3. Signal lines background (Diagonal signal lines + concentric rings) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
+        <svg 
+          viewBox="0 0 400 340" 
+          preserveAspectRatio="xMidYMid slice"
+          className="w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line x1="0" y1="340" x2="400" y2="0" stroke="#B08BE0" strokeWidth="1" opacity="0.15" vectorEffect="non-scaling-stroke" />
+          <line x1="0" y1="280" x2="340" y2="0" stroke="#B08BE0" strokeWidth="1" opacity="0.12" vectorEffect="non-scaling-stroke" />
+          <line x1="60" y1="340" x2="400" y2="60" stroke="#482878" strokeWidth="1" opacity="0.1" vectorEffect="non-scaling-stroke" />
+          <line x1="0" y1="200" x2="240" y2="0" stroke="#B08BE0" strokeWidth="1" opacity="0.1" vectorEffect="non-scaling-stroke" />
+          <line x1="160" y1="340" x2="400" y2="160" stroke="#482878" strokeWidth="1" opacity="0.08" vectorEffect="non-scaling-stroke" />
+          <circle cx="200" cy="170" r="90" fill="none" stroke="#B08BE0" strokeWidth="1" opacity="0.15" vectorEffect="non-scaling-stroke" />
+          <circle cx="200" cy="170" r="140" fill="none" stroke="#B08BE0" strokeWidth="1" opacity="0.08" vectorEffect="non-scaling-stroke" />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <div ref={headerRef} className="max-w-3xl mb-12 sm:mb-16">

@@ -3,8 +3,8 @@ import { useLenis } from "./hooks/useLenis";
 import { CustomCursor } from "./components/CustomCursor";
 import { HeaderHUD } from "./components/HeaderHUD";
 import { HeroSection } from "./components/HeroSection";
+import { HowToBeginSection } from "./components/HowToBeginSection";
 import { DualAgentPinned } from "./components/DualAgentPinned";
-import { ServicesSection } from "./components/ServicesSection";
 import { TrustedBySection } from "./components/TrustedBySection";
 import { CaseStudiesSection } from "./components/CaseStudiesSection";
 import { EngagementModelSection } from "./components/EngagementModelSection";
@@ -91,11 +91,11 @@ export function App() {
             {/* Section 01: Hero Section */}
             <HeroSection onOpenDemoModal={handleOpenDemoModal} />
 
-            {/* Section 02: Why We're Different (The Audit-First Approach) */}
-            <DualAgentPinned />
+            {/* Section 02: Why Us (The Audit-First Framework / Pinned Stacked Cards) */}
+            <HowToBeginSection onOpenDemoModal={handleOpenDemoModal} />
 
-            {/* Section 03: What We Do (Meta Ads + Creative Strategy + Audit Diagnostics) */}
-            <ServicesSection onOpenDemoModal={handleOpenDemoModal} />
+            {/* Section 03: What We Do / Services (Pinned Full-Funnel Architecture) */}
+            <DualAgentPinned onOpenDemoModal={handleOpenDemoModal} />
 
             {/* Section 04: Social Proof Canopy (Trusted by leaders from various industries) */}
             <TrustedBySection onOpenDemoModal={handleOpenDemoModal} />

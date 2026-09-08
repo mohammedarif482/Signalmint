@@ -67,10 +67,10 @@ const CASE_STUDY_CARDS: CaseStudyCardItem[] = [
         <circle cx="200" cy="200" r="6" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
         <circle cx="340" cy="60" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
         <circle cx="60" cy="60" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
-        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="monospace" letterSpacing="0.1em">
+        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="'Montserrat', sans-serif" letterSpacing="0.1em">
           [FREQ // 432Hz]
         </text>
-        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.08em">
+        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="'Montserrat', sans-serif" fontWeight="bold" letterSpacing="0.08em">
           ROAS 5.4x
         </text>
         <rect x="0.75" y="0.75" width="398.5" height="398.5" stroke="#1A0042" strokeOpacity="0.1" strokeWidth="1.5" />
@@ -117,10 +117,10 @@ const CASE_STUDY_CARDS: CaseStudyCardItem[] = [
         <circle cx="200" cy="200" r="6" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
         <circle cx="200" cy="130" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
         <circle cx="200" cy="280" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
-        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="monospace" letterSpacing="0.1em">
+        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="'Montserrat', sans-serif" letterSpacing="0.1em">
           [CAPI v21.0 // 99.4%]
         </text>
-        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.08em">
+        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="'Montserrat', sans-serif" fontWeight="bold" letterSpacing="0.08em">
           ROAS 4.1x
         </text>
         <rect x="0.75" y="0.75" width="398.5" height="398.5" stroke="#1A0042" strokeOpacity="0.1" strokeWidth="1.5" />
@@ -166,10 +166,10 @@ const CASE_STUDY_CARDS: CaseStudyCardItem[] = [
         <line x1="247" y1="200" x2="400" y2="200" stroke="#1A0042" strokeWidth="1" strokeOpacity="0.25" />
         <circle cx="247" cy="247" r="6" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
         <circle cx="94" cy="342" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
-        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="monospace" letterSpacing="0.1em">
+        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="'Montserrat', sans-serif" letterSpacing="0.1em">
           [TENSILE // 3-TIER]
         </text>
-        <text x="260" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.08em">
+        <text x="260" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="'Montserrat', sans-serif" fontWeight="bold" letterSpacing="0.08em">
           PROFIT +185%
         </text>
         <rect x="0.75" y="0.75" width="398.5" height="398.5" stroke="#1A0042" strokeOpacity="0.1" strokeWidth="1.5" />
@@ -212,10 +212,10 @@ const CASE_STUDY_CARDS: CaseStudyCardItem[] = [
         <line x1="200" y1="20" x2="200" y2="360" stroke="#1A0042" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.25" />
         <circle cx="360" cy="40" r="6" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
         <circle cx="200" cy="180" r="4.5" fill="#6495EB" stroke="#FFFFFF" strokeWidth="1.5" />
-        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="monospace" letterSpacing="0.1em">
+        <text x="24" y="380" fill="#1A0042" fillOpacity="0.45" stroke="none" fontSize="10" fontFamily="'Montserrat', sans-serif" letterSpacing="0.1em">
           [ANC // AUTO-PACE]
         </text>
-        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.08em">
+        <text x="270" y="380" fill="#573681" stroke="none" fontSize="10.5" fontFamily="'Montserrat', sans-serif" fontWeight="bold" letterSpacing="0.08em">
           SCALE 5.0x
         </text>
         <rect x="0.75" y="0.75" width="398.5" height="398.5" stroke="#1A0042" strokeOpacity="0.1" strokeWidth="1.5" />
@@ -240,13 +240,12 @@ function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
     const artwork = artworkRef.current;
     if (!zone || !bgContainer) return;
 
-    const strength = 0.16;
-
-    // magnetic pull — LONG duration on mousemove
+    // LONG gentle mousemove — dynamic GSAP tween
     const handleMouseMove = (e: MouseEvent) => {
       const rect = zone.getBoundingClientRect();
-      const x = gsap.utils.mapRange(rect.left, rect.right, -rect.width / 2, rect.width / 2, e.clientX);
-      const y = gsap.utils.mapRange(rect.top, rect.bottom, -rect.height / 2, rect.height / 2, e.clientY);
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const strength = 0.15;
 
       gsap.to(bgContainer, {
         x: x * strength,
@@ -312,10 +311,10 @@ function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
         className="relative aspect-square w-full"
         data-cursor="READ"
       >
-        {/* Geometric Wireframe Visual in BG Container (with Dynamic GSAP Tween & Sharp edges) */}
+        {/* Geometric Wireframe Visual in BG Container (with Dynamic GSAP Tween & Rounded edges) */}
         <div 
           ref={bgContainerRef}
-          className="w-full h-full rounded-none overflow-hidden border border-[#1A0042]/12 bg-[#E7E6FB]/40 shadow-xs transition-colors duration-300 group-hover:border-[#573681]/50 group-hover:shadow-md will-change-transform relative z-0"
+          className="w-full h-full rounded-xl overflow-hidden border border-[#1A0042]/12 bg-[#E7E6FB]/40 shadow-xs transition-colors duration-300 group-hover:border-[#573681]/50 group-hover:shadow-md will-change-transform relative z-0"
         >
           {/* SVG Blueprint Artwork */}
           <div 
@@ -325,16 +324,16 @@ function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
             {study.renderSvg()}
           </div>
 
-          {/* Top Category Tag (Sharp rectangular tag, no rounded edges) */}
+          {/* Top Category Tag */}
           <div className="absolute top-3 left-3 pointer-events-none z-10">
-            <span className="px-2.5 py-1 rounded-none bg-white/90 backdrop-blur-md text-[#573681] font-mono text-[9px] font-bold uppercase tracking-wider border border-[#573681]/25 shadow-xs">
+            <span className="px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-[#573681] font-mono text-[9px] font-bold uppercase tracking-wider border border-[#573681]/25 shadow-xs">
               {study.category}
             </span>
           </div>
 
-          {/* Metric Badge in Bottom-Right (Sharp rectangular badge, no rounded edges) */}
+          {/* Metric Badge in Bottom-Right */}
           <div className="absolute bottom-3 right-3 pointer-events-none z-10">
-            <span className="px-2.5 py-1 rounded-none bg-white/95 backdrop-blur-md text-[#573681] font-mono text-[10px] font-bold border border-[#573681]/30 shadow-xs">
+            <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#573681] font-mono text-[10px] font-bold border border-[#573681]/30 shadow-xs">
               {study.metricBadge}
             </span>
           </div>
@@ -415,7 +414,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
     <section 
       id="proof" 
       ref={sectionRef} 
-      className="relative w-full py-20 sm:py-28 lg:py-36 bg-[#FAFAFD] text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden"
+      className="relative w-full py-20 sm:py-28 lg:py-36 bg-textured-wash text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
@@ -430,7 +429,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={onOpenDemoModal}
-              className="px-5 py-2.5 rounded-none bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer flex items-center gap-2 active:scale-95"
+              className="px-5 py-2.5 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer flex items-center gap-2 active:scale-95"
             >
               <span>Audit Your Account</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -450,7 +449,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
         </div>
 
         {/* Bottom Banner Callout */}
-        <div className="mt-16 sm:mt-20 p-6 sm:p-8 rounded-none bg-[#E7E6FB]/50 border border-[#1A0042]/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 sm:mt-20 p-6 sm:p-8 rounded-2xl bg-[#E7E6FB]/50 border border-[#1A0042]/10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center md:text-left">
             <div className="font-mono text-[11px] font-bold uppercase text-[#573681] tracking-wider">
               ZERO ESTIMATION // AUDITED DATA ONLY
@@ -462,7 +461,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
 
           <button
             onClick={onOpenDemoModal}
-            className="shrink-0 px-6 py-3 rounded-none bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2 active:scale-95"
+            className="shrink-0 px-6 py-3 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2 active:scale-95"
           >
             <span>Bring Us Your Ad Account</span>
             <ArrowRight className="w-4 h-4" />

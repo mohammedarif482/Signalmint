@@ -19,7 +19,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
       // Section mapping by exact DOM ID in visual order
       const sectionIds: Array<{ id: string; key: "intro" | "why-us" | "services" | "proof" | "how-we-work" | "contact" }> = [
         { id: "hero-runway", key: "intro" },
-        { id: "agents", key: "why-us" },
+        { id: "why-us", key: "why-us" },
         { id: "services", key: "services" },
         { id: "proof", key: "proof" },
         { id: "how-we-work", key: "how-we-work" },
@@ -124,8 +124,8 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               INTRO
             </a>
             <a
-              href="#agents"
-              onClick={(e) => handleNavClick(e, "agents", "why-us")}
+              href="#why-us"
+              onClick={(e) => handleNavClick(e, "why-us", "why-us")}
               className={`transition-colors duration-200 hover:text-[#573681] ${
                 activeSection === "why-us"
                   ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
@@ -262,8 +262,8 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             </a>
 
             <a
-              href="#agents"
-              onClick={(e) => handleNavClick(e, "agents", "why-us")}
+              href="#why-us"
+              onClick={(e) => handleNavClick(e, "why-us", "why-us")}
               className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
                 activeSection === "why-us" ? "text-[#573681]" : "text-[#1A0042]"
               }`}
@@ -355,7 +355,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
 
       {/* 2. RIGHT EDGE VERTICAL SPINE BADGE */}
       <aside
-        className="fixed right-0 top-16 sm:top-20 z-40 bg-[#FAF7F2] px-2.5 sm:px-3 py-4 sm:py-6 rounded-none border-l border-y border-[#1A0042]/15 shadow-sm pointer-events-auto select-none transition-transform duration-200 hover:-translate-x-0.5 group"
+        className="fixed right-0 top-16 sm:top-20 z-40 bg-[#FAF7F2] px-2.5 sm:px-3 py-4 sm:py-6 rounded-l-xl border-l border-y border-[#1A0042]/15 shadow-sm pointer-events-auto select-none transition-transform duration-200 hover:-translate-x-0.5 group"
         title="SignalMint Performance Marketing Agency"
       >
         <div className="[writing-mode:vertical-rl] text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.08em] text-[#1A0042] flex items-center gap-2 font-black cursor-default">

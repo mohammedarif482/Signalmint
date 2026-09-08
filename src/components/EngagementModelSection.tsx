@@ -23,8 +23,8 @@ interface Phase {
   timeframe: string;
   duration: string;
   summary: string;
-  deliverable: string;
-  outcome: string;
+  whatYouGet: string;
+  whyItMatters: string;
   icon: typeof FileSearch;
   badge: string;
 }
@@ -32,45 +32,45 @@ interface Phase {
 const PHASES: Phase[] = [
   {
     number: "01",
-    title: "ACCOUNT AUDIT & REVERSE-ENGINEERING",
+    title: "ACCOUNT AUDIT",
     timeframe: "WEEK 1–2",
     duration: "14 DAYS",
-    summary: "30-min kickoff call → Full account architecture analysis → Systematic diagnostic report.",
-    deliverable: "Written audit document identifying 5–10 specific structural leaks, pixel event firing discrepancies, and creative fatigue bottlenecks with priority rankings.",
-    outcome: "You know exactly what is broken in your ad account and in what precise order to fix it.",
+    summary: "30-minute kickoff call. We map your account structure, find what's broken, and send you a prioritized list of fixes.",
+    whatYouGet: "A written audit identifying structural issues, tracking problems, and creative fatigue patterns. Prioritized by impact and ease of fix.",
+    whyItMatters: "You know exactly what's broken and what to fix first. No guessing.",
     icon: FileSearch,
-    badge: "PHASE 01 // DIAGNOSTIC"
+    badge: "PHASE 01 // AUDIT"
   },
   {
     number: "02",
-    title: "ACCOUNT RESTRUCTURE & BRIEF ARCHITECTURE",
+    title: "REBUILD & BRIEF",
     timeframe: "WEEK 3–4",
     duration: "14 DAYS",
-    summary: "Campaign architecture rebuild → Audience remapping → First performance creative briefs.",
-    deliverable: "Clean, compound account structure deployed in Meta Ads Manager + first 3 data-backed creative briefs submitted to production based on historical winning hook patterns.",
-    outcome: "Your media buying foundation is solid; creative production moves only on proven category patterns.",
+    summary: "We rebuild your campaign setup. New audience structure. First creative brief coming out of your actual data, not templates.",
+    whatYouGet: "New campaign structure. Rebuilt audience mapping. Your first creative brief, sourced from what actually converts in your account.",
+    whyItMatters: "Your account is now built for scale, not for best practices. Creative briefs are data-backed, not template-based.",
     icon: Workflow,
     badge: "PHASE 02 // REBUILD"
   },
   {
     number: "03",
-    title: "LAUNCH, LIVE MONITORING & OPTIMIZATION",
+    title: "LAUNCH & OPTIMIZE",
     timeframe: "WEEK 5–8",
     duration: "28 DAYS",
-    summary: "Live monitoring → Daily performance checks → Weekly strategic optimization calls.",
-    deliverable: "Real-time telemetry oversight, weekly pacing & blended ROAS reports, proactive hook rotation recommendations before creative fatigue hits.",
-    outcome: "Measurable ROAS jump; bleeding ads cut same-day, and scale unlocked on verified contribution margins.",
+    summary: "Campaigns go live. We monitor daily. You get weekly calls on what's working, what's not, and what to test next.",
+    whatYouGet: "Daily account monitoring. Weekly optimization calls. Monthly performance breakdowns showing what's working and what to test next.",
+    whyItMatters: "You catch problems before they become expensive. You scale knowing exactly why something works.",
     icon: Rocket,
     badge: "PHASE 03 // SCALE"
   },
   {
     number: "04",
-    title: "PLAYBOOK HAND-OFF OR GROWTH RETAINER",
+    title: "HAND-OFF OR RETAIN",
     timeframe: "WEEK 9+",
     duration: "ONGOING",
-    summary: "Systems in place → Run with your internal team or retain SignalMint for continuous compound scaling.",
-    deliverable: "Custom Standard Operating Playbook for internal managers, or dedicated agency team retention with ongoing creative testing and daily spend guardrails.",
-    outcome: "Predictable, repeatable performance without agency dependency or long-term contract lock-ins.",
+    summary: "Your account is now self-sustaining. You can run it solo or keep us on for continuous optimization.",
+    whatYouGet: "A documented playbook of all systems, creative strategies, and optimization rules. You can run it with your team, or we stay on retainer for continuous work.",
+    whyItMatters: "You own the playbook. You're not locked in. Growth doesn't stop when the engagement ends.",
     icon: Repeat,
     badge: "PHASE 04 // COMPOUND"
   }
@@ -202,17 +202,17 @@ export function EngagementModelSection({ onOpenDemoModal }: EngagementModelProps
                 <span>{PHASES[activePhase].badge} &middot; {PHASES[activePhase].timeframe} ({PHASES[activePhase].duration})</span>
               </div>
 
-              <div className="space-y-2">
-                <div className="font-mono text-[11px] font-bold text-[#1A0042]/60 uppercase">SPECIFIC DELIVERABLE:</div>
+              <div className="space-y-1">
+                <div className="font-mono text-[11px] font-bold text-[#1A0042]/60 uppercase">WHAT YOU GET:</div>
                 <p className="font-sans text-sm sm:text-base text-[#1A0042] font-semibold leading-relaxed">
-                  {PHASES[activePhase].deliverable}
+                  {PHASES[activePhase].whatYouGet}
                 </p>
               </div>
 
               <div className="space-y-1 pt-1">
-                <div className="font-mono text-[11px] font-bold text-emerald-700 uppercase">EXPECTED OUTCOME:</div>
+                <div className="font-mono text-[11px] font-bold text-emerald-700 uppercase">WHY IT MATTERS:</div>
                 <p className="font-sans text-sm text-[#1A0042]/85 leading-relaxed">
-                  {PHASES[activePhase].outcome}
+                  {PHASES[activePhase].whyItMatters}
                 </p>
               </div>
             </div>

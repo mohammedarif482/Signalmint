@@ -19,7 +19,7 @@
   --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-headline: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-techno: 'GenericTechno', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-pjs: 'Plus Jakarta Sans', sans-serif;
@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .font-body {
@@ -247,4 +247,21 @@ html.lenis, html.lenis body {
     radial-gradient(circle at 85% 15%, rgba(176, 139, 224, 0.20) 0%, transparent 45%),
     radial-gradient(circle at 15% 35%, rgba(87, 54, 129, 0.10) 0%, transparent 50%);
 }
+
+/* 6. Textured gradient wash (Case Studies background) */
+.bg-textured-wash {
+  background: linear-gradient(135deg, #F3EEFB 0%, #FBFAFE 50%, #F0EAFA 100%);
+  position: relative;
+}
+
+.bg-textured-wash::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(176, 139, 224, 0.08) 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+  z-index: 0;
+}
+
 

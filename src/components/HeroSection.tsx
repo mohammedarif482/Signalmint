@@ -348,7 +348,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-[54vw] max-w-[225px] sm:w-[23rem] lg:w-[26.5rem] h-[208px] sm:h-64 lg:h-[17.5rem] p-3.5 sm:p-6 lg:p-7 rounded-none bg-white/[0.24] hover:bg-white/[0.34] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
+            className="w-[54vw] max-w-[225px] sm:w-[23rem] lg:w-[26.5rem] h-[208px] sm:h-64 lg:h-[17.5rem] p-3.5 sm:p-6 lg:p-7 rounded-2xl bg-white/[0.24] hover:bg-white/[0.34] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
           >
             {/* Top Bold Grotesque Header (Wide editorial layout) */}
             <div>
