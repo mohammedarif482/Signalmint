@@ -7,7 +7,6 @@ import {
   Workflow, 
   Rocket, 
   Repeat, 
-  ArrowRight, 
   Clock,
   CheckCircle2,
   ChevronRight,
@@ -104,7 +103,7 @@ const PHASES: Phase[] = [
   }
 ];
 
-export function EngagementModelSection({ onOpenDemoModal }: EngagementModelProps) {
+export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: EngagementModelProps) {
   const [activePhase, setActivePhase] = useState<number>(0);
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -376,30 +375,6 @@ export function EngagementModelSection({ onOpenDemoModal }: EngagementModelProps
                   </button>
                 );
               })}
-            </div>
-
-            {/* Action CTA Card */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#1A0042] to-[#311956] text-white shadow-xl flex flex-col gap-3">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  DIAGNOSTIC FIRST SLA
-                </span>
-                <span className="font-mono text-[10px] text-white/50">45-DAY RAMP</span>
-              </div>
-              <p className="font-sans text-xs text-white/85 leading-relaxed">
-                Ready to stabilize account architecture and build creative briefs sourced from your actual data?
-              </p>
-              <button
-                onClick={onOpenDemoModal}
-                className="w-full mt-1 px-5 py-3 rounded-xl bg-white hover:bg-white/95 text-[#1A0042] font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-md flex items-center justify-center gap-2 cursor-pointer group"
-              >
-                <span>Book Phase 1 Kickoff</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <div className="text-center font-mono text-[9.5px] text-white/50">
-                ● 30-min audit precedes Phase 1 &middot; No long-term lock-in
-              </div>
             </div>
 
           </div>
