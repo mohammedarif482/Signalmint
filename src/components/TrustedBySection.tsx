@@ -281,11 +281,11 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         </div>
 
         {/* Centered Brand Logo */}
-        <div className="flex-1 w-full flex items-center justify-center py-1 z-10 px-2 sm:px-3">
+        <div className="flex-1 w-full flex items-center justify-center py-1 z-10 px-2 sm:px-2.5">
           <img
             src={brand.logo}
             alt={brand.name}
-            className="max-h-6.5 xs:max-h-7.5 sm:max-h-9 lg:max-h-10 w-auto max-w-[75%] object-contain filter drop-shadow-2xs group-hover:scale-110 transition-transform duration-300"
+            className="max-h-7 sm:max-h-9 lg:max-h-11 w-auto max-w-[82%] object-contain filter drop-shadow-2xs group-hover:scale-110 transition-transform duration-300"
           />
         </div>
 
@@ -352,7 +352,7 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         {/* ------------------------------------------------------------------- */}
         {/* 2. MASONRY PINTEREST "ONE UP, ONE DOWN" HORIZONTAL CANOPY           */}
         {/* ------------------------------------------------------------------- */}
-        <div className="relative z-10 w-full flex-1 flex items-center justify-center overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
+        <div className="relative z-10 w-full flex-1 flex items-center overflow-hidden [mask-image:linear-gradient(to_right,transparent_0px,black_28px,black_calc(100%-28px),transparent_100%)]">
           {/* ================================================================= */}
           {/* A. MOBILE MASONRY CAROUSEL (Screens < sm: Continuous Marquee)     */}
           {/* ================================================================= */}
