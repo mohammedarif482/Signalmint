@@ -264,40 +264,34 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         onClick={() => setActiveBrand(isActive ? null : brand)}
         onMouseEnter={() => setActiveBrand(brand)}
         onMouseLeave={() => setActiveBrand(null)}
-        className={`group relative rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 lg:p-3.5 bg-white/95 backdrop-blur-md border ${
+        className={`group relative rounded-full aspect-square p-2.5 xs:p-3 sm:p-3.5 lg:p-4 bg-white/95 backdrop-blur-md border ${
           isActive
-            ? "border-[#573681] shadow-lg scale-[1.03]"
-            : "border-[#1A0042]/10 hover:border-[#573681]/45 shadow-xs hover:shadow-xl hover:scale-[1.03]"
-        } transition-all duration-300 flex flex-col items-center justify-between cursor-pointer w-full h-[110px] xs:h-[118px] sm:h-[128px] lg:h-[138px] select-none ${
-          brand.hasTilt ? "[transform:perspective(800px)_rotateY(-5deg)] hover:[transform:perspective(800px)_rotateY(0deg)]" : ""
-        } ${extraClasses}`}
+            ? "border-[#573681] shadow-xl shadow-[#573681]/25 scale-105 ring-2 ring-[#573681]/20"
+            : "border-[#1A0042]/10 hover:border-[#573681]/50 shadow-xs hover:shadow-xl hover:shadow-[#573681]/15 hover:scale-105"
+        } transition-all duration-300 flex flex-col items-center justify-between cursor-pointer w-full select-none ${extraClasses}`}
       >
         {/* Subtle internal radial highlight on hover */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#E7E6FB]/35 via-transparent to-[#573681]/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl sm:rounded-3xl pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#E7E6FB]/50 via-transparent to-[#573681]/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-full pointer-events-none" />
 
         {/* Top subtle category pill */}
-        <div className="w-full flex items-center justify-between z-10">
-          <span className="font-mono text-[7px] sm:text-[8px] uppercase font-bold text-[#1A0042]/45 tracking-wider group-hover:text-[#573681] transition-colors line-clamp-1">
+        <div className="w-full flex items-center justify-center z-10 pt-0.5 sm:pt-1 px-1">
+          <span className="font-mono text-[6.5px] xs:text-[7px] sm:text-[7.5px] uppercase font-bold text-[#1A0042]/45 tracking-wider group-hover:text-[#573681] transition-colors truncate max-w-[85%] text-center">
             {brand.category}
           </span>
-          <div className="w-1.5 h-1.5 rounded-full bg-[#573681]/30 group-hover:bg-[#573681] group-hover:animate-ping transition-colors shrink-0" />
         </div>
 
         {/* Centered Brand Logo */}
-        <div className="flex-1 w-full flex items-center justify-center py-1 z-10 px-1 sm:px-2">
+        <div className="flex-1 w-full flex items-center justify-center py-1 z-10 px-2 sm:px-3">
           <img
             src={brand.logo}
             alt={brand.name}
-            className="max-h-7 sm:max-h-8.5 lg:max-h-9.5 w-auto max-w-[85%] object-contain filter drop-shadow-2xs group-hover:scale-108 transition-transform duration-300"
+            className="max-h-6.5 xs:max-h-7.5 sm:max-h-9 lg:max-h-10 w-auto max-w-[75%] object-contain filter drop-shadow-2xs group-hover:scale-110 transition-transform duration-300"
           />
         </div>
 
         {/* Verified Result Metric Pill at Bottom */}
-        <div className="w-full pt-1 border-t border-[#1A0042]/5 flex items-center justify-between z-10 gap-1">
-          <span className="font-sans font-bold text-[8.5px] sm:text-[9.5px] text-[#1A0042] truncate">
-            {brand.name}
-          </span>
-          <span className="px-1.5 py-0.5 rounded bg-[#573681]/10 text-[#573681] font-mono text-[7px] sm:text-[7.5px] font-bold shrink-0">
+        <div className="w-full pb-0.5 sm:pb-1 flex items-center justify-center z-10">
+          <span className="px-2 py-0.5 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[6.5px] xs:text-[7px] sm:text-[8px] font-bold shrink-0 tracking-tight group-hover:bg-[#573681] group-hover:text-white transition-colors">
             {brand.metric}
           </span>
         </div>
@@ -367,7 +361,7 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
               {[...BRAND_COLUMNS, ...BRAND_COLUMNS].map((col, idx) => (
                 <div
                   key={`mob-col-${col.id}-${idx}`}
-                  className={`w-[130px] xs:w-[138px] flex flex-col gap-2 xs:gap-2.5 shrink-0 will-change-transform ${col.offsetClass}`}
+                  className={`w-[115px] xs:w-[125px] flex flex-col justify-center gap-2 xs:gap-2.5 shrink-0 will-change-transform ${col.offsetClass}`}
                 >
                   {col.brands.map((brand) => renderLogoCard(brand))}
                 </div>
@@ -380,12 +374,12 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
           {/* ================================================================= */}
           <div
             ref={trackRef}
-            className="hidden sm:flex items-center gap-3 sm:gap-3.5 lg:gap-4.5 will-change-transform w-max px-8 sm:px-12 lg:px-16"
+            className="hidden sm:flex items-center gap-3 sm:gap-3.5 lg:gap-4 will-change-transform w-max px-8 sm:px-12 lg:px-16"
           >
             {BRAND_COLUMNS.map((col) => (
               <div
                 key={col.id}
-                className={`w-[142px] sm:w-[158px] lg:w-[172px] flex flex-col gap-2.5 sm:gap-3 lg:gap-3.5 shrink-0 will-change-transform ${col.offsetClass}`}
+                className={`w-[128px] sm:w-[142px] lg:w-[156px] flex flex-col justify-center gap-2.5 sm:gap-3 lg:gap-3.5 shrink-0 will-change-transform ${col.offsetClass}`}
               >
                 {col.brands.map((brand) => renderLogoCard(brand))}
               </div>
