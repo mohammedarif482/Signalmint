@@ -241,12 +241,12 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                   data-phase-index={idx}
                   className={`p-6 sm:p-8 lg:p-10 rounded-3xl border transition-all duration-500 relative overflow-hidden backdrop-blur-xl sm:backdrop-blur-2xl ${
                     isActive
-                      ? "bg-white/70 border-white shadow-[0_20px_50px_rgba(87,54,129,0.12)] ring-1 ring-[#573681]/25"
-                      : "bg-white/45 hover:bg-white/65 border-white/70 hover:border-white shadow-[0_8px_30px_rgba(26,0,66,0.04)] hover:shadow-[0_12px_40px_rgba(87,54,129,0.08)]"
+                      ? "bg-white/40 border-white shadow-[0_20px_50px_rgba(87,54,129,0.10)] ring-1 ring-[#573681]/20"
+                      : "bg-white/20 hover:bg-white/35 border-white/60 hover:border-white shadow-[0_8px_30px_rgba(26,0,66,0.03)] hover:shadow-[0_12px_40px_rgba(87,54,129,0.06)]"
                   }`}
                 >
                   {/* Subtle glass reflection sheen */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/45 via-transparent to-[#573681]/5 pointer-events-none rounded-3xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/25 via-transparent to-[#573681]/5 pointer-events-none rounded-3xl" />
 
                   {/* Subtle top indicator bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1 transition-colors duration-500 ${
@@ -371,8 +371,8 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
               </p>
 
               {/* Desktop Interactive Phase Navigation Track (Inspired by CipherDigital & Cheese & Pixels) */}
-              <div className="hidden lg:flex flex-col gap-2 p-3 rounded-2xl bg-white/60 backdrop-blur-xl border border-white/80 shadow-sm mb-6">
-                <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A0042]/45 px-3 pt-1 pb-0.5">
+              <div className="hidden lg:flex flex-col gap-1.5 mb-6">
+                <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A0042]/45 px-2 pt-1 pb-1">
                   ENGAGEMENT PHASES &middot; CLICK TO INSPECT
                 </div>
                 {PHASES.map((phase, idx) => {
