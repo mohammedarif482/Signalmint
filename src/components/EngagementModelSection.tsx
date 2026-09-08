@@ -202,10 +202,21 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
             </div>
           ))}
         </div>
-        {/* Soft violet ambient radial glows behind the cards for rich frosted glass effect */}
-        <div className="absolute top-1/4 left-6 w-[550px] h-[550px] bg-[#E7E6FB]/70 rounded-full filter blur-[130px] opacity-80 pointer-events-none" />
-        <div className="absolute bottom-1/3 left-1/4 w-[420px] h-[420px] bg-[#B08BE0]/25 rounded-full filter blur-[120px] opacity-60 pointer-events-none" />
-        <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#E7E6FB]/40 rounded-full filter blur-[120px] opacity-70 pointer-events-none" />
+        {/* Soft Organic Blob Wash on Background */}
+        {/* Blob 1: Top-left lavender/violet wash under Cards 01 & 02 */}
+        <div className="absolute -top-16 -left-20 w-[550px] sm:w-[750px] h-[550px] sm:h-[750px] bg-gradient-to-br from-[#E7E6FB] via-[#DDD6FE]/70 to-[#C4B5FD]/45 rounded-[42%_58%_70%_30%/45%_45%_55%_55%] filter blur-[90px] sm:blur-[130px] opacity-90 pointer-events-none" />
+
+        {/* Blob 2: Central spine highlight purple aura weaving between columns */}
+        <div className="absolute top-1/3 left-1/3 -translate-x-1/2 w-[480px] sm:w-[650px] h-[650px] sm:h-[850px] bg-gradient-to-tr from-[#573681]/15 via-[#B08BE0]/30 to-[#E7E6FB]/40 rounded-[60%_40%_35%_65%/55%_35%_65%_45%] filter blur-[100px] sm:blur-[140px] opacity-75 pointer-events-none" />
+
+        {/* Blob 3: Bottom-left lilac & faint mint whisper under Cards 03 & 04 */}
+        <div className="absolute bottom-12 -left-16 w-[520px] sm:w-[700px] h-[520px] sm:h-[700px] bg-gradient-to-tr from-[#E7E6FB] via-[#C4B5FD]/40 to-[#A7F3D0]/25 rounded-[48%_52%_45%_55%/42%_58%_48%_52%] filter blur-[95px] sm:blur-[135px] opacity-85 pointer-events-none" />
+
+        {/* Blob 4: Top-right soft celestial wash behind pinned headlines */}
+        <div className="absolute top-20 right-0 w-[420px] sm:w-[580px] h-[480px] sm:h-[620px] bg-gradient-to-bl from-[#E7E6FB] via-[#DDD6FE]/50 to-transparent rounded-[50%_50%_62%_38%/48%_45%_55%_52%] filter blur-[85px] sm:blur-[120px] opacity-80 pointer-events-none" />
+
+        {/* Blob 5: Bottom-right grounding amethyst glow */}
+        <div className="absolute -bottom-10 right-1/6 w-[380px] sm:w-[500px] h-[380px] sm:h-[500px] bg-[#B08BE0]/20 rounded-full filter blur-[110px] sm:blur-[140px] opacity-60 pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
