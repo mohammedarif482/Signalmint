@@ -348,7 +348,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-[54vw] max-w-[230px] xs:max-w-[245px] sm:w-[23rem] lg:w-[26.5rem] h-[230px] xs:h-[240px] sm:h-64 lg:h-[17.5rem] p-3 xs:p-3.5 sm:p-6 lg:p-7 rounded-2xl bg-white/[0.24] hover:bg-white/[0.34] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
+            className="w-[54vw] max-w-[230px] xs:max-w-[245px] sm:w-[23rem] lg:w-[26.5rem] min-h-[240px] xs:min-h-[250px] sm:min-h-0 sm:h-64 lg:h-[17.5rem] p-3.5 xs:p-4 sm:p-6 lg:p-7 pb-4 xs:pb-5 sm:pb-6 lg:pb-7 rounded-2xl bg-white/[0.28] hover:bg-white/[0.38] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
           >
             {/* Top Bold Grotesque Header (Wide editorial layout) */}
             <div>
@@ -358,23 +358,23 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
               </div>
             </div>
 
-            {/* Bottom section: Partial dotted hairline rule + Right-aligned subtext & CTA */}
-            <div className="flex flex-col gap-1.5 xs:gap-2 sm:gap-3.5 pt-1 xs:pt-1.5 sm:pt-3">
+            {/* Bottom section: Partial dotted hairline rule + Subtext & CTA */}
+            <div className="flex flex-col gap-2 sm:gap-3.5 pt-1.5 sm:pt-3">
               {/* Editorial Dotted Separator: ~45% width from left margin */}
               <div className="w-[45%] border-b border-dotted border-[#1A0042]/35" />
 
-              {/* Bottom Right-Aligned Subtext */}
-              <div className="text-[9px] xs:text-[9.5px] sm:text-[12.5px] text-[#1A0042]/85 font-sans leading-[1.3] sm:leading-[1.35] text-right max-w-[200px] xs:max-w-[220px] sm:max-w-[250px] ml-auto">
+              {/* Subtext */}
+              <div className="text-[9px] xs:text-[9.5px] sm:text-[12.5px] text-[#1A0042]/85 font-sans leading-[1.3] sm:leading-[1.35] text-left sm:text-right max-w-[200px] xs:max-w-[220px] sm:max-w-[250px] sm:ml-auto">
                 Most agencies form an opinion and defend it. We audit first. Every recommendation comes from what your data proves works.
               </div>
 
               {/* Instant Audit CTA */}
               <button
                 onClick={onOpenDemoModal}
-                className="self-end inline-flex items-center gap-1 font-mono text-[8.5px] xs:text-[9.5px] sm:text-[11px] font-bold text-[#573681] hover:text-[#1A0042] uppercase tracking-wider transition-colors cursor-pointer group pb-0.5 sm:pb-0"
+                className="self-start sm:self-end inline-flex items-center gap-1.5 font-mono text-[9px] xs:text-[9.5px] sm:text-[11px] font-bold text-[#573681] hover:text-[#1A0042] uppercase tracking-wider transition-colors cursor-pointer group mt-0.5"
               >
-                <span>Book a 30-Min Audit</span>
-                <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                <span className="border-b border-[#573681]/40 pb-0.5 group-hover:border-[#1A0042]">Book a 30-Min Audit</span>
+                <span className="group-hover:translate-x-0.5 transition-transform text-[#573681]">→</span>
               </button>
             </div>
           </div>
