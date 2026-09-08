@@ -159,8 +159,8 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent pointer-events-none" />
         </div>
 
-        {/* Top Centered Floating Pill: WHAT WE DO (Positioned cleanly right above the card) */}
-        <div className="absolute top-[68px] xs:top-[74px] sm:top-24 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+        {/* Top Centered Floating Pill: WHAT WE DO */}
+        <div className="absolute top-[64px] xs:top-[68px] sm:top-24 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
           <div className="px-3 py-1 xs:px-3.5 xs:py-1.5 rounded-full bg-white/85 sm:bg-white/80 backdrop-blur-md border border-[#1A0042]/15 text-[#1A0042] text-[9.5px] xs:text-[10px] sm:text-xs font-sans font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-xs">
             <Layers className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-[#573681]" />
             <span>WHAT WE DO</span>
@@ -168,9 +168,9 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* Left Frosted Glass Card Container (Snug, content-fitted height on mobile)  */}
+        {/* Left Frosted Glass Card Container                                         */}
         {/* ========================================================================= */}
-        <div className="absolute left-3 right-3 sm:left-0 sm:right-auto top-[106px] xs:top-[114px] sm:top-0 h-[430px] xs:h-[450px] sm:h-full max-w-[340px] xs:max-w-[370px] sm:max-w-none mx-auto sm:mx-0 sm:w-[420px] lg:w-[480px] xl:w-[500px] z-20 pointer-events-none flex items-center justify-center sm:block">
+        <div className="absolute left-3 right-3 sm:left-0 sm:right-auto top-[98px] xs:top-[104px] sm:top-0 h-[400px] xs:h-[420px] sm:h-full max-w-[340px] xs:max-w-[370px] sm:max-w-none mx-auto sm:mx-0 sm:w-[420px] lg:w-[480px] xl:w-[500px] z-20 pointer-events-none flex items-center justify-center sm:block">
           {/* Frosted Backdrop Panel */}
           <div className="absolute inset-0 bg-white/95 sm:bg-white/70 backdrop-blur-2xl rounded-2xl xs:rounded-3xl sm:rounded-none sm:rounded-r-3xl border border-white/80 sm:border-0 sm:border-r sm:border-white/60 shadow-xl sm:shadow-[6px_0_35px_rgba(26,0,66,0.06)]" />
 
@@ -179,9 +179,9 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           {/* ----------------------------------------------------------------------- */}
           <div
             ref={panel1Ref}
-            className="relative h-full w-full p-4 xs:p-5 sm:p-8 lg:p-10 flex flex-col justify-between will-change-transform text-[#1A0042] overflow-hidden pointer-events-auto"
+            className="relative h-full w-full p-3.5 xs:p-4.5 sm:p-8 lg:p-10 flex flex-col justify-between will-change-transform text-[#1A0042] overflow-hidden pointer-events-auto"
           >
-            <div className="space-y-2 xs:space-y-2.5 sm:space-y-4 sm:pt-16 lg:pt-20">
+            <div className="space-y-1.5 xs:space-y-2 sm:space-y-4 sm:pt-16 lg:pt-20">
               <div className="flex items-center justify-between">
                 <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-11 sm:h-11 rounded-full bg-[#573681]/10 border border-[#573681]/20 flex items-center justify-center text-[#573681] shadow-2xs">
                   <Target className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
@@ -192,23 +192,23 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
                 </span>
               </div>
 
-              <div className="space-y-0.5 xs:space-y-1 sm:space-y-1.5">
+              <div className="space-y-0.5 sm:space-y-1.5">
                 <h4 className="font-mono font-bold text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase tracking-[0.14em] text-[#573681] flex items-center gap-1.5">
                   <span>CAMPAIGN ARCHITECTURE</span>
                   <span className="text-[#1A0042]/30">//</span>
                   <span>BUILT FOR SCALE</span>
                 </h4>
-                <h3 className="font-display font-black text-[15px] xs:text-base sm:text-2xl lg:text-[1.65rem] uppercase tracking-tight text-[#1A0042] leading-[1.15]">
+                <h3 className="font-display font-black text-[14.5px] xs:text-base sm:text-2xl lg:text-[1.65rem] uppercase tracking-tight text-[#1A0042] leading-[1.14]">
                   Full-Funnel Campaign Management Built for Scale, Not Vanity.
                 </h3>
               </div>
 
-              <p className="font-sans text-[11px] xs:text-xs sm:text-[13px] text-[#1A0042]/75 leading-snug xs:leading-relaxed line-clamp-2 xs:line-clamp-none">
+              <p className="font-sans text-[10.5px] xs:text-xs sm:text-[13px] text-[#1A0042]/75 leading-snug xs:leading-relaxed line-clamp-2 xs:line-clamp-none">
                 We structure campaigns to compound over time. Every layer is engineered to pass performance data forward to the next, so you test at scale without guessing.
               </p>
 
               {/* Key Deliverables Bullet Points */}
-              <div className="space-y-1 xs:space-y-1.5 sm:space-y-2 pt-0.5 font-sans text-[10px] xs:text-[11px] sm:text-xs text-[#1A0042]/85 leading-snug xs:leading-relaxed">
+              <div className="space-y-0.5 xs:space-y-1 sm:space-y-2 pt-0.5 font-sans text-[9.5px] xs:text-[10.5px] sm:text-xs text-[#1A0042]/85 leading-snug xs:leading-relaxed">
                 <div className="flex items-start gap-2">
                   <span className="text-[#573681] font-bold shrink-0">✓</span>
                   <span><strong>30+ Day Attribution Windows:</strong> Structured for delayed conversion cycles and post-iOS tracking.</span>
@@ -246,7 +246,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             </div>
 
             {/* Bottom Service Switcher Bar */}
-            <div className="space-y-1.5 pt-2 sm:pt-3 sm:pb-6 lg:pb-8">
+            <div className="space-y-1 pt-1.5 sm:pt-3 sm:pb-6 lg:pb-8">
               <div className="hidden sm:block w-[50%] border-b border-dotted border-[#1A0042]/25" />
               <div className="flex items-center justify-between font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#1A0042]/60">
                 <div className="flex items-center gap-1.5 xs:gap-2 font-bold tracking-wider">
@@ -264,9 +264,9 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           {/* ----------------------------------------------------------------------- */}
           <div
             ref={panel2Ref}
-            className="absolute inset-0 p-4 xs:p-5 sm:p-8 lg:p-10 flex flex-col justify-between opacity-0 will-change-transform text-[#1A0042] overflow-hidden pointer-events-none"
+            className="absolute inset-0 p-3.5 xs:p-4.5 sm:p-8 lg:p-10 flex flex-col justify-between opacity-0 will-change-transform text-[#1A0042] overflow-hidden pointer-events-none"
           >
-            <div className="space-y-2 xs:space-y-2.5 sm:space-y-4 sm:pt-16 lg:pt-20">
+            <div className="space-y-1.5 xs:space-y-2 sm:space-y-4 sm:pt-16 lg:pt-20">
               <div className="flex items-center justify-between">
                 <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-11 sm:h-11 rounded-full bg-[#573681]/10 border border-[#573681]/20 flex items-center justify-center text-[#573681] shadow-2xs">
                   <Sparkles className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
@@ -277,23 +277,23 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
                 </span>
               </div>
 
-              <div className="space-y-0.5 xs:space-y-1 sm:space-y-1.5">
+              <div className="space-y-0.5 sm:space-y-1.5">
                 <h4 className="font-mono font-bold text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase tracking-[0.14em] text-[#573681] flex items-center gap-1.5">
                   <span>DATA-INFORMED BRIEFS</span>
                   <span className="text-[#1A0042]/30">//</span>
                   <span>NO HUNCHES</span>
                 </h4>
-                <h3 className="font-display font-black text-[15px] xs:text-base sm:text-2xl lg:text-[1.65rem] uppercase tracking-tight text-[#1A0042] leading-[1.15]">
+                <h3 className="font-display font-black text-[14.5px] xs:text-base sm:text-2xl lg:text-[1.65rem] uppercase tracking-tight text-[#1A0042] leading-[1.14]">
                   Creative Briefs Driven By What Your Data Says Converts.
                 </h3>
               </div>
 
-              <p className="font-sans text-[11px] xs:text-xs sm:text-[13px] text-[#1A0042]/75 leading-snug xs:leading-relaxed line-clamp-2 xs:line-clamp-none">
+              <p className="font-sans text-[10.5px] xs:text-xs sm:text-[13px] text-[#1A0042]/75 leading-snug xs:leading-relaxed line-clamp-2 xs:line-clamp-none">
                 Most creative briefs start with a mood board and a hunch. Ours start with performance data. We analyze winning hook angles, lifecycles, and retention before production starts.
               </p>
 
               {/* Key Deliverables Bullet Points */}
-              <div className="space-y-1 xs:space-y-1.5 sm:space-y-2 pt-0.5 font-sans text-[10px] xs:text-[11px] sm:text-xs text-[#1A0042]/85 leading-snug xs:leading-relaxed">
+              <div className="space-y-0.5 xs:space-y-1 sm:space-y-2 pt-0.5 font-sans text-[9.5px] xs:text-[10.5px] sm:text-xs text-[#1A0042]/85 leading-snug xs:leading-relaxed">
                 <div className="flex items-start gap-2">
                   <span className="text-[#573681] font-bold shrink-0">✓</span>
                   <span><strong>Creative Lifecycle Analysis:</strong> Mapped across 0–7d, 8–30d, and 30d+ longevity windows.</span>
@@ -331,7 +331,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             </div>
 
             {/* Bottom Service Switcher Bar */}
-            <div className="space-y-1.5 pt-2 sm:pt-3 sm:pb-6 lg:pb-8">
+            <div className="space-y-1 pt-1.5 sm:pt-3 sm:pb-6 lg:pb-8">
               <div className="hidden sm:block w-[50%] border-b border-dotted border-[#1A0042]/25" />
               <div className="flex items-center justify-between font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#1A0042]/60">
                 <div className="flex items-center gap-1.5 xs:gap-2 font-bold tracking-wider">
@@ -350,9 +350,9 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           {/* ----------------------------------------------------------------------- */}
           <div
             ref={panel3Ref}
-            className="absolute inset-0 p-4 xs:p-5 sm:p-8 lg:p-10 flex flex-col justify-between opacity-0 will-change-transform text-[#1A0042] overflow-hidden pointer-events-none"
+            className="absolute inset-0 p-3.5 xs:p-4.5 sm:p-8 lg:p-10 flex flex-col justify-between opacity-0 will-change-transform text-[#1A0042] overflow-hidden pointer-events-none"
           >
-            <div className="space-y-2 xs:space-y-2.5 sm:space-y-4 sm:pt-16 lg:pt-20">
+            <div className="space-y-1.5 xs:space-y-2 sm:space-y-4 sm:pt-16 lg:pt-20">
               <div className="flex items-center justify-between">
                 <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-11 sm:h-11 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center text-emerald-700 shadow-2xs">
                   <Activity className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
@@ -363,23 +363,23 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
                 </span>
               </div>
 
-              <div className="space-y-0.5 xs:space-y-1 sm:space-y-1.5">
+              <div className="space-y-0.5 sm:space-y-1.5">
                 <h4 className="font-mono font-bold text-[8.5px] xs:text-[9.5px] sm:text-xs uppercase tracking-[0.14em] text-emerald-700 flex items-center gap-1.5">
                   <span>SYSTEMATIC RIGOR</span>
                   <span className="text-[#1A0042]/30">//</span>
                   <span>ONE STANDARD</span>
                 </h4>
-                <h3 className="font-display font-black text-[15px] xs:text-base sm:text-2xl lg:text-[1.65rem] uppercase tracking-tight text-[#1A0042] leading-[1.15]">
+                <h3 className="font-display font-black text-[14.5px] xs:text-base sm:text-2xl lg:text-[1.65rem] uppercase tracking-tight text-[#1A0042] leading-[1.14]">
                   One Diagnostic Framework Applied to Every Account.
                 </h3>
               </div>
 
-              <p className="font-sans text-[11px] xs:text-xs sm:text-[13px] text-[#1A0042]/75 leading-snug xs:leading-relaxed line-clamp-2 xs:line-clamp-none">
+              <p className="font-sans text-[10.5px] xs:text-xs sm:text-[13px] text-[#1A0042]/75 leading-snug xs:leading-relaxed line-clamp-2 xs:line-clamp-none">
                 Proprietary diagnostic checkpoints that catch spend bleed before it gets expensive. Same rigor applied whether spending ₹10k/mo or ₹500k/mo.
               </p>
 
               {/* Key Deliverables Bullet Points */}
-              <div className="space-y-1 xs:space-y-1.5 sm:space-y-2 pt-0.5 font-sans text-[10px] xs:text-[11px] sm:text-xs text-[#1A0042]/85 leading-snug xs:leading-relaxed">
+              <div className="space-y-0.5 xs:space-y-1 sm:space-y-2 pt-0.5 font-sans text-[9.5px] xs:text-[10.5px] sm:text-xs text-[#1A0042]/85 leading-snug xs:leading-relaxed">
                 <div className="flex items-start gap-2">
                   <span className="text-emerald-600 font-bold shrink-0">✓</span>
                   <span><strong>6-Point Diagnostic Audit:</strong> Exposing what's actually broken before fixing anything.</span>
@@ -417,7 +417,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             </div>
 
             {/* Bottom Service Switcher Bar */}
-            <div className="space-y-1.5 pt-2 sm:pt-3 sm:pb-6 lg:pb-8">
+            <div className="space-y-1 pt-1.5 sm:pt-3 sm:pb-6 lg:pb-8">
               <div className="hidden sm:block w-[50%] border-b border-dotted border-[#1A0042]/25" />
               <div className="flex items-center justify-between font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#1A0042]/60">
                 <div className="flex items-center gap-1.5 xs:gap-2 font-bold tracking-wider">
@@ -432,28 +432,28 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* Right Bottom Badge (Desktop Only) — Requested Copy & Philosophy           */}
+        {/* Bottom Philosophy Copy (Centered below card on mobile, right-bottom on desktop) */}
         {/* ========================================================================= */}
         <div
           ref={rightBadgeRef}
-          className="hidden sm:flex absolute bottom-6 sm:bottom-10 lg:bottom-12 right-6 sm:right-10 lg:right-14 z-20 pointer-events-none text-right flex-col items-end gap-3 max-w-sm sm:max-w-md lg:max-w-lg"
+          className="absolute bottom-2 xs:bottom-3 sm:bottom-10 lg:bottom-12 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-10 lg:right-14 z-20 pointer-events-none text-center sm:text-right flex flex-col items-center sm:items-end gap-1 sm:gap-3 w-full sm:w-auto max-w-[340px] xs:max-w-md lg:max-w-lg px-3 sm:px-0"
         >
-          <div className="space-y-1.5">
-            <div className="font-mono font-bold text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-[#573681]">
+          <div className="space-y-0.5 sm:space-y-1.5">
+            <div className="font-mono font-bold text-[8px] xs:text-[9px] sm:text-[11px] tracking-[0.16em] uppercase text-[#573681]">
               FULL-FUNNEL ARCHITECTURE
             </div>
 
-            <h2 className="font-display font-black text-xl sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-[1.08]">
-              Full-Funnel Execution. <br />
+            <h2 className="font-display font-black text-[11px] xs:text-xs sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-tight sm:leading-[1.08]">
+              Full-Funnel Execution. <span className="hidden sm:inline"><br /></span>
               <span className="text-[#573681]">One Diagnostic Philosophy.</span>
             </h2>
 
-            <p className="font-sans text-xs sm:text-[13.5px] text-[#1A0042]/80 font-normal leading-relaxed pt-1">
+            <p className="font-sans text-[9px] xs:text-[10px] sm:text-[13.5px] text-[#1A0042]/80 font-normal leading-tight xs:leading-snug sm:leading-relaxed pt-0.5 max-w-[310px] xs:max-w-sm sm:max-w-none mx-auto sm:mx-0">
               Most agencies separate media buying from creative and guess on attribution. We audit first, engineer briefs from your historical winners, and re-tune pacing weekly.
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5 pt-2.5 border-t border-[#1A0042]/15 font-mono text-[10.5px] text-[#1A0042]/60">
+          <div className="hidden xs:flex items-center gap-2 sm:gap-2.5 pt-1 sm:pt-2.5 border-t border-[#1A0042]/15 font-mono text-[8px] sm:text-[10.5px] text-[#1A0042]/60">
             <span className="w-1.5 h-1.5 rounded-full bg-[#573681] animate-pulse" />
             <span className="tracking-wider uppercase font-semibold">3 CORE CAPABILITIES · 1 UNIFIED PLAYBOOK</span>
           </div>
