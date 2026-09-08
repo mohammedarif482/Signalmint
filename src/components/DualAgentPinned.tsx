@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Layers, Sparkles, Activity, Target, ArrowRight } from "lucide-react";
+import { Layers, ArrowRight } from "lucide-react";
 import heroBgImage from "../assets/herobg.jpeg";
 import heroBg1Image from "../assets/herobg1.jpeg";
 
@@ -182,11 +182,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             className="relative h-full w-full p-3.5 xs:p-4.5 sm:p-8 lg:p-10 flex flex-col justify-between will-change-transform text-[#1A0042] overflow-hidden pointer-events-auto"
           >
             <div className="space-y-1.5 xs:space-y-2 sm:space-y-4 sm:pt-16 lg:pt-20">
-              <div className="flex items-center justify-between">
-                <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-11 sm:h-11 rounded-full bg-[#573681]/10 border border-[#573681]/20 flex items-center justify-center text-[#573681] shadow-2xs">
-                  <Target className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
-                </div>
-
+              <div className="flex items-center">
                 <span className="px-2 py-0.5 xs:px-2.5 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[8px] xs:text-[9px] sm:text-[10px] font-bold tracking-wider uppercase border border-[#573681]/20">
                   01 // META ADS
                 </span>
@@ -267,11 +263,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             className="absolute inset-0 p-3.5 xs:p-4.5 sm:p-8 lg:p-10 flex flex-col justify-between opacity-0 will-change-transform text-[#1A0042] overflow-hidden pointer-events-none"
           >
             <div className="space-y-1.5 xs:space-y-2 sm:space-y-4 sm:pt-16 lg:pt-20">
-              <div className="flex items-center justify-between">
-                <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-11 sm:h-11 rounded-full bg-[#573681]/10 border border-[#573681]/20 flex items-center justify-center text-[#573681] shadow-2xs">
-                  <Sparkles className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
-                </div>
-
+              <div className="flex items-center">
                 <span className="px-2 py-0.5 xs:px-2.5 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[8px] xs:text-[9px] sm:text-[10px] font-bold tracking-wider uppercase border border-[#573681]/20">
                   02 // CREATIVE STRATEGY
                 </span>
@@ -353,11 +345,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             className="absolute inset-0 p-3.5 xs:p-4.5 sm:p-8 lg:p-10 flex flex-col justify-between opacity-0 will-change-transform text-[#1A0042] overflow-hidden pointer-events-none"
           >
             <div className="space-y-1.5 xs:space-y-2 sm:space-y-4 sm:pt-16 lg:pt-20">
-              <div className="flex items-center justify-between">
-                <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-11 sm:h-11 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center text-emerald-700 shadow-2xs">
-                  <Activity className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
-                </div>
-
+              <div className="flex items-center">
                 <span className="px-2 py-0.5 xs:px-2.5 rounded-full bg-emerald-500/10 text-emerald-700 font-mono text-[8px] xs:text-[9px] sm:text-[10px] font-bold tracking-wider uppercase border border-emerald-500/20">
                   03 // AUDIT DIAGNOSTICS
                 </span>
