@@ -392,7 +392,7 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
           {/* ========================================================================= */}
           <div
             ref={card1Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#6366F1]/75 via-[#573681]/70 to-[#3B1F69]/80 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(87,54,129,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
+            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#6366F1]/55 via-[#573681]/50 to-[#3B1F69]/60 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(87,54,129,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
           >
             {/* Top Text Content */}
             <div className="relative z-10 space-y-1.5 sm:space-y-2">
@@ -476,7 +476,7 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
           {/* ========================================================================= */}
           <div
             ref={card2Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#2563EB]/75 via-[#4338CA]/70 to-[#573681]/80 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(37,99,235,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
+            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#2563EB]/55 via-[#4338CA]/50 to-[#573681]/60 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(37,99,235,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
           >
             {/* Top Text Content */}
             <div className="relative z-10 space-y-1.5 sm:space-y-2">
@@ -559,7 +559,7 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
           {/* ========================================================================= */}
           <div
             ref={card3Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#7C3AED]/75 via-[#573681]/70 to-[#43236B]/80 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(124,58,237,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
+            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#7C3AED]/55 via-[#573681]/50 to-[#43236B]/60 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(124,58,237,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
           >
             {/* Top Text Content */}
             <div className="relative z-10 space-y-1.5 sm:space-y-2">
@@ -634,7 +634,7 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
           {/* ========================================================================= */}
           <div
             ref={card4Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#8B5CF6]/75 via-[#573681]/70 to-[#1A0042]/80 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(139,92,246,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
+            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#8B5CF6]/55 via-[#573681]/50 to-[#1A0042]/65 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(139,92,246,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
           >
             {/* Top Text Content */}
             <div className="relative z-10 space-y-1.5 sm:space-y-2">
