@@ -43,94 +43,188 @@ export interface BrandPartner {
   category: string;
   metric: string;
   logo: string;
+  hasTilt?: boolean;
 }
 
-// Row 1 Brands (14 clients)
-export const BRAND_PARTNERS_ROW_1: BrandPartner[] = [
-  { id: "b1", name: "Gut2Go", category: "Nutrition", metric: "4.6x ROAS", logo: gut2goLogo },
-  { id: "b2", name: "Birckles", category: "D2C Apparel", metric: "5.4x ROAS", logo: bircklesLogo },
-  { id: "b3", name: "Kuhlteen", category: "Gen-Z Brand", metric: "-36% CPA", logo: kuhlteenLogo },
-  { id: "b4", name: "Sugar Knocker", category: "Ayurvedic Care", metric: "₹1.1Cr Vol", logo: sugarKnockerLogo },
-  { id: "b5", name: "Teaquila", category: "Energy Drinks", metric: "+128% Hold", logo: teaquilaLogo },
-  { id: "b6", name: "HappyCysters", category: "Hormonal Health", metric: "₹48L/mo", logo: happyCystersLogo },
-  { id: "b7", name: "Bold Edge", category: "Media Scaling", metric: "₹92L/mo", logo: boldEdgeLogo },
-  { id: "b8", name: "Inaya", category: "Skincare DTC", metric: "5.1x ROAS", logo: inayaLogo },
-  { id: "b9", name: "LoveDK", category: "Personal Care", metric: "3.9x MER", logo: lovedkLogo },
-  { id: "b10", name: "Imsafe", category: "Hygiene Tech", metric: "Audited SLA", logo: imsafeLogo },
-  { id: "b11", name: "Ecosys Cleaners", category: "Eco Solutions", metric: "6.2x Angle", logo: ecosysLogo },
-  { id: "b12", name: "Pure Wiff", category: "Fragrance DTC", metric: "₹35L/mo", logo: pureWiffLogo },
-  { id: "b13", name: "The ArtFlex", category: "Design Living", metric: "12m SLA", logo: theartLogo },
-  { id: "b14", name: "Casorro", category: "Luxury Living", metric: "4.8x ROAS", logo: casorroLogo },
-];
+export interface BrandColumn {
+  id: string;
+  offsetClass: string;
+  brands: BrandPartner[];
+}
 
-// Row 2 Brands (13 clients)
-export const BRAND_PARTNERS_ROW_2: BrandPartner[] = [
-  { id: "b15", name: "Drewknot", category: "Fashion DTC", metric: "3.7x MER", logo: drewknotLogo },
-  { id: "b16", name: "FarmZen", category: "Organic Agri", metric: "₹65L/mo", logo: farmzenLogo },
-  { id: "b17", name: "Getto", category: "Urban Mobility", metric: "-42% CAC", logo: gettoLogo },
-  { id: "b18", name: "Humara Pandit", category: "Spiritual Tech", metric: "₹80L/mo", logo: humaraPanditLogo },
-  { id: "b19", name: "KM20", category: "Active Gear", metric: "5.8x ROAS", logo: km20Logo },
-  { id: "b20", name: "LoanPaar", category: "FinTech Scale", metric: "₹2.4Cr Vol", logo: loanpaarLogo },
-  { id: "b21", name: "Oszea", category: "Wellness DTC", metric: "4.2x ROAS", logo: oszeaLogo },
-  { id: "b22", name: "TruSense", category: "Diagnostics", metric: "+95% Ret.", logo: truSenseLogo },
-  { id: "b23", name: "Tulips", category: "Personal Hygiene", metric: "₹1.8Cr Vol", logo: tulipsLogo },
-  { id: "b24", name: "UltraMile", category: "Auto & Tires", metric: "3.4x MER", logo: ultraMileLogo },
-  { id: "b25", name: "V2 Edibles", category: "FMCG Nutrition", metric: "+140% LTV", logo: v2EdiblesLogo },
-  { id: "b26", name: "Zoci", category: "Modern Retail", metric: "4.5x ROAS", logo: zociLogo },
-  { id: "b27", name: "Aaina", category: "Ethnic Apparel", metric: "5.2x ROAS", logo: aainaLogo },
+// 27 Verified Client Brands Structured into 15 Masonry Columns (Pinterest "one-up, one-down" arch layout)
+export const BRAND_COLUMNS: BrandColumn[] = [
+  // Col 1: Down offset
+  {
+    id: "col-1",
+    offsetClass: "translate-y-3 sm:translate-y-5",
+    brands: [
+      { id: "b1", name: "Gut2Go", category: "Nutrition", metric: "4.6x ROAS", logo: gut2goLogo },
+      { id: "b2", name: "Birckles", category: "D2C Apparel", metric: "5.4x ROAS", logo: bircklesLogo },
+    ],
+  },
+  // Col 2: Up offset
+  {
+    id: "col-2",
+    offsetClass: "-translate-y-3 sm:-translate-y-5",
+    brands: [
+      { id: "b3", name: "Kuhlteen", category: "Gen-Z Brand", metric: "-36% CPA", logo: kuhlteenLogo },
+      { id: "b4", name: "Sugar Knocker", category: "Ayurvedic Care", metric: "₹1.1Cr Vol", logo: sugarKnockerLogo },
+    ],
+  },
+  // Col 3: Down offset
+  {
+    id: "col-3",
+    offsetClass: "translate-y-2 sm:translate-y-4",
+    brands: [
+      { id: "b5", name: "Teaquila", category: "Energy Drinks", metric: "+128% Hold", logo: teaquilaLogo },
+      { id: "b6", name: "The ArtFlex", category: "Design Living", metric: "12m SLA", logo: theartLogo },
+    ],
+  },
+  // Col 4: Up offset
+  {
+    id: "col-4",
+    offsetClass: "-translate-y-4 sm:-translate-y-6",
+    brands: [
+      { id: "b7", name: "HappyCysters", category: "Hormonal Health", metric: "₹48L/mo", logo: happyCystersLogo },
+      { id: "b8", name: "Bold Edge", category: "Media Scaling", metric: "₹92L/mo", logo: boldEdgeLogo },
+    ],
+  },
+  // Col 5: Centerpiece Single Card
+  {
+    id: "col-5",
+    offsetClass: "translate-y-0.5 sm:translate-y-1",
+    brands: [
+      { id: "b9", name: "Inaya", category: "Skincare DTC", metric: "5.1x ROAS", logo: inayaLogo },
+    ],
+  },
+  // Col 6: Up offset
+  {
+    id: "col-6",
+    offsetClass: "-translate-y-3 sm:-translate-y-5",
+    brands: [
+      { id: "b10", name: "LoveDK", category: "Personal Care", metric: "3.9x MER", logo: lovedkLogo },
+      { id: "b11", name: "Imsafe", category: "Hygiene Tech", metric: "Audited SLA", logo: imsafeLogo, hasTilt: true },
+    ],
+  },
+  // Col 7: Down offset
+  {
+    id: "col-7",
+    offsetClass: "translate-y-4 sm:translate-y-6",
+    brands: [
+      { id: "b12", name: "Ecosys Cleaners", category: "Eco Solutions", metric: "6.2x Angle", logo: ecosysLogo },
+      { id: "b13", name: "Pure Wiff", category: "Fragrance DTC", metric: "₹35L/mo", logo: pureWiffLogo },
+    ],
+  },
+  // Col 8: Up offset
+  {
+    id: "col-8",
+    offsetClass: "-translate-y-4 sm:-translate-y-5",
+    brands: [
+      { id: "b14", name: "Casorro", category: "Luxury Living", metric: "4.8x ROAS", logo: casorroLogo },
+      { id: "b15", name: "Drewknot", category: "Fashion DTC", metric: "3.7x MER", logo: drewknotLogo },
+    ],
+  },
+  // Col 9: Down offset
+  {
+    id: "col-9",
+    offsetClass: "translate-y-3 sm:translate-y-5",
+    brands: [
+      { id: "b16", name: "FarmZen", category: "Organic Agri", metric: "₹65L/mo", logo: farmzenLogo },
+      { id: "b17", name: "Getto", category: "Urban Mobility", metric: "-42% CAC", logo: gettoLogo },
+    ],
+  },
+  // Col 10: Up offset
+  {
+    id: "col-10",
+    offsetClass: "-translate-y-3 sm:-translate-y-4",
+    brands: [
+      { id: "b18", name: "Humara Pandit", category: "Spiritual Tech", metric: "₹80L/mo", logo: humaraPanditLogo },
+      { id: "b19", name: "KM20", category: "Active Gear", metric: "5.8x ROAS", logo: km20Logo },
+    ],
+  },
+  // Col 11: Single Centerpiece
+  {
+    id: "col-11",
+    offsetClass: "translate-y-1 sm:translate-y-2",
+    brands: [
+      { id: "b20", name: "LoanPaar", category: "FinTech Scale", metric: "₹2.4Cr Vol", logo: loanpaarLogo },
+    ],
+  },
+  // Col 12: Up offset
+  {
+    id: "col-12",
+    offsetClass: "-translate-y-4 sm:-translate-y-6",
+    brands: [
+      { id: "b21", name: "Oszea", category: "Wellness DTC", metric: "4.2x ROAS", logo: oszeaLogo },
+      { id: "b22", name: "TruSense", category: "Diagnostics", metric: "+95% Ret.", logo: truSenseLogo },
+    ],
+  },
+  // Col 13: Down offset
+  {
+    id: "col-13",
+    offsetClass: "translate-y-4 sm:translate-y-5",
+    brands: [
+      { id: "b23", name: "Tulips", category: "Personal Hygiene", metric: "₹1.8Cr Vol", logo: tulipsLogo },
+      { id: "b24", name: "UltraMile", category: "Auto & Tires", metric: "3.4x MER", logo: ultraMileLogo },
+    ],
+  },
+  // Col 14: Up offset
+  {
+    id: "col-14",
+    offsetClass: "-translate-y-3 sm:-translate-y-5",
+    brands: [
+      { id: "b25", name: "V2 Edibles", category: "FMCG Nutrition", metric: "+140% LTV", logo: v2EdiblesLogo },
+      { id: "b26", name: "Zoci", category: "Modern Retail", metric: "4.5x ROAS", logo: zociLogo },
+    ],
+  },
+  // Col 15: Clean anchor
+  {
+    id: "col-15",
+    offsetClass: "translate-y-2 sm:translate-y-4",
+    brands: [
+      { id: "b27", name: "Aaina", category: "Ethnic Apparel", metric: "5.2x ROAS", logo: aainaLogo },
+    ],
+  },
 ];
 
 export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedByProps = {}) {
   const runwayRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
-  const row1Ref = useRef<HTMLDivElement>(null);
-  const row2Ref = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const textBlockRef = useRef<HTMLDivElement>(null);
   const [activeBrand, setActiveBrand] = useState<BrandPartner | null>(null);
 
   useEffect(() => {
     const runway = runwayRef.current;
     const sticky = stickyRef.current;
-    const row1 = row1Ref.current;
-    const row2 = row2Ref.current;
+    const track = trackRef.current;
     const textBlock = textBlockRef.current;
-    if (!runway || !sticky || !row1 || !row2 || !textBlock) return;
+    if (!runway || !sticky || !track || !textBlock) return;
 
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // DESKTOP & TABLET: Pinned Horizontal Scroll Scrub
+      // DESKTOP & TABLET: Pinned Horizontal Masonry Scroll
       mm.add("(min-width: 640px)", () => {
-        const getDist1 = () => Math.max(0, row1.scrollWidth - window.innerWidth + 100);
-        const getDist2 = () => Math.max(0, row2.scrollWidth - window.innerWidth + 100);
+        const getScrollDistance = () => Math.max(0, track.scrollWidth - window.innerWidth + 140);
 
         const scrubTl = gsap.timeline({
           scrollTrigger: {
             trigger: runway,
             start: "top top",
-            end: () => `+=${Math.max(getDist1(), getDist2()) * 0.95}`,
+            end: () => `+=${getScrollDistance() * 0.95}`,
             pin: true,
             scrub: 0.8,
             invalidateOnRefresh: true,
           },
         });
 
-        // Row 1 scrolls smoothly leftward
+        // Horizontal scrub of the entire staggered masonry canopy
         scrubTl.to(
-          row1,
+          track,
           {
-            x: () => -getDist1(),
-            ease: "none",
-            duration: 1,
-          },
-          0
-        );
-
-        // Row 2 scrolls smoothly leftward with subtle parallax offset
-        scrubTl.to(
-          row2,
-          {
-            x: () => -getDist2(),
+            x: () => -getScrollDistance(),
             ease: "none",
             duration: 1,
           },
@@ -170,32 +264,36 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         onClick={() => setActiveBrand(isActive ? null : brand)}
         onMouseEnter={() => setActiveBrand(brand)}
         onMouseLeave={() => setActiveBrand(null)}
-        className={`group relative rounded-2xl sm:rounded-3xl p-3 sm:p-4 bg-white/95 backdrop-blur-md border ${
-          isActive ? "border-[#573681] shadow-lg scale-[1.03]" : "border-[#1A0042]/10 hover:border-[#573681]/50 shadow-xs hover:shadow-xl hover:scale-[1.03]"
-        } transition-all duration-300 flex flex-col items-center justify-between cursor-pointer w-[140px] xs:w-[155px] sm:w-[195px] lg:w-[215px] h-[125px] xs:h-[135px] sm:h-[155px] lg:h-[165px] shrink-0 select-none ${extraClasses}`}
+        className={`group relative rounded-2xl sm:rounded-3xl p-3 sm:p-4 lg:p-4.5 bg-white/95 backdrop-blur-md border ${
+          isActive
+            ? "border-[#573681] shadow-lg scale-[1.03]"
+            : "border-[#1A0042]/10 hover:border-[#573681]/45 shadow-xs hover:shadow-xl hover:scale-[1.03]"
+        } transition-all duration-300 flex flex-col items-center justify-between cursor-pointer w-full aspect-[3.7/4.8] sm:aspect-[3.6/4.7] min-h-[125px] sm:min-h-[148px] lg:min-h-[162px] select-none ${
+          brand.hasTilt ? "[transform:perspective(800px)_rotateY(-5deg)] hover:[transform:perspective(800px)_rotateY(0deg)]" : ""
+        } ${extraClasses}`}
       >
         {/* Subtle internal radial highlight on hover */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#E7E6FB]/40 via-transparent to-[#573681]/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl sm:rounded-3xl pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#E7E6FB]/35 via-transparent to-[#573681]/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl sm:rounded-3xl pointer-events-none" />
 
         {/* Top subtle category pill */}
         <div className="w-full flex items-center justify-between z-10">
-          <span className="font-mono text-[7.5px] sm:text-[9px] uppercase font-bold text-[#1A0042]/45 tracking-wider group-hover:text-[#573681] transition-colors line-clamp-1">
+          <span className="font-mono text-[8px] sm:text-[9px] uppercase font-bold text-[#1A0042]/45 tracking-wider group-hover:text-[#573681] transition-colors line-clamp-1">
             {brand.category}
           </span>
           <div className="w-1.5 h-1.5 rounded-full bg-[#573681]/30 group-hover:bg-[#573681] group-hover:animate-ping transition-colors shrink-0" />
         </div>
 
         {/* Centered Brand Logo */}
-        <div className="flex-1 w-full flex items-center justify-center py-1 sm:py-2 z-10 px-1 sm:px-2">
+        <div className="flex-1 w-full flex items-center justify-center py-2 sm:py-2.5 z-10 px-1 sm:px-2">
           <img
             src={brand.logo}
             alt={brand.name}
-            className="max-h-8 sm:max-h-11 lg:max-h-12 w-auto max-w-[85%] object-contain filter drop-shadow-2xs group-hover:scale-110 transition-transform duration-300"
+            className="max-h-8 sm:max-h-11 lg:max-h-13 w-auto max-w-[85%] object-contain filter drop-shadow-2xs group-hover:scale-108 transition-transform duration-300"
           />
         </div>
 
         {/* Verified Result Metric Pill at Bottom */}
-        <div className="w-full pt-1 sm:pt-1.5 border-t border-[#1A0042]/5 flex items-center justify-between z-10 gap-1">
+        <div className="w-full pt-1.5 sm:pt-2 border-t border-[#1A0042]/5 flex items-center justify-between z-10 gap-1">
           <span className="font-sans font-bold text-[9px] sm:text-[10.5px] text-[#1A0042] truncate">
             {brand.name}
           </span>
@@ -245,9 +343,9 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         {/* ------------------------------------------------------------------- */}
         <div
           ref={textBlockRef}
-          className="relative z-20 max-w-4xl mx-auto px-4 text-center w-full shrink-0 mb-1 sm:mb-3"
+          className="relative z-20 max-w-4xl mx-auto px-4 text-center w-full shrink-0 mb-1 sm:mb-2"
         >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider mb-1.5 sm:mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider mb-1 sm:mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>PORTFOLIO ROSTER · 27+ D2C &amp; ENTERPRISE BRANDS</span>
           </div>
@@ -258,56 +356,45 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         </div>
 
         {/* ------------------------------------------------------------------- */}
-        {/* 2. DUAL-ROW HORIZONTAL BRAND LOGO CAROUSEL                          */}
+        {/* 2. MASONRY PINTEREST "ONE UP, ONE DOWN" HORIZONTAL CANOPY           */}
         {/* ------------------------------------------------------------------- */}
-        <div className="relative z-10 w-full flex-1 flex flex-col justify-center gap-2.5 sm:gap-4 lg:gap-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
+        <div className="relative z-10 w-full flex-1 flex items-center justify-center overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
           {/* ================================================================= */}
-          {/* A. MOBILE CANOPY LAYOUT (Screens < sm: Smooth 2-row Marquee)      */}
+          {/* A. MOBILE MASONRY CAROUSEL (Screens < sm: Continuous Marquee)     */}
           {/* ================================================================= */}
-          <div className="sm:hidden w-full flex flex-col gap-2.5 py-1 overflow-hidden select-none">
-            {/* Mobile Row 1: Leftward continuous scroll */}
-            <div className="flex items-center gap-2.5 animate-brand-marquee w-max">
-              {[...BRAND_PARTNERS_ROW_1, ...BRAND_PARTNERS_ROW_1].map((brand, idx) => (
-                <div key={`mob-r1-${brand.id}-${idx}`}>
-                  {renderLogoCard(brand)}
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile Row 2: Rightward continuous scroll */}
-            <div className="flex items-center gap-2.5 animate-brand-marquee-reverse w-max">
-              {[...BRAND_PARTNERS_ROW_2, ...BRAND_PARTNERS_ROW_2].map((brand, idx) => (
-                <div key={`mob-r2-${brand.id}-${idx}`}>
-                  {renderLogoCard(brand)}
+          <div className="sm:hidden w-full overflow-hidden select-none py-2">
+            <div className="flex items-center gap-3 animate-brand-marquee w-max pl-4">
+              {[...BRAND_COLUMNS, ...BRAND_COLUMNS].map((col, idx) => (
+                <div
+                  key={`mob-col-${col.id}-${idx}`}
+                  className={`w-[138px] flex flex-col gap-2.5 shrink-0 will-change-transform ${col.offsetClass}`}
+                >
+                  {col.brands.map((brand) => renderLogoCard(brand))}
                 </div>
               ))}
             </div>
           </div>
 
           {/* ================================================================= */}
-          {/* B. DESKTOP & TABLET HORIZONTAL SCROLL RUNWAY (Screens >= sm)       */}
+          {/* B. DESKTOP & TABLET MASONRY HORIZONTAL SCROLL (Screens >= sm)     */}
           {/* ================================================================= */}
-          <div className="hidden sm:flex flex-col gap-3.5 lg:gap-4.5 w-full overflow-hidden">
-            {/* Desktop Row 1 Track */}
-            <div
-              ref={row1Ref}
-              className="flex items-center gap-3.5 lg:gap-4.5 will-change-transform w-max pl-6 sm:pl-10"
-            >
-              {BRAND_PARTNERS_ROW_1.map((brand) => renderLogoCard(brand))}
-            </div>
-
-            {/* Desktop Row 2 Track */}
-            <div
-              ref={row2Ref}
-              className="flex items-center gap-3.5 lg:gap-4.5 will-change-transform w-max pl-14 sm:pl-28"
-            >
-              {BRAND_PARTNERS_ROW_2.map((brand) => renderLogoCard(brand))}
-            </div>
+          <div
+            ref={trackRef}
+            className="hidden sm:flex items-center gap-3.5 sm:gap-4 lg:gap-5 will-change-transform w-max px-8 sm:px-12 lg:px-16"
+          >
+            {BRAND_COLUMNS.map((col) => (
+              <div
+                key={col.id}
+                className={`w-[155px] sm:w-[175px] lg:w-[195px] flex flex-col gap-3 sm:gap-3.5 lg:gap-4 shrink-0 will-change-transform ${col.offsetClass}`}
+              >
+                {col.brands.map((brand) => renderLogoCard(brand))}
+              </div>
+            ))}
           </div>
         </div>
 
         {/* ------------------------------------------------------------------- */}
-        {/* 3. INTERACTIVE TELEMETRY HOVER / TAP PILL (Below the carousel)      */}
+        {/* 3. INTERACTIVE TELEMETRY HOVER / TAP PILL (Below the canopy)        */}
         {/* ------------------------------------------------------------------- */}
         <div className="h-8 sm:h-9 flex items-center justify-center relative z-20 px-4 shrink-0 mt-1 sm:mt-2">
           {activeBrand ? (
