@@ -348,35 +348,32 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-[54vw] max-w-[240px] sm:max-w-none sm:w-[17.5rem] lg:w-[19rem] h-[290px] xs:h-[305px] sm:h-[330px] lg:h-[355px] p-3.5 xs:p-4 sm:p-6 lg:p-6.5 pb-4 xs:pb-5 sm:pb-6 lg:pb-6.5 rounded-2xl bg-white/[0.28] hover:bg-white/[0.38] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
+            className="w-[54vw] max-w-[240px] sm:max-w-none sm:w-[17.5rem] lg:w-[18.5rem] h-auto p-4 sm:p-5 lg:p-6 pb-4 sm:pb-5 lg:pb-6 rounded-2xl bg-white/[0.28] hover:bg-white/[0.38] backdrop-blur-md shadow-none flex flex-col gap-2.5 xs:gap-3 sm:gap-3.5 overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
           >
             {/* Top Bold Grotesque Header */}
             <div>
-              <div className="font-sans font-bold text-[10px] xs:text-[11px] sm:text-[13.5px] lg:text-[14.5px] uppercase tracking-tight text-[#1A0042] leading-[1.22] sm:leading-[1.25]">
+              <div className="font-sans font-bold text-[10px] xs:text-[11px] sm:text-[13px] lg:text-[14px] uppercase tracking-tight text-[#1A0042] leading-[1.22] sm:leading-[1.25]">
                 DESIGNED FOR<br /> PERFORMANCE-FIRST<br />
                 FOUNDERS &amp; MARKETERS.
               </div>
             </div>
 
-            {/* Bottom section: Partial dotted hairline rule + Subtext & CTA */}
-            <div className="flex flex-col gap-2 sm:gap-2.5 pt-1.5 sm:pt-2">
-              {/* Editorial Dotted Separator: ~45% width from left margin */}
-              <div className="w-[45%] border-b border-dotted border-[#1A0042]/35" />
+            {/* Editorial Dotted Separator: ~45% width from left margin */}
+            <div className="w-[45%] border-b border-dotted border-[#1A0042]/35" />
 
-              {/* Subtext */}
-              <div className="text-[9px] xs:text-[9.5px] sm:text-[11.5px] lg:text-[12px] text-[#1A0042]/85 font-sans leading-[1.38] sm:leading-[1.42] text-left sm:text-right max-w-[200px] xs:max-w-[220px] sm:max-w-[240px] sm:ml-auto">
-                Most agencies form an opinion and defend it. We audit first. Every recommendation comes from what your data proves works.
-              </div>
-
-              {/* Instant Audit CTA */}
-              <button
-                onClick={onOpenDemoModal}
-                className="self-start sm:self-end inline-flex items-center gap-1.5 font-mono text-[9px] xs:text-[9.5px] sm:text-[11px] font-bold text-[#573681] hover:text-[#1A0042] uppercase tracking-wider transition-colors cursor-pointer group mt-1"
-              >
-                <span className="border-b border-[#573681]/40 pb-0.5 group-hover:border-[#1A0042]">Book a 30-Min Audit</span>
-                <span className="group-hover:translate-x-0.5 transition-transform text-[#573681]">→</span>
-              </button>
+            {/* Subtext */}
+            <div className="text-[9px] xs:text-[9.5px] sm:text-[11.5px] lg:text-[12px] text-[#1A0042]/85 font-sans leading-[1.38] sm:leading-[1.42] text-left sm:text-right max-w-[200px] xs:max-w-[220px] sm:max-w-[240px] sm:ml-auto">
+              Most agencies form an opinion and defend it. We audit first. Every recommendation comes from what your data proves works.
             </div>
+
+            {/* Instant Audit CTA */}
+            <button
+              onClick={onOpenDemoModal}
+              className="self-start sm:self-end inline-flex items-center gap-1.5 font-mono text-[9px] xs:text-[9.5px] sm:text-[11px] font-bold text-[#573681] hover:text-[#1A0042] uppercase tracking-wider transition-colors cursor-pointer group pt-0.5"
+            >
+              <span className="border-b border-[#573681]/40 pb-0.5 group-hover:border-[#1A0042]">Book a 30-Min Audit</span>
+              <span className="group-hover:translate-x-0.5 transition-transform text-[#573681]">→</span>
+            </button>
           </div>
         </div>
 
