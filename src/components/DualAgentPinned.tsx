@@ -142,7 +142,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             className="w-full h-full object-cover object-center select-none opacity-90 scale-105"
           />
           <div className="absolute inset-0 bg-[#1A0042]/5 mix-blend-multiply pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/35 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/35 via-white/15 to-transparent pointer-events-none" />
         </div>
 
         {/* Ambient Photographic Background Layer 2 (Cross-fades on scroll) */}
@@ -156,7 +156,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             className="w-full h-full object-cover object-center select-none mix-blend-screen opacity-50 scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-tr from-[#1A0042]/60 via-[#573681]/25 to-transparent mix-blend-color-burn pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/35 via-white/15 to-transparent pointer-events-none" />
         </div>
 
         {/* Top Centered Floating Pill: WHAT WE DO */}
@@ -172,7 +172,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
         {/* ========================================================================= */}
         <div className="absolute left-3 right-3 sm:left-0 sm:right-auto top-[98px] xs:top-[104px] sm:top-0 h-[400px] xs:h-[420px] sm:h-full max-w-[340px] xs:max-w-[370px] sm:max-w-none mx-auto sm:mx-0 sm:w-[420px] lg:w-[480px] xl:w-[500px] z-20 pointer-events-none flex items-center justify-center sm:block">
           {/* Frosted Backdrop Panel */}
-          <div className="absolute inset-0 bg-white/95 sm:bg-white/70 backdrop-blur-2xl rounded-2xl xs:rounded-3xl sm:rounded-none sm:rounded-r-3xl border border-white/80 sm:border-0 sm:border-r sm:border-white/60 shadow-xl sm:shadow-[6px_0_35px_rgba(26,0,66,0.06)]" />
+          <div className="absolute inset-0 bg-white/85 sm:bg-white/45 backdrop-blur-xl sm:backdrop-blur-2xl rounded-2xl xs:rounded-3xl sm:rounded-none sm:rounded-r-3xl border border-white/70 sm:border-0 sm:border-r sm:border-white/40 shadow-xl sm:shadow-[6px_0_35px_rgba(26,0,66,0.06)]" />
 
           {/* ----------------------------------------------------------------------- */}
           {/* SERVICE 01: META ADS                                                    */}
