@@ -264,4 +264,21 @@ html.lenis, html.lenis body {
   z-index: 0;
 }
 
+/* 2. Fading dot grid */
+.bg-fading-dot-grid {
+  background: #FBFAFE;
+  position: relative;
+}
 
+.bg-fading-dot-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#B08BE0 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}

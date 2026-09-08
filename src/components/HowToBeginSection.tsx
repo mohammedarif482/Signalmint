@@ -357,12 +357,12 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
     <section
       id="why-us"
       ref={runwayRef}
-      className="relative w-full bg-textured-wash text-[#1A0042] select-none border-t border-[#1A0042]/10 overflow-hidden"
+      className="relative w-full bg-fading-dot-grid text-[#1A0042] select-none border-t border-[#1A0042]/10 overflow-hidden"
     >
       {/* Pinned Viewport (100dvh for mobile dynamic viewport bar stability) */}
       <div
         ref={viewportRef}
-        className="h-[100dvh] min-h-[540px] w-full relative bg-textured-wash flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden"
+        className="h-[100dvh] min-h-[540px] w-full relative bg-fading-dot-grid flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden"
       >
         {/* Ambient background glow */}
         <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(87,54,129,0.06)_0%,transparent_70%)]" />
