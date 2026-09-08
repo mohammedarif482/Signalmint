@@ -435,9 +435,28 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           id="hero-scroll-pill"
           className="hidden sm:flex absolute sm:bottom-9 sm:left-1/2 sm:-translate-x-1/2 z-20 items-center gap-2 font-sans text-[10.5px] tracking-[0.2em] text-[#1A0042]/75 uppercase font-semibold select-none pointer-events-none"
         >
-          <span className="w-4 h-4 rounded-full border border-dotted border-[#1A0042]/50 flex items-center justify-center text-[9px] leading-none pt-0.5 font-normal">
-            ⌄
-          </span>
+          <svg
+            className="w-4 h-4 text-[#1A0042]/70 shrink-0"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              cx="10"
+              cy="10"
+              r="8.5"
+              stroke="currentColor"
+              strokeWidth="1.25"
+              strokeDasharray="1.3 1.3"
+            />
+            <path
+              d="M7 8.75L10 11.75L13 8.75"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
           <span>SCROLL TO CONTINUE</span>
         </div>
       </div>
