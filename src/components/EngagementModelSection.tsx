@@ -202,7 +202,9 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
             </div>
           ))}
         </div>
-        {/* Soft violet radial highlight */}
+        {/* Soft violet ambient radial glows behind the cards for rich frosted glass effect */}
+        <div className="absolute top-1/4 left-6 w-[550px] h-[550px] bg-[#E7E6FB]/70 rounded-full filter blur-[130px] opacity-80 pointer-events-none" />
+        <div className="absolute bottom-1/3 left-1/4 w-[420px] h-[420px] bg-[#B08BE0]/25 rounded-full filter blur-[120px] opacity-60 pointer-events-none" />
         <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#E7E6FB]/40 rounded-full filter blur-[120px] opacity-70 pointer-events-none" />
       </div>
 
@@ -226,12 +228,15 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                   key={phase.number}
                   id={`phase-card-${idx}`}
                   data-phase-index={idx}
-                  className={`p-6 sm:p-8 lg:p-10 rounded-3xl border transition-all duration-500 relative overflow-hidden ${
+                  className={`p-6 sm:p-8 lg:p-10 rounded-3xl border transition-all duration-500 relative overflow-hidden backdrop-blur-xl sm:backdrop-blur-2xl ${
                     isActive
-                      ? "bg-white/95 border-[#573681]/40 shadow-xl shadow-[#573681]/10 ring-1 ring-[#573681]/20"
-                      : "bg-white/80 hover:bg-white/95 border-[#1A0042]/10 hover:border-[#573681]/30 shadow-xs hover:shadow-md"
+                      ? "bg-white/70 border-white shadow-[0_20px_50px_rgba(87,54,129,0.12)] ring-1 ring-[#573681]/25"
+                      : "bg-white/45 hover:bg-white/65 border-white/70 hover:border-white shadow-[0_8px_30px_rgba(26,0,66,0.04)] hover:shadow-[0_12px_40px_rgba(87,54,129,0.08)]"
                   }`}
                 >
+                  {/* Subtle glass reflection sheen */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/45 via-transparent to-[#573681]/5 pointer-events-none rounded-3xl" />
+
                   {/* Subtle top indicator bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1 transition-colors duration-500 ${
                     isActive ? "bg-gradient-to-r from-[#573681] to-[#7C3AED]" : "bg-transparent"
@@ -253,7 +258,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                       </span>
                     </div>
 
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1A0042]/5 font-mono text-[10.5px] sm:text-[11px] font-bold text-[#1A0042]/75">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/65 backdrop-blur-md border border-white/80 font-mono text-[10.5px] sm:text-[11px] font-bold text-[#1A0042]/75 shadow-2xs">
                       <Clock className="w-3.5 h-3.5 text-[#573681]" />
                       <span>{phase.timeframe} &middot; {phase.duration}</span>
                     </div>
@@ -264,7 +269,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border shrink-0 transition-colors duration-300 ${
                       isActive 
                         ? "bg-[#573681] text-white border-[#573681] shadow-md shadow-[#573681]/25" 
-                        : "bg-[#573681]/10 text-[#573681] border-[#573681]/20"
+                        : "bg-white/60 backdrop-blur-md text-[#573681] border-white/80 shadow-2xs"
                     }`}>
                       <Icon className="w-6 h-6" />
                     </div>
@@ -296,7 +301,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                       {phase.deliverables.map((item, dIdx) => (
                         <div 
                           key={dIdx}
-                          className="flex items-start gap-2 p-2.5 rounded-xl bg-[#FAFAFD] border border-[#1A0042]/5 text-xs text-[#1A0042]/85 font-medium leading-snug"
+                          className="flex items-start gap-2.5 p-3 rounded-2xl bg-white/50 backdrop-blur-md border border-white/75 text-xs text-[#1A0042]/85 font-medium leading-snug shadow-2xs hover:bg-white/80 transition-colors"
                         >
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{item}</span>
@@ -306,7 +311,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                   </div>
 
                   {/* Why It Matters Callout Box */}
-                  <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-[#E7E6FB]/50 border border-[#573681]/20 space-y-1 relative z-10">
+                  <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-[#E7E6FB]/45 backdrop-blur-md border border-[#573681]/20 space-y-1 relative z-10 shadow-2xs">
                     <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#573681] flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#573681]" />
                       <span>WHY IT MATTERS</span>
@@ -355,7 +360,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
               </p>
 
               {/* Desktop Interactive Phase Navigation Track (Inspired by CipherDigital & Cheese & Pixels) */}
-              <div className="hidden lg:flex flex-col gap-2 p-3 rounded-2xl bg-white/80 backdrop-blur-md border border-[#1A0042]/10 shadow-xs mb-6">
+              <div className="hidden lg:flex flex-col gap-2 p-3 rounded-2xl bg-white/60 backdrop-blur-xl border border-white/80 shadow-sm mb-6">
                 <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A0042]/45 px-3 pt-1 pb-0.5">
                   ENGAGEMENT PHASES &middot; CLICK TO INSPECT
                 </div>
