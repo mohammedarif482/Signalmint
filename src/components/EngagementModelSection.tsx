@@ -368,14 +368,14 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                       onClick={() => scrollToPhase(idx)}
                       className={`group w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all duration-300 text-left cursor-pointer ${
                         isActive
-                          ? "bg-[#1A0042] text-white shadow-md scale-[1.01]"
+                          ? "bg-[#573681] text-white shadow-md shadow-[#573681]/20 scale-[1.01]"
                           : "hover:bg-[#E7E6FB]/50 text-[#1A0042]/70 hover:text-[#1A0042]"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <span className={`w-6 h-6 rounded-lg flex items-center justify-center font-mono text-[11px] font-black transition-colors ${
                           isActive 
-                            ? "bg-[#573681] text-white" 
+                            ? "bg-white/20 text-white" 
                             : "bg-[#1A0042]/5 text-[#1A0042]/60 group-hover:bg-[#573681]/15 group-hover:text-[#573681]"
                         }`}>
                           {phase.number}
@@ -387,7 +387,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
                             {phase.title}
                           </div>
                           <div className={`font-mono text-[9.5px] transition-colors ${
-                            isActive ? "text-white/60" : "text-[#1A0042]/40"
+                            isActive ? "text-white/80" : "text-[#1A0042]/40"
                           }`}>
                             {phase.timeframe} &middot; {phase.duration}
                           </div>
