@@ -428,14 +428,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM SCROLL INDICATOR: ⌄ SCROLL TO CONTINUE (Exact Oryzo mobile pos)    */}
+        {/* BOTTOM SCROLL INDICATOR: ⌄ SCROLL TO CONTINUE (Desktop only)               */}
         {/* ========================================================================= */}
         <div
           ref={scrollPillRef}
           id="hero-scroll-pill"
-          className="absolute bottom-2 right-3 sm:bottom-9 sm:left-1/2 sm:-translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2 font-sans text-[8px] sm:text-[10.5px] tracking-[0.16em] sm:tracking-[0.2em] text-[#1A0042]/75 uppercase font-semibold select-none pointer-events-none"
+          className="hidden sm:flex absolute sm:bottom-9 sm:left-1/2 sm:-translate-x-1/2 z-20 items-center gap-2 font-sans text-[10.5px] tracking-[0.2em] text-[#1A0042]/75 uppercase font-semibold select-none pointer-events-none"
         >
-          <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border border-dotted border-[#1A0042]/50 flex items-center justify-center text-[8px] sm:text-[9px] leading-none pt-0.5 font-normal">
+          <span className="w-4 h-4 rounded-full border border-dotted border-[#1A0042]/50 flex items-center justify-center text-[9px] leading-none pt-0.5 font-normal">
             ⌄
           </span>
           <span>SCROLL TO CONTINUE</span>
