@@ -159,8 +159,8 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent pointer-events-none" />
         </div>
 
-        {/* Top Centered Floating Pill: WHAT WE DO (Visible above card with comfortable breathing room) */}
-        <div className="absolute top-16 xs:top-18 sm:top-24 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+        {/* Top Centered Floating Pill: WHAT WE DO (Positioned cleanly right above the card) */}
+        <div className="absolute top-[68px] xs:top-[74px] sm:top-24 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
           <div className="px-3 py-1 xs:px-3.5 xs:py-1.5 rounded-full bg-white/85 sm:bg-white/80 backdrop-blur-md border border-[#1A0042]/15 text-[#1A0042] text-[9.5px] xs:text-[10px] sm:text-xs font-sans font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-xs">
             <Layers className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-[#573681]" />
             <span>WHAT WE DO</span>
@@ -168,11 +168,11 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* Left Frosted Glass Card Container (Hosts the 3 Service Offerings)         */}
+        {/* Left Frosted Glass Card Container (Snug, content-fitted height on mobile)  */}
         {/* ========================================================================= */}
-        <div className="absolute left-3 right-3 sm:left-0 sm:right-auto top-26 xs:top-28 sm:top-0 bottom-3 xs:bottom-4 sm:bottom-0 sm:w-[420px] lg:w-[480px] xl:w-[500px] sm:h-full z-20 pointer-events-none flex items-center justify-center sm:block">
+        <div className="absolute left-3 right-3 sm:left-0 sm:right-auto top-[106px] xs:top-[114px] sm:top-0 h-[430px] xs:h-[450px] sm:h-full max-w-[340px] xs:max-w-[370px] sm:max-w-none mx-auto sm:mx-0 sm:w-[420px] lg:w-[480px] xl:w-[500px] z-20 pointer-events-none flex items-center justify-center sm:block">
           {/* Frosted Backdrop Panel */}
-          <div className="absolute inset-0 bg-white/90 sm:bg-white/70 backdrop-blur-2xl rounded-2xl sm:rounded-none sm:rounded-r-3xl border border-white/70 sm:border-0 sm:border-r sm:border-white/60 shadow-xl sm:shadow-[6px_0_35px_rgba(26,0,66,0.06)]" />
+          <div className="absolute inset-0 bg-white/95 sm:bg-white/70 backdrop-blur-2xl rounded-2xl xs:rounded-3xl sm:rounded-none sm:rounded-r-3xl border border-white/80 sm:border-0 sm:border-r sm:border-white/60 shadow-xl sm:shadow-[6px_0_35px_rgba(26,0,66,0.06)]" />
 
           {/* ----------------------------------------------------------------------- */}
           {/* SERVICE 01: META ADS                                                    */}
