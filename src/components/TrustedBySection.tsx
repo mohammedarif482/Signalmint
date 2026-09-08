@@ -57,7 +57,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 1: Down offset
   {
     id: "col-1",
-    offsetClass: "translate-y-3 sm:translate-y-5",
+    offsetClass: "translate-y-1.5 sm:translate-y-3",
     brands: [
       { id: "b1", name: "Gut2Go", category: "Nutrition", metric: "4.6x ROAS", logo: gut2goLogo },
       { id: "b2", name: "Birckles", category: "D2C Apparel", metric: "5.4x ROAS", logo: bircklesLogo },
@@ -66,7 +66,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 2: Up offset
   {
     id: "col-2",
-    offsetClass: "-translate-y-3 sm:-translate-y-5",
+    offsetClass: "-translate-y-1.5 sm:-translate-y-3",
     brands: [
       { id: "b3", name: "Kuhlteen", category: "Gen-Z Brand", metric: "-36% CPA", logo: kuhlteenLogo },
       { id: "b4", name: "Sugar Knocker", category: "Ayurvedic Care", metric: "₹1.1Cr Vol", logo: sugarKnockerLogo },
@@ -75,7 +75,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 3: Down offset
   {
     id: "col-3",
-    offsetClass: "translate-y-2 sm:translate-y-4",
+    offsetClass: "translate-y-1 sm:translate-y-2",
     brands: [
       { id: "b5", name: "Teaquila", category: "Energy Drinks", metric: "+128% Hold", logo: teaquilaLogo },
       { id: "b6", name: "The ArtFlex", category: "Design Living", metric: "12m SLA", logo: theartLogo },
@@ -84,7 +84,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 4: Up offset
   {
     id: "col-4",
-    offsetClass: "-translate-y-4 sm:-translate-y-6",
+    offsetClass: "-translate-y-2 sm:-translate-y-3.5",
     brands: [
       { id: "b7", name: "HappyCysters", category: "Hormonal Health", metric: "₹48L/mo", logo: happyCystersLogo },
       { id: "b8", name: "Bold Edge", category: "Media Scaling", metric: "₹92L/mo", logo: boldEdgeLogo },
@@ -93,7 +93,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 5: Centerpiece Single Card
   {
     id: "col-5",
-    offsetClass: "translate-y-0.5 sm:translate-y-1",
+    offsetClass: "translate-y-0",
     brands: [
       { id: "b9", name: "Inaya", category: "Skincare DTC", metric: "5.1x ROAS", logo: inayaLogo },
     ],
@@ -101,7 +101,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 6: Up offset
   {
     id: "col-6",
-    offsetClass: "-translate-y-3 sm:-translate-y-5",
+    offsetClass: "-translate-y-1.5 sm:-translate-y-3",
     brands: [
       { id: "b10", name: "LoveDK", category: "Personal Care", metric: "3.9x MER", logo: lovedkLogo },
       { id: "b11", name: "Imsafe", category: "Hygiene Tech", metric: "Audited SLA", logo: imsafeLogo, hasTilt: true },
@@ -110,7 +110,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 7: Down offset
   {
     id: "col-7",
-    offsetClass: "translate-y-4 sm:translate-y-6",
+    offsetClass: "translate-y-2 sm:translate-y-3.5",
     brands: [
       { id: "b12", name: "Ecosys Cleaners", category: "Eco Solutions", metric: "6.2x Angle", logo: ecosysLogo },
       { id: "b13", name: "Pure Wiff", category: "Fragrance DTC", metric: "₹35L/mo", logo: pureWiffLogo },
@@ -119,7 +119,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 8: Up offset
   {
     id: "col-8",
-    offsetClass: "-translate-y-4 sm:-translate-y-5",
+    offsetClass: "-translate-y-2 sm:-translate-y-3",
     brands: [
       { id: "b14", name: "Casorro", category: "Luxury Living", metric: "4.8x ROAS", logo: casorroLogo },
       { id: "b15", name: "Drewknot", category: "Fashion DTC", metric: "3.7x MER", logo: drewknotLogo },
@@ -128,7 +128,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 9: Down offset
   {
     id: "col-9",
-    offsetClass: "translate-y-3 sm:translate-y-5",
+    offsetClass: "translate-y-1.5 sm:translate-y-3",
     brands: [
       { id: "b16", name: "FarmZen", category: "Organic Agri", metric: "₹65L/mo", logo: farmzenLogo },
       { id: "b17", name: "Getto", category: "Urban Mobility", metric: "-42% CAC", logo: gettoLogo },
@@ -137,7 +137,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 10: Up offset
   {
     id: "col-10",
-    offsetClass: "-translate-y-3 sm:-translate-y-4",
+    offsetClass: "-translate-y-1.5 sm:-translate-y-2.5",
     brands: [
       { id: "b18", name: "Humara Pandit", category: "Spiritual Tech", metric: "₹80L/mo", logo: humaraPanditLogo },
       { id: "b19", name: "KM20", category: "Active Gear", metric: "5.8x ROAS", logo: km20Logo },
@@ -146,7 +146,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 11: Single Centerpiece
   {
     id: "col-11",
-    offsetClass: "translate-y-1 sm:translate-y-2",
+    offsetClass: "translate-y-0",
     brands: [
       { id: "b20", name: "LoanPaar", category: "FinTech Scale", metric: "₹2.4Cr Vol", logo: loanpaarLogo },
     ],
@@ -154,7 +154,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 12: Up offset
   {
     id: "col-12",
-    offsetClass: "-translate-y-4 sm:-translate-y-6",
+    offsetClass: "-translate-y-2 sm:-translate-y-3.5",
     brands: [
       { id: "b21", name: "Oszea", category: "Wellness DTC", metric: "4.2x ROAS", logo: oszeaLogo },
       { id: "b22", name: "TruSense", category: "Diagnostics", metric: "+95% Ret.", logo: truSenseLogo },
@@ -163,7 +163,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 13: Down offset
   {
     id: "col-13",
-    offsetClass: "translate-y-4 sm:translate-y-5",
+    offsetClass: "translate-y-2 sm:translate-y-3",
     brands: [
       { id: "b23", name: "Tulips", category: "Personal Hygiene", metric: "₹1.8Cr Vol", logo: tulipsLogo },
       { id: "b24", name: "UltraMile", category: "Auto & Tires", metric: "3.4x MER", logo: ultraMileLogo },
@@ -172,7 +172,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 14: Up offset
   {
     id: "col-14",
-    offsetClass: "-translate-y-3 sm:-translate-y-5",
+    offsetClass: "-translate-y-1.5 sm:-translate-y-3",
     brands: [
       { id: "b25", name: "V2 Edibles", category: "FMCG Nutrition", metric: "+140% LTV", logo: v2EdiblesLogo },
       { id: "b26", name: "Zoci", category: "Modern Retail", metric: "4.5x ROAS", logo: zociLogo },
@@ -181,7 +181,7 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   // Col 15: Clean anchor
   {
     id: "col-15",
-    offsetClass: "translate-y-2 sm:translate-y-4",
+    offsetClass: "translate-y-1 sm:translate-y-2",
     brands: [
       { id: "b27", name: "Aaina", category: "Ethnic Apparel", metric: "5.2x ROAS", logo: aainaLogo },
     ],
@@ -264,11 +264,11 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         onClick={() => setActiveBrand(isActive ? null : brand)}
         onMouseEnter={() => setActiveBrand(brand)}
         onMouseLeave={() => setActiveBrand(null)}
-        className={`group relative rounded-2xl sm:rounded-3xl p-3 sm:p-4 lg:p-4.5 bg-white/95 backdrop-blur-md border ${
+        className={`group relative rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 lg:p-3.5 bg-white/95 backdrop-blur-md border ${
           isActive
             ? "border-[#573681] shadow-lg scale-[1.03]"
             : "border-[#1A0042]/10 hover:border-[#573681]/45 shadow-xs hover:shadow-xl hover:scale-[1.03]"
-        } transition-all duration-300 flex flex-col items-center justify-between cursor-pointer w-full aspect-[3.7/4.8] sm:aspect-[3.6/4.7] min-h-[125px] sm:min-h-[148px] lg:min-h-[162px] select-none ${
+        } transition-all duration-300 flex flex-col items-center justify-between cursor-pointer w-full h-[110px] xs:h-[118px] sm:h-[128px] lg:h-[138px] select-none ${
           brand.hasTilt ? "[transform:perspective(800px)_rotateY(-5deg)] hover:[transform:perspective(800px)_rotateY(0deg)]" : ""
         } ${extraClasses}`}
       >
@@ -277,27 +277,27 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
 
         {/* Top subtle category pill */}
         <div className="w-full flex items-center justify-between z-10">
-          <span className="font-mono text-[8px] sm:text-[9px] uppercase font-bold text-[#1A0042]/45 tracking-wider group-hover:text-[#573681] transition-colors line-clamp-1">
+          <span className="font-mono text-[7px] sm:text-[8px] uppercase font-bold text-[#1A0042]/45 tracking-wider group-hover:text-[#573681] transition-colors line-clamp-1">
             {brand.category}
           </span>
           <div className="w-1.5 h-1.5 rounded-full bg-[#573681]/30 group-hover:bg-[#573681] group-hover:animate-ping transition-colors shrink-0" />
         </div>
 
         {/* Centered Brand Logo */}
-        <div className="flex-1 w-full flex items-center justify-center py-2 sm:py-2.5 z-10 px-1 sm:px-2">
+        <div className="flex-1 w-full flex items-center justify-center py-1 z-10 px-1 sm:px-2">
           <img
             src={brand.logo}
             alt={brand.name}
-            className="max-h-8 sm:max-h-11 lg:max-h-13 w-auto max-w-[85%] object-contain filter drop-shadow-2xs group-hover:scale-108 transition-transform duration-300"
+            className="max-h-7 sm:max-h-8.5 lg:max-h-9.5 w-auto max-w-[85%] object-contain filter drop-shadow-2xs group-hover:scale-108 transition-transform duration-300"
           />
         </div>
 
         {/* Verified Result Metric Pill at Bottom */}
-        <div className="w-full pt-1.5 sm:pt-2 border-t border-[#1A0042]/5 flex items-center justify-between z-10 gap-1">
-          <span className="font-sans font-bold text-[9px] sm:text-[10.5px] text-[#1A0042] truncate">
+        <div className="w-full pt-1 border-t border-[#1A0042]/5 flex items-center justify-between z-10 gap-1">
+          <span className="font-sans font-bold text-[8.5px] sm:text-[9.5px] text-[#1A0042] truncate">
             {brand.name}
           </span>
-          <span className="px-1.5 sm:px-2 py-0.5 rounded bg-[#573681]/10 text-[#573681] font-mono text-[7.5px] sm:text-[8.5px] font-bold shrink-0">
+          <span className="px-1.5 py-0.5 rounded bg-[#573681]/10 text-[#573681] font-mono text-[7px] sm:text-[7.5px] font-bold shrink-0">
             {brand.metric}
           </span>
         </div>
@@ -314,7 +314,7 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
       {/* Pinned Full-Viewport Stage */}
       <div
         ref={stickyRef}
-        className="relative h-screen w-full overflow-hidden flex flex-col justify-between pt-14 sm:pt-18 lg:pt-20 pb-4 sm:pb-6 select-none"
+        className="relative h-screen w-full overflow-hidden flex flex-col justify-between pt-12 sm:pt-14 lg:pt-16 pb-2 sm:pb-3 select-none"
       >
         {/* Ambient background vertical technical grid lines */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
@@ -363,11 +363,11 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
           {/* A. MOBILE MASONRY CAROUSEL (Screens < sm: Continuous Marquee)     */}
           {/* ================================================================= */}
           <div className="sm:hidden w-full overflow-hidden select-none py-2">
-            <div className="flex items-center gap-3 animate-brand-marquee w-max pl-4">
+            <div className="flex items-center gap-2.5 xs:gap-3 animate-brand-marquee w-max pl-4">
               {[...BRAND_COLUMNS, ...BRAND_COLUMNS].map((col, idx) => (
                 <div
                   key={`mob-col-${col.id}-${idx}`}
-                  className={`w-[138px] flex flex-col gap-2.5 shrink-0 will-change-transform ${col.offsetClass}`}
+                  className={`w-[130px] xs:w-[138px] flex flex-col gap-2 xs:gap-2.5 shrink-0 will-change-transform ${col.offsetClass}`}
                 >
                   {col.brands.map((brand) => renderLogoCard(brand))}
                 </div>
@@ -380,12 +380,12 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
           {/* ================================================================= */}
           <div
             ref={trackRef}
-            className="hidden sm:flex items-center gap-3.5 sm:gap-4 lg:gap-5 will-change-transform w-max px-8 sm:px-12 lg:px-16"
+            className="hidden sm:flex items-center gap-3 sm:gap-3.5 lg:gap-4.5 will-change-transform w-max px-8 sm:px-12 lg:px-16"
           >
             {BRAND_COLUMNS.map((col) => (
               <div
                 key={col.id}
-                className={`w-[155px] sm:w-[175px] lg:w-[195px] flex flex-col gap-3 sm:gap-3.5 lg:gap-4 shrink-0 will-change-transform ${col.offsetClass}`}
+                className={`w-[142px] sm:w-[158px] lg:w-[172px] flex flex-col gap-2.5 sm:gap-3 lg:gap-3.5 shrink-0 will-change-transform ${col.offsetClass}`}
               >
                 {col.brands.map((brand) => renderLogoCard(brand))}
               </div>
