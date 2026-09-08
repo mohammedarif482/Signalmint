@@ -107,10 +107,14 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
   const [activePhase, setActivePhase] = useState<number>(0);
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const leftColRef = useRef<HTMLDivElement>(null);
+  const rightColRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
+    const leftCol = leftColRef.current;
+    const rightCol = rightColRef.current;
+    if (!section || !leftCol || !rightCol) return;
 
     const ctx = gsap.context(() => {
       // SplitText heading reveal
@@ -136,6 +140,20 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
         });
       }
 
+      // Desktop Pin: Pin right headlines column until left column completes scrolling
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 1024px)", () => {
+        ScrollTrigger.create({
+          trigger: rightCol,
+          start: "top 96px",
+          endTrigger: leftCol,
+          end: () => `bottom ${rightCol.offsetHeight + 96}px`,
+          pin: true,
+          pinSpacing: false,
+          invalidateOnRefresh: true,
+        });
+      });
+
       // ScrollTrigger spy for left cards to update activePhase on right
       PHASES.forEach((_, idx) => {
         const card = document.getElementById(`phase-card-${idx}`);
@@ -143,8 +161,8 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
 
         ScrollTrigger.create({
           trigger: card,
-          start: "top 45%",
-          end: "bottom 45%",
+          start: "top 55%",
+          end: "bottom 55%",
           onEnter: () => setActivePhase(idx),
           onEnterBack: () => setActivePhase(idx),
         });
@@ -168,7 +186,7 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
     <section 
       id="how-we-work" 
       ref={sectionRef} 
-      className="relative w-full py-20 sm:py-28 lg:py-36 bg-[#FAFAFD] text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden selection:bg-[#573681] selection:text-white"
+      className="relative w-full py-20 sm:py-28 lg:py-36 bg-[#FAFAFD] text-[#1A0042] border-t border-[#1A0042]/10 overflow-x-clip selection:bg-[#573681] selection:text-white"
     >
       {/* Ambient background vertical grid lines */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
@@ -189,13 +207,16 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        {/* 2-Column Split: Left Scrolls, Right Stays Fixed (Sticky) */}
+        {/* 2-Column Split: Left Scrolls, Right Stays Fixed (Pinned) */}
         <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-12 xl:gap-16 items-start">
           
           {/* ================================================================= */}
           {/* 1. LEFT COLUMN: SCROLLING DETAILED PHASE CARDS                     */}
           {/* ================================================================= */}
-          <div className="order-2 lg:order-1 w-full lg:col-span-7 flex flex-col gap-8 sm:gap-10 pt-10 lg:pt-0 pb-12 sm:pb-16 lg:pb-24">
+          <div 
+            ref={leftColRef}
+            className="order-2 lg:order-1 w-full lg:col-span-7 flex flex-col gap-8 sm:gap-10 pt-10 lg:pt-0 pb-12 sm:pb-16 lg:pb-24"
+          >
             {PHASES.map((phase, idx) => {
               const Icon = phase.icon;
               const isActive = activePhase === idx;
@@ -306,77 +327,80 @@ export function EngagementModelSection({ onOpenDemoModal: _onOpenDemoModal }: En
           </div>
 
           {/* ================================================================= */}
-          {/* 2. RIGHT COLUMN: STICKY / FIXED HEADLINES & QUICK NAVIGATION      */}
+          {/* 2. RIGHT COLUMN: PINNED HEADLINES & QUICK NAVIGATION               */}
           {/* ================================================================= */}
-          <div className="order-1 lg:order-2 w-full lg:col-span-5 lg:sticky lg:top-24 xl:top-28 lg:self-start flex flex-col pt-0 sm:pt-4 z-20">
-            
-            {/* Tag / Eyebrow */}
-            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-3 sm:mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
-              <span>THE ENGAGEMENT MODEL</span>
-            </div>
-
-            {/* Main Display Headline */}
-            <h2
-              ref={headingRef}
-              className="font-display font-black text-3xl sm:text-4xl xl:text-5xl tracking-tight leading-[1.08] uppercase text-[#1A0042]"
+          <div className="order-1 lg:order-2 w-full lg:col-span-5 relative">
+            <div 
+              ref={rightColRef}
+              className="w-full flex flex-col pt-0 sm:pt-4 z-20 will-change-transform"
             >
-              From "Just Hired" <br />
-              <span className="text-[#573681]">To Running Optimally.</span>
-            </h2>
-
-            {/* Subtitle / Philosophy */}
-            <p className="font-sans text-sm sm:text-base text-[#1A0042]/75 leading-relaxed mt-4 sm:mt-5 mb-6 lg:mb-8 max-w-lg">
-              No 6-month lock-ins. No 40-page onboarding decks. A structured 4-phase roadmap that gets your account stabilized and scaling in under 45 days.
-            </p>
-
-            {/* Desktop Interactive Phase Navigation Track (Inspired by CipherDigital & Cheese & Pixels) */}
-            <div className="hidden lg:flex flex-col gap-2 p-3 rounded-2xl bg-white/80 backdrop-blur-md border border-[#1A0042]/10 shadow-xs mb-6">
-              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A0042]/45 px-3 pt-1 pb-0.5">
-                ENGAGEMENT PHASES &middot; CLICK TO INSPECT
+              {/* Tag / Eyebrow */}
+              <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-3 sm:mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
+                <span>THE ENGAGEMENT MODEL</span>
               </div>
-              {PHASES.map((phase, idx) => {
-                const isActive = activePhase === idx;
 
-                return (
-                  <button
-                    key={`nav-${phase.number}`}
-                    onClick={() => scrollToPhase(idx)}
-                    className={`group w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all duration-300 text-left cursor-pointer ${
-                      isActive
-                        ? "bg-[#1A0042] text-white shadow-md scale-[1.01]"
-                        : "hover:bg-[#E7E6FB]/50 text-[#1A0042]/70 hover:text-[#1A0042]"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className={`w-6 h-6 rounded-lg flex items-center justify-center font-mono text-[11px] font-black transition-colors ${
-                        isActive 
-                          ? "bg-[#573681] text-white" 
-                          : "bg-[#1A0042]/5 text-[#1A0042]/60 group-hover:bg-[#573681]/15 group-hover:text-[#573681]"
-                      }`}>
-                        {phase.number}
-                      </span>
-                      <div>
-                        <div className={`font-sans font-bold text-xs uppercase tracking-tight transition-colors ${
-                          isActive ? "text-white" : "text-[#1A0042] group-hover:text-[#573681]"
+              {/* Main Display Headline */}
+              <h2
+                ref={headingRef}
+                className="font-display font-black text-3xl sm:text-4xl xl:text-5xl tracking-tight leading-[1.08] uppercase text-[#1A0042]"
+              >
+                From "Just Hired" <br />
+                <span className="text-[#573681]">To Running Optimally.</span>
+              </h2>
+
+              {/* Subtitle / Philosophy */}
+              <p className="font-sans text-sm sm:text-base text-[#1A0042]/75 leading-relaxed mt-4 sm:mt-5 mb-6 lg:mb-8 max-w-lg">
+                No 6-month lock-ins. No 40-page onboarding decks. A structured 4-phase roadmap that gets your account stabilized and scaling in under 45 days.
+              </p>
+
+              {/* Desktop Interactive Phase Navigation Track (Inspired by CipherDigital & Cheese & Pixels) */}
+              <div className="hidden lg:flex flex-col gap-2 p-3 rounded-2xl bg-white/80 backdrop-blur-md border border-[#1A0042]/10 shadow-xs mb-6">
+                <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1A0042]/45 px-3 pt-1 pb-0.5">
+                  ENGAGEMENT PHASES &middot; CLICK TO INSPECT
+                </div>
+                {PHASES.map((phase, idx) => {
+                  const isActive = activePhase === idx;
+
+                  return (
+                    <button
+                      key={`nav-${phase.number}`}
+                      onClick={() => scrollToPhase(idx)}
+                      className={`group w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all duration-300 text-left cursor-pointer ${
+                        isActive
+                          ? "bg-[#1A0042] text-white shadow-md scale-[1.01]"
+                          : "hover:bg-[#E7E6FB]/50 text-[#1A0042]/70 hover:text-[#1A0042]"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className={`w-6 h-6 rounded-lg flex items-center justify-center font-mono text-[11px] font-black transition-colors ${
+                          isActive 
+                            ? "bg-[#573681] text-white" 
+                            : "bg-[#1A0042]/5 text-[#1A0042]/60 group-hover:bg-[#573681]/15 group-hover:text-[#573681]"
                         }`}>
-                          {phase.title}
-                        </div>
-                        <div className={`font-mono text-[9.5px] transition-colors ${
-                          isActive ? "text-white/60" : "text-[#1A0042]/40"
-                        }`}>
-                          {phase.timeframe} &middot; {phase.duration}
+                          {phase.number}
+                        </span>
+                        <div>
+                          <div className={`font-sans font-bold text-xs uppercase tracking-tight transition-colors ${
+                            isActive ? "text-white" : "text-[#1A0042] group-hover:text-[#573681]"
+                          }`}>
+                            {phase.title}
+                          </div>
+                          <div className={`font-mono text-[9.5px] transition-colors ${
+                            isActive ? "text-white/60" : "text-[#1A0042]/40"
+                          }`}>
+                            {phase.timeframe} &middot; {phase.duration}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                      isActive ? "translate-x-0.5 text-white" : "text-[#1A0042]/30 group-hover:translate-x-0.5 group-hover:text-[#573681]"
-                    }`} />
-                  </button>
-                );
-              })}
+                      <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                        isActive ? "translate-x-0.5 text-white" : "text-[#1A0042]/30 group-hover:translate-x-0.5 group-hover:text-[#573681]"
+                      }`} />
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-
           </div>
 
         </div>
