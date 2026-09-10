@@ -156,6 +156,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             >
               PROOF
             </a>
+            {/*
             <a
               href="#how-we-work"
               onClick={(e) => handleNavClick(e, "how-we-work", "how-we-work")}
@@ -167,6 +168,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             >
               HOW WE WORK
             </a>
+            */}
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "contact", "contact")}
@@ -303,6 +305,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               <span className="text-xs font-mono text-[#1A0042]/40 group-hover:text-[#573681] group-hover:translate-x-1 transition-all">↗</span>
             </a>
 
+            {/*
             <a
               href="#how-we-work"
               onClick={(e) => handleNavClick(e, "how-we-work", "how-we-work")}
@@ -316,6 +319,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               </span>
               <span className="text-xs font-mono text-[#1A0042]/40 group-hover:text-[#573681] group-hover:translate-x-1 transition-all">↗</span>
             </a>
+            */}
 
             <a
               href="#contact"

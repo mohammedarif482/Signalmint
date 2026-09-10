@@ -7,7 +7,7 @@ import { HowToBeginSection } from "./components/HowToBeginSection";
 import { DualAgentPinned } from "./components/DualAgentPinned";
 import { TrustedBySection } from "./components/TrustedBySection";
 import { CaseStudiesSection } from "./components/CaseStudiesSection";
-import { EngagementModelSection } from "./components/EngagementModelSection";
+// import { EngagementModelSection } from "./components/EngagementModelSection";
 import { FAQSection } from "./components/FAQSection";
 import { FinalCTASection } from "./components/FinalCTASection";
 import { FooterKinetic } from "./components/FooterKinetic";
@@ -106,8 +106,8 @@ export function App() {
               onNavigate={(key) => handleNavigate(key)}
             />
 
-            {/* Section 05: How We Work (The 4-Phase Engagement Model) */}
-            <EngagementModelSection onOpenDemoModal={handleOpenDemoModal} />
+            {/* Section 05: How We Work (The 4-Phase Engagement Model) - Commented out per user request */}
+            {/* <EngagementModelSection onOpenDemoModal={handleOpenDemoModal} /> */}
 
             {/* Section 06: Frequently Asked Questions */}
             <FAQSection onOpenDemoModal={handleOpenDemoModal} />

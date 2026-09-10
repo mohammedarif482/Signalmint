@@ -188,6 +188,179 @@ export const BRAND_COLUMNS: BrandColumn[] = [
   },
 ];
 
+interface BrandLogoCardProps {
+  brand: BrandPartner;
+  isActive: boolean;
+  onToggleActive: (brand: BrandPartner) => void;
+  onHoverBrand: (brand: BrandPartner | null) => void;
+  extraClasses?: string;
+}
+
+function BrandLogoCard({
+  brand,
+  isActive,
+  onToggleActive,
+  onHoverBrand,
+  extraClasses = "",
+}: BrandLogoCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const glareRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    const logoEl = logoRef.current;
+    const glare = glareRef.current;
+    if (!card) return;
+
+    const hasHover = window.matchMedia("(hover: hover)").matches;
+    if (!hasHover) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const deltaX = (x - centerX) / centerX; // -1 to 1
+      const deltaY = (y - centerY) / centerY; // -1 to 1
+
+      // 3D perspective tilt matching Why Us cards
+      gsap.to(card, {
+        rotateY: deltaX * 14,
+        rotateX: -deltaY * 14,
+        transformPerspective: 700,
+        scale: 1.06,
+        duration: 0.4,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+
+      // Subtle parallax shift on brand logo
+      if (logoEl) {
+        gsap.to(logoEl, {
+          x: deltaX * 8,
+          y: deltaY * 8,
+          duration: 0.4,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      }
+
+      // Cursor-following specular glare spotlight
+      if (glare) {
+        gsap.to(glare, {
+          opacity: 0.45,
+          x: x - 80,
+          y: y - 80,
+          duration: 0.25,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      }
+    };
+
+    const handleMouseLeave = () => {
+      // Smooth reset back to neutral rest position
+      gsap.to(card, {
+        rotateY: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+
+      if (logoEl) {
+        gsap.to(logoEl, {
+          x: 0,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      }
+
+      if (glare) {
+        gsap.to(glare, {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      }
+    };
+
+    card.addEventListener("mousemove", handleMouseMove);
+    card.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      card.removeEventListener("mousemove", handleMouseMove);
+      card.removeEventListener("mouseleave", handleMouseLeave);
+      gsap.killTweensOf(card);
+      if (logoEl) gsap.killTweensOf(logoEl);
+      if (glare) gsap.killTweensOf(glare);
+    };
+  }, []);
+
+  return (
+    <div className="relative w-full aspect-square" style={{ perspective: "800px" }}>
+      <div
+        ref={cardRef}
+        onClick={() => onToggleActive(brand)}
+        onMouseEnter={() => onHoverBrand(brand)}
+        onMouseLeave={() => onHoverBrand(null)}
+        className={`group relative rounded-full aspect-square p-2.5 xs:p-3 sm:p-3.5 lg:p-4 bg-white/45 sm:bg-white/40 hover:bg-white/60 backdrop-blur-xl sm:backdrop-blur-2xl border ${
+          isActive
+            ? "border-[#573681]/40 shadow-[0_16px_36px_-6px_rgba(87,54,129,0.22),inset_0_2px_2.5px_0_rgba(255,255,255,0.95),inset_0_-1px_1.5px_0_rgba(87,54,129,0.1)] ring-2 ring-[#573681]/20"
+            : "border-white/35 hover:border-white/45 shadow-[0_10px_28px_-8px_rgba(26,0,66,0.06),inset_0_1.5px_2px_0_rgba(255,255,255,0.85),inset_0_-1px_1.5px_0_rgba(87,54,129,0.05)] hover:shadow-[0_18px_40px_-8px_rgba(87,54,129,0.16),inset_0_2px_2.5px_0_rgba(255,255,255,0.95)]"
+        } transition-colors duration-300 flex flex-col items-center justify-between cursor-pointer w-full select-none overflow-hidden will-change-transform ${extraClasses}`}
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Dynamic Specular Glare */}
+        <div
+          ref={glareRef}
+          className="absolute pointer-events-none rounded-full w-[160px] h-[160px] bg-radial from-white/50 via-purple-300/15 to-transparent blur-lg opacity-0 z-30 will-change-transform"
+          style={{ top: 0, left: 0 }}
+        />
+
+        {/* Frosted glass top dome specular sheen */}
+        <div className="absolute inset-x-0 top-0 h-[52%] bg-gradient-to-b from-white/75 via-white/20 to-transparent rounded-t-full pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.85)_0%,transparent_60%)] rounded-full pointer-events-none" />
+
+        {/* Subtle internal radial highlight on hover */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#E7E6FB]/60 via-transparent to-[#573681]/15 opacity-0 group-hover:opacity-100 transition-opacity rounded-full pointer-events-none" />
+
+        {/* Top subtle category pill */}
+        <div className="w-full flex items-center justify-center z-10 pt-0.5 sm:pt-1 px-1">
+          <span className="font-mono text-[6.5px] xs:text-[7px] sm:text-[7.5px] uppercase font-bold text-[#1A0042]/55 tracking-wider group-hover:text-[#573681] transition-colors truncate max-w-[85%] text-center">
+            {brand.category}
+          </span>
+        </div>
+
+        {/* Centered Brand Logo with GSAP parallax */}
+        <div
+          ref={logoRef}
+          className="flex-1 w-full flex items-center justify-center py-1 z-10 px-2 sm:px-2.5 will-change-transform"
+        >
+          <img
+            src={brand.logo}
+            alt={brand.name}
+            className="max-h-7 sm:max-h-9 lg:max-h-11 w-auto max-w-[82%] object-contain filter drop-shadow-2xs"
+          />
+        </div>
+
+        {/* Verified Result Metric Pill at Bottom */}
+        <div className="w-full pb-0.5 sm:pb-1 flex items-center justify-center z-10">
+          <span className="px-2 py-0.5 rounded-full bg-white/65 backdrop-blur-md text-[#573681] font-mono text-[6.5px] xs:text-[7px] sm:text-[8px] font-bold shrink-0 tracking-tight border border-white/60 shadow-2xs group-hover:bg-[#573681] group-hover:text-white group-hover:border-[#573681]/30 transition-all">
+            {brand.metric}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedByProps = {}) {
   const runwayRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
@@ -254,50 +427,15 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
     return () => ctx.revert();
   }, []);
 
-  // Brand Logo Card Component
-  const renderLogoCard = (brand: BrandPartner, extraClasses = "") => {
-    const isActive = activeBrand?.id === brand.id;
-
-    return (
-      <div
-        key={brand.id}
-        onClick={() => setActiveBrand(isActive ? null : brand)}
-        onMouseEnter={() => setActiveBrand(brand)}
-        onMouseLeave={() => setActiveBrand(null)}
-        className={`group relative rounded-full aspect-square p-2.5 xs:p-3 sm:p-3.5 lg:p-4 bg-white/95 backdrop-blur-md border ${
-          isActive
-            ? "border-[#573681] shadow-xl shadow-[#573681]/25 scale-105 ring-2 ring-[#573681]/20"
-            : "border-[#1A0042]/10 hover:border-[#573681]/50 shadow-xs hover:shadow-xl hover:shadow-[#573681]/15 hover:scale-105"
-        } transition-all duration-300 flex flex-col items-center justify-between cursor-pointer w-full select-none ${extraClasses}`}
-      >
-        {/* Subtle internal radial highlight on hover */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#E7E6FB]/50 via-transparent to-[#573681]/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-full pointer-events-none" />
-
-        {/* Top subtle category pill */}
-        <div className="w-full flex items-center justify-center z-10 pt-0.5 sm:pt-1 px-1">
-          <span className="font-mono text-[6.5px] xs:text-[7px] sm:text-[7.5px] uppercase font-bold text-[#1A0042]/45 tracking-wider group-hover:text-[#573681] transition-colors truncate max-w-[85%] text-center">
-            {brand.category}
-          </span>
-        </div>
-
-        {/* Centered Brand Logo */}
-        <div className="flex-1 w-full flex items-center justify-center py-1 z-10 px-2 sm:px-2.5">
-          <img
-            src={brand.logo}
-            alt={brand.name}
-            className="max-h-7 sm:max-h-9 lg:max-h-11 w-auto max-w-[82%] object-contain filter drop-shadow-2xs group-hover:scale-110 transition-transform duration-300"
-          />
-        </div>
-
-        {/* Verified Result Metric Pill at Bottom */}
-        <div className="w-full pb-0.5 sm:pb-1 flex items-center justify-center z-10">
-          <span className="px-2 py-0.5 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[6.5px] xs:text-[7px] sm:text-[8px] font-bold shrink-0 tracking-tight group-hover:bg-[#573681] group-hover:text-white transition-colors">
-            {brand.metric}
-          </span>
-        </div>
-      </div>
-    );
-  };
+  const renderLogoCard = (brand: BrandPartner, keyPrefix = "") => (
+    <BrandLogoCard
+      key={`${keyPrefix}${brand.id}`}
+      brand={brand}
+      isActive={activeBrand?.id === brand.id}
+      onToggleActive={(b) => setActiveBrand(activeBrand?.id === b.id ? null : b)}
+      onHoverBrand={(b) => setActiveBrand(b)}
+    />
+  );
 
   return (
     <section
@@ -328,8 +466,8 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
             ))}
           </div>
 
-          {/* Soft ambient violet radial */}
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[700px] h-[350px] sm:h-[500px] bg-[#E7E6FB]/45 rounded-full filter blur-[90px] sm:blur-[130px] opacity-60 pointer-events-none" />
+          {/* Soft ambient violet & obsidian wash radials for glass depth */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[900px] h-[350px] sm:h-[520px] bg-gradient-to-tr from-[#E7E6FB]/70 via-[#F1EDFD]/45 to-[#E0D7FA]/60 rounded-full filter blur-[80px] sm:blur-[120px] opacity-75 pointer-events-none" />
         </div>
 
         {/* ------------------------------------------------------------------- */}
@@ -363,7 +501,7 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
                   key={`mob-col-${col.id}-${idx}`}
                   className={`w-[115px] xs:w-[125px] flex flex-col justify-center gap-2 xs:gap-2.5 shrink-0 will-change-transform ${col.offsetClass}`}
                 >
-                  {col.brands.map((brand) => renderLogoCard(brand))}
+                  {col.brands.map((brand) => renderLogoCard(brand, `mob-${idx}-`))}
                 </div>
               ))}
             </div>
@@ -381,7 +519,7 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
                 key={col.id}
                 className={`w-[128px] sm:w-[142px] lg:w-[156px] flex flex-col justify-center gap-2.5 sm:gap-3 lg:gap-3.5 shrink-0 will-change-transform ${col.offsetClass}`}
               >
-                {col.brands.map((brand) => renderLogoCard(brand))}
+                {col.brands.map((brand) => renderLogoCard(brand, "desk-"))}
               </div>
             ))}
           </div>

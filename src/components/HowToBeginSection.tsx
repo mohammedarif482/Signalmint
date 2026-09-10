@@ -1,433 +1,242 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface HowToBeginSectionProps {
   onOpenDemoModal?: () => void;
 }
 
-export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
-  const runwayRef = useRef<HTMLElement>(null);
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const titleContainerRef = useRef<HTMLDivElement>(null);
-  const titleTextRef = useRef<HTMLHeadingElement>(null);
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
-  const card3Ref = useRef<HTMLDivElement>(null);
-  const card4Ref = useRef<HTMLDivElement>(null);
-  const bottomCalloutRef = useRef<HTMLDivElement>(null);
+interface TiltCardProps {
+  badge: string;
+  badgeSub: React.ReactNode;
+  title: string;
+  description: string;
+  gradientClass: string;
+  radialClass: string;
+  artwork: React.ReactNode;
+  footer: React.ReactNode;
+}
+
+function TiltCard({
+  badge,
+  badgeSub,
+  title,
+  description,
+  gradientClass,
+  radialClass,
+  artwork,
+  footer,
+}: TiltCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const artworkRef = useRef<HTMLDivElement>(null);
+  const glareRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const runway = runwayRef.current;
-    const card1 = card1Ref.current;
-    const card2 = card2Ref.current;
-    const card3 = card3Ref.current;
-    const card4 = card4Ref.current;
-    const titleContainer = titleContainerRef.current;
-    const titleText = titleTextRef.current;
-    const cardsContainer = cardsContainerRef.current;
-    const bottomCallout = bottomCalloutRef.current;
+    const card = cardRef.current;
+    const artworkEl = artworkRef.current;
+    const glare = glareRef.current;
+    if (!card) return;
 
-    if (!runway || !card1 || !card2 || !card3 || !card4 || !titleContainer || !titleText || !cardsContainer) return;
+    // Check if user has mouse hover support
+    const hasHover = window.matchMedia("(hover: hover)").matches;
+    if (!hasHover) return;
 
-    const mm = gsap.matchMedia();
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const deltaX = (x - centerX) / centerX; // -1 to 1
+      const deltaY = (y - centerY) / centerY; // -1 to 1
 
-    // -------------------------------------------------------------------------
-    // RESPONSIVE GSAP SCROLLTRIGGER (4 Cards Peeling Sequence)
-    // -------------------------------------------------------------------------
-    mm.add(
-      {
-        isMobile: "(max-width: 639px)",
-        isDesktop: "(min-width: 640px)",
-      },
-      (context) => {
-        const { isMobile } = context.conditions as { isMobile: boolean; isDesktop: boolean };
+      // 3D tilt perspective matching Codapress article cards
+      gsap.to(card, {
+        rotateY: deltaX * 10,
+        rotateX: -deltaY * 10,
+        transformPerspective: 900,
+        scale: 1.025,
+        duration: 0.45,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
 
-        const startTitleY = isMobile ? -175 : -270;
-        const startCardsY = isMobile ? 185 : 260;
-        const titleScaleStart = isMobile ? 0.52 : 0.44;
-        const titleScaleEnd = isMobile ? 0.95 : 1.0;
-        const scrollDistance = isMobile ? "+=280%" : "+=380%";
-        const exitYPercent = isMobile ? -140 : -150;
-
-        // 1. Natural physical card stack hierarchy:
-        // Card 1 (zIndex 40) -> Card 2 (zIndex 30) -> Card 3 (zIndex 20) -> Card 4 (zIndex 10)
-        gsap.set(card1, {
-          scale: 1,
-          yPercent: 0,
-          y: 0,
-          rotation: -3.5,
-          opacity: 1,
-          zIndex: 40,
-          pointerEvents: "auto",
+      // Subtle parallax shift on inner artwork
+      if (artworkEl) {
+        gsap.to(artworkEl, {
+          x: deltaX * 12,
+          y: deltaY * 12,
+          duration: 0.45,
+          ease: "power2.out",
+          overwrite: "auto",
         });
-
-        gsap.set(card2, {
-          scale: 0.94,
-          yPercent: 0,
-          y: isMobile ? 15 : 20,
-          rotation: 3.5,
-          opacity: 0.85,
-          zIndex: 30,
-          pointerEvents: "auto",
-        });
-
-        gsap.set(card3, {
-          scale: 0.88,
-          yPercent: 0,
-          y: isMobile ? 30 : 40,
-          rotation: -1.5,
-          opacity: 0.7,
-          zIndex: 20,
-          pointerEvents: "auto",
-        });
-
-        gsap.set(card4, {
-          scale: 0.82,
-          yPercent: 0,
-          y: isMobile ? 45 : 60,
-          rotation: 2,
-          opacity: 0.5,
-          zIndex: 10,
-          pointerEvents: "auto",
-        });
-
-        // Title and Cards initial coordinates
-        gsap.set(titleContainer, {
-          y: startTitleY,
-        });
-
-        gsap.set(titleText, {
-          scale: titleScaleStart,
-          color: "#1A0042",
-          opacity: 1,
-        });
-
-        gsap.set(cardsContainer, {
-          y: startCardsY,
-        });
-
-        if (bottomCallout) {
-          gsap.set(bottomCallout, {
-            opacity: 0,
-            y: 15,
-          });
-        }
-
-        // 2. Master Scrub Timeline with Pinning
-        const scrubTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: runway,
-            start: "top top",
-            end: scrollDistance,
-            pin: true,
-            scrub: isMobile ? 0.6 : 0.8,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        // =====================================================================
-        // PHASE 0 (0.0 -> 0.8s):
-        // "WHY US" glides from top down into the center behind the cards
-        // Cards container smoothly rises from below into the vertical center.
-        // Bottom methodology statement fades in.
-        // =====================================================================
-        scrubTl.to(
-          titleContainer,
-          {
-            y: 0,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          0
-        );
-
-        scrubTl.to(
-          titleText,
-          {
-            scale: titleScaleEnd,
-            color: "#CBD5E1",
-            opacity: isMobile ? 0.55 : 0.65,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          0
-        );
-
-        scrubTl.to(
-          cardsContainer,
-          {
-            y: 0,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          0
-        );
-
-        if (bottomCallout) {
-          scrubTl.to(
-            bottomCallout,
-            {
-              opacity: 1,
-              y: 0,
-              ease: "power2.out",
-              duration: 0.8,
-            },
-            0
-          );
-        }
-
-        // =====================================================================
-        // PHASE 1 (0.8 -> 1.2s):
-        // Hold Card 1 in primary focus
-        // =====================================================================
-        scrubTl.to({}, { duration: 0.4 }, 0.8);
-
-        // =====================================================================
-        // TRANSITION 1 -> 2 (1.2 -> 2.0s):
-        // Card 1 rotates and peels UP & OUT over Card 2
-        // Card 2 moves into full center focus
-        // Card 3 & 4 step forward
-        // =====================================================================
-        scrubTl.to(
-          card1,
-          {
-            yPercent: exitYPercent,
-            rotation: -18,
-            opacity: 0,
-            scale: 0.9,
-            ease: "power2.inOut",
-            duration: 0.8,
-          },
-          1.2
-        );
-
-        scrubTl.to(
-          card2,
-          {
-            scale: 1,
-            y: 0,
-            rotation: 3.5,
-            opacity: 1,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          1.2
-        );
-
-        scrubTl.to(
-          card3,
-          {
-            scale: 0.94,
-            y: isMobile ? 15 : 20,
-            rotation: -1.5,
-            opacity: 0.85,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          1.2
-        );
-
-        scrubTl.to(
-          card4,
-          {
-            scale: 0.88,
-            y: isMobile ? 30 : 40,
-            rotation: 2,
-            opacity: 0.7,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          1.2
-        );
-
-        // =====================================================================
-        // PHASE 2 (2.0 -> 2.4s):
-        // Hold Card 2 in primary focus
-        // =====================================================================
-        scrubTl.to({}, { duration: 0.4 }, 2.0);
-
-        // =====================================================================
-        // TRANSITION 2 -> 3 (2.4 -> 3.2s):
-        // Card 2 rotates and peels UP & OUT over Card 3
-        // Card 3 moves into full center focus
-        // Card 4 steps forward
-        // =====================================================================
-        scrubTl.to(
-          card2,
-          {
-            yPercent: exitYPercent,
-            rotation: 18,
-            opacity: 0,
-            scale: 0.9,
-            ease: "power2.inOut",
-            duration: 0.8,
-          },
-          2.4
-        );
-
-        scrubTl.to(
-          card3,
-          {
-            scale: 1,
-            y: 0,
-            rotation: -2.5,
-            opacity: 1,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          2.4
-        );
-
-        scrubTl.to(
-          card4,
-          {
-            scale: 0.94,
-            y: isMobile ? 15 : 20,
-            rotation: 1.5,
-            opacity: 0.85,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          2.4
-        );
-
-        // =====================================================================
-        // PHASE 3 (3.2 -> 3.6s):
-        // Hold Card 3 in primary focus
-        // =====================================================================
-        scrubTl.to({}, { duration: 0.4 }, 3.2);
-
-        // =====================================================================
-        // TRANSITION 3 -> 4 (3.6 -> 4.4s):
-        // Card 3 rotates and peels UP & OUT over Card 4
-        // Card 4 moves into full center focus
-        // =====================================================================
-        scrubTl.to(
-          card3,
-          {
-            yPercent: exitYPercent,
-            rotation: -16,
-            opacity: 0,
-            scale: 0.9,
-            ease: "power2.inOut",
-            duration: 0.8,
-          },
-          3.6
-        );
-
-        scrubTl.to(
-          card4,
-          {
-            scale: 1,
-            y: 0,
-            rotation: -2,
-            opacity: 1,
-            ease: "power2.out",
-            duration: 0.8,
-          },
-          3.6
-        );
-
-        // =====================================================================
-        // PHASE 4 (4.4 -> 5.0s):
-        // Hold Card 4 in primary focus with CTA ready to interact
-        // =====================================================================
-        scrubTl.to(
-          titleText,
-          {
-            scale: titleScaleEnd * 1.04,
-            y: -12,
-            ease: "none",
-            duration: 0.6,
-          },
-          4.4
-        );
       }
-    );
 
-    return () => mm.revert();
+      // Cursor-following specular glare spotlight
+      if (glare) {
+        gsap.to(glare, {
+          opacity: 0.35,
+          x: x - 150,
+          y: y - 150,
+          duration: 0.3,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      }
+    };
+
+    const handleMouseLeave = () => {
+      // Smooth reset to neutral position
+      gsap.to(card, {
+        rotateY: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.65,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+
+      if (artworkEl) {
+        gsap.to(artworkEl, {
+          x: 0,
+          y: 0,
+          duration: 0.65,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      }
+
+      if (glare) {
+        gsap.to(glare, {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      }
+    };
+
+    card.addEventListener("mousemove", handleMouseMove);
+    card.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      card.removeEventListener("mousemove", handleMouseMove);
+      card.removeEventListener("mouseleave", handleMouseLeave);
+      gsap.killTweensOf(card);
+      if (artworkEl) gsap.killTweensOf(artworkEl);
+      if (glare) gsap.killTweensOf(glare);
+    };
   }, []);
 
   return (
-    <section
-      id="why-us"
-      ref={runwayRef}
-      className="relative w-full bg-fading-dot-grid text-[#1A0042] select-none border-t border-[#1A0042]/10 overflow-hidden"
-    >
-      {/* Pinned Viewport (100dvh for mobile dynamic viewport bar stability) */}
+    <div className="relative w-full h-full" style={{ perspective: "1000px" }}>
       <div
-        ref={viewportRef}
-        className="h-[100dvh] min-h-[540px] w-full relative bg-fading-dot-grid flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden"
+        ref={cardRef}
+        className={`w-full h-full rounded-[1.75rem] sm:rounded-[2rem] p-4 sm:p-5 backdrop-blur-xl sm:backdrop-blur-2xl text-white border border-white/30 hover:border-white/40 shadow-[0_20px_45px_-12px_rgba(87,54,129,0.28),inset_0_1.5px_2px_0_rgba(255,255,255,0.45),inset_0_-1px_1px_0_rgba(255,255,255,0.12)] flex flex-col justify-between overflow-hidden relative transition-colors duration-500 ease-out hover:shadow-[0_28px_60px_-15px_rgba(87,54,129,0.4)] group will-change-transform ${gradientClass}`}
+        style={{ transformStyle: "preserve-3d" }}
       >
-        {/* Ambient background glow */}
-        <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(87,54,129,0.06)_0%,transparent_70%)]" />
-
-        {/* Dynamic Title Container:
-            Starts at the top as a dark, prominent section header, then moves down into the vertical
-            center of the screen behind the card as a light-colored watermark on scroll! */}
+        {/* Cursor specular glare */}
         <div
-          ref={titleContainerRef}
-          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-[1] px-4 will-change-transform"
-        >
-          <h2
-            ref={titleTextRef}
-            className="font-display font-black text-[13vw] sm:text-8xl md:text-9xl lg:text-[13vw] tracking-tight uppercase leading-none whitespace-nowrap will-change-transform origin-center"
-          >
-            Why Us
-          </h2>
+          ref={glareRef}
+          className="absolute pointer-events-none rounded-full w-[260px] h-[260px] bg-radial from-white/40 via-purple-300/15 to-transparent blur-xl opacity-0 z-30 will-change-transform"
+          style={{ top: 0, left: 0 }}
+        />
+
+        {/* Frosted glass top sheen & ambient radial highlight */}
+        <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/20 via-white/[0.04] to-transparent pointer-events-none rounded-t-[1.75rem] sm:rounded-t-[2rem]" />
+        <div className={`absolute inset-0 ${radialClass} pointer-events-none`} />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.12] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.75rem] sm:rounded-[2rem]" />
+
+        {/* Top Text Content */}
+        <div className="relative z-10 space-y-1 sm:space-y-1.5">
+          <div className="flex items-center justify-between">
+            <span className="px-2 py-0.5 rounded-full bg-white/20 text-white font-mono text-[8.5px] sm:text-[9.5px] font-bold tracking-widest uppercase border border-white/30 backdrop-blur-md shadow-2xs">
+              {badge}
+            </span>
+            {badgeSub}
+          </div>
+
+          <h3 className="font-display font-bold text-lg sm:text-xl text-white tracking-tight leading-snug pt-0.5 drop-shadow-xs">
+            {title}
+          </h3>
+
+          <p className="font-sans text-xs sm:text-[12.5px] text-white/95 leading-relaxed font-normal drop-shadow-2xs">
+            {description}
+          </p>
         </div>
 
-        {/* Interactive Stacked Cards Container: 4 Cards Stack */}
+        {/* 3D Parallax Illustration Container */}
         <div
-          ref={cardsContainerRef}
-          className="relative w-full max-w-[315px] xs:max-w-[340px] sm:max-w-[420px] h-[415px] xs:h-[435px] sm:h-[515px] flex items-center justify-center z-20 will-change-transform"
+          ref={artworkRef}
+          className="relative w-full h-28 sm:h-32 flex items-center justify-center my-1 sm:my-1.5 z-10 will-change-transform"
         >
-          {/* ========================================================================= */}
-          {/* CARD 01: Audit First, Always (zIndex 40 - Top card)                       */}
-          {/* ========================================================================= */}
-          <div
-            ref={card1Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#6366F1]/55 via-[#573681]/50 to-[#3B1F69]/60 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(87,54,129,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
-          >
-            {/* Top Text Content */}
-            <div className="relative z-10 space-y-1.5 sm:space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-white/15 text-white/90 font-mono text-[8.5px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
-                  01 // METHODOLOGY
-                </span>
-                <span className="font-mono text-[9.5px] sm:text-[10px] text-white/60 font-bold">AUDIT-FIRST</span>
-              </div>
+          {artwork}
+        </div>
 
-              <h3 className="font-display font-bold text-xl xs:text-2xl sm:text-3xl text-white tracking-tight leading-snug pt-0.5">
-                Audit First, Always
-              </h3>
+        {/* Footer Text / CTA */}
+        <div className="pt-2 border-t border-white/20 min-h-[38px] flex items-center relative z-10">
+          {footer}
+        </div>
+      </div>
+    </div>
+  );
+}
 
-              <p className="font-sans text-[11px] xs:text-xs sm:text-sm text-white/90 leading-relaxed font-normal">
-                Every recommendation comes from YOUR account data, not best practices. We look at what's actually broken before we fix anything.
-              </p>
+export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
+  return (
+    <section
+      id="why-us"
+      className="relative w-full py-16 sm:py-20 lg:py-24 bg-textured-wash text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-[#1A0042]/10 mb-8 sm:mb-10">
+          <div>
+            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
+              <span>WHY US // THE DIAGNOSTIC FRAMEWORK</span>
             </div>
+            <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] uppercase leading-[1.05]">
+              Why Us
+            </h2>
+          </div>
 
-            {/* 3D-styled Vector Illustration (Audit Dossier & Telemetry Ring) */}
-            <div className="relative w-full h-34 xs:h-38 sm:h-48 flex items-center justify-center my-auto">
+          <p className="font-sans text-sm sm:text-base text-[#1A0042]/75 max-w-md leading-relaxed">
+            We diagnose before we prescribe. Every recommendation is anchored in unit economics, not agency hubris.
+          </p>
+        </div>
+
+        {/* 4 Cards Horizontally Listed Side by Side with GSAP 3D Hover Tilt */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch">
+          {/* ========================================================================= */}
+          {/* CARD 01: Audit First, Always                                              */}
+          {/* ========================================================================= */}
+          <TiltCard
+            badge="METHODOLOGY"
+            badgeSub={
+              <span className="font-mono text-[9.5px] sm:text-[10px] text-purple-200 font-bold drop-shadow-xs">
+                AUDIT-FIRST
+              </span>
+            }
+            title="Audit First, Always"
+            description="Every recommendation comes from your account data. We fix what's actually broken first."
+            gradientClass="bg-gradient-to-br from-[#240D4A]/52 via-[#1A0042]/46 to-[#3B1F69]/42"
+            radialClass="bg-[radial-gradient(circle_at_20%_20%,rgba(176,139,224,0.18)_0%,transparent_60%)]"
+            artwork={
               <svg
                 viewBox="0 0 320 220"
                 className="w-full h-full select-none filter drop-shadow-xl"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <ellipse cx="160" cy="150" rx="110" ry="30" fill="#FFFFFF" fillOpacity="0.12" />
+                <ellipse cx="160" cy="150" rx="110" ry="30" fill="#FFFFFF" fillOpacity="0.15" />
                 <ellipse
                   cx="160"
                   cy="120"
                   rx="135"
                   ry="45"
                   stroke="#FFFFFF"
-                  strokeOpacity="0.35"
+                  strokeOpacity="0.4"
                   strokeWidth="1.5"
                   strokeDasharray="4 4"
                 />
@@ -458,53 +267,41 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                   <path d="M-7 0 L-2 5 L8 -5" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </g>
 
-                <rect x="24" y="175" width="105" height="22" rx="4" fill="#FFFFFF" fillOpacity="0.15" stroke="#FFFFFF" strokeOpacity="0.3" />
+                <rect x="24" y="175" width="105" height="22" rx="4" fill="#FFFFFF" fillOpacity="0.2" stroke="#FFFFFF" strokeOpacity="0.35" />
                 <text x="76" y="190" fill="#FFFFFF" fontSize="9" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle" letterSpacing="0.08em">
                   [AUDIT READY]
                 </text>
               </svg>
-            </div>
-
-            {/* Footer Text (No check icon) */}
-            <div className="pt-1.5 sm:pt-2 border-t border-white/15 text-[10.5px] sm:text-[11.5px] font-mono uppercase tracking-wider text-white/90 font-semibold">
-              No guessing. No templates.
-            </div>
-          </div>
+            }
+            footer={
+              <span className="text-[10.5px] sm:text-[11.5px] font-mono uppercase tracking-wider text-white/95 font-semibold drop-shadow-2xs">
+                No guessing. No templates.
+              </span>
+            }
+          />
 
           {/* ========================================================================= */}
-          {/* CARD 02: Real-Time Account Health (zIndex 30 - Second card)               */}
+          {/* CARD 02: Real-Time Account Health                                         */}
           {/* ========================================================================= */}
-          <div
-            ref={card2Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#2563EB]/55 via-[#4338CA]/50 to-[#573681]/60 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(37,99,235,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
-          >
-            {/* Top Text Content */}
-            <div className="relative z-10 space-y-1.5 sm:space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-white/15 text-white/90 font-mono text-[8.5px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
-                  02 // TELEMETRY
-                </span>
-                <span className="font-mono text-[9.5px] sm:text-[10px] text-cyan-300 font-bold">12-MIN SLA</span>
-              </div>
-
-              <h3 className="font-display font-bold text-xl xs:text-2xl sm:text-3xl text-white tracking-tight leading-snug pt-0.5">
-                Real-Time Account Health
-              </h3>
-
-              <p className="font-sans text-[11px] xs:text-xs sm:text-sm text-white/90 leading-relaxed font-normal">
-                We catch budget bleed in 12 minutes. You'd find it tomorrow morning after losing ₹20,000+. We stop it before it gets expensive.
-              </p>
-            </div>
-
-            {/* 3D-styled Vector Illustration (Cinema Camera, Film Reel & Waveform) */}
-            <div className="relative w-full h-34 xs:h-38 sm:h-48 flex items-center justify-center my-auto">
+          <TiltCard
+            badge="TELEMETRY"
+            badgeSub={
+              <span className="font-mono text-[9.5px] sm:text-[10px] text-purple-200 font-bold drop-shadow-xs">
+                REAL-TIME
+              </span>
+            }
+            title="Real-Time Account Health"
+            description="We catch budget bleed in minutes before it gets expensive. Daily checks, zero lag."
+            gradientClass="bg-gradient-to-b from-[#1F0842]/56 via-[#452273]/42 to-[#1A0042]/48"
+            radialClass="bg-[radial-gradient(circle_at_50%_12%,rgba(147,105,210,0.22)_0%,transparent_65%)]"
+            artwork={
               <svg
                 viewBox="0 0 320 220"
                 className="w-full h-full select-none filter drop-shadow-xl"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <ellipse cx="160" cy="150" rx="110" ry="30" fill="#FFFFFF" fillOpacity="0.12" />
+                <ellipse cx="160" cy="150" rx="110" ry="30" fill="#FFFFFF" fillOpacity="0.15" />
 
                 <g transform="translate(145, 105)">
                   <rect x="-45" y="-25" width="90" height="60" rx="14" fill="#1E1B4B" fillOpacity="0.85" stroke="#FFFFFF" strokeWidth="2" />
@@ -541,56 +338,44 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                   fill="none"
                 />
 
-                <rect x="180" y="165" width="115" height="24" rx="6" fill="#FFFFFF" fillOpacity="0.15" stroke="#FFFFFF" strokeOpacity="0.3" />
+                <rect x="180" y="165" width="115" height="24" rx="6" fill="#FFFFFF" fillOpacity="0.2" stroke="#FFFFFF" strokeOpacity="0.35" />
                 <text x="237" y="181" fill="#FFFFFF" fontSize="9" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle" letterSpacing="0.08em">
                   [BLEED STOPPED]
                 </text>
               </svg>
-            </div>
-
-            {/* Footer Text (No check icon) */}
-            <div className="pt-1.5 sm:pt-2 border-t border-white/15 text-[10.5px] sm:text-[11.5px] font-mono uppercase tracking-wider text-white/90 font-semibold">
-              Daily checks. Live monitoring.
-            </div>
-          </div>
+            }
+            footer={
+              <span className="text-[10.5px] sm:text-[11.5px] font-mono uppercase tracking-wider text-white/95 font-semibold drop-shadow-2xs">
+                Daily checks. Live monitoring.
+              </span>
+            }
+          />
 
           {/* ========================================================================= */}
-          {/* CARD 03: Data-Backed Creative Briefs (zIndex 20 - Third card)              */}
+          {/* CARD 03: Data-Backed Creative Briefs                                      */}
           {/* ========================================================================= */}
-          <div
-            ref={card3Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#7C3AED]/55 via-[#573681]/50 to-[#43236B]/60 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(124,58,237,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
-          >
-            {/* Top Text Content */}
-            <div className="relative z-10 space-y-1.5 sm:space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-white/15 text-white/90 font-mono text-[8.5px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
-                  03 // CREATIVE INTEL
-                </span>
-                <span className="font-mono text-[9.5px] sm:text-[10px] text-purple-200 font-bold">SCRIPT DNA</span>
-              </div>
-
-              <h3 className="font-display font-bold text-xl xs:text-2xl sm:text-3xl text-white tracking-tight leading-snug pt-0.5">
-                Data-Backed Creative Briefs
-              </h3>
-
-              <p className="font-sans text-[11px] xs:text-xs sm:text-sm text-white/90 leading-relaxed font-normal">
-                No mood boards. No hunches. We show producers exactly which hook angles scaled, which formats lasted longest, which audiences need different creative.
-              </p>
-            </div>
-
-            {/* 3D-styled Vector Illustration (Hook Angles & Creative Vectors) */}
-            <div className="relative w-full h-34 xs:h-38 sm:h-48 flex items-center justify-center my-auto">
+          <TiltCard
+            badge="CREATIVE INTEL"
+            badgeSub={
+              <span className="font-mono text-[9.5px] sm:text-[10px] text-purple-200 font-bold drop-shadow-xs">
+                SCRIPT DNA
+              </span>
+            }
+            title="Data-Backed Creative Briefs"
+            description="No mood boards or hunches. Data-backed briefs showing exact hook angles that scale."
+            gradientClass="bg-gradient-to-bl from-[#31145C]/52 via-[#1A0042]/48 to-[#43236B]/42"
+            radialClass="bg-[radial-gradient(circle_at_80%_20%,rgba(168,85,247,0.18)_0%,transparent_60%)]"
+            artwork={
               <svg
                 viewBox="0 0 320 220"
                 className="w-full h-full select-none filter drop-shadow-xl"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <ellipse cx="160" cy="150" rx="110" ry="30" fill="#FFFFFF" fillOpacity="0.12" />
+                <ellipse cx="160" cy="150" rx="110" ry="30" fill="#FFFFFF" fillOpacity="0.15" />
 
                 {/* Concentric brief nodes */}
-                <circle cx="160" cy="110" r="50" stroke="#FFFFFF" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4 4" />
+                <circle cx="160" cy="110" r="50" stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="1.5" strokeDasharray="4 4" />
                 <circle cx="160" cy="110" r="28" fill="#573681" stroke="#FFFFFF" strokeWidth="2" />
                 <circle cx="160" cy="110" r="14" fill="#A855F7" />
 
@@ -616,49 +401,35 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                 <line x1="160" y1="163" x2="160" y2="138" stroke="#FFFFFF" strokeWidth="2" strokeDasharray="3 3" />
 
                 {/* Floating Metric Badge */}
-                <rect x="25" y="170" width="105" height="24" rx="6" fill="#FFFFFF" fillOpacity="0.15" stroke="#FFFFFF" strokeOpacity="0.3" />
+                <rect x="25" y="170" width="105" height="24" rx="6" fill="#FFFFFF" fillOpacity="0.2" stroke="#FFFFFF" strokeOpacity="0.35" />
                 <text x="77" y="186" fill="#FDE047" fontSize="9" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle" letterSpacing="0.08em">
                   [HOOK LIFT: +44%]
                 </text>
               </svg>
-            </div>
-
-            {/* Footer Text (No check icon) */}
-            <div className="pt-1.5 sm:pt-2 border-t border-white/15 text-[10.5px] sm:text-[11.5px] font-mono uppercase tracking-wider text-white/90 font-semibold">
-              Strategy from your performance.
-            </div>
-          </div>
+            }
+            footer={
+              <span className="text-[10.5px] sm:text-[11.5px] font-mono uppercase tracking-wider text-white/95 font-semibold drop-shadow-2xs">
+                Strategy from your performance.
+              </span>
+            }
+          />
 
           {/* ========================================================================= */}
-          {/* CARD 04: One System. Applied Everywhere. (zIndex 10 - Finale Card)        */}
+          {/* CARD 04: One System. Applied Everywhere.                                  */}
           {/* ========================================================================= */}
-          <div
-            ref={card4Ref}
-            className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 xs:p-6 sm:p-8 bg-gradient-to-br from-[#1A0042]/70 via-[#573681]/60 to-[#311956]/75 backdrop-blur-xl sm:backdrop-blur-2xl text-white shadow-[0_25px_50px_-12px_rgba(87,54,129,0.35),inset_0_1px_1px_0_rgba(255,255,255,0.35)] border border-white/35 flex flex-col justify-between overflow-hidden will-change-transform"
-          >
-            {/* Top Text Content */}
-            <div className="relative z-10 space-y-1.5 sm:space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-white/15 text-white/90 font-mono text-[8.5px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
-                  04 // UNIFIED SYSTEM
-                </span>
-                <span className="font-mono text-[9.5px] sm:text-[10px] text-purple-200 font-bold flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#B08BE0] animate-ping" />
-                  SYSTEMATIC
-                </span>
-              </div>
-
-              <h3 className="font-display font-bold text-xl xs:text-2xl sm:text-3xl text-white tracking-tight leading-snug pt-0.5">
-                One System. Applied Everywhere.
-              </h3>
-
-              <p className="font-sans text-[11px] xs:text-xs sm:text-sm text-white/90 leading-relaxed font-normal">
-                Same diagnostic framework. Same checkpoints. Same standard. Whether you're spending ₹10k/mo or ₹500k/mo, the findings hold. It's systematic. Not subjective.
-              </p>
-            </div>
-
-            {/* High-Tech Vector Illustration (Unified Diagnostic System Architecture) */}
-            <div className="relative w-full h-34 xs:h-38 sm:h-48 flex items-center justify-center my-auto">
+          <TiltCard
+            badge="UNIFIED SYSTEM"
+            badgeSub={
+              <span className="font-mono text-[9.5px] sm:text-[10px] text-purple-200 font-bold flex items-center gap-1.5 drop-shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#B08BE0] animate-ping" />
+                SYSTEMATIC
+              </span>
+            }
+            title="One System. Applied Everywhere."
+            description="Same diagnostic framework whether spending ₹10k or ₹500k/mo. Systematic, not subjective."
+            gradientClass="bg-gradient-to-tr from-[#1A0042]/56 via-[#573681]/45 to-[#2A0E52]/44"
+            radialClass="bg-[radial-gradient(circle_at_50%_80%,rgba(192,132,252,0.20)_0%,transparent_70%)]"
+            artwork={
               <svg
                 viewBox="0 0 320 220"
                 className="w-full h-full select-none filter drop-shadow-xl"
@@ -666,8 +437,8 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 {/* Foundation Ground Radar */}
-                <ellipse cx="160" cy="155" rx="115" ry="32" fill="#573681" fillOpacity="0.20" stroke="#FFFFFF" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="4 4" />
-                <ellipse cx="160" cy="155" rx="75" ry="20" fill="#7C3AED" fillOpacity="0.15" stroke="#FFFFFF" strokeOpacity="0.3" strokeWidth="1" />
+                <ellipse cx="160" cy="155" rx="115" ry="32" fill="#573681" fillOpacity="0.25" stroke="#FFFFFF" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4 4" />
+                <ellipse cx="160" cy="155" rx="75" ry="20" fill="#7C3AED" fillOpacity="0.2" stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="1" />
 
                 {/* Vertical Central Telemetry Beam */}
                 <line x1="160" y1="40" x2="160" y2="155" stroke="#B08BE0" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.7" />
@@ -704,6 +475,7 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                   <line x1="32" y1="0" x2="65" y2="15" stroke="#B08BE0" strokeWidth="1.5" strokeDasharray="2 2" strokeOpacity="0.6" />
                 </g>
 
+                {/* Satellite Benchmark Nodes */}
                 <g transform="translate(272, 75)">
                   <rect x="-36" y="-12" width="72" height="24" rx="6" fill="#1A0042" fillOpacity="0.85" stroke="#FFFFFF" strokeOpacity="0.4" strokeWidth="1.5" />
                   <text x="0" y="4" fill="#FFFFFF" fontSize="8.5" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle">
@@ -718,34 +490,20 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                   [ STANDARDIZED DIAGNOSTIC CODES ]
                 </text>
               </svg>
-            </div>
-
-            {/* Action CTA Button */}
-            <div className="pt-1 sm:pt-2">
+            }
+            footer={
               <button
                 onClick={onOpenDemoModal}
-                className="w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-xl sm:rounded-2xl bg-white text-[#573681] hover:text-[#1A0042] hover:bg-white/95 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 cursor-pointer active:scale-95 touch-manipulation group"
+                className="w-full py-2.5 px-4 rounded-xl sm:rounded-2xl bg-white text-[#573681] hover:text-[#1A0042] hover:bg-white/95 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-95 touch-manipulation group/btn"
               >
                 <span>Book a 30-Min Audit</span>
-                <ArrowUpRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
               </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Center Methodology Statement (Matching DualAgentPinned / Why Us Section) */}
-        <div
-          ref={bottomCalloutRef}
-          className="absolute bottom-2.5 sm:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none text-center px-4 w-full max-w-lg will-change-transform"
-        >
-          <div className="font-display font-black text-xs sm:text-sm lg:text-base text-[#573681] uppercase tracking-tight leading-tight">
-            MOST AGENCIES GUESS, WE RUN THE DIAGNOSTIC FIRST.
-          </div>
-          <div className="font-sans text-[10.5px] sm:text-xs text-[#1A0042] font-semibold mt-1 max-w-md mx-auto leading-relaxed">
-            Every strategic recommendation is anchored in your account’s unit economics, not agency hubris.
-          </div>
+            }
+          />
         </div>
       </div>
     </section>
   );
 }
+

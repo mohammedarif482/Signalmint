@@ -171,7 +171,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
       }
 
       // 4. GSAP OBSERVER: High-Performance Anti-Gravity Pointer & Touch Physics
-      if (bgInnerRef.current && cardLeftInnerRef.current && videoCardInnerRef.current) {
+      if (bgInnerRef.current && cardLeftInnerRef.current) {
         const xBg = gsap.quickTo(bgInnerRef.current, "x", { duration: 0.9, ease: "power2.out" });
         const yBg = gsap.quickTo(bgInnerRef.current, "y", { duration: 0.9, ease: "power2.out" });
 
@@ -180,10 +180,18 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         const rotXCard = gsap.quickTo(cardLeftInnerRef.current, "rotationX", { duration: 0.7, ease: "power2.out" });
         const rotYCard = gsap.quickTo(cardLeftInnerRef.current, "rotationY", { duration: 0.7, ease: "power2.out" });
 
-        const xVideo = gsap.quickTo(videoCardInnerRef.current, "x", { duration: 0.65, ease: "power2.out" });
-        const yVideo = gsap.quickTo(videoCardInnerRef.current, "y", { duration: 0.65, ease: "power2.out" });
-        const rotXVideo = gsap.quickTo(videoCardInnerRef.current, "rotationX", { duration: 0.65, ease: "power2.out" });
-        const rotYVideo = gsap.quickTo(videoCardInnerRef.current, "rotationY", { duration: 0.65, ease: "power2.out" });
+        const xVideo = videoCardInnerRef.current
+          ? gsap.quickTo(videoCardInnerRef.current, "x", { duration: 0.65, ease: "power2.out" })
+          : null;
+        const yVideo = videoCardInnerRef.current
+          ? gsap.quickTo(videoCardInnerRef.current, "y", { duration: 0.65, ease: "power2.out" })
+          : null;
+        const rotXVideo = videoCardInnerRef.current
+          ? gsap.quickTo(videoCardInnerRef.current, "rotationX", { duration: 0.65, ease: "power2.out" })
+          : null;
+        const rotYVideo = videoCardInnerRef.current
+          ? gsap.quickTo(videoCardInnerRef.current, "rotationY", { duration: 0.65, ease: "power2.out" })
+          : null;
 
         const xNarrative = narrativeInnerRef.current
           ? gsap.quickTo(narrativeInnerRef.current, "x", { duration: 0.8, ease: "power2.out" })
@@ -215,10 +223,12 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             rotYCard(normX * 6);
 
             // Floating video card floats with heightened responsiveness
-            xVideo(normX * -20);
-            yVideo(normY * -15);
-            rotXVideo(normY * -6);
-            rotYVideo(normX * 8);
+            if (xVideo && yVideo && rotXVideo && rotYVideo) {
+              xVideo(normX * -20);
+              yVideo(normY * -15);
+              rotXVideo(normY * -6);
+              rotYVideo(normX * 8);
+            }
 
             // Editorial narrative shifts gently
             if (xNarrative && yNarrative) {
@@ -233,10 +243,12 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             rotXCard(0);
             rotYCard(0);
 
-            xVideo(0);
-            yVideo(0);
-            rotXVideo(0);
-            rotYVideo(0);
+            if (xVideo && yVideo && rotXVideo && rotYVideo) {
+              xVideo(0);
+              yVideo(0);
+              rotXVideo(0);
+              rotYVideo(0);
+            }
 
             if (xNarrative && yNarrative) {
               xNarrative(0);
@@ -348,28 +360,29 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-[54vw] max-w-[240px] sm:max-w-none sm:w-[17.5rem] lg:w-[18.5rem] h-auto p-4 sm:p-5 lg:p-6 pb-4 sm:pb-5 lg:pb-6 rounded-2xl bg-white/[0.28] hover:bg-white/[0.38] backdrop-blur-md shadow-none flex flex-col gap-2.5 xs:gap-3 sm:gap-3.5 overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
+            className="w-[45vw] max-w-[195px] sm:max-w-none sm:w-[13.5rem] lg:w-[14.5rem] min-h-[225px] sm:min-h-[260px] lg:min-h-[285px] p-4 sm:p-5 lg:p-6 rounded-2xl bg-white/[0.28] hover:bg-white/[0.38] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
           >
             {/* Top Bold Grotesque Header */}
             <div>
-              <div className="font-sans font-bold text-[10px] xs:text-[11px] sm:text-[13px] lg:text-[14px] uppercase tracking-tight text-[#1A0042] leading-[1.22] sm:leading-[1.25]">
-                DESIGNED FOR<br /> PERFORMANCE-FIRST<br />
-                FOUNDERS &amp; MARKETERS.
+              <div className="font-sans font-bold text-[10px] xs:text-[11px] sm:text-[12.5px] lg:text-[13.5px] uppercase tracking-tight text-[#1A0042] leading-[1.25]">
+                FOR PERFORMANCE-FIRST<br />
+                FOUNDERS &amp;<br />
+                MARKETERS.
               </div>
             </div>
 
-            {/* Editorial Dotted Separator: ~45% width from left margin */}
-            <div className="w-[45%] border-b border-dotted border-[#1A0042]/35" />
+            {/* Editorial Dotted Separator */}
+            <div className="w-[50%] border-b border-dotted border-[#1A0042]/35 my-2" />
 
             {/* Subtext */}
-            <div className="text-[9px] xs:text-[9.5px] sm:text-[11.5px] lg:text-[12px] text-[#1A0042]/85 font-sans leading-[1.38] sm:leading-[1.42] text-left sm:text-right max-w-[200px] xs:max-w-[220px] sm:max-w-[240px] sm:ml-auto">
-              Most agencies form an opinion and defend it. We audit first. Every recommendation comes from what your data proves works.
+            <div className="text-[9px] xs:text-[9.5px] sm:text-[11px] lg:text-[11.5px] text-[#1A0042]/85 font-sans leading-[1.45] text-left">
+              We audit first. Every recommendation is proven by your data.
             </div>
 
             {/* Instant Audit CTA */}
             <button
               onClick={onOpenDemoModal}
-              className="self-start sm:self-end inline-flex items-center gap-1.5 font-mono text-[9px] xs:text-[9.5px] sm:text-[11px] font-bold text-[#573681] hover:text-[#1A0042] uppercase tracking-wider transition-colors cursor-pointer group pt-0.5"
+              className="self-start inline-flex items-center gap-1.5 font-mono text-[9px] xs:text-[9.5px] sm:text-[10.5px] font-bold text-[#573681] hover:text-[#1A0042] uppercase tracking-wider transition-colors cursor-pointer group pt-2"
             >
               <span className="border-b border-[#573681]/40 pb-0.5 group-hover:border-[#1A0042]">Book a 30-Min Audit</span>
               <span className="group-hover:translate-x-0.5 transition-transform text-[#573681]">→</span>
@@ -378,8 +391,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* BOTTOM-RIGHT FLOATING VIDEO CARD (Exact Oryzo mobile portrait card)      */}
+        {/* BOTTOM-RIGHT FLOATING VIDEO CARD (Commented out per request)             */}
         {/* ========================================================================= */}
+        {/*
         <div
           ref={videoCardRef}
           id="hero-video-card"
@@ -390,23 +404,19 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             ref={videoCardInnerRef}
             className="w-[42vw] max-w-[165px] sm:max-w-none sm:w-48 lg:w-52 h-[195px] sm:h-auto bg-white/85 backdrop-blur-xl p-1 rounded-2xl border-2 border-[#f59e0b]/70 sm:border-[#1A0042]/10 shadow-[0_8px_24px_rgba(245,158,11,0.2)] sm:shadow-[0_12px_30px_rgba(26,0,66,0.06)] transition-transform duration-300 hover:scale-[1.03] will-change-transform flex flex-col overflow-hidden"
           >
-            {/* Video preview thumbnail box */}
             <div className="relative flex-1 sm:aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
               <img
                 src={demoThumbnailImage}
                 alt="See How We Audit Walkthrough Preview"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
               />
-              {/* Subtle ambient overlay */}
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
 
-              {/* Top Badge: ● 2-MIN AUDIT (desktop only) */}
               <div className="hidden sm:flex absolute top-1.5 left-1.5 items-center gap-1 px-1.5 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[8px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>HOW WE AUDIT</span>
               </div>
 
-              {/* Center Play Button Overlay (Exact Oryzo mobile PLAY display) */}
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
                 <div className="w-8 h-8 rounded-full bg-white/95 text-[#573681] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
                   <Play className="w-3.5 h-3.5 fill-[#573681] ml-0.5" />
@@ -417,7 +427,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
               </div>
             </div>
 
-            {/* Bottom mini label (desktop only) */}
             <div className="hidden sm:flex p-1.5 pt-2 items-center justify-between font-mono text-[9px] text-[#1A0042]">
               <span className="font-bold uppercase tracking-wider">AUDIT DEEP-DIVE</span>
               <span className="text-[#573681] font-bold flex items-center gap-0.5">
@@ -426,6 +435,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             </div>
           </div>
         </div>
+        */}
 
         {/* ========================================================================= */}
         {/* BOTTOM SCROLL INDICATOR: ⌄ SCROLL TO CONTINUE (Desktop only)               */}

@@ -231,60 +231,91 @@ interface CaseStudyCardProps {
 
 function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
   const zoneRef = useRef<HTMLDivElement>(null);
-  const bgContainerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const artworkRef = useRef<HTMLDivElement>(null);
+  const glareRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const zone = zoneRef.current;
-    const bgContainer = bgContainerRef.current;
+    const card = cardRef.current;
     const artwork = artworkRef.current;
-    if (!zone || !bgContainer) return;
+    const glare = glareRef.current;
+    if (!zone || !card) return;
 
-    // LONG gentle mousemove — dynamic GSAP tween
+    const hasHover = window.matchMedia("(hover: hover)").matches;
+    if (!hasHover) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       const rect = zone.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const strength = 0.15;
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const deltaX = (x - centerX) / centerX; // -1 to 1
+      const deltaY = (y - centerY) / centerY; // -1 to 1
 
-      gsap.to(bgContainer, {
-        x: x * strength,
-        y: y * strength,
-        duration: 1.5,        // slow follow
+      // 3D perspective tilt matching Why Us and Codapress
+      gsap.to(card, {
+        rotateY: deltaX * 12,
+        rotateX: -deltaY * 12,
+        transformPerspective: 800,
+        scale: 1.03,
+        duration: 0.4,
         ease: "power2.out",
-        overwrite: false       // default — won't kill anything
+        overwrite: "auto",
       });
 
+      // Subtle parallax on inner SVG blueprint
       if (artwork) {
         gsap.to(artwork, {
-          x: x * 0.08,
-          y: y * 0.08,
-          duration: 1.5,
+          x: deltaX * 10,
+          y: deltaY * 10,
+          duration: 0.4,
           ease: "power2.out",
-          overwrite: false
+          overwrite: "auto",
+        });
+      }
+
+      // Cursor-tracking specular glare spotlight
+      if (glare) {
+        gsap.to(glare, {
+          opacity: 0.35,
+          x: x - 120,
+          y: y - 120,
+          duration: 0.25,
+          ease: "power2.out",
+          overwrite: "auto",
         });
       }
     };
 
-    // SHORT snappy mouseleave — finishes fast,
-    // but the old long mousemove tween is still going
-    // and reclaims x/y → visible snap-back!
     const handleMouseLeave = () => {
-      gsap.to(bgContainer, {
-        x: 0,
-        y: 0,
-        duration: 0.15,
+      // Smooth reset back to neutral rest position
+      gsap.to(card, {
+        rotateY: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.65,
         ease: "power2.out",
-        overwrite: false
+        overwrite: "auto",
       });
 
       if (artwork) {
         gsap.to(artwork, {
           x: 0,
           y: 0,
-          duration: 0.15,
+          duration: 0.65,
           ease: "power2.out",
-          overwrite: false
+          overwrite: "auto",
+        });
+      }
+
+      if (glare) {
+        gsap.to(glare, {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          overwrite: "auto",
         });
       }
     };
@@ -295,8 +326,9 @@ function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
     return () => {
       zone.removeEventListener("mousemove", handleMouseMove);
       zone.removeEventListener("mouseleave", handleMouseLeave);
-      gsap.killTweensOf(bgContainer);
+      gsap.killTweensOf(card);
       if (artwork) gsap.killTweensOf(artwork);
+      if (glare) gsap.killTweensOf(glare);
     };
   }, []);
 
@@ -305,18 +337,31 @@ function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
       className="flex flex-col gap-4 group cursor-pointer"
       onClick={() => onNavigate?.(study.pageKey)}
     >
-      {/* Zone frame */}
+      {/* Zone frame with 3D perspective context */}
       <div 
         ref={zoneRef}
         className="relative aspect-square w-full"
+        style={{ perspective: "900px" }}
         data-cursor="READ"
       >
-        {/* Geometric Wireframe Visual in BG Container (with Dynamic GSAP Tween & Rounded edges) */}
+        {/* Geometric Wireframe Visual in Frosted Glass Container */}
         <div 
-          ref={bgContainerRef}
-          className="w-full h-full rounded-xl overflow-hidden border border-[#1A0042]/12 bg-[#E7E6FB]/40 shadow-xs transition-colors duration-300 group-hover:border-[#573681]/50 group-hover:shadow-md will-change-transform relative z-0"
+          ref={cardRef}
+          className="w-full h-full rounded-2xl overflow-hidden border border-white/40 hover:border-white/55 bg-gradient-to-b from-white/60 via-white/35 to-[#E7E6FB]/30 backdrop-blur-xl sm:backdrop-blur-2xl shadow-[0_12px_32px_-8px_rgba(26,0,66,0.08),inset_0_1.5px_2px_0_rgba(255,255,255,0.9),inset_0_-1px_1.5px_0_rgba(87,54,129,0.05)] hover:shadow-[0_20px_45px_-8px_rgba(87,54,129,0.22),inset_0_2px_2.5px_0_rgba(255,255,255,1)] transition-colors duration-300 will-change-transform relative z-0"
+          style={{ transformStyle: "preserve-3d" }}
         >
-          {/* SVG Blueprint Artwork */}
+          {/* Dynamic Specular Glare Spotlight */}
+          <div
+            ref={glareRef}
+            className="absolute pointer-events-none rounded-full w-[240px] h-[240px] bg-radial from-white/50 via-purple-300/15 to-transparent blur-xl opacity-0 z-30 will-change-transform"
+            style={{ top: 0, left: 0 }}
+          />
+
+          {/* Frosted glass top sheen & ambient radial highlight */}
+          <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/70 via-white/20 to-transparent rounded-t-2xl pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.75)_0%,transparent_60%)] pointer-events-none" />
+
+          {/* SVG Blueprint Artwork with 3D parallax */}
           <div 
             ref={artworkRef}
             className="w-full h-full scale-[1.08] will-change-transform"
@@ -326,14 +371,14 @@ function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
 
           {/* Top Category Tag */}
           <div className="absolute top-3 left-3 pointer-events-none z-10">
-            <span className="px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-[#573681] font-mono text-[9px] font-bold uppercase tracking-wider border border-[#573681]/25 shadow-xs">
+            <span className="px-2.5 py-1 rounded-md bg-white/75 backdrop-blur-md text-[#573681] font-mono text-[9px] font-bold uppercase tracking-wider border border-white/80 shadow-2xs">
               {study.category}
             </span>
           </div>
 
           {/* Metric Badge in Bottom-Right */}
           <div className="absolute bottom-3 right-3 pointer-events-none z-10">
-            <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#573681] font-mono text-[10px] font-bold border border-[#573681]/30 shadow-xs">
+            <span className="px-2.5 py-1 rounded-md bg-white/80 backdrop-blur-md text-[#573681] font-mono text-[10px] font-bold border border-white/85 shadow-2xs">
               {study.metricBadge}
             </span>
           </div>
