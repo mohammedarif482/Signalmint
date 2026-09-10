@@ -527,7 +527,7 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         {/* ------------------------------------------------------------------- */}
         {/* 3. INTERACTIVE TELEMETRY HOVER / TAP PILL (Below the canopy)        */}
         {/* ------------------------------------------------------------------- */}
-        <div className="h-8 sm:h-9 flex items-center justify-center relative z-20 px-4 shrink-0 mt-2 sm:mt-3 lg:mt-4">
+        <div className="h-8 sm:h-9 flex items-center justify-center relative z-20 px-4 shrink-0 mt-6 sm:mt-8 lg:mt-10">
           {activeBrand ? (
             <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1 rounded-full bg-white/95 backdrop-blur-md border border-[#573681]/30 shadow-md animate-fade-in max-w-full truncate">
               <img
