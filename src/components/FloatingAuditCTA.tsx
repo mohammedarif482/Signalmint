@@ -47,22 +47,22 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
         type="button"
         onClick={onOpenDemoModal}
         aria-label="Book 30-minute diagnostic audit"
-        className="group relative flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#573681] focus-visible:ring-offset-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 filter drop-shadow-[0_12px_28px_rgba(26,0,66,0.18)]"
+        className="group relative flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#573681] focus-visible:ring-offset-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 filter drop-shadow-[0_12px_28px_rgba(26,0,66,0.22)]"
       >
         {/* ========================================================================= */}
-        {/* 1. MAIN TEXT PILL (Highlight Lavender Color, Dark Text, No Dot)           */}
+        {/* 1. MAIN TEXT PILL (#573681 Signature Violet with White Text, No Dot)      */}
         {/* ========================================================================= */}
         <div className="relative h-11 sm:h-12 flex items-stretch">
-          {/* Main Body in SignalMint Highlight Lavender (#E7E6FB) */}
-          <div className="h-full pl-5 sm:pl-6 pr-1.5 flex items-center bg-[#E7E6FB] group-hover:bg-[#DDD6FB] transition-colors duration-200 rounded-l-[16px] sm:rounded-l-[18px] border-y border-l border-[#1A0042]/10">
-            <span className="font-mono font-bold text-[11px] sm:text-xs tracking-[0.16em] uppercase text-[#1A0042] whitespace-nowrap pt-0.5">
+          {/* Main Body in #573681 with 18px rounded-left corners */}
+          <div className="h-full pl-5 sm:pl-6 pr-1.5 flex items-center bg-[#573681] group-hover:bg-[#482878] transition-colors duration-200 rounded-l-[16px] sm:rounded-l-[18px]">
+            <span className="font-mono font-bold text-[11px] sm:text-xs tracking-[0.16em] uppercase text-white whitespace-nowrap pt-0.5">
               BOOK AUDIT
             </span>
           </div>
 
-          {/* Precision Slanted Vector Cap (Fixed 16px width - never distorts horizontally) */}
+          {/* Precision Slanted Vector Cap in #573681 (Fixed 16px width) */}
           <svg
-            className="w-4 h-full shrink-0 text-[#E7E6FB] group-hover:text-[#DDD6FB] transition-colors duration-200 -ml-[1px]"
+            className="w-4 h-full shrink-0 text-[#573681] group-hover:text-[#482878] transition-colors duration-200 -ml-[1px]"
             viewBox="0 0 16 48"
             fill="currentColor"
             preserveAspectRatio="none"
@@ -72,20 +72,17 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. ARROW PEBBLE (SignalMint Deep Obsidian Purple with White Arrow)        */}
+        {/* 2. ARROW PEBBLE (Frosted Glass Background with #573681 Arrow)              */}
         {/* ========================================================================= */}
-        <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
-          {/* Precision Complementary Vector Squircle in Dark Obsidian Purple */}
-          <svg
-            className="absolute inset-0 w-full h-full text-[#1A0042] group-hover:text-[#573681] transition-colors duration-200 drop-shadow-xs"
-            viewBox="0 0 48 48"
-            fill="currentColor"
-          >
-            <path d="M 12 0 L 32 0 C 41 0 48 7 48 16 L 48 32 C 48 41 41 48 32 48 L 5.5 48 C 1.5 48 -1 45.5 -0.5 41.5 L 5 6.5 C 5.5 2.5 8 0 12 0 Z" />
-          </svg>
-
-          {/* Centered Dynamic Arrow Icon in White */}
-          <ArrowRight className="relative z-10 w-4 h-4 text-white transition-all duration-200 group-hover:translate-x-0.5" />
+        <div 
+          className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center bg-white/70 hover:bg-[#573681] text-[#573681] hover:text-white backdrop-blur-xl border border-white/80 hover:border-[#573681] shadow-xs transition-all duration-200"
+          style={{
+            borderRadius: "10px 18px 18px 10px",
+            clipPath: "polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          }}
+        >
+          {/* Centered Dynamic Arrow Icon */}
+          <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
         </div>
       </button>
     </aside>
