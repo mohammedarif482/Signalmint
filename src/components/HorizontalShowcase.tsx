@@ -202,10 +202,10 @@ export function HorizontalShowcase() {
           {/* H2 with Responsive Line Splits */}
           <h2
             ref={headingRef}
-            className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase"
+            className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase"
           >
             WATCH: EXACTLY HOW THEY DID IT
-            <span className="block text-2xl sm:text-3xl font-body italic font-semibold text-[#573681] mt-1 normal-case tracking-normal">
+            <span className="block text-2xl sm:text-3xl font-sans italic font-semibold text-[#573681] mt-1 normal-case tracking-normal">
               (Then steal the pattern.)
             </span>
           </h2>
@@ -213,7 +213,7 @@ export function HorizontalShowcase() {
           {/* Instruction with Responsive Line Splits */}
           <p
             ref={descRef}
-            className="font-montserrat text-sm sm:text-base text-[#1A0042]/75 mt-4 leading-relaxed max-w-2xl"
+            className="font-sans text-sm sm:text-base text-[#1A0042]/75 mt-4 leading-relaxed max-w-2xl"
           >
             Scroll to see what&apos;s scaling this week. Note the pattern. SCOUT will flag the exact moment your competitors try it in your vertical.
           </p>
@@ -275,7 +275,7 @@ export function HorizontalShowcase() {
                     <Sparkles className="w-3.5 h-3.5 text-[#573681]" />
                     <span>THE HOOK (IN HUMAN TERMS)</span>
                   </div>
-                  <p className="font-body text-xs text-[#1A0042]/85 leading-relaxed">
+                  <p className="font-sans text-xs text-[#1A0042]/85 leading-relaxed">
                     &ldquo;{card.hookHumanTerms}&rdquo;
                   </p>
                 </div>
@@ -285,7 +285,7 @@ export function HorizontalShowcase() {
                   <div className="font-mono text-[11px] font-bold text-[#573681] uppercase tracking-wider mb-1">
                     WHY IT WORKS // TELEMETRY
                   </div>
-                  <p className="font-body text-xs text-[#1A0042]/80 leading-relaxed">
+                  <p className="font-sans text-xs text-[#1A0042]/80 leading-relaxed">
                     {card.whyItWorks}
                   </p>
                 </div>
@@ -328,7 +328,7 @@ export function HorizontalShowcase() {
               <h3 className="font-display font-extrabold text-2xl text-[#1A0042] uppercase mb-2">
                 STEAL COMPETITOR BLUEPRINTS 48H EARLY
               </h3>
-              <p className="font-body text-xs text-[#1A0042]/75 leading-relaxed mb-6">
+              <p className="font-sans text-xs text-[#1A0042]/75 leading-relaxed mb-6">
                 SCOUT runs 24/7 across Meta, TikTok, and YouTube Ad Libraries. You never miss a newly scaling hook.
               </p>
             </div>

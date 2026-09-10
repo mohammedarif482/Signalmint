@@ -122,8 +122,8 @@ export function FAQSection({ onOpenDemoModal }: FAQSectionProps = {}) {
               <span>FAQ // KNOWLEDGE BASE</span>
             </div>
 
-            <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] uppercase leading-[1.05]">
-              Frequently Asked Questions
+            <h2 className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] tracking-tight text-[#1A0042] uppercase leading-tight sm:leading-[1.08]">
+              FREQUENTLY ASKED QUESTIONS
             </h2>
 
             <p className="font-sans text-sm sm:text-[15px] text-[#1A0042]/75 max-w-md leading-relaxed">

@@ -109,7 +109,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
 
         {/* Top Centered Floating Pill: WHAT WE DO */}
         <div className="absolute top-[64px] xs:top-[68px] sm:top-24 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
-          <div className="px-3 py-1 xs:px-3.5 xs:py-1.5 rounded-full bg-white/90 sm:bg-white/80 backdrop-blur-md border border-[#1A0042]/15 text-[#1A0042] text-[9.5px] xs:text-[10px] sm:text-xs font-sans font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-xs">
+          <div className="px-3 py-1 xs:px-3.5 xs:py-1.5 rounded-full bg-white/90 sm:bg-white/80 backdrop-blur-md border border-[#1A0042]/15 text-[#1A0042] text-[9.5px] xs:text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-xs">
             <Layers className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-[#573681]" />
             <span>WHAT WE DO</span>
           </div>
@@ -333,12 +333,12 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
               DUAL PERFORMANCE ENGINE
             </div>
 
-            <h2 className="font-display font-black text-[11.5px] xs:text-xs sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-tight sm:leading-[1.08]">
-              Media Buying &amp; Creative. <span className="hidden sm:inline"><br /></span>
-              <span className="text-[#573681]">United Under One Roof.</span>
+            <h2 className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-tight sm:leading-[1.08]">
+              MEDIA BUYING &amp; CREATIVE. <span className="hidden sm:inline"><br /></span>
+              <span className="text-[#573681]">UNITED UNDER ONE ROOF.</span>
             </h2>
 
-            <p className="font-sans text-[9px] xs:text-[10.5px] sm:text-[13.5px] text-[#1A0042]/80 font-normal leading-tight xs:leading-snug sm:leading-relaxed pt-0.5 max-w-[310px] xs:max-w-sm sm:max-w-none mx-auto sm:mx-0">
+            <p className="font-sans text-xs xs:text-sm sm:text-[15px] text-[#1A0042]/80 font-normal leading-snug sm:leading-relaxed pt-0.5 max-w-[310px] xs:max-w-sm sm:max-w-none mx-auto sm:mx-0">
               Media buying without performance creative is dead spend. Creative without attribution is pure guesswork. We combine both under one roof.
             </p>
           </div>

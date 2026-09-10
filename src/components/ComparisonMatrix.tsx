@@ -127,12 +127,12 @@ export function ComparisonMatrix() {
           </div>
 
           {/* H2: EVERY HOUR WITHOUT SCOUT & ATLAS COSTS YOU */}
-          <h2 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase">
             EVERY HOUR WITHOUT SCOUT &amp; ATLAS COSTS YOU
           </h2>
 
           {/* Subhead */}
-          <p className="font-montserrat text-sm sm:text-base text-[#1A0042]/80 mt-4 leading-relaxed max-w-2xl">
+          <p className="font-sans text-sm sm:text-base text-[#1A0042]/80 mt-4 leading-relaxed max-w-2xl">
             Here&apos;s what happens when you rely on Ad Library scrolling, gut-feel audits, and next-morning bleed discovery. Then here&apos;s what SignalMint changes.
           </p>
         </div>
@@ -194,7 +194,7 @@ export function ComparisonMatrix() {
                       <div className="font-mono font-bold text-sm text-rose-900 mb-1">
                         {row.oldWay.primary}
                       </div>
-                      <p className="font-body text-xs text-[#1A0042]/75 leading-relaxed">
+                      <p className="font-sans text-xs text-[#1A0042]/75 leading-relaxed">
                         {row.oldWay.detail}
                       </p>
                     </div>
@@ -204,7 +204,7 @@ export function ComparisonMatrix() {
                       <div className="font-mono font-bold text-sm text-amber-900 mb-1">
                         {row.betterWay.primary}
                       </div>
-                      <p className="font-body text-xs text-[#1A0042]/75 leading-relaxed">
+                      <p className="font-sans text-xs text-[#1A0042]/75 leading-relaxed">
                         {row.betterWay.detail}
                       </p>
                     </div>
@@ -219,7 +219,7 @@ export function ComparisonMatrix() {
                           {row.signalMint.badge}
                         </span>
                       </div>
-                      <p className="font-body text-xs text-[#1A0042] font-medium leading-relaxed">
+                      <p className="font-sans text-xs text-[#1A0042] font-medium leading-relaxed">
                         {row.signalMint.detail}
                       </p>
                     </div>

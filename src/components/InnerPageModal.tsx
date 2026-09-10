@@ -401,7 +401,7 @@ export function InnerPageModal({ pageKey, onClose, onOpenBooking }: InnerPageMod
           {/* Header Bar */}
           <div className="p-6 sm:p-8 border-b border-[#1A0042]/10 bg-[#E7E6FB]/40 flex items-start justify-between gap-4">
             <div>
-              <div className="flex items-center gap-2 font-inter text-[10px] sm:text-xs font-bold text-[#573681] uppercase tracking-wider mb-2">
+              <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs font-bold text-[#573681] uppercase tracking-wider mb-2">
                 <Icon className="w-3.5 h-3.5 text-[#573681]" />
                 <span>{content.category}</span>
                 <span className="px-2 py-0.5 rounded-full bg-[#573681]/15 text-[#573681] text-[9px] font-extrabold">
@@ -430,7 +430,7 @@ export function InnerPageModal({ pageKey, onClose, onOpenBooking }: InnerPageMod
             {/* Main Sections */}
             {content.sections.map((sec, idx) => (
               <div key={idx} className="space-y-2 pb-4 border-b border-[#1A0042]/8 last:border-none last:pb-0">
-                <h3 className="font-inter font-bold text-xs sm:text-sm uppercase tracking-wide text-[#573681]">
+                <h3 className="font-display font-bold text-xs sm:text-sm uppercase tracking-wide text-[#573681]">
                   {sec.heading}
                 </h3>
                 <p className="text-[#1A0042]/85 text-xs sm:text-[13px] leading-relaxed">
@@ -452,15 +452,15 @@ export function InnerPageModal({ pageKey, onClose, onOpenBooking }: InnerPageMod
             {/* Specifications Matrix */}
             {content.specifications && (
               <div className="p-4 sm:p-5 rounded-2xl bg-[#E7E6FB]/50 border border-[#1A0042]/10 space-y-3">
-                <div className="font-inter text-[10.5px] font-bold uppercase text-[#1A0042]/60 tracking-wider flex items-center gap-1.5">
+                <div className="font-mono text-[10.5px] font-bold uppercase text-[#1A0042]/60 tracking-wider flex items-center gap-1.5">
                   <BookOpen className="w-3.5 h-3.5 text-[#573681]" />
                   <span>OPERATIONAL BENCHMARKS &amp; SPECIFICATIONS</span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-inter text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-sans text-xs">
                   {content.specifications.map((spec, sIdx) => (
                     <div key={sIdx} className="p-2.5 rounded-xl bg-white border border-[#1A0042]/8 flex justify-between items-center gap-2">
                       <span className="text-[#1A0042]/60 uppercase text-[10px]">{spec.label}:</span>
-                      <span className="font-bold text-[#573681] text-[11px] text-right">{spec.value}</span>
+                      <span className="font-mono font-bold text-[#573681] text-[11px] text-right">{spec.value}</span>
                     </div>
                   ))}
                 </div>
@@ -470,14 +470,14 @@ export function InnerPageModal({ pageKey, onClose, onOpenBooking }: InnerPageMod
 
           {/* Footer Actions */}
           <div className="p-4 sm:p-6 bg-white border-t border-[#1A0042]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="font-inter text-[11px] text-[#1A0042]/60 text-center sm:text-left">
+            <div className="font-sans text-[11px] text-[#1A0042]/60 text-center sm:text-left">
               Have questions about this protocol? Call direct at <a href="tel:+917045451951" className="text-[#573681] font-bold hover:underline">+91 70454 51951</a>
             </div>
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <button
                 onClick={onClose}
-                className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl border border-[#1A0042]/15 text-[#1A0042] font-inter text-xs font-bold hover:bg-[#E7E6FB]/70 transition-colors cursor-pointer"
+                className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl border border-[#1A0042]/15 text-[#1A0042] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#E7E6FB]/70 transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -486,7 +486,7 @@ export function InnerPageModal({ pageKey, onClose, onOpenBooking }: InnerPageMod
                   onClose();
                   onOpenBooking();
                 }}
-                className="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-inter text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                className="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Book a 30-Min Audit</span>
                 <ArrowRight className="w-3.5 h-3.5" />

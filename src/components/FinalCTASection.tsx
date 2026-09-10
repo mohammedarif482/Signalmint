@@ -140,14 +140,14 @@ export function FinalCTASection({ onOpenDemoModal }: FinalCTASectionProps) {
           {/* Master Headline */}
           <h2
             ref={headingRef}
-            className="font-display font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight leading-[1.06] text-[#1A0042]"
+            className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] uppercase tracking-tight leading-tight sm:leading-[1.08] text-[#1A0042]"
           >
-            Bring us the account. <br />
-            <span className="text-[#573681]">We'll bring the signal.</span>
+            BRING US THE ACCOUNT. <br />
+            <span className="text-[#573681]">WE'LL BRING THE SIGNAL.</span>
           </h2>
 
           {/* Narrative Subhead */}
-          <p className="font-sans text-sm sm:text-base lg:text-lg text-[#1A0042]/80 max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className="font-sans text-sm sm:text-[15px] text-[#1A0042]/75 max-w-2xl mx-auto leading-relaxed font-normal">
             A 30-minute call. We'll look at your account together and tell you exactly what we'd fix first, whether or not you hire us.
           </p>
 

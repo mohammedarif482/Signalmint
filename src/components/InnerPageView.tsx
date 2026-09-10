@@ -51,11 +51,11 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
             </button>
 
             {/* Breadcrumb path */}
-            <div className="hidden sm:flex items-center gap-2 text-[11px] font-inter text-[#1A0042]/60">
+            <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono text-[#1A0042]/60">
               <span className="text-[#1A0042]/30">/</span>
               <button 
                 onClick={() => onNavigate(null)} 
-                className="hover:text-[#573681] transition-colors cursor-pointer"
+                className="hover:text-[#573681] transition-colors cursor-pointer uppercase"
               >
                 OVERVIEW
               </button>
@@ -64,7 +64,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
                 {page.category.split("//")[0]?.trim() || "INTELLIGENCE"}
               </span>
               <span className="text-[#1A0042]/30">/</span>
-              <span className="text-[#1A0042] font-semibold truncate max-w-[180px]">
+              <span className="text-[#1A0042] font-semibold uppercase truncate max-w-[180px]">
                 {page.title.split("&")[0]?.trim() || page.title}
               </span>
             </div>
@@ -75,7 +75,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
             {/* Back button */}
             <button
               onClick={() => onNavigate(null, page.isCaseStudy ? "proof" : undefined)}
-              className="px-3 sm:px-3.5 py-1.5 rounded-full border border-[#1A0042]/15 bg-white/70 hover:bg-[#573681]/10 hover:border-[#573681]/40 text-[#1A0042] text-xs font-inter font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
+              className="px-3 sm:px-3.5 py-1.5 rounded-full border border-[#1A0042]/15 bg-white/70 hover:bg-[#573681]/10 hover:border-[#573681]/40 text-[#1A0042] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
             >
               <ArrowLeft className="w-3.5 h-3.5 text-[#573681]" />
               <span className="hidden sm:inline">Back to Overview</span>
@@ -85,7 +85,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
             {/* Book Audit Button */}
             <button
               onClick={onOpenDemoModal}
-              className="px-3.5 sm:px-4 py-1.5 rounded-full bg-[#573681] text-white hover:bg-[#1A0042] text-xs font-inter font-bold tracking-wide transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md flex items-center gap-1.5"
+              className="px-3.5 sm:px-4 py-1.5 rounded-full bg-[#573681] text-white hover:bg-[#1A0042] text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md flex items-center gap-1.5"
             >
               <span>Book Audit</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -100,7 +100,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 w-full">
         
         {/* Top Meta Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-6 border-b border-[#1A0042]/10 text-[11px] font-inter">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-6 border-b border-[#1A0042]/10 text-[11px] font-mono">
           <div className="flex flex-wrap items-center gap-2">
             <span className="px-2.5 py-1 rounded bg-[#573681]/10 text-[#573681] font-bold border border-[#573681]/25 uppercase tracking-wider">
               {page.badge}
@@ -116,7 +116,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
               <span className="font-semibold text-[#573681]">{page.telemetryStatus}</span>
             </div>
             <span className="hidden md:inline text-[#1A0042]/20">|</span>
-            <span className="hidden md:inline font-inter text-[10px]">UPDATED: {page.lastUpdated}</span>
+            <span className="hidden md:inline font-mono text-[10px]">UPDATED: {page.lastUpdated}</span>
           </div>
         </div>
 
@@ -126,12 +126,12 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
             <div className="w-8 h-8 rounded-lg bg-[#573681] text-white flex items-center justify-center shadow-xs">
               <IconComponent className="w-4 h-4" />
             </div>
-            <span className="font-inter text-xs font-bold text-[#573681] uppercase tracking-widest">
+            <span className="font-mono text-xs font-bold text-[#573681] uppercase tracking-widest">
               {page.isCaseStudy ? "CLIENT TRANSFORMATION DOSSIER" : "SIGNALMINT SPECIFICATION DOSSIER"}
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1A0042] tracking-tight leading-[1.15] mb-5 font-sans">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-[#1A0042] tracking-tight leading-[1.12] mb-5 uppercase">
             {page.title}
           </h1>
 
@@ -143,32 +143,32 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
           {page.isCaseStudy && page.caseData && (
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-5 sm:p-6 rounded-2xl bg-[#E7E6FB]/70 text-[#1A0042] shadow-xs border border-[#573681]/20">
               <div className="p-3.5 rounded-xl bg-white border border-[#1A0042]/10 space-y-1">
-                <div className="font-inter text-[10px] text-[#573681] font-bold uppercase tracking-wider">BLENDED ROAS</div>
+                <div className="font-mono text-[10px] text-[#573681] font-bold uppercase tracking-wider">BLENDED ROAS</div>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-inter text-sm text-[#1A0042]/40 line-through">{page.caseData.metrics.roasBefore}</span>
+                  <span className="font-mono text-sm text-[#1A0042]/40 line-through">{page.caseData.metrics.roasBefore}</span>
                   <span className="text-[#1A0042]/40 text-xs">→</span>
                   <span className="font-display font-black text-2xl text-[#573681]">{page.caseData.metrics.roasAfter}</span>
                 </div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-white border border-[#1A0042]/10 space-y-1">
-                <div className="font-inter text-[10px] text-[#573681] font-bold uppercase tracking-wider">BLENDED CPA</div>
+                <div className="font-mono text-[10px] text-[#573681] font-bold uppercase tracking-wider">BLENDED CPA</div>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-inter text-sm text-[#1A0042]/40 line-through">{page.caseData.metrics.cpaBefore}</span>
+                  <span className="font-mono text-sm text-[#1A0042]/40 line-through">{page.caseData.metrics.cpaBefore}</span>
                   <span className="text-[#1A0042]/40 text-xs">→</span>
                   <span className="font-display font-bold text-xl text-[#573681]">{page.caseData.metrics.cpaAfter}</span>
                 </div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-white border border-[#1A0042]/10 space-y-1">
-                <div className="font-inter text-[10px] text-[#573681] font-bold uppercase tracking-wider">SCALE / BLEED RECOVERY</div>
+                <div className="font-mono text-[10px] text-[#573681] font-bold uppercase tracking-wider">SCALE / BLEED RECOVERY</div>
                 <div className="font-display font-bold text-lg sm:text-xl text-[#1A0042] truncate">
                   {page.caseData.metrics.scale}
                 </div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-white border border-[#1A0042]/10 space-y-1">
-                <div className="font-inter text-[10px] text-[#573681] font-bold uppercase tracking-wider">TIME TO RESULT</div>
+                <div className="font-mono text-[10px] text-[#573681] font-bold uppercase tracking-wider">TIME TO RESULT</div>
                 <div className="font-display font-bold text-lg sm:text-xl text-[#1A0042]">
                   {page.caseData.metrics.timeToResult}
                 </div>
@@ -187,11 +187,11 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
               <>
                 {/* The Problem Statement */}
                 <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#1A0042]/10 shadow-xs space-y-4">
-                  <div className="font-inter text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
+                  <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#573681]" />
                     <span>THE BOTTLENECK // WHAT WAS BURNING SPEND</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#1A0042] font-sans leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#1A0042] font-display leading-snug tracking-tight">
                     "{page.caseData.problemHeadline}"
                   </h3>
                   <p className="text-sm sm:text-base text-[#1A0042]/80 leading-relaxed font-sans">
@@ -202,14 +202,14 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
                 {/* Architectural Bleed Teardown */}
                 {page.caseData.architecturalBleed && (
                   <div className="space-y-3">
-                    <div className="font-inter text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
+                    <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#573681]" />
                       <span>IDENTIFIED ARCHITECTURAL BLEED POINTS</span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {page.caseData.architecturalBleed.map((bleed, bIdx) => (
                         <div key={bIdx} className="p-4 rounded-xl bg-white border border-[#1A0042]/10 shadow-xs space-y-2">
-                          <div className="font-inter text-xs font-bold text-[#573681]">{bIdx + 1}. {bleed.title}</div>
+                          <div className="font-mono text-xs font-bold text-[#573681]">{bIdx + 1}. {bleed.title}</div>
                           <p className="font-sans text-xs text-[#1A0042]/75 leading-relaxed">{bleed.description}</p>
                         </div>
                       ))}
@@ -220,7 +220,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
                 {/* Winning Hook Formulas & Creative Analysis */}
                 {page.caseData.winningHooks && (
                   <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#1A0042]/10 shadow-xs space-y-4">
-                    <div className="font-inter text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
+                    <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#573681] flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-[#573681]" />
                       <span>PERFORMANCE CREATIVE // WINNING HOOK BLUEPRINT</span>
                     </div>
@@ -229,7 +229,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
                         <div key={hIdx} className="p-4 rounded-xl bg-[#FAFAFD] border border-[#1A0042]/8 space-y-1.5">
                           <div className="flex flex-wrap items-center justify-between gap-2">
                             <span className="font-sans font-bold text-sm text-[#1A0042]">{hook.pattern}</span>
-                            <span className="px-2.5 py-0.5 rounded-md bg-[#573681]/10 text-[#573681] font-inter text-[10px] font-bold border border-[#573681]/25">
+                            <span className="px-2.5 py-0.5 rounded-md bg-[#573681]/10 text-[#573681] font-mono text-[10px] font-bold border border-[#573681]/25">
                               {hook.retentionScore}
                             </span>
                           </div>
@@ -247,12 +247,12 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
                   <p className="font-sans italic text-sm sm:text-base text-[#1A0042]/90 leading-relaxed">
                     "{page.caseData.quote}"
                   </p>
-                  <div className="font-inter text-xs font-bold text-[#1A0042] pt-2 border-t border-[#1A0042]/10 flex items-center justify-between">
+                  <div className="font-sans text-xs font-bold text-[#1A0042] pt-2 border-t border-[#1A0042]/10 flex items-center justify-between">
                     <div>
                       — {page.caseData.author},{" "}
                       <span className="text-[#1A0042]/70 font-normal">{page.caseData.authorTitle}</span>
                     </div>
-                    <div className="px-2.5 py-1 rounded-md bg-[#573681]/10 text-[#573681] text-[10px] font-inter font-bold uppercase border border-[#573681]/20">
+                    <div className="px-2.5 py-1 rounded-md bg-[#573681]/10 text-[#573681] text-[10px] font-mono font-bold uppercase border border-[#573681]/20">
                       Verified Client
                     </div>
                   </div>
@@ -267,10 +267,10 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
                 className="bg-white rounded-2xl p-6 sm:p-8 border border-[#1A0042]/10 shadow-xs hover:border-[#573681]/30 transition-all"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-6 h-6 rounded-full bg-[#573681]/10 text-[#573681] font-inter text-xs font-bold flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-xs font-bold flex items-center justify-center">
                     {idx + 1}
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#1A0042] font-sans">
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#1A0042] font-display">
                     {section.heading}
                   </h2>
                 </div>
@@ -294,11 +294,11 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
 
             {/* In-Page Strategic Callout Box */}
             <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-[#573681]/10 via-[#573681]/5 to-transparent border border-[#573681]/25 relative overflow-hidden">
-              <div className="flex items-center gap-2 text-xs font-inter font-bold uppercase tracking-wider text-[#573681] mb-2">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#573681] mb-2">
                 <Sparkles className="w-4 h-4" />
                 <span>AGENCY EXECUTION DIRECTIVE</span>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-[#1A0042] mb-2 font-sans">
+              <h3 className="text-lg sm:text-xl font-bold text-[#1A0042] mb-2 font-display">
                 {page.isCaseStudy ? "Audit your account using this exact framework" : "Deploy this framework directly into your ad accounts"}
               </h3>
               <p className="text-xs sm:text-sm text-[#1A0042]/75 mb-5 font-sans leading-relaxed max-w-2xl">
@@ -306,7 +306,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
               </p>
               <button
                 onClick={onOpenDemoModal}
-                className="px-5 py-2.5 rounded-full bg-[#573681] text-white hover:bg-[#1A0042] font-inter text-xs font-bold uppercase tracking-wide transition-all shadow-md cursor-pointer flex items-center gap-2"
+                className="px-5 py-2.5 rounded-full bg-[#573681] text-white hover:bg-[#1A0042] font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer flex items-center gap-2"
               >
                 <span>Request 30-Min Diagnostic Account Audit</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -319,7 +319,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
             
             {/* 1. Specifications Table */}
             <div className="bg-white rounded-2xl p-5 sm:p-6 border border-[#1A0042]/12 shadow-xs">
-              <div className="flex items-center gap-2 pb-3 mb-3 border-b border-[#1A0042]/10 font-inter text-[11px] font-bold uppercase text-[#1A0042]/60 tracking-wider">
+              <div className="flex items-center gap-2 pb-3 mb-3 border-b border-[#1A0042]/10 font-mono text-[11px] font-bold uppercase text-[#1A0042]/60 tracking-wider">
                 <Layers className="w-3.5 h-3.5 text-[#573681]" />
                 <span>SYSTEM SPECIFICATIONS</span>
               </div>
@@ -327,8 +327,8 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
               <div className="space-y-3 font-sans text-xs">
                 {page.specifications.map((spec, sIdx) => (
                   <div key={sIdx} className="flex items-center justify-between gap-3 pb-2.5 border-b border-[#1A0042]/5 last:border-0 last:pb-0">
-                    <span className="text-[#1A0042]/60 font-inter text-[11px]">{spec.label}</span>
-                    <span className="font-semibold text-[#1A0042] text-right font-inter text-[11.5px] text-[#573681]">
+                    <span className="text-[#1A0042]/60 font-sans text-[11px]">{spec.label}</span>
+                    <span className="font-semibold text-right font-mono text-[11.5px] text-[#573681]">
                       {spec.value}
                     </span>
                   </div>
@@ -338,12 +338,12 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
 
             {/* 2. Direct Advisory Hotline Card (Highlight colored container + white button) */}
             <div className="bg-[#573681] text-white rounded-2xl p-5 sm:p-6 shadow-md border border-[#573681]/30">
-              <div className="flex items-center gap-2 text-white/80 font-inter text-[10px] font-bold uppercase tracking-widest mb-2">
+              <div className="flex items-center gap-2 text-white/80 font-mono text-[10px] font-bold uppercase tracking-widest mb-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-white" />
                 <span>DIRECT ADVISORY DESK</span>
               </div>
 
-              <h4 className="text-base font-bold font-sans text-white mb-1.5">
+              <h4 className="text-base font-bold font-display text-white mb-1.5">
                 Speak directly with an agency partner
               </h4>
               <p className="text-xs text-white/80 font-sans mb-4 leading-relaxed">
@@ -352,7 +352,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
 
               <a
                 href="tel:+917045451951"
-                className="flex items-center gap-2.5 py-2.5 px-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 transition-all text-xs font-inter font-bold text-white mb-3 group"
+                className="flex items-center gap-2.5 py-2.5 px-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 transition-all text-xs font-mono font-bold text-white mb-3 group"
               >
                 <Phone className="w-3.5 h-3.5 text-white group-hover:scale-110 transition-transform" />
                 <span>+91 70454 51951</span>
@@ -360,7 +360,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
 
               <button
                 onClick={onOpenDemoModal}
-                className="w-full py-2.5 rounded-xl bg-white hover:bg-white/90 text-[#573681] hover:text-[#1A0042] font-inter text-xs font-bold uppercase tracking-wide transition-all shadow-sm hover:shadow-md cursor-pointer text-center"
+                className="w-full py-2.5 rounded-xl bg-white hover:bg-white/90 text-[#573681] hover:text-[#1A0042] font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-sm hover:shadow-md cursor-pointer text-center"
               >
                 Book 30-Min Audit
               </button>
@@ -369,7 +369,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
             {/* 3. Related Inner Pages Directory */}
             {page.relatedKeys && page.relatedKeys.length > 0 && (
               <div className="bg-white rounded-2xl p-5 border border-[#1A0042]/10 shadow-xs">
-                <div className="font-inter text-[10px] font-bold uppercase tracking-wider text-[#1A0042]/50 mb-3">
+                <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#1A0042]/50 mb-3">
                   RELATED DIRECTORY SPECIFICATIONS
                 </div>
                 <div className="space-y-2">
@@ -384,7 +384,7 @@ export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPag
                         className="w-full text-left p-2.5 rounded-xl bg-[#FAFAFD] hover:bg-[#573681]/10 border border-[#1A0042]/5 hover:border-[#573681]/30 transition-all flex items-center justify-between group cursor-pointer"
                       >
                         <div>
-                          <div className="font-inter text-[9px] uppercase text-[#573681] font-bold">
+                          <div className="font-mono text-[9px] uppercase text-[#573681] font-bold">
                             {relPage.badge}
                           </div>
                           <div className="font-sans text-xs font-semibold text-[#1A0042] group-hover:text-[#573681] transition-colors line-clamp-1">

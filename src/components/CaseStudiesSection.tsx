@@ -1,4 +1,4 @@
-import { useRef, useEffect, type ReactElement } from "react";
+import { useRef, useEffect, useState, type ReactElement } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
@@ -334,7 +334,7 @@ function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
 
   return (
     <article 
-      className="flex flex-col gap-4 group cursor-pointer"
+      className="flex flex-col gap-4 group cursor-pointer shrink-0 w-[82vw] xs:w-[76vw] max-w-[320px] snap-start sm:w-auto sm:max-w-none sm:shrink"
       onClick={() => onNavigate?.(study.pageKey)}
     >
       {/* Zone frame with 3D perspective context */}
@@ -391,7 +391,7 @@ function CaseStudyCard({ study, onNavigate }: CaseStudyCardProps) {
           {study.brand}
         </div>
 
-        <h3 className="font-sans font-bold text-base sm:text-[17px] text-[#1A0042] group-hover:text-[#573681] transition-colors leading-snug">
+        <h3 className="font-display font-bold text-base sm:text-[17px] text-[#1A0042] group-hover:text-[#573681] transition-colors leading-snug tracking-tight">
           {study.headline}
         </h3>
 
@@ -415,6 +415,15 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    if (el.scrollWidth <= el.clientWidth) return;
+    const cardWidth = el.scrollWidth / CASE_STUDY_CARDS.length;
+    const index = Math.round(el.scrollLeft / cardWidth);
+    setActiveCardIndex(Math.min(Math.max(index, 0), CASE_STUDY_CARDS.length - 1));
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -464,11 +473,15 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#1A0042]/10 mb-10 sm:mb-14">
+        <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#1A0042]/10 mb-8 sm:mb-14">
           <div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] uppercase leading-[1.05]">
-              Proof &amp; Transformations
+            <h2 className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] tracking-tight text-[#1A0042] uppercase leading-tight sm:leading-[1.08]">
+              PROOF &amp; TRANSFORMATIONS
             </h2>
+            <p className="sm:hidden font-mono text-[10px] text-[#573681] font-bold tracking-wider uppercase pt-2 flex items-center gap-1.5">
+              <span>SWIPE TO EXPLORE</span>
+              <ArrowRight className="w-3 h-3 animate-pulse" />
+            </p>
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
@@ -482,13 +495,41 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
           </div>
         </div>
 
-        {/* 4-Column Technical Wireframe Cards Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start">
+        {/* 4-Column Technical Wireframe Cards (Horizontal scroll on mobile, 4-col on desktop) */}
+        <div 
+          ref={gridRef} 
+          onScroll={handleScroll}
+          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 -mx-6 px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-start"
+        >
           {CASE_STUDY_CARDS.map((study) => (
             <CaseStudyCard 
               key={study.id} 
               study={study} 
               onNavigate={onNavigate} 
+            />
+          ))}
+        </div>
+
+        {/* Mobile Carousel Progress Dots */}
+        <div className="flex sm:hidden items-center justify-center gap-1.5 pt-3 pb-1">
+          {CASE_STUDY_CARDS.map((study, idx) => (
+            <button
+              key={study.id}
+              type="button"
+              aria-label={`Go to case study ${idx + 1}`}
+              onClick={() => {
+                if (gridRef.current) {
+                  const card = gridRef.current.children[idx] as HTMLElement;
+                  if (card) {
+                    card.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+                  }
+                }
+              }}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                activeCardIndex === idx
+                  ? "w-6 bg-[#573681]"
+                  : "w-1.5 bg-[#573681]/25 hover:bg-[#573681]/40"
+              }`}
             />
           ))}
         </div>

@@ -118,12 +118,12 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
           </div>
 
           {/* H2 */}
-          <h2 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] leading-[1.08] uppercase">
             PUT YOUR BUDGET AT RISK. ATLAS PROTECTS IT.
           </h2>
 
           {/* Subhead */}
-          <p className="font-montserrat text-sm sm:text-base text-[#1A0042]/80 mt-4 leading-relaxed max-w-2xl">
+          <p className="font-sans text-sm sm:text-base text-[#1A0042]/80 mt-4 leading-relaxed max-w-2xl">
             Enter your monthly spend and vertical. Simulate a bleed spike (we&apos;ll trigger it). Watch ATLAS stop the bleeding in real time. Then calculate your monthly save.
           </p>
         </div>
@@ -171,7 +171,7 @@ export function TelemetrySimulator({ onOpenDemoModal }: TelemetrySimulatorProps)
                   <span>₹10M/mo</span>
                 </div>
 
-                <p className="font-body text-xs text-[#1A0042]/70 italic leading-snug">
+                <p className="font-sans text-xs text-[#1A0042]/70 italic leading-snug">
                   (ATLAS protects every rupee. Typical bleed: 5–12% of spend. Let&apos;s calculate yours.)
                 </p>
               </div>

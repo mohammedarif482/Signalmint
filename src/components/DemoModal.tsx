@@ -85,7 +85,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
               <h3 className="font-display font-black text-xl sm:text-2xl text-[#1A0042] uppercase tracking-tight">
                 BOOK YOUR ACCOUNT AUDIT
               </h3>
-              <p className="font-body text-xs sm:text-sm text-[#1A0042]/75 mt-0.5">
+              <p className="font-sans text-xs sm:text-sm text-[#1A0042]/75 mt-0.5">
                 Select an open time slot directly below. We'll run a screen-share audit of your real ad accounts.
               </p>
             </div>
@@ -148,7 +148,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     placeholder="e.g. Alex Mercer"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#1A0042]/15 bg-white text-[#1A0042] focus:outline-none focus:border-[#573681] font-body text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#1A0042]/15 bg-white text-[#1A0042] focus:outline-none focus:border-[#573681] font-sans text-sm"
                   />
                 </div>
 
@@ -162,7 +162,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     placeholder="alex@brand.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#1A0042]/15 bg-white text-[#1A0042] focus:outline-none focus:border-[#573681] font-body text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#1A0042]/15 bg-white text-[#1A0042] focus:outline-none focus:border-[#573681] font-sans text-sm"
                   />
                 </div>
 
@@ -176,7 +176,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     placeholder="https://yourbrand.com"
                     value={formData.brandUrl}
                     onChange={(e) => setFormData({ ...formData, brandUrl: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#1A0042]/15 bg-white text-[#1A0042] focus:outline-none focus:border-[#573681] font-body text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#1A0042]/15 bg-white text-[#1A0042] focus:outline-none focus:border-[#573681] font-sans text-sm"
                   />
                 </div>
 
@@ -187,7 +187,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   <select
                     value={formData.monthlySpend}
                     onChange={(e) => setFormData({ ...formData, monthlySpend: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#1A0042]/15 bg-white text-[#1A0042] focus:outline-none focus:border-[#573681] font-body text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#1A0042]/15 bg-white text-[#1A0042] focus:outline-none focus:border-[#573681] font-sans text-sm"
                   >
                     <option>₹500k – ₹2M / mo ($10k – $25k)</option>
                     <option>₹2M – ₹5M / mo ($25k – $60k)</option>
@@ -216,7 +216,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 <h3 className="font-display font-black text-2xl text-[#1A0042] uppercase mb-2">
                   AUDIT CALL REQUESTED
                 </h3>
-                <p className="font-body text-sm text-[#1A0042]/80 max-w-sm mx-auto mb-6">
+                <p className="font-sans text-sm text-[#1A0042]/80 max-w-sm mx-auto mb-6">
                   Thank you, <strong>{formData.name}</strong>. Our lead strategist will review <strong>{formData.brandUrl}</strong> and send your confirmation to <strong>{formData.email}</strong>.
                 </p>
                 <div className="flex items-center justify-center gap-3">

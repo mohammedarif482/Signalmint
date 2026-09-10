@@ -327,7 +327,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           id="hero-eyebrow"
           className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-6 sm:left-11 lg:left-14 w-[calc(100vw-3rem)] sm:w-[532px] lg:w-[662px] flex justify-end z-20 pointer-events-none"
         >
-          <span className="font-sans font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13px] text-[#1A0042] uppercase inline-block text-right">
+          <span className="font-mono font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13px] text-[#1A0042] uppercase inline-block text-right">
             AI NATIVE, PERFORMANCE MARKETING
           </span>
         </div>
@@ -343,7 +343,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           <div ref={narrativeInnerRef} className="will-change-transform">
             <p
               ref={narrativeTextRef}
-              className="text-xs sm:text-2xl lg:text-[1.85rem] font-semibold text-[#1A0042] leading-[1.3] tracking-tight"
+              className="font-display font-semibold text-xs sm:text-2xl lg:text-[1.85rem] text-[#1A0042] leading-[1.3] tracking-tight"
             >
               We read the signal in your ad spend before it burns the budget.
             </p>
@@ -364,7 +364,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           >
             {/* Top Bold Grotesque Header */}
             <div>
-              <div className="font-sans font-bold text-[10px] xs:text-[11px] sm:text-[12.5px] lg:text-[13.5px] uppercase tracking-tight text-[#1A0042] leading-[1.25]">
+              <div className="font-display font-bold text-[10px] xs:text-[11px] sm:text-[12.5px] lg:text-[13.5px] uppercase tracking-tight text-[#1A0042] leading-[1.25]">
                 FOR PERFORMANCE-FIRST<br />
                 FOUNDERS &amp;<br />
                 MARKETERS.
@@ -443,7 +443,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         <div
           ref={scrollPillRef}
           id="hero-scroll-pill"
-          className="hidden sm:flex absolute sm:bottom-9 sm:left-1/2 sm:-translate-x-1/2 z-20 items-center gap-2 font-sans text-[10.5px] tracking-[0.2em] text-[#1A0042]/75 uppercase font-semibold select-none pointer-events-none"
+          className="hidden sm:flex absolute sm:bottom-9 sm:left-1/2 sm:-translate-x-1/2 z-20 items-center gap-2 font-mono text-[10px] sm:text-[10.5px] tracking-[0.2em] text-[#1A0042]/75 uppercase font-bold select-none pointer-events-none"
         >
           <svg
             className="w-4 h-4 text-[#1A0042]/70 shrink-0"

@@ -196,12 +196,12 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
               <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
               <span>WHY US // THE DIAGNOSTIC FRAMEWORK</span>
             </div>
-            <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#1A0042] uppercase leading-[1.05]">
-              Why Us
+            <h2 className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] tracking-tight text-[#1A0042] uppercase leading-tight sm:leading-[1.08]">
+              WHY US
             </h2>
           </div>
 
-          <p className="font-sans text-sm sm:text-base text-[#1A0042]/75 max-w-md leading-relaxed">
+          <p className="font-sans text-sm sm:text-[15px] text-[#1A0042]/75 max-w-md leading-relaxed">
             We diagnose before we prescribe. Every recommendation is anchored in unit economics, not agency hubris.
           </p>
         </div>

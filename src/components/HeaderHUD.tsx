@@ -252,7 +252,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#hero-runway"
               onClick={(e) => handleNavClick(e, "hero-runway", "intro")}
-              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+              className={`font-display font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
                 activeSection === "intro" ? "text-[#573681]" : "text-[#1A0042]"
               }`}
             >
@@ -266,7 +266,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#why-us"
               onClick={(e) => handleNavClick(e, "why-us", "why-us")}
-              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+              className={`font-display font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
                 activeSection === "why-us" ? "text-[#573681]" : "text-[#1A0042]"
               }`}
             >
@@ -280,7 +280,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#services"
               onClick={(e) => handleNavClick(e, "services", "services")}
-              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+              className={`font-display font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
                 activeSection === "services" ? "text-[#573681]" : "text-[#1A0042]"
               }`}
             >
@@ -294,7 +294,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#proof"
               onClick={(e) => handleNavClick(e, "proof", "proof")}
-              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+              className={`font-display font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
                 activeSection === "proof" ? "text-[#573681]" : "text-[#1A0042]"
               }`}
             >
@@ -309,7 +309,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#how-we-work"
               onClick={(e) => handleNavClick(e, "how-we-work", "how-we-work")}
-              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+              className={`font-display font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
                 activeSection === "how-we-work" ? "text-[#573681]" : "text-[#1A0042]"
               }`}
             >
@@ -324,7 +324,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "contact", "contact")}
-              className={`font-headline font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
+              className={`font-display font-semibold text-2xl sm:text-3xl uppercase tracking-tight hover:text-[#573681] transition-colors py-1 flex items-center justify-between group ${
                 activeSection === "contact" ? "text-[#573681]" : "text-[#1A0042]"
               }`}
             >
