@@ -503,7 +503,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
         <div 
           ref={gridRef} 
           onScroll={handleScroll}
-          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 -mx-6 px-6 xs:-mx-8 xs:px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-start"
+          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-start"
         >
           {CASE_STUDY_CARDS.map((study) => (
             <CaseStudyCard 
@@ -512,6 +512,8 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
               onNavigate={onNavigate} 
             />
           ))}
+          {/* Trailing scroll breathing room on mobile */}
+          <div className="shrink-0 w-2 sm:hidden pointer-events-none" aria-hidden="true" />
         </div>
 
         {/* Mobile Carousel Progress Dots */}
