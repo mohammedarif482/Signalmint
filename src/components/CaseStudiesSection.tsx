@@ -470,7 +470,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
       ref={sectionRef} 
       className="relative w-full py-20 sm:py-28 lg:py-36 bg-textured-wash text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 xs:px-8 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#1A0042]/10 mb-8 sm:mb-14">
@@ -503,7 +503,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
         <div 
           ref={gridRef} 
           onScroll={handleScroll}
-          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 -mx-4 px-4 xs:-mx-6 xs:px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-start"
+          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 -mx-6 px-6 xs:-mx-8 xs:px-8 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-start"
         >
           {CASE_STUDY_CARDS.map((study) => (
             <CaseStudyCard 

@@ -112,7 +112,7 @@ export function FAQSection({ onOpenDemoModal }: FAQSectionProps = {}) {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 xs:px-8 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* Left Column: Sticky Editorial Heading */}
