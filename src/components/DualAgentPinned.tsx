@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Layers, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroBgImage from "../assets/herobg.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -107,11 +107,11 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/10 to-transparent pointer-events-none" />
         </div>
 
-        {/* Top Centered Floating Pill: WHAT WE DO */}
+        {/* Top Centered Floating Eyebrow: WHAT WE DO */}
         <div className="absolute top-[64px] xs:top-[68px] sm:top-24 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
-          <div className="px-3 py-1 xs:px-3.5 xs:py-1.5 rounded-full bg-white/90 sm:bg-white/80 backdrop-blur-md border border-[#1A0042]/15 text-[#1A0042] text-[9.5px] xs:text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-xs">
-            <Layers className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-[#573681]" />
-            <span>WHAT WE DO</span>
+          <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] flex items-center gap-2 whitespace-nowrap bg-white/70 sm:bg-transparent backdrop-blur-xs sm:backdrop-blur-none px-3 py-1 sm:p-0 rounded-full sm:rounded-none shadow-2xs sm:shadow-none">
+            <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
+            <span>WHAT WE DO // FULL-FUNNEL ARCHITECTURE</span>
           </div>
         </div>
 
@@ -133,10 +133,9 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             <div className="flex-1 flex flex-col justify-between sm:pt-16 lg:pt-20 sm:pb-4 lg:pb-6">
               {/* 1. Header Block: Badge + Kicker + Title + Description */}
               <div className="space-y-1.5 xs:space-y-2 sm:space-y-3.5 lg:space-y-4">
-                <div className="flex items-center">
-                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[8.5px] xs:text-[9px] sm:text-[10px] font-bold tracking-wider uppercase border border-[#573681]/20 shadow-2xs">
-                    01 // META AD MANAGEMENT
-                  </span>
+                <div className="font-mono text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#573681] flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#573681] animate-pulse" />
+                  <span>01 // META AD MANAGEMENT</span>
                 </div>
 
                 <div className="space-y-0.5 sm:space-y-1.5">
@@ -235,10 +234,9 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
             <div className="flex-1 flex flex-col justify-between sm:pt-16 lg:pt-20 sm:pb-4 lg:pb-6">
               {/* 1. Header Block: Badge + Kicker + Title + Description */}
               <div className="space-y-1.5 xs:space-y-2 sm:space-y-3.5 lg:space-y-4">
-                <div className="flex items-center">
-                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[8.5px] xs:text-[9px] sm:text-[10px] font-bold tracking-wider uppercase border border-[#573681]/20 shadow-2xs">
-                    02 // WINNING ADS
-                  </span>
+                <div className="font-mono text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#573681] flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#573681] animate-pulse" />
+                  <span>02 // WINNING ADS</span>
                 </div>
 
                 <div className="space-y-0.5 sm:space-y-1.5">

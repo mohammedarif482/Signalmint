@@ -475,6 +475,10 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
         {/* Section Header */}
         <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#1A0042]/10 mb-8 sm:mb-14">
           <div>
+            <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] mb-2 sm:mb-2.5 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
+              <span>CASE STUDIES // VERIFIED SCALE &amp; IMPACT</span>
+            </div>
             <h2 className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] tracking-tight text-[#1A0042] uppercase leading-tight sm:leading-[1.08]">
               PROOF &amp; TRANSFORMATIONS
             </h2>

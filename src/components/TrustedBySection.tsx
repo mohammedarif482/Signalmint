@@ -477,9 +477,9 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
           ref={textBlockRef}
           className="relative z-20 max-w-4xl mx-auto px-4 text-center w-full shrink-0 mb-3 sm:mb-4 lg:mb-6"
         >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider mb-1.5 sm:mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>PORTFOLIO ROSTER · 27+ D2C &amp; ENTERPRISE BRANDS</span>
+          <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] flex items-center justify-center gap-2 mb-2 sm:mb-2.5">
+            <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
+            <span>PORTFOLIO // 27+ D2C &amp; ENTERPRISE BRANDS</span>
           </div>
           <h2 className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-tight sm:leading-[1.08]">
             TRUSTED BY BRANDS FROM VARIOUS INDUSTRIES
