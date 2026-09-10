@@ -8,6 +8,7 @@ interface FloatingAuditCTAProps {
 
 export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: FloatingAuditCTAProps) {
   const [mounted, setMounted] = useState(false);
+  const [isHero, setIsHero] = useState(true);
 
   useEffect(() => {
     // Smooth entrance after initial render
@@ -15,12 +16,30 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // In hero section if scrolled less than 160px; glides to bottom-center past it
+      const inHero = window.scrollY < 160;
+      setIsHero(inHero);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   if (!isVisible) return null;
 
   return (
     <aside
       aria-label="Floating Action"
-      className={`fixed bottom-5 xs:bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out select-none ${
+      style={{
+        left: isHero ? "calc(100% - var(--hero-right-inset, 1.25rem))" : "50%",
+        transform: isHero ? "translateX(-100%)" : "translateX(-50%)",
+        transition: "left 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out",
+      }}
+      className={`fixed bottom-5 xs:bottom-6 sm:bottom-8 z-50 select-none [--hero-right-inset:1rem] xs:[--hero-right-inset:1.5rem] sm:[--hero-right-inset:2.5rem] ${
         mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"
       }`}
     >
@@ -28,23 +47,22 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
         type="button"
         onClick={onOpenDemoModal}
         aria-label="Book 30-minute diagnostic audit"
-        className="group relative flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#573681] focus-visible:ring-offset-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 filter drop-shadow-[0_12px_30px_rgba(26,0,66,0.25)]"
+        className="group relative flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#573681] focus-visible:ring-offset-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 filter drop-shadow-[0_12px_28px_rgba(26,0,66,0.18)]"
       >
         {/* ========================================================================= */}
-        {/* 1. MAIN TEXT PILL (Ageeva-style: Rounded-L + Angled-R Vector Seam)        */}
+        {/* 1. MAIN TEXT PILL (Highlight Lavender Color, Dark Text, No Dot)           */}
         {/* ========================================================================= */}
         <div className="relative h-11 sm:h-12 flex items-stretch">
-          {/* Main Body with 18px rounded-left corners (flat top & bottom, never hotdog) */}
-          <div className="h-full pl-5 sm:pl-6 pr-1.5 flex items-center bg-[#1A0042] group-hover:bg-[#250B4E] transition-colors duration-200 rounded-l-[16px] sm:rounded-l-[18px]">
-            <div className="flex items-center gap-2 font-mono font-bold text-[11px] sm:text-xs tracking-[0.16em] uppercase text-white whitespace-nowrap pt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)] shrink-0" />
-              <span>BOOK AUDIT</span>
-            </div>
+          {/* Main Body in SignalMint Highlight Lavender (#E7E6FB) */}
+          <div className="h-full pl-5 sm:pl-6 pr-1.5 flex items-center bg-[#E7E6FB] group-hover:bg-[#DDD6FB] transition-colors duration-200 rounded-l-[16px] sm:rounded-l-[18px] border-y border-l border-[#1A0042]/10">
+            <span className="font-mono font-bold text-[11px] sm:text-xs tracking-[0.16em] uppercase text-[#1A0042] whitespace-nowrap pt-0.5">
+              BOOK AUDIT
+            </span>
           </div>
 
           {/* Precision Slanted Vector Cap (Fixed 16px width - never distorts horizontally) */}
           <svg
-            className="w-4 h-full shrink-0 text-[#1A0042] group-hover:text-[#250B4E] transition-colors duration-200"
+            className="w-4 h-full shrink-0 text-[#E7E6FB] group-hover:text-[#DDD6FB] transition-colors duration-200 -ml-[1px]"
             viewBox="0 0 16 48"
             fill="currentColor"
             preserveAspectRatio="none"
@@ -54,20 +72,20 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. ARROW PEBBLE (Ageeva-style: Complementary Angled-L + Rounded-R Squircle)*/}
+        {/* 2. ARROW PEBBLE (SignalMint Deep Obsidian Purple with White Arrow)        */}
         {/* ========================================================================= */}
         <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
-          {/* Precision Complementary Vector Squircle */}
+          {/* Precision Complementary Vector Squircle in Dark Obsidian Purple */}
           <svg
-            className="absolute inset-0 w-full h-full text-[#E7E6FB] group-hover:text-[#573681] transition-colors duration-200"
+            className="absolute inset-0 w-full h-full text-[#1A0042] group-hover:text-[#573681] transition-colors duration-200 drop-shadow-xs"
             viewBox="0 0 48 48"
             fill="currentColor"
           >
             <path d="M 12 0 L 32 0 C 41 0 48 7 48 16 L 48 32 C 48 41 41 48 32 48 L 5.5 48 C 1.5 48 -1 45.5 -0.5 41.5 L 5 6.5 C 5.5 2.5 8 0 12 0 Z" />
           </svg>
 
-          {/* Centered Dynamic Arrow Icon */}
-          <ArrowRight className="relative z-10 w-4 h-4 text-[#1A0042] group-hover:text-white transition-all duration-200 group-hover:translate-x-0.5" />
+          {/* Centered Dynamic Arrow Icon in White */}
+          <ArrowRight className="relative z-10 w-4 h-4 text-white transition-all duration-200 group-hover:translate-x-0.5" />
         </div>
       </button>
     </aside>
