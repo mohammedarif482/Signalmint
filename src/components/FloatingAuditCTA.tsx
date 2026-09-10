@@ -10,8 +10,8 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Subtle delayed entrance for a smooth, high-end feel
-    const timer = setTimeout(() => setMounted(true), 400);
+    // Smooth entrance after initial render
+    const timer = setTimeout(() => setMounted(true), 350);
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,50 +28,46 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
         type="button"
         onClick={onOpenDemoModal}
         aria-label="Book 30-minute diagnostic audit"
-        className="group relative flex items-stretch gap-1.5 xs:gap-2 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#573681] focus-visible:ring-offset-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 filter drop-shadow-[0_12px_28px_rgba(26,0,66,0.28)]"
+        className="group relative flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#573681] focus-visible:ring-offset-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 filter drop-shadow-[0_12px_30px_rgba(26,0,66,0.25)]"
       >
         {/* ========================================================================= */}
-        {/* 1. MAIN TEXT PILL (Angled Right Seam with SignalMint Obsidian Purple)     */}
+        {/* 1. MAIN TEXT PILL (Ageeva-style: Rounded-L + Angled-R Vector Seam)        */}
         {/* ========================================================================= */}
-        <div className="relative h-11 xs:h-12 sm:h-13 pl-5 pr-7 xs:pl-6 xs:pr-8 sm:pl-7 sm:pr-9 flex items-center justify-center text-white select-none">
-          {/* Vector SVG Background (Pill Left + Angled Rounded Right) */}
-          <svg
-            className="absolute inset-0 w-full h-full text-[#1A0042] group-hover:text-[#250B4E] transition-colors duration-200 filter drop-shadow-sm"
-            viewBox="0 0 100 48"
-            preserveAspectRatio="none"
-            fill="currentColor"
-          >
-            <path d="M 22 0 L 93 0 C 97.5 0 99.5 3 98.5 7.5 L 92.5 40.5 C 91.5 45 88.5 48 84 48 L 22 48 C 9.8 48 0 38.2 0 24 C 0 9.8 9.8 0 22 0 Z" />
-          </svg>
-
-          {/* Frosted Specular Sheen */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/18 via-transparent to-transparent pointer-events-none rounded-l-full" />
-
-          {/* Text Content with Monospace Tracking */}
-          <div className="relative z-10 flex items-center gap-2 font-mono font-bold text-[11px] xs:text-xs sm:text-[13px] tracking-[0.18em] uppercase text-white whitespace-nowrap pt-0.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)] shrink-0" />
-            <span>BOOK AUDIT</span>
+        <div className="relative h-11 sm:h-12 flex items-stretch">
+          {/* Main Body with 18px rounded-left corners (flat top & bottom, never hotdog) */}
+          <div className="h-full pl-5 sm:pl-6 pr-1.5 flex items-center bg-[#1A0042] group-hover:bg-[#250B4E] transition-colors duration-200 rounded-l-[16px] sm:rounded-l-[18px]">
+            <div className="flex items-center gap-2 font-mono font-bold text-[11px] sm:text-xs tracking-[0.16em] uppercase text-white whitespace-nowrap pt-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)] shrink-0" />
+              <span>BOOK AUDIT</span>
+            </div>
           </div>
+
+          {/* Precision Slanted Vector Cap (Fixed 16px width - never distorts horizontally) */}
+          <svg
+            className="w-4 h-full shrink-0 text-[#1A0042] group-hover:text-[#250B4E] transition-colors duration-200"
+            viewBox="0 0 16 48"
+            fill="currentColor"
+            preserveAspectRatio="none"
+          >
+            <path d="M 0 0 L 9 0 C 13 0 15.5 2.5 15 6.5 L 9.5 41.5 C 9 45.5 6.5 48 2.5 48 L 0 48 Z" />
+          </svg>
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. ARROW PEBBLE (Angled Left Seam with SignalMint Lavender / Violet)       */}
+        {/* 2. ARROW PEBBLE (Ageeva-style: Complementary Angled-L + Rounded-R Squircle)*/}
         {/* ========================================================================= */}
-        <div className="relative w-11 h-11 xs:w-12 xs:h-12 sm:w-13 sm:h-13 shrink-0 flex items-center justify-center select-none">
-          {/* Vector SVG Background (Angled Left + Pill Right) */}
+        <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center">
+          {/* Precision Complementary Vector Squircle */}
           <svg
-            className="absolute inset-0 w-full h-full text-[#E7E6FB] group-hover:text-[#573681] transition-colors duration-200 filter drop-shadow-sm"
+            className="absolute inset-0 w-full h-full text-[#E7E6FB] group-hover:text-[#573681] transition-colors duration-200"
             viewBox="0 0 48 48"
             fill="currentColor"
           >
-            <path d="M 12 0 L 24 0 C 37.3 0 48 10.7 48 24 C 48 37.3 37.3 48 24 48 L 4 48 C 0 48 -1.5 45 -0.5 40.5 L 5.5 7.5 C 6.5 3 9.5 0 14 0 Z" />
+            <path d="M 12 0 L 32 0 C 41 0 48 7 48 16 L 48 32 C 48 41 41 48 32 48 L 5.5 48 C 1.5 48 -1 45.5 -0.5 41.5 L 5 6.5 C 5.5 2.5 8 0 12 0 Z" />
           </svg>
 
-          {/* Frosted Specular Sheen */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent pointer-events-none rounded-r-full" />
-
           {/* Centered Dynamic Arrow Icon */}
-          <ArrowRight className="relative z-10 w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#1A0042] group-hover:text-white transition-all duration-200 group-hover:translate-x-0.5" />
+          <ArrowRight className="relative z-10 w-4 h-4 text-[#1A0042] group-hover:text-white transition-all duration-200 group-hover:translate-x-0.5" />
         </div>
       </button>
     </aside>
