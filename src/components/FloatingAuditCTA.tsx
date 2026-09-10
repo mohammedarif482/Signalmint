@@ -47,42 +47,31 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
         type="button"
         onClick={onOpenDemoModal}
         aria-label="Book 30-minute diagnostic audit"
-        className="group relative flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#573681] focus-visible:ring-offset-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 filter drop-shadow-[0_12px_28px_rgba(26,0,66,0.18)]"
+        className="group relative flex items-center gap-1.5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#573681] focus-visible:ring-offset-2 transition-transform duration-200 hover:scale-[1.03] active:scale-95 filter drop-shadow-[0_12px_28px_rgba(26,0,66,0.2)]"
       >
         {/* ========================================================================= */}
-        {/* 1. MAIN TEXT PILL (Frosted Glass Background with #573681 Text)            */}
+        {/* 1. MAIN TEXT PILL (Single Unified Frosted Glass Element - 0 Seams/Lines)  */}
         {/* ========================================================================= */}
-        <div className="relative h-11 sm:h-12 flex items-stretch">
-          {/* Main Body in Frosted Glass (#FAFAFD / White 75% with blur) */}
-          <div className="h-full pl-5 sm:pl-6 pr-1.5 flex items-center bg-white/75 group-hover:bg-white/90 backdrop-blur-xl transition-colors duration-200 rounded-l-[16px] sm:rounded-l-[18px] border-y border-l border-white/80 shadow-2xs">
-            <span className="font-mono font-bold text-[11px] sm:text-xs tracking-[0.16em] uppercase text-[#573681] whitespace-nowrap pt-0.5">
-              BOOK AUDIT
-            </span>
-          </div>
-
-          {/* Precision Slanted Vector Cap (Frosted Glass with white stroke) */}
-          <svg
-            className="w-4 h-full shrink-0 text-white/75 group-hover:text-white/90 transition-colors duration-200 -ml-[1px] filter drop-shadow-2xs"
-            viewBox="0 0 16 48"
-            fill="currentColor"
-            preserveAspectRatio="none"
-          >
-            <path 
-              d="M 0 0 L 9 0 C 13 0 15.5 2.5 15 6.5 L 9.5 41.5 C 9 45.5 6.5 48 2.5 48 L 0 48 Z" 
-              stroke="rgba(255,255,255,0.8)"
-              strokeWidth="0.8"
-            />
-          </svg>
+        <div 
+          className="relative h-11 sm:h-12 pl-5 pr-7 xs:pl-6 xs:pr-8 sm:pl-7 sm:pr-9 flex items-center justify-center bg-white/80 hover:bg-white/95 backdrop-blur-xl text-[#573681] shadow-xs transition-all duration-200 select-none"
+          style={{
+            borderRadius: "16px 8px 8px 16px",
+            clipPath: "polygon(0% 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)",
+          }}
+        >
+          <span className="font-mono font-bold text-[11px] sm:text-xs tracking-[0.16em] uppercase whitespace-nowrap pt-0.5">
+            BOOK AUDIT
+          </span>
         </div>
 
         {/* ========================================================================= */}
         {/* 2. ARROW PEBBLE (#573681 Signature Violet with Crisp White Arrow)          */}
         {/* ========================================================================= */}
         <div 
-          className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center bg-[#573681] group-hover:bg-[#482878] text-white shadow-sm transition-all duration-200"
+          className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 flex items-center justify-center bg-[#573681] group-hover:bg-[#482878] text-white shadow-xs transition-all duration-200"
           style={{
-            borderRadius: "10px 18px 18px 10px",
-            clipPath: "polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            borderRadius: "8px 16px 16px 8px",
+            clipPath: "polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%)",
           }}
         >
           {/* Centered Dynamic Arrow Icon in White */}
