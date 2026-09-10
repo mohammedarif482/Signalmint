@@ -13,6 +13,15 @@ interface HeroSectionProps {
   onOpenDemoModal?: () => void;
 }
 
+const PROOF_METRICS = [
+  { text: "Audited 200+ D2C Accounts", highlight: false },
+  { text: "₹500M+ Ad Spend Under Management", highlight: false },
+  { text: "3.2x Avg ROAS Improvement", highlight: true },
+  { text: "40+ Active DTC Brands", highlight: false },
+  { text: "Sub-12min Pacing Intervention", highlight: false },
+  { text: "Zero Estimation // Graph API Verified", highlight: true },
+];
+
 export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
   const [showVideoModal, setShowVideoModal] = useState(false);
 
@@ -476,19 +485,44 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Hero Proof Ticker Ribbon */}
-      <div className="w-full bg-[#573681] text-white py-3 px-6 border-y border-white/15 overflow-hidden select-none shadow-xs">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 font-mono text-[10.5px] sm:text-xs">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-bold tracking-wider uppercase text-emerald-300">AGENCY PROOF METRICS</span>
+      {/* Hero Proof Ticker Ribbon (Continuous Horizontal Scroll like TELEMETRY STREAM) */}
+      <div className="w-full bg-[#573681] text-white py-2.5 sm:py-3 border-y border-white/15 overflow-hidden select-none shadow-xs">
+        <div className="flex items-center w-full overflow-hidden select-none">
+          {/* Pinned Static Badge: AGENCY PROOF METRICS */}
+          <div className="shrink-0 flex items-center gap-2 pl-4 sm:pl-8 pr-3 sm:pr-4 py-0.5 border-r border-white/20 bg-[#573681] z-10 text-[9.5px] xs:text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase text-emerald-300 shadow-[6px_0_16px_rgba(87,54,129,0.95)]">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+            </span>
+            <span className="whitespace-nowrap">AGENCY PROOF METRICS</span>
           </div>
-          <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-white/80">
-            <span>Audited 200+ D2C Accounts</span>
-            <span className="text-white/30 hidden sm:inline">·</span>
-            <span>₹500M+ Ad Spend Under Management</span>
-            <span className="text-white/30 hidden sm:inline">·</span>
-            <span className="text-white font-bold text-emerald-400">3.2x Avg ROAS Improvement</span>
+
+          {/* Marquee Track: Moving metrics */}
+          <div className="flex-1 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
+            <div
+              className="flex items-center whitespace-nowrap animate-telemetry-marquee text-[10px] sm:text-[11.5px] font-mono pl-4"
+              style={{ animationDuration: "24s" }}
+            >
+              {/* Duplicated track for continuous seamless loop */}
+              {[0, 1].map((copyIdx) => (
+                <div key={copyIdx} className="flex items-center gap-6 sm:gap-8 shrink-0 pr-6 sm:pr-8">
+                  {PROOF_METRICS.map((metric, idx) => (
+                    <div key={`${copyIdx}-${idx}`} className="flex items-center gap-6 sm:gap-8">
+                      <span
+                        className={`${
+                          metric.highlight
+                            ? "text-emerald-300 font-bold bg-white/10 px-2.5 py-0.5 rounded-full border border-emerald-400/30"
+                            : "text-white/85 font-medium"
+                        }`}
+                      >
+                        {metric.text}
+                      </span>
+                      <span className="text-white/30 font-bold">//</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
