@@ -188,6 +188,12 @@ const BRAND_COLUMNS: BrandColumn[] = [
   },
 ];
 
+// Partition the 27 client brands into 3 balanced rows for mobile streaming canopy (9 brands per row)
+const ALL_BRANDS = BRAND_COLUMNS.flatMap((col) => col.brands);
+const ROW_1 = ALL_BRANDS.slice(0, 9);
+const ROW_2 = ALL_BRANDS.slice(9, 18);
+const ROW_3 = ALL_BRANDS.slice(18, 27);
+
 interface BrandLogoCardProps {
   brand: BrandPartner;
   isActive: boolean;
@@ -310,7 +316,7 @@ function BrandLogoCard({
         onClick={() => onToggleActive(brand)}
         onMouseEnter={() => onHoverBrand(brand)}
         onMouseLeave={() => onHoverBrand(null)}
-        className={`group relative rounded-full aspect-square p-2.5 xs:p-3 sm:p-3.5 lg:p-4 bg-white/45 sm:bg-white/40 hover:bg-white/60 backdrop-blur-xl sm:backdrop-blur-2xl border ${
+        className={`group relative rounded-full aspect-square p-1.5 xs:p-2 sm:p-3.5 lg:p-4 bg-white/45 sm:bg-white/40 hover:bg-white/60 backdrop-blur-xl sm:backdrop-blur-2xl border ${
           isActive
             ? "border-[#573681]/40 shadow-[0_16px_36px_-6px_rgba(87,54,129,0.22),inset_0_2px_2.5px_0_rgba(255,255,255,0.95),inset_0_-1px_1.5px_0_rgba(87,54,129,0.1)] ring-2 ring-[#573681]/20"
             : "border-white/35 hover:border-white/45 shadow-[0_10px_28px_-8px_rgba(26,0,66,0.06),inset_0_1.5px_2px_0_rgba(255,255,255,0.85),inset_0_-1px_1.5px_0_rgba(87,54,129,0.05)] hover:shadow-[0_18px_40px_-8px_rgba(87,54,129,0.16),inset_0_2px_2.5px_0_rgba(255,255,255,0.95)]"
@@ -320,7 +326,7 @@ function BrandLogoCard({
         {/* Dynamic Specular Glare */}
         <div
           ref={glareRef}
-          className="absolute pointer-events-none rounded-full w-[160px] h-[160px] bg-radial from-white/50 via-purple-300/15 to-transparent blur-lg opacity-0 z-30 will-change-transform"
+          className="absolute pointer-events-none rounded-full w-[100px] h-[100px] sm:w-[160px] sm:h-[160px] bg-radial from-white/50 via-purple-300/15 to-transparent blur-lg opacity-0 z-30 will-change-transform"
           style={{ top: 0, left: 0 }}
         />
 
@@ -333,7 +339,7 @@ function BrandLogoCard({
 
         {/* Top subtle category pill */}
         <div className="w-full flex items-center justify-center z-10 pt-0.5 sm:pt-1 px-1">
-          <span className="font-mono text-[6.5px] xs:text-[7px] sm:text-[7.5px] uppercase font-bold text-[#1A0042]/55 tracking-wider group-hover:text-[#573681] transition-colors truncate max-w-[85%] text-center">
+          <span className="font-mono text-[5.5px] xs:text-[6.5px] sm:text-[7.5px] uppercase font-bold text-[#1A0042]/55 tracking-wider group-hover:text-[#573681] transition-colors truncate max-w-[88%] text-center">
             {brand.category}
           </span>
         </div>
@@ -341,18 +347,18 @@ function BrandLogoCard({
         {/* Centered Brand Logo with GSAP parallax */}
         <div
           ref={logoRef}
-          className="flex-1 w-full flex items-center justify-center py-1 z-10 px-2 sm:px-2.5 will-change-transform"
+          className="flex-1 w-full flex items-center justify-center py-0.5 sm:py-1 z-10 px-1.5 sm:px-2.5 will-change-transform"
         >
           <img
             src={brand.logo}
             alt={brand.name}
-            className="max-h-7 sm:max-h-9 lg:max-h-11 w-auto max-w-[82%] object-contain filter drop-shadow-2xs"
+            className="max-h-5 xs:max-h-6 sm:max-h-9 lg:max-h-11 w-auto max-w-[80%] object-contain filter drop-shadow-2xs"
           />
         </div>
 
         {/* Verified Result Metric Pill at Bottom */}
         <div className="w-full pb-0.5 sm:pb-1 flex items-center justify-center z-10">
-          <span className="px-2 py-0.5 rounded-full bg-white/65 backdrop-blur-md text-[#573681] font-mono text-[6.5px] xs:text-[7px] sm:text-[8px] font-bold shrink-0 tracking-tight border border-white/60 shadow-2xs group-hover:bg-[#573681] group-hover:text-white group-hover:border-[#573681]/30 transition-all">
+          <span className="px-1.5 xs:px-2 py-0.5 rounded-full bg-white/65 backdrop-blur-md text-[#573681] font-mono text-[5.5px] xs:text-[6.5px] sm:text-[8px] font-bold shrink-0 tracking-tight border border-white/60 shadow-2xs group-hover:bg-[#573681] group-hover:text-white group-hover:border-[#573681]/30 transition-all">
             {brand.metric}
           </span>
         </div>
@@ -491,18 +497,49 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
         {/* ------------------------------------------------------------------- */}
         <div className="relative z-10 w-full flex items-center overflow-hidden py-2 sm:py-3 [mask-image:linear-gradient(to_right,transparent_0px,black_28px,black_calc(100%-28px),transparent_100%)]">
           {/* ================================================================= */}
-          {/* A. MOBILE MASONRY CAROUSEL (Screens < sm: Continuous Marquee)     */}
+          {/* A. MOBILE 3-ROW STREAMING CANOPY (Screens < sm: 9 Brands Per Row) */}
           {/* ================================================================= */}
-          <div className="sm:hidden w-full overflow-hidden select-none py-2">
-            <div className="flex items-center gap-2.5 xs:gap-3 animate-brand-marquee w-max pl-4">
-              {[...BRAND_COLUMNS, ...BRAND_COLUMNS].map((col, idx) => (
-                <div
-                  key={`mob-col-${col.id}-${idx}`}
-                  className={`w-[115px] xs:w-[125px] flex flex-col justify-center gap-2 xs:gap-2.5 shrink-0 will-change-transform ${col.offsetClass}`}
-                >
-                  {col.brands.map((brand) => renderLogoCard(brand, `mob-${idx}-`))}
-                </div>
-              ))}
+          <div className="sm:hidden w-full overflow-hidden select-none py-1 space-y-2 xs:space-y-2.5">
+            {/* Row 1: Flowing Left */}
+            <div className="w-full overflow-hidden">
+              <div
+                className="flex items-center gap-2 xs:gap-2.5 animate-brand-marquee w-max"
+                style={{ animationDuration: "34s" }}
+              >
+                {[...ROW_1, ...ROW_1].map((brand, idx) => (
+                  <div key={`mob-r1-${brand.id}-${idx}`} className="w-[82px] xs:w-[92px] shrink-0">
+                    {renderLogoCard(brand, `mob-r1-${idx}-`)}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 2: Flowing Right (Reverse) */}
+            <div className="w-full overflow-hidden">
+              <div
+                className="flex items-center gap-2 xs:gap-2.5 animate-brand-marquee-reverse w-max"
+                style={{ animationDuration: "38s" }}
+              >
+                {[...ROW_2, ...ROW_2].map((brand, idx) => (
+                  <div key={`mob-r2-${brand.id}-${idx}`} className="w-[82px] xs:w-[92px] shrink-0">
+                    {renderLogoCard(brand, `mob-r2-${idx}-`)}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 3: Flowing Left */}
+            <div className="w-full overflow-hidden">
+              <div
+                className="flex items-center gap-2 xs:gap-2.5 animate-brand-marquee w-max"
+                style={{ animationDuration: "32s" }}
+              >
+                {[...ROW_3, ...ROW_3].map((brand, idx) => (
+                  <div key={`mob-r3-${brand.id}-${idx}`} className="w-[82px] xs:w-[92px] shrink-0">
+                    {renderLogoCard(brand, `mob-r3-${idx}-`)}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
