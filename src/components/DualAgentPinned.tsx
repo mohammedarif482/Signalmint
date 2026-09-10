@@ -108,20 +108,20 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
         </div>
 
         {/* ========================================================================= */}
-        {/* UNIFIED INTERACTIVE STAGE (Vertically Centered on Mobile, Pinned on Desktop) */}
+        {/* UNIFIED INTERACTIVE STAGE (Vertically Distributed on Mobile, Pinned on Desktop) */}
         {/* ========================================================================= */}
-        <div className="relative z-20 w-full h-full flex flex-col items-center justify-center pt-14 pb-2 xs:pt-16 xs:pb-4 px-3 gap-2 xs:gap-3 sm:block sm:p-0 pointer-events-none">
+        <div className="relative z-20 w-full h-full flex flex-col items-center justify-between pt-16 pb-6 xs:pt-18 xs:pb-8 px-4 sm:block sm:p-0 pointer-events-none">
 
           {/* Top Centered Floating Eyebrow: WHAT WE DO */}
-          <div className="shrink-0 sm:absolute sm:top-24 sm:left-1/2 sm:-translate-x-1/2 sm:z-30 pointer-events-none">
-            <div className="font-mono text-[10px] xs:text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] flex items-center gap-2 whitespace-nowrap bg-white/70 sm:bg-transparent backdrop-blur-xs sm:backdrop-blur-none px-3 py-1 sm:p-0 rounded-full sm:rounded-none shadow-2xs sm:shadow-none">
+          <div className="shrink-0 mb-3 sm:mb-0 sm:absolute sm:top-24 sm:left-1/2 sm:-translate-x-1/2 sm:z-30 pointer-events-none">
+            <div className="font-mono text-[10.5px] xs:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] flex items-center gap-2 whitespace-nowrap">
               <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
               <span>WHAT WE DO // FULL-FUNNEL ARCHITECTURE</span>
             </div>
           </div>
 
-          {/* Frosted Glass Card Container (Larger & Translucent on Mobile) */}
-          <div className="w-full max-w-[370px] xs:max-w-[405px] h-[400px] xs:h-[425px] shrink-0 relative pointer-events-none flex items-center justify-center sm:absolute sm:left-0 sm:right-auto sm:top-0 sm:h-full sm:w-[430px] lg:w-[490px] xl:w-[510px] sm:max-w-none sm:block">
+          {/* Frosted Glass Card Container (Balanced & Translucent on Mobile) */}
+          <div className="w-full max-w-[360px] xs:max-w-[395px] h-[385px] xs:h-[410px] shrink-0 relative pointer-events-none flex items-center justify-center sm:absolute sm:left-0 sm:right-auto sm:top-0 sm:h-full sm:w-[430px] lg:w-[490px] xl:w-[510px] sm:max-w-none sm:block">
             {/* Frosted Backdrop Panel */}
             <div className="absolute inset-0 bg-white/45 xs:bg-white/50 backdrop-blur-xl sm:backdrop-blur-2xl rounded-3xl sm:rounded-none sm:rounded-r-3xl border border-white/60 sm:border-0 sm:border-r sm:border-white/50 shadow-[0_16px_40px_rgba(87,54,129,0.12),inset_0_1px_1.5px_rgba(255,255,255,0.85)] sm:shadow-[8px_0_35px_rgba(87,54,129,0.08)]" />
 
@@ -135,7 +135,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
               {/* Top to Bottom Content Body with Balanced Distribution */}
               <div className="flex-1 flex flex-col justify-between sm:pt-16 lg:pt-20 sm:pb-4 lg:pb-6">
                 {/* 1. Header Block: Badge + Kicker + Title + Description */}
-                <div className="space-y-1.5 xs:space-y-2 sm:space-y-3.5 lg:space-y-4">
+                <div className="space-y-1 xs:space-y-1.5 sm:space-y-3.5 lg:space-y-4">
                   <div className="font-mono text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#573681] flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#573681] animate-pulse" />
                     <span>01 // META AD MANAGEMENT</span>
@@ -236,7 +236,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
               {/* Top to Bottom Content Body with Balanced Distribution */}
               <div className="flex-1 flex flex-col justify-between sm:pt-16 lg:pt-20 sm:pb-4 lg:pb-6">
                 {/* 1. Header Block: Badge + Kicker + Title + Description */}
-                <div className="space-y-1.5 xs:space-y-2 sm:space-y-3.5 lg:space-y-4">
+                <div className="space-y-1 xs:space-y-1.5 sm:space-y-3.5 lg:space-y-4">
                   <div className="font-mono text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#573681] flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#573681] animate-pulse" />
                     <span>02 // WINNING ADS</span>
@@ -259,7 +259,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
                 </div>
 
                 {/* 2. Deliverables Block: 3 Distinct Rows with Generous Breathing Room */}
-                <div className="space-y-2 xs:space-y-2.5 sm:space-y-4 lg:space-y-5 py-1.5 xs:py-2.5 sm:py-5 lg:py-6">
+                <div className="space-y-2 xs:space-y-2.5 sm:space-y-4 lg:space-y-5 py-1 xs:py-2 sm:py-5 lg:py-6">
                   <div className="flex items-start gap-2.5 sm:gap-3.5">
                     <span className="w-2 h-2 rounded-full bg-[#573681] shrink-0 mt-1" />
                     <div className="font-sans text-[10.5px] xs:text-[11.5px] sm:text-[13.5px] lg:text-[14.5px] leading-snug">
@@ -325,24 +325,27 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           {/* Bottom Philosophy Copy (Right-bottom on desktop, centered bottom on mobile) */}
           <div
             ref={rightBadgeRef}
-            className="shrink-0 text-center sm:text-right flex flex-col items-center sm:items-end gap-0.5 xs:gap-1 sm:gap-2.5 w-full max-w-[340px] xs:max-w-sm sm:max-w-md lg:max-w-lg px-2 sm:px-0 sm:absolute sm:bottom-10 lg:bottom-12 sm:right-10 lg:right-14 pointer-events-none"
+            className="shrink-0 text-center sm:text-right flex flex-col items-center sm:items-end gap-1 sm:gap-2.5 w-full max-w-[320px] xs:max-w-sm sm:max-w-md lg:max-w-lg px-2 sm:px-0 sm:absolute sm:bottom-10 lg:bottom-12 sm:right-10 lg:right-14 pointer-events-none"
           >
             <div className="space-y-0.5 sm:space-y-1.5">
               <div className="font-mono font-bold text-[8px] xs:text-[9px] sm:text-[11px] tracking-[0.16em] uppercase text-[#573681]">
                 DUAL PERFORMANCE ENGINE
               </div>
 
-              <h2 className="font-display font-black text-base xs:text-lg sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-tight sm:leading-[1.08]">
+              <h2 className="font-display font-black text-xs xs:text-sm sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-tight sm:leading-[1.08]">
                 MEDIA BUYING &amp; CREATIVE. <span className="hidden sm:inline"><br /></span>
                 <span className="text-[#573681]">UNITED UNDER ONE ROOF.</span>
               </h2>
 
-              <p className="font-sans text-[11px] xs:text-xs sm:text-[15px] text-[#1A0042]/80 font-normal leading-snug sm:leading-relaxed pt-0.5 max-w-[310px] xs:max-w-sm sm:max-w-none mx-auto sm:mx-0">
+              <p className="hidden sm:block font-sans text-[15px] text-[#1A0042]/80 font-normal leading-relaxed pt-0.5 max-w-none mx-0">
                 Media buying without performance creative is dead spend. Creative without attribution is pure guesswork. We combine both under one roof.
+              </p>
+              <p className="sm:hidden font-sans text-[10px] xs:text-[11px] text-[#1A0042]/70 font-normal leading-snug pt-0.5 max-w-[280px] xs:max-w-xs mx-auto">
+                Media buying &amp; performance creative combined under one roof.
               </p>
             </div>
 
-            <div className="hidden xs:flex items-center gap-2 sm:gap-2.5 pt-1 sm:pt-2.5 border-t border-[#1A0042]/15 font-mono text-[8px] sm:text-[10.5px] text-[#1A0042]/60">
+            <div className="hidden sm:flex items-center gap-2 sm:gap-2.5 pt-1 sm:pt-2.5 border-t border-[#1A0042]/15 font-mono text-[8px] sm:text-[10.5px] text-[#1A0042]/60">
               <span className="w-1.5 h-1.5 rounded-full bg-[#573681] animate-pulse" />
               <span className="tracking-wider uppercase font-semibold">2 CORE ENGINES · 1 UNIFIED PLAYBOOK</span>
             </div>
