@@ -12,6 +12,7 @@ import { FAQSection } from "./components/FAQSection";
 import { FinalCTASection } from "./components/FinalCTASection";
 import { FooterKinetic } from "./components/FooterKinetic";
 import { DemoModal } from "./components/DemoModal";
+import { FloatingAuditCTA } from "./components/FloatingAuditCTA";
 import { InnerPageView } from "./components/InnerPageView";
 import { type InnerPageKey, INNER_PAGES_DATA } from "./data/innerPagesData";
 
@@ -124,6 +125,12 @@ export function App() {
           />
         </>
       )}
+
+      {/* Persistent Floating "BOOK AUDIT" CTA (Bottom Center, Ageeva-style) */}
+      <FloatingAuditCTA 
+        onOpenDemoModal={handleOpenDemoModal} 
+        isVisible={!isDemoModalOpen} 
+      />
 
       {/* 30-Minute Account Audit Booking Modal */}
       <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemoModal} />
