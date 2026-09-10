@@ -118,7 +118,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
         {/* ========================================================================= */}
         {/* Left Frosted Glass Card Container                                         */}
         {/* ========================================================================= */}
-        <div className="absolute left-3 right-3 sm:left-0 sm:right-auto top-[98px] xs:top-[104px] sm:top-0 h-[410px] xs:h-[430px] sm:h-full max-w-[340px] xs:max-w-[370px] sm:max-w-none mx-auto sm:mx-0 sm:w-[430px] lg:w-[490px] xl:w-[510px] z-20 pointer-events-none flex items-center justify-center sm:block">
+        <div className="absolute left-3 right-3 sm:left-0 sm:right-auto top-[84px] xs:top-[90px] sm:top-0 h-[375px] xs:h-[395px] sm:h-full max-w-[340px] xs:max-w-[370px] sm:max-w-none mx-auto sm:mx-0 sm:w-[430px] lg:w-[490px] xl:w-[510px] z-20 pointer-events-none flex items-center justify-center sm:block">
           {/* Frosted Backdrop Panel */}
           <div className="absolute inset-0 bg-white/85 sm:bg-white/50 backdrop-blur-xl sm:backdrop-blur-2xl rounded-2xl xs:rounded-3xl sm:rounded-none sm:rounded-r-3xl border border-white/70 sm:border-0 sm:border-r sm:border-white/50 shadow-xl sm:shadow-[8px_0_35px_rgba(87,54,129,0.08)]" />
 
@@ -127,12 +127,12 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           {/* ----------------------------------------------------------------------- */}
           <div
             ref={panel1Ref}
-            className="relative h-full w-full p-4 xs:p-5 sm:p-8 lg:p-10 flex flex-col justify-between will-change-transform text-[#1A0042] overflow-hidden pointer-events-auto"
+            className="relative h-full w-full p-3.5 xs:p-4.5 sm:p-8 lg:p-10 flex flex-col justify-between will-change-transform text-[#1A0042] overflow-hidden pointer-events-auto"
           >
             {/* Top to Bottom Content Body with Balanced Distribution */}
             <div className="flex-1 flex flex-col justify-between sm:pt-16 lg:pt-20 sm:pb-4 lg:pb-6">
               {/* 1. Header Block: Badge + Kicker + Title + Description */}
-              <div className="space-y-2 xs:space-y-2.5 sm:space-y-3.5 lg:space-y-4">
+              <div className="space-y-1.5 xs:space-y-2 sm:space-y-3.5 lg:space-y-4">
                 <div className="flex items-center">
                   <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[8.5px] xs:text-[9px] sm:text-[10px] font-bold tracking-wider uppercase border border-[#573681]/20 shadow-2xs">
                     01 // META AD MANAGEMENT
@@ -156,7 +156,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
               </div>
 
               {/* 2. Deliverables Block: 3 Distinct Rows with Generous Breathing Room */}
-              <div className="space-y-2.5 xs:space-y-3 sm:space-y-4 lg:space-y-5 py-2 xs:py-3 sm:py-5 lg:py-6">
+              <div className="space-y-2 xs:space-y-2.5 sm:space-y-4 lg:space-y-5 py-1.5 xs:py-2.5 sm:py-5 lg:py-6">
                 <div className="flex items-start gap-2.5 sm:gap-3.5">
                   <span className="w-2 h-2 rounded-full bg-[#573681] shrink-0 mt-1" />
                   <div className="font-sans text-[10px] xs:text-[11px] sm:text-[13.5px] lg:text-[14.5px] leading-snug">
@@ -182,7 +182,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
 
               {/* 3. Action Block: Stat Card + CTA Row with Substantial Height */}
               <div className="flex items-stretch gap-2.5 sm:gap-3.5 pt-1 sm:pt-2">
-                <div className="px-3 py-2 sm:px-4 sm:py-3 rounded-2xl bg-white/95 border border-[#1A0042]/12 shadow-xs shrink-0 flex flex-col justify-center">
+                <div className="px-3 py-1.5 sm:px-4 sm:py-3 rounded-2xl bg-white/95 border border-[#1A0042]/12 shadow-xs shrink-0 flex flex-col justify-center">
                   <div className="font-mono text-[7.5px] xs:text-[8px] sm:text-[9px] text-[#1A0042]/60 uppercase font-semibold tracking-wider">VERIFIED LIFT</div>
                   <div className="font-display font-extrabold text-xs xs:text-sm sm:text-lg lg:text-xl text-[#573681] leading-none mt-1">2.1x Avg ROAS</div>
                 </div>
@@ -190,7 +190,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
                 <button
                   type="button"
                   onClick={onOpenDemoModal}
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-3.5 py-2.5 sm:py-3.5 rounded-2xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-[9.5px] xs:text-[10.5px] sm:text-xs lg:text-[13px] font-bold uppercase tracking-wider transition-all duration-200 shadow-md hover:scale-[1.02] cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center gap-2 min-h-[40px] px-3.5 py-2 sm:py-3.5 rounded-2xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-[9.5px] xs:text-[10.5px] sm:text-xs lg:text-[13px] font-bold uppercase tracking-wider transition-all duration-200 shadow-md hover:scale-[1.02] cursor-pointer"
                 >
                   <span>Audit My Meta Ads</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -204,7 +204,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
               <div className="flex items-center justify-between font-mono text-[8.5px] xs:text-[9.5px] sm:text-[10.5px]">
                 <div className="flex items-center gap-2 font-bold tracking-wider">
                   <span className="w-2 h-2 rounded-full bg-[#573681]" />
-                  <span className="text-[#573681]">01 META AD MANAGEMENT</span>
+                  <span className="text-[#573681]">01 META</span>
                   <button
                     type="button"
                     onClick={() => scrollToScreen(2)}
@@ -216,7 +216,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
                 <button
                   type="button"
                   onClick={() => scrollToScreen(2)}
-                  className="hidden sm:inline text-[#1A0042]/50 hover:text-[#573681] font-semibold cursor-pointer transition-colors"
+                  className="sm:hidden text-[#573681] font-bold underline cursor-pointer"
                 >
                   SCROLL TO SWITCH ↓
                 </button>
@@ -229,12 +229,12 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
           {/* ----------------------------------------------------------------------- */}
           <div
             ref={panel2Ref}
-            className="absolute inset-0 p-4 xs:p-5 sm:p-8 lg:p-10 flex flex-col justify-between opacity-0 will-change-transform text-[#1A0042] overflow-hidden pointer-events-none"
+            className="absolute inset-0 p-3.5 xs:p-4.5 sm:p-8 lg:p-10 flex flex-col justify-between opacity-0 will-change-transform text-[#1A0042] overflow-hidden pointer-events-none"
           >
             {/* Top to Bottom Content Body with Balanced Distribution */}
             <div className="flex-1 flex flex-col justify-between sm:pt-16 lg:pt-20 sm:pb-4 lg:pb-6">
               {/* 1. Header Block: Badge + Kicker + Title + Description */}
-              <div className="space-y-2 xs:space-y-2.5 sm:space-y-3.5 lg:space-y-4">
+              <div className="space-y-1.5 xs:space-y-2 sm:space-y-3.5 lg:space-y-4">
                 <div className="flex items-center">
                   <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#573681]/10 text-[#573681] font-mono text-[8.5px] xs:text-[9px] sm:text-[10px] font-bold tracking-wider uppercase border border-[#573681]/20 shadow-2xs">
                     02 // WINNING ADS
@@ -258,7 +258,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
               </div>
 
               {/* 2. Deliverables Block: 3 Distinct Rows with Generous Breathing Room */}
-              <div className="space-y-2.5 xs:space-y-3 sm:space-y-4 lg:space-y-5 py-2 xs:py-3 sm:py-5 lg:py-6">
+              <div className="space-y-2 xs:space-y-2.5 sm:space-y-4 lg:space-y-5 py-1.5 xs:py-2.5 sm:py-5 lg:py-6">
                 <div className="flex items-start gap-2.5 sm:gap-3.5">
                   <span className="w-2 h-2 rounded-full bg-[#573681] shrink-0 mt-1" />
                   <div className="font-sans text-[10px] xs:text-[11px] sm:text-[13.5px] lg:text-[14.5px] leading-snug">
@@ -284,7 +284,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
 
               {/* 3. Action Block: Stat Card + CTA Row with Substantial Height */}
               <div className="flex items-stretch gap-2.5 sm:gap-3.5 pt-1 sm:pt-2">
-                <div className="px-3 py-2 sm:px-4 sm:py-3 rounded-2xl bg-white/95 border border-[#1A0042]/12 shadow-xs shrink-0 flex flex-col justify-center">
+                <div className="px-3 py-1.5 sm:px-4 sm:py-3 rounded-2xl bg-white/95 border border-[#1A0042]/12 shadow-xs shrink-0 flex flex-col justify-center">
                   <div className="font-mono text-[7.5px] xs:text-[8px] sm:text-[9px] text-[#1A0042]/60 uppercase font-semibold tracking-wider">HOOK VELOCITY</div>
                   <div className="font-display font-extrabold text-xs xs:text-sm sm:text-lg lg:text-xl text-[#573681] leading-none mt-1">+44% Hook Lift</div>
                 </div>
@@ -292,7 +292,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
                 <button
                   type="button"
                   onClick={onOpenDemoModal}
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-3.5 py-2.5 sm:py-3.5 rounded-2xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-[9.5px] xs:text-[10.5px] sm:text-xs lg:text-[13px] font-bold uppercase tracking-wider transition-all duration-200 shadow-md hover:scale-[1.02] cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center gap-2 min-h-[40px] px-3.5 py-2 sm:py-3.5 rounded-2xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-[9.5px] xs:text-[10.5px] sm:text-xs lg:text-[13px] font-bold uppercase tracking-wider transition-all duration-200 shadow-md hover:scale-[1.02] cursor-pointer"
                 >
                   <span>Order Winning Briefs</span>
                   <ArrowRight className="w-3.5 h-3.5" />

@@ -470,7 +470,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
       ref={sectionRef} 
       className="relative w-full py-20 sm:py-28 lg:py-36 bg-textured-wash text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#1A0042]/10 mb-8 sm:mb-14">
@@ -487,7 +487,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={onOpenDemoModal}
-              className="px-5 py-2.5 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer flex items-center gap-2 active:scale-95"
+              className="w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer flex items-center gap-2 active:scale-95"
             >
               <span>Audit Your Account</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -499,7 +499,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
         <div 
           ref={gridRef} 
           onScroll={handleScroll}
-          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 -mx-6 px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-start"
+          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 pt-1 -mx-4 px-4 xs:-mx-6 xs:px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-start"
         >
           {CASE_STUDY_CARDS.map((study) => (
             <CaseStudyCard 
@@ -535,7 +535,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
         </div>
 
         {/* Bottom Banner Callout */}
-        <div className="mt-16 sm:mt-20 p-6 sm:p-8 rounded-2xl bg-[#E7E6FB]/50 border border-[#1A0042]/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 sm:mt-20 p-5 xs:p-6 sm:p-8 rounded-2xl bg-[#E7E6FB]/50 border border-[#1A0042]/10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center md:text-left">
             <div className="font-mono text-[11px] font-bold uppercase text-[#573681] tracking-wider">
               ZERO ESTIMATION // AUDITED DATA ONLY
@@ -547,7 +547,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
 
           <button
             onClick={onOpenDemoModal}
-            className="shrink-0 px-6 py-3 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2 active:scale-95"
+            className="w-full sm:w-auto justify-center shrink-0 px-6 py-3 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2 active:scale-95"
           >
             <span>Bring Us Your Ad Account</span>
             <ArrowRight className="w-4 h-4" />

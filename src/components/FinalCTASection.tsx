@@ -104,7 +104,7 @@ export function FinalCTASection({ onOpenDemoModal }: FinalCTASectionProps) {
       {/* PINNED INNER VIEWPORT (100vh pinned sticky scroll like Section 02) */}
       <div
         ref={viewportRef}
-        className="h-screen w-full overflow-hidden relative flex items-center justify-center p-4 sm:p-8"
+        className="h-[100dvh] min-h-[560px] sm:min-h-0 w-full overflow-hidden relative flex items-center justify-center p-3 xs:p-4 sm:p-8"
       >
         {/* ========================================================================= */}
         {/* BACKGROUND IMAGE LAYER: herobg.jpeg with white overlay (lesser opacity)   */}
@@ -130,7 +130,7 @@ export function FinalCTASection({ onOpenDemoModal }: FinalCTASectionProps) {
         {/* ========================================================================= */}
         <div 
           ref={contentRef}
-          className="max-w-4xl mx-auto px-6 sm:px-12 py-10 sm:py-14 rounded-3xl bg-white/[0.30] hover:bg-white/[0.40] backdrop-blur-md border border-white/50 text-center relative z-10 space-y-6 sm:space-y-8 will-change-transform text-[#1A0042] shadow-[0_8px_32px_rgba(26,0,66,0.06)] transition-colors duration-300"
+          className="max-w-4xl mx-auto px-4 xs:px-6 sm:px-12 py-7 xs:py-8 sm:py-14 rounded-3xl bg-white/[0.30] hover:bg-white/[0.40] backdrop-blur-md border border-white/50 text-center relative z-10 space-y-5 sm:space-y-8 will-change-transform text-[#1A0042] shadow-[0_8px_32px_rgba(26,0,66,0.06)] transition-colors duration-300"
         >
           {/* Eyebrow Badge */}
           <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/70 text-[#573681] border border-[#1A0042]/15 font-mono text-xs font-bold uppercase tracking-widest shadow-2xs backdrop-blur-sm">
@@ -156,7 +156,7 @@ export function FinalCTASection({ onOpenDemoModal }: FinalCTASectionProps) {
             <button
               ref={ctaBtnRef}
               onClick={onOpenDemoModal}
-              className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-4.5 rounded-2xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-xl hover:scale-105 flex items-center justify-center gap-3 cursor-pointer group"
+              className="w-full sm:w-auto px-6 xs:px-8 sm:px-10 py-3.5 xs:py-4 sm:py-4.5 rounded-2xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center gap-3 cursor-pointer group"
             >
               <span>Book a 30-Min Audit</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -166,7 +166,7 @@ export function FinalCTASection({ onOpenDemoModal }: FinalCTASectionProps) {
           {/* Friction Removers / Status Lines */}
           <div 
             ref={statusRef}
-            className="pt-6 border-t border-[#1A0042]/15 max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-4 sm:gap-8 font-mono text-[11px] sm:text-xs text-[#1A0042]/75"
+            className="pt-4 sm:pt-6 border-t border-[#1A0042]/15 max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2.5 xs:gap-4 sm:gap-8 font-mono text-[10px] xs:text-[11px] sm:text-xs text-[#1A0042]/75"
           >
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#573681]" />

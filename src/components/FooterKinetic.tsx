@@ -521,7 +521,7 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
             <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-4">
               PLATFORM DIRECTORY
             </div>
-            <div className="grid grid-cols-3 gap-4 text-xs font-sans">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-4 text-xs font-sans">
               
               {/* Sub-Col 1: Agency Solutions & Proof */}
               <div className="flex flex-col gap-2.5">
@@ -989,7 +989,7 @@ export function FooterKinetic({ onOpenDemoModal, onOpenInnerPage, onNavigateHome
           <canvas
             ref={canvasRef}
             id="footer-particle-canvas"
-            className="absolute inset-0 w-full h-full cursor-crosshair z-10"
+            className="absolute inset-0 w-full h-full cursor-crosshair z-10 touch-pan-y"
           />
 
           {/* Circular Scroll-to-Top Button on Bottom-Left in SignalMint styling */}

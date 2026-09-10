@@ -446,7 +446,7 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
       {/* Pinned Full-Viewport Stage */}
       <div
         ref={stickyRef}
-        className="relative h-screen w-full overflow-hidden flex flex-col justify-center items-center py-6 sm:py-8 lg:py-10 select-none"
+        className="relative h-[100dvh] min-h-[520px] sm:min-h-0 w-full overflow-hidden flex flex-col justify-center items-center py-6 sm:py-8 lg:py-10 select-none"
       >
         {/* Ambient background vertical technical grid lines */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">

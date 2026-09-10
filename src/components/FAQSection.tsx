@@ -112,7 +112,7 @@ export function FAQSection({ onOpenDemoModal }: FAQSectionProps = {}) {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* Left Column: Sticky Editorial Heading */}
@@ -126,7 +126,7 @@ export function FAQSection({ onOpenDemoModal }: FAQSectionProps = {}) {
               FREQUENTLY ASKED QUESTIONS
             </h2>
 
-            <p className="font-sans text-sm sm:text-[15px] text-[#1A0042]/75 max-w-md leading-relaxed">
+            <p className="font-sans text-sm sm:text-[15px] text-[#1A0042]/75 leading-relaxed max-w-md">
               Everything you need to know about our diagnostic audit, billing, and operational SLA before getting started.
             </p>
 
@@ -152,7 +152,7 @@ export function FAQSection({ onOpenDemoModal }: FAQSectionProps = {}) {
                   {/* Trigger */}
                   <button
                     onClick={() => toggleFAQ(item.id)}
-                    className="w-full py-4.5 sm:py-5 flex items-start justify-between gap-5 text-left cursor-pointer select-none group"
+                    className="w-full py-4.5 sm:py-5 min-h-[48px] flex items-start justify-between gap-5 text-left cursor-pointer select-none group"
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-start gap-3.5 sm:gap-4.5 pt-0.5">

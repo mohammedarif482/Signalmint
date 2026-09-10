@@ -49,7 +49,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
       <div
         onClick={(e) => e.stopPropagation()}
         className={`bg-[#FAFAFD] border border-[#1A0042]/15 rounded-3xl w-full shadow-2xl relative overflow-hidden flex flex-col transition-all duration-300 ${
-          activeTab === "calendar" ? "max-w-4xl h-[92vh] sm:h-[86vh]" : "max-w-lg p-6 sm:p-8"
+          activeTab === "calendar" ? "max-w-4xl h-[92vh] sm:h-[86vh]" : "max-w-lg p-5 xs:p-6 sm:p-8 max-h-[92vh] overflow-y-auto"
         }`}
       >
         {/* Close Button */}

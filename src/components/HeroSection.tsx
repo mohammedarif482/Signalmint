@@ -76,10 +76,15 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
       // Align eyebrow width and origin to match logo right edge
       const alignEyebrow = () => {
         if (!eyebrow || !brandLogo) return;
+        if (window.innerWidth < 640) {
+          eyebrow.style.left = "1.5rem";
+          eyebrow.style.width = "calc(100vw - 3rem)";
+          return;
+        }
         const rect = brandLogo.getBoundingClientRect();
         if (rect.width > 0) {
           eyebrow.style.left = `${rect.left}px`;
-          eyebrow.style.width = `${rect.width}px`;
+          eyebrow.style.width = `${Math.max(rect.width, 320)}px`;
         }
       };
       alignEyebrow();
@@ -327,7 +332,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           id="hero-eyebrow"
           className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-6 sm:left-11 lg:left-14 w-[calc(100vw-3rem)] sm:w-[532px] lg:w-[662px] flex justify-end z-20 pointer-events-none"
         >
-          <span className="font-mono font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13px] text-[#1A0042] uppercase inline-block text-right">
+          <span className="font-mono font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13px] text-[#1A0042] uppercase inline-block text-right whitespace-nowrap">
             AI NATIVE, PERFORMANCE MARKETING
           </span>
         </div>
@@ -338,12 +343,12 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         <div
           ref={narrativeRef}
           id="hero-narrative"
-          className="absolute top-[22%] sm:top-[52%] sm:-translate-y-1/2 right-4 sm:right-10 lg:right-16 xl:right-24 z-20 max-w-[260px] sm:max-w-md lg:max-w-lg xl:max-w-xl text-right sm:text-left"
+          className="absolute top-[22%] sm:top-[52%] sm:-translate-y-1/2 right-4 sm:right-10 lg:right-16 xl:right-24 z-20 max-w-[280px] sm:max-w-md lg:max-w-lg xl:max-w-xl text-right sm:text-left"
         >
           <div ref={narrativeInnerRef} className="will-change-transform">
             <p
               ref={narrativeTextRef}
-              className="font-display font-semibold text-xs sm:text-2xl lg:text-[1.85rem] text-[#1A0042] leading-[1.3] tracking-tight"
+              className="font-display font-semibold text-sm xs:text-base sm:text-2xl lg:text-[1.85rem] text-[#1A0042] leading-[1.3] tracking-tight"
             >
               We read the signal in your ad spend before it burns the budget.
             </p>
@@ -360,7 +365,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-[45vw] max-w-[195px] sm:max-w-none sm:w-[13.5rem] lg:w-[14.5rem] min-h-[225px] sm:min-h-[260px] lg:min-h-[285px] p-4 sm:p-5 lg:p-6 rounded-2xl bg-white/[0.28] hover:bg-white/[0.38] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
+            className="w-[calc(100vw-2rem)] max-w-[240px] xs:max-w-[260px] sm:max-w-none sm:w-[13.5rem] lg:w-[14.5rem] min-h-[210px] sm:min-h-[260px] lg:min-h-[285px] p-4 sm:p-5 lg:p-6 rounded-2xl bg-white/[0.28] hover:bg-white/[0.38] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
           >
             {/* Top Bold Grotesque Header */}
             <div>
