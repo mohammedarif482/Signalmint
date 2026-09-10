@@ -9,6 +9,7 @@ interface FloatingAuditCTAProps {
 export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: FloatingAuditCTAProps) {
   const [mounted, setMounted] = useState(false);
   const [isHero, setIsHero] = useState(true);
+  const [isPastFAQ, setIsPastFAQ] = useState(false);
 
   useEffect(() => {
     // Smooth entrance after initial render
@@ -17,31 +18,62 @@ export function FloatingAuditCTA({ onOpenDemoModal, isVisible = true }: Floating
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let faqResizeObserver: ResizeObserver | null = null;
+
+    const checkPosition = () => {
       // In hero section if scrolled less than 160px; glides to bottom-center past it
       const inHero = window.scrollY < 160;
       setIsHero(inHero);
+
+      // Check if scrolled past FAQ section
+      const faqEl = document.getElementById("faq");
+      if (faqEl) {
+        if (!faqResizeObserver && typeof ResizeObserver !== "undefined") {
+          faqResizeObserver = new ResizeObserver(() => checkPosition());
+          faqResizeObserver.observe(faqEl);
+        }
+        const rect = faqEl.getBoundingClientRect();
+        // Dissolve/disappear once the bottom of the FAQ section reaches or scrolls past the viewport bottom
+        const past = rect.bottom <= window.innerHeight;
+        setIsPastFAQ(past);
+      } else {
+        if (faqResizeObserver) {
+          faqResizeObserver.disconnect();
+          faqResizeObserver = null;
+        }
+        setIsPastFAQ(false);
+      }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener("scroll", checkPosition, { passive: true });
+    window.addEventListener("resize", checkPosition, { passive: true });
+    checkPosition();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", checkPosition);
+      window.removeEventListener("resize", checkPosition);
+      if (faqResizeObserver) {
+        faqResizeObserver.disconnect();
+      }
+    };
   }, []);
 
   if (!isVisible) return null;
 
+  const shouldShow = mounted && !isPastFAQ;
+
   return (
     <aside
       aria-label="Floating Action"
+      aria-hidden={!shouldShow}
       style={{
         left: isHero ? "calc(100% - var(--hero-right-inset, 1.25rem))" : "50%",
-        transform: isHero ? "translateX(-100%)" : "translateX(-50%)",
-        transition: "left 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out",
+        transform: `${isHero ? "translateX(-100%)" : "translateX(-50%)"} translateY(${shouldShow ? "0px" : "20px"}) scale(${shouldShow ? 1 : 0.94})`,
+        opacity: shouldShow ? 1 : 0,
+        pointerEvents: shouldShow ? "auto" : "none",
+        transition: "left 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out",
       }}
-      className={`fixed bottom-5 xs:bottom-6 sm:bottom-8 z-50 select-none [--hero-right-inset:1rem] xs:[--hero-right-inset:1.5rem] sm:[--hero-right-inset:2.5rem] ${
-        mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"
-      }`}
+      className="fixed bottom-5 xs:bottom-6 sm:bottom-8 z-50 select-none [--hero-right-inset:1rem] xs:[--hero-right-inset:1.5rem] sm:[--hero-right-inset:2.5rem]"
     >
       <button
         type="button"
