@@ -275,7 +275,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
   }, []);
 
   return (
-    <section id="hero-runway" ref={runwayRef} className="relative w-full bg-[#E7E6FB]">
+    <section id="hero-runway" ref={runwayRef} className="relative w-full bg-[#0a0c1f]">
       {/* PINNED INNER VIEWPORT (100vh Viewport pinned via GSAP) */}
       <div
         ref={viewportRef}
@@ -297,14 +297,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Eyebrow: AI NATIVE-PERFORMANCE MARKETING */}
+        {/* Eyebrow: AI NATIVE, PERFORMANCE MARKETING */}
         <div
           ref={eyebrowRef}
           id="hero-eyebrow"
           className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-6 sm:left-11 lg:left-14 w-[calc(100vw-3rem)] sm:w-[532px] lg:w-[662px] flex justify-end z-20 pointer-events-none"
         >
-          <span className="font-mono font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13px] text-[#1A0042] uppercase inline-block text-right whitespace-nowrap">
-            AI NATIVE-PERFORMANCE MARKETING
+          <span className="font-mono font-bold tracking-[0.12em] sm:tracking-[0.15em] text-[9.5px] sm:text-xs lg:text-[12.5px] text-white/80 uppercase inline-block text-right whitespace-nowrap drop-shadow-sm">
+            AI NATIVE, PERFORMANCE MARKETING
           </span>
         </div>
 
@@ -319,9 +319,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           <div ref={narrativeInnerRef} className="will-change-transform">
             <p
               ref={narrativeTextRef}
-              className="font-display font-semibold text-sm xs:text-base sm:text-2xl lg:text-[1.85rem] text-[#1A0042] leading-[1.3] tracking-tight"
+              className="font-display font-medium text-sm xs:text-base sm:text-2xl lg:text-[1.85rem] text-white leading-[1.3] tracking-tight"
             >
-              Catching the Signal in your ads that Mint you money.
+              We read the <span className="text-[#C084FC] font-semibold">signal</span> in your ad spend before it burns the budget.
             </p>
           </div>
         </div>
@@ -336,32 +336,32 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         >
           <div
             ref={cardLeftInnerRef}
-            className="w-[calc(100vw-2rem)] max-w-[240px] xs:max-w-[260px] sm:max-w-none sm:w-[13.5rem] lg:w-[14.5rem] min-h-[210px] sm:min-h-[260px] lg:min-h-[285px] p-4 sm:p-5 lg:p-6 rounded-2xl bg-white/[0.28] hover:bg-white/[0.38] backdrop-blur-md shadow-none flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300 border-t border-l border-white/30 sm:border-none"
+            className="w-[calc(100vw-2rem)] max-w-[240px] xs:max-w-[260px] sm:max-w-none sm:w-[13.5rem] lg:w-[14.5rem] min-h-[210px] sm:min-h-[260px] lg:min-h-[285px] p-4 sm:p-5 lg:p-6 rounded-2xl bg-white/[0.08] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.37)] flex flex-col justify-between overflow-hidden will-change-transform transition-colors duration-300"
           >
             {/* Top Bold Grotesque Header */}
             <div>
-              <div className="font-display font-bold text-[10px] xs:text-[11px] sm:text-[12.5px] lg:text-[13.5px] uppercase tracking-tight text-[#1A0042] leading-[1.25]">
-                For brands that<br />
-                measure in revenue,<br />
-                not reach.
+              <div className="font-display font-bold text-[10px] xs:text-[11px] sm:text-[12.5px] lg:text-[13.5px] uppercase tracking-tight text-white leading-[1.25]">
+                For performance-first<br />
+                founders &amp;<br />
+                marketers.
               </div>
             </div>
 
             {/* Editorial Dotted Separator */}
-            <div className="w-[50%] border-b border-dotted border-[#1A0042]/35 my-2" />
+            <div className="w-[50%] border-b border-dotted border-white/25 my-2" />
 
             {/* Subtext */}
-            <div className="text-[9px] xs:text-[9.5px] sm:text-[11px] lg:text-[11.5px] text-[#1A0042]/85 font-sans leading-[1.45] text-left">
+            <div className="text-[9px] xs:text-[9.5px] sm:text-[11px] lg:text-[11.5px] text-white/75 font-sans leading-[1.45] text-left">
               We audit first. Every recommendation is proven by your data.
             </div>
 
             {/* Instant Audit CTA */}
             <button
               onClick={onOpenDemoModal}
-              className="self-start inline-flex items-center gap-1.5 font-mono text-[9px] xs:text-[9.5px] sm:text-[10.5px] font-bold text-[#573681] hover:text-[#1A0042] uppercase tracking-wider transition-colors cursor-pointer group pt-2"
+              className="self-start inline-flex items-center gap-1.5 font-mono text-[9px] xs:text-[9.5px] sm:text-[10.5px] font-bold text-[#C084FC] hover:text-white uppercase tracking-wider transition-colors cursor-pointer group pt-2"
             >
-              <span className="border-b border-[#573681]/40 pb-0.5 group-hover:border-[#1A0042]">Book a 30-Min Audit</span>
-              <span className="group-hover:translate-x-0.5 transition-transform text-[#573681]">→</span>
+              <span className="border-b border-[#C084FC]/40 pb-0.5 group-hover:border-white">Book a 30-Min Audit</span>
+              <span className="group-hover:translate-x-0.5 transition-transform text-[#C084FC] group-hover:text-white">→</span>
             </button>
           </div>
         </div>
@@ -373,10 +373,10 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         <div
           ref={scrollPillRef}
           id="hero-scroll-pill"
-          className="hidden sm:flex absolute sm:bottom-9 sm:left-1/2 sm:-translate-x-1/2 z-20 items-center gap-2 font-mono text-[10px] sm:text-[10.5px] tracking-[0.2em] text-[#1A0042]/75 uppercase font-bold select-none pointer-events-none"
+          className="hidden sm:flex absolute sm:bottom-9 sm:left-1/2 sm:-translate-x-1/2 z-20 items-center gap-2 font-mono text-[10px] sm:text-[10.5px] tracking-[0.2em] text-white/80 uppercase font-bold select-none pointer-events-none drop-shadow-sm"
         >
           <svg
-            className="w-4 h-4 text-[#1A0042]/70 shrink-0"
+            className="w-4 h-4 text-white/80 shrink-0"
             viewBox="0 0 20 20"
             fill="none"
             aria-hidden="true"
@@ -401,14 +401,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Hero Proof Ticker Ribbon (Continuous Horizontal Scroll like TELEMETRY STREAM) */}
-      <div className="w-full bg-[#573681] text-white py-2.5 sm:py-3 border-y border-white/15 overflow-hidden select-none shadow-xs">
+      {/* Hero Proof Ticker Ribbon (Continuous Horizontal Scroll) */}
+      <div className="w-full bg-[#0d0a21] text-white py-2.5 sm:py-3 border-y border-white/10 overflow-hidden select-none shadow-xs">
         <div className="flex items-center w-full overflow-hidden select-none">
           {/* Pinned Static Badge: AGENCY PROOF METRICS */}
-          <div className="shrink-0 flex items-center gap-2 pl-4 sm:pl-8 pr-3 sm:pr-4 py-0.5 border-r border-white/20 bg-[#573681] z-10 text-[9.5px] xs:text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase text-emerald-300 shadow-[6px_0_16px_rgba(87,54,129,0.95)]">
+          <div className="shrink-0 flex items-center gap-2 pl-4 sm:pl-8 pr-3 sm:pr-4 py-0.5 border-r border-white/15 bg-[#160f33] z-10 text-[9.5px] xs:text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase text-[#C084FC] shadow-[6px_0_16px_rgba(13,10,33,0.95)]">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C084FC] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C084FC]"></span>
             </span>
             <span className="whitespace-nowrap">AGENCY PROOF METRICS</span>
           </div>
@@ -427,7 +427,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
                       <span
                         className={`${
                           metric.highlight
-                            ? "text-emerald-300 font-bold bg-white/10 px-2.5 py-0.5 rounded-full border border-emerald-400/30"
+                            ? "text-[#C084FC] font-bold bg-white/10 px-2.5 py-0.5 rounded-full border border-[#C084FC]/30"
                             : "text-white/85 font-medium"
                         }`}
                       >

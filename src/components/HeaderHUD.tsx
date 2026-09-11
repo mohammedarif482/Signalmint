@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { X, ArrowUpRight } from "lucide-react";
 import signalMintLogo from "../assets/signalmintlogo.svg";
+import signalMintLogoDark from "../assets/signalmintlogo-dark.svg";
 
 interface HeaderHUDProps {
   onOpenDemoModal?: () => void;
@@ -138,9 +139,9 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             title="SignalMint Home"
           >
             <img
-              src={signalMintLogo}
+              src={isScrolled ? signalMintLogo : signalMintLogoDark}
               alt="SignalMint"
-              className="h-6 sm:h-7 w-auto object-contain block"
+              className="h-6 sm:h-7 w-auto object-contain block transition-all duration-300"
             />
           </a>
         </div>
@@ -151,10 +152,14 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#hero-runway"
               onClick={(e) => handleNavClick(e, "hero-runway", "intro")}
-              className={`transition-colors duration-200 hover:text-[#573681] ${
+              className={`transition-colors duration-200 ${
                 activeSection === "intro"
-                  ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70 font-semibold"
+                  ? isScrolled
+                    ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
+                    : "text-white font-bold border-b-2 border-[#C084FC] pb-0.5 drop-shadow-sm"
+                  : isScrolled
+                    ? "text-[#1A0042]/70 font-semibold hover:text-[#573681]"
+                    : "text-white/80 font-semibold hover:text-white"
               }`}
             >
               INTRO
@@ -162,10 +167,14 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#why-us"
               onClick={(e) => handleNavClick(e, "why-us", "why-us")}
-              className={`transition-colors duration-200 hover:text-[#573681] ${
+              className={`transition-colors duration-200 ${
                 activeSection === "why-us"
-                  ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70 font-semibold"
+                  ? isScrolled
+                    ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
+                    : "text-white font-bold border-b-2 border-[#C084FC] pb-0.5 drop-shadow-sm"
+                  : isScrolled
+                    ? "text-[#1A0042]/70 font-semibold hover:text-[#573681]"
+                    : "text-white/80 font-semibold hover:text-white"
               }`}
             >
               WHY US
@@ -173,10 +182,14 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#services"
               onClick={(e) => handleNavClick(e, "services", "services")}
-              className={`transition-colors duration-200 hover:text-[#573681] ${
+              className={`transition-colors duration-200 ${
                 activeSection === "services"
-                  ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70 font-semibold"
+                  ? isScrolled
+                    ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
+                    : "text-white font-bold border-b-2 border-[#C084FC] pb-0.5 drop-shadow-sm"
+                  : isScrolled
+                    ? "text-[#1A0042]/70 font-semibold hover:text-[#573681]"
+                    : "text-white/80 font-semibold hover:text-white"
               }`}
             >
               SERVICES
@@ -184,34 +197,29 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
             <a
               href="#proof"
               onClick={(e) => handleNavClick(e, "proof", "proof")}
-              className={`transition-colors duration-200 hover:text-[#573681] ${
+              className={`transition-colors duration-200 ${
                 activeSection === "proof"
-                  ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70 font-semibold"
+                  ? isScrolled
+                    ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
+                    : "text-white font-bold border-b-2 border-[#C084FC] pb-0.5 drop-shadow-sm"
+                  : isScrolled
+                    ? "text-[#1A0042]/70 font-semibold hover:text-[#573681]"
+                    : "text-white/80 font-semibold hover:text-white"
               }`}
             >
               PROOF
             </a>
-            {/*
-            <a
-              href="#how-we-work"
-              onClick={(e) => handleNavClick(e, "how-we-work", "how-we-work")}
-              className={`transition-colors duration-200 hover:text-[#573681] ${
-                activeSection === "how-we-work"
-                  ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70 font-semibold"
-              }`}
-            >
-              HOW WE WORK
-            </a>
-            */}
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "contact", "contact")}
-              className={`transition-colors duration-200 hover:text-[#573681] ${
+              className={`transition-colors duration-200 ${
                 activeSection === "contact"
-                  ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
-                  : "text-[#1A0042]/70 font-semibold"
+                  ? isScrolled
+                    ? "text-[#1A0042] font-bold border-b border-dotted border-[#1A0042] pb-0.5"
+                    : "text-white font-bold border-b-2 border-[#C084FC] pb-0.5 drop-shadow-sm"
+                  : isScrolled
+                    ? "text-[#1A0042]/70 font-semibold hover:text-[#573681]"
+                    : "text-white/80 font-semibold hover:text-white"
               }`}
             >
               CONTACT
@@ -221,7 +229,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           {/* Quick Book Audit button on larger screens */}
           <button
             onClick={onOpenDemoModal}
-            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#573681] hover:bg-[#1A0042] text-white text-[11px] font-sans font-bold tracking-[0.04em] uppercase transition-all duration-200 shadow-xs active:scale-95 cursor-pointer"
+            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#573681] hover:bg-[#6D28D9] text-white text-[11px] font-sans font-bold tracking-[0.04em] uppercase transition-all duration-200 shadow-xs active:scale-95 cursor-pointer"
           >
             <span>Book Audit</span>
             <ArrowUpRight className="w-3 h-3" />
@@ -230,7 +238,11 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           {/* Mobile menu toggle: Oryzo reference dashed border • MENU pill */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden px-3.5 py-1.5 rounded-full border border-dashed border-[#1A0042]/35 bg-white/40 backdrop-blur-md text-[#1A0042] font-mono text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95 transition-all"
+            className={`md:hidden px-3.5 py-1.5 rounded-full border border-dashed font-mono text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95 transition-all ${
+              isScrolled
+                ? "border-[#1A0042]/35 bg-white/40 backdrop-blur-md text-[#1A0042]"
+                : "border-white/30 bg-white/10 backdrop-blur-md text-white"
+            }`}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -240,7 +252,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
               </>
             ) : (
               <>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#1A0042]" />
+                <span className={`w-1.5 h-1.5 rounded-full ${isScrolled ? "bg-[#1A0042]" : "bg-[#C084FC]"}`} />
                 <span>MENU</span>
               </>
             )}
