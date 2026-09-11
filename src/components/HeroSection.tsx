@@ -401,14 +401,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Hero Proof Ticker Ribbon (Continuous Horizontal Scroll) */}
-      <div className="w-full bg-[#0d0a21] text-white py-2.5 sm:py-3 border-y border-white/10 overflow-hidden select-none shadow-xs">
+      {/* Hero Proof Ticker Ribbon (Continuous Horizontal Scroll like TELEMETRY STREAM) */}
+      <div className="w-full bg-[#573681] text-white py-2.5 sm:py-3 border-y border-white/15 overflow-hidden select-none shadow-xs">
         <div className="flex items-center w-full overflow-hidden select-none">
           {/* Pinned Static Badge: AGENCY PROOF METRICS */}
-          <div className="shrink-0 flex items-center gap-2 pl-4 sm:pl-8 pr-3 sm:pr-4 py-0.5 border-r border-white/15 bg-[#160f33] z-10 text-[9.5px] xs:text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase text-[#C084FC] shadow-[6px_0_16px_rgba(13,10,33,0.95)]">
+          <div className="shrink-0 flex items-center gap-2 pl-4 sm:pl-8 pr-3 sm:pr-4 py-0.5 border-r border-white/20 bg-[#573681] z-10 text-[9.5px] xs:text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase text-emerald-300 shadow-[6px_0_16px_rgba(87,54,129,0.95)]">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C084FC] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C084FC]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
             </span>
             <span className="whitespace-nowrap">AGENCY PROOF METRICS</span>
           </div>
@@ -427,7 +427,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
                       <span
                         className={`${
                           metric.highlight
-                            ? "text-[#C084FC] font-bold bg-white/10 px-2.5 py-0.5 rounded-full border border-[#C084FC]/30"
+                            ? "text-emerald-300 font-bold bg-white/10 px-2.5 py-0.5 rounded-full border border-emerald-400/30"
                             : "text-white/85 font-medium"
                         }`}
                       >
