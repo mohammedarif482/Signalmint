@@ -20,37 +20,37 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     id: "01",
     question: "What actually happens during the 30-minute Diagnostic Audit?",
-    answer: "We connect via temporary read-only access or live screenshare. We dissect your active campaign architecture, identify CPA bleed vectors, evaluate 0–3s hook retention drop-offs, and deliver a concrete fix matrix you can implement immediately."
+    answer: "We pull your Meta and Shopify data through read-only access and run it against our 12-phase Audit OS, 75 diagnostic patterns across structure, creative, tracking and economics. You get findings ranked by revenue impact, with the evidence behind each one."
   },
   {
     id: "02",
     question: "Do you require long-term contracts or lock-ins?",
-    answer: "No. All engagements begin with a structured 60-day sprint. If we don't deliver verified positive ROAS lift and margin expansion, either party can exit with 14 days written notice. You retain 100% intellectual property ownership of all ad accounts, scripts, and briefs."
+    answer: "We run an initial three to four month term, long enough for structural fixes to compound into measurable revenue. After that you move to a rolling arrangement. No annual lock-ins, no auto-renewal traps, no exit penalties buried in clause nine."
   },
   {
     id: "03",
     question: "What monthly ad spend is required to partner?",
-    answer: "We typically partner with scaling brands spending between ₹3,00,000/mo ($3.5k) to ₹50,00,000+/mo ($60k+) across Meta and secondary ad networks. Accounts under ₹2L/mo are eligible for standalone diagnostic audits."
+    answer: "Our model works from roughly ₹50K monthly ad spend upward. Below that, the account lacks the data volume for statistically sound testing, and you are better served fixing unit economics and creative before adding agency overhead."
   },
   {
     id: "04",
     question: "How does your Creative Strategy & Script DNA work?",
-    answer: "We don't guess what concepts to test. Using our Script DNA framework, we systematically reverse-engineer winning creative vectors in your category and generate frame-by-frame creator briefs engineered around 0–3s sensory shock hooks."
+    answer: "We reverse-engineer winning patterns from your own account and your category, then build briefs around specific hooks, angles and objections rather than aesthetics. Roughly 25-50 assets per account per month, versus an industry norm near ten."
   },
   {
     id: "05",
     question: "Will you disrupt our existing winning campaigns?",
-    answer: "Never blindly. We test new concepts in isolated parallel sandboxes and ASC+ structures alongside your baseline winners, migrating budget only after new winners beat baseline CPA."
+    answer: "No. Proven winners are ring-fenced and left running while we test in parallel structures. Nothing profitable gets paused on a hunch. Changes to live spend are staged, documented, and reversed the moment the data stops supporting them."
   },
   {
     id: "06",
     question: "How do you protect our brand data and customer lists?",
-    answer: "We operate under a strict Zero-Data SLA with SOC-2 compliant access controls. All telemetry calculations are transient, client-side, and covered by a mutual NDA executed prior to account access."
+    answer: "Access is role-scoped and read-only wherever possible, revoked at offboarding. Customer data stays in your systems. We operate under mutual confidentiality and IP assignment terms, aligned with DPDP requirements, and never reuse client data across accounts."
   },
   {
     id: "07",
     question: "How quickly can we kick off after our audit?",
-    answer: "Once agreed, onboarding takes under 48 hours with dedicated Slack and WhatsApp bridge provisioning. Your prioritized structural audit roadmap is delivered within 7 business days."
+    answer: "Within seven working days of signature. Week one covers access, tracking verification and account restructure. Creative production begins in parallel, so first new assets go live inside week two rather than waiting on a month-long onboarding."
   }
 ];
 

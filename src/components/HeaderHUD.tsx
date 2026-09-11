@@ -12,54 +12,85 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
   const [activeSection, setActiveSection] = useState<"intro" | "why-us" | "services" | "proof" | "how-we-work" | "contact">("intro");
 
   useEffect(() => {
+    let initialGrace = true;
+    const timer = setTimeout(() => {
+      initialGrace = false;
+    }, 600);
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 60);
 
       // Section mapping by exact DOM ID in visual order
-      const sectionIds: Array<{ id: string; key: "intro" | "why-us" | "services" | "proof" | "how-we-work" | "contact" }> = [
-        { id: "hero-runway", key: "intro" },
-        { id: "why-us", key: "why-us" },
-        { id: "services", key: "services" },
-        { id: "proof", key: "proof" },
-        { id: "how-we-work", key: "how-we-work" },
-        { id: "contact", key: "contact" },
+      const sectionIds: Array<{
+        id: string;
+        key: "intro" | "why-us" | "services" | "proof" | "how-we-work" | "contact";
+        hash: string;
+      }> = [
+        { id: "hero-runway", key: "intro", hash: "" },
+        { id: "why-us", key: "why-us", hash: "#why-us" },
+        { id: "services", key: "services", hash: "#services" },
+        { id: "proof", key: "proof", hash: "#proof" },
+        { id: "trusted-by", key: "proof", hash: "#proof" },
+        { id: "case-studies", key: "proof", hash: "#proof" },
+        { id: "faq", key: "proof", hash: "#proof" },
+        { id: "how-we-work", key: "how-we-work", hash: "#how-we-work" },
+        { id: "contact", key: "contact", hash: "#contact" },
       ];
 
       // Check if user is near bottom of the page
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
         setActiveSection("contact");
+        if (!initialGrace && window.location.hash !== "#contact") {
+          window.history.replaceState(null, "", "#contact");
+        }
         return;
       }
 
       // Check if at the very top of the page
       if (scrollY < 80) {
         setActiveSection("intro");
+        if (!initialGrace && window.location.hash && window.location.hash !== "" && window.location.hash !== "#") {
+          window.history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
         return;
       }
 
       // Focal threshold: when section top reaches upper 35% of the viewport
       const focalZone = window.innerHeight * 0.35;
       let currentSection: "intro" | "why-us" | "services" | "proof" | "how-we-work" | "contact" = "intro";
+      let currentHash = "";
 
-      for (const { id, key } of sectionIds) {
+      for (const { id, key, hash } of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
           // The last section that has reached or passed the focal line is active
           if (rect.top <= focalZone) {
             currentSection = key;
+            currentHash = hash;
           }
         }
       }
 
       setActiveSection(currentSection);
+
+      if (!initialGrace) {
+        if (currentHash) {
+          if (window.location.hash !== currentHash) {
+            window.history.replaceState(null, "", currentHash);
+          }
+        } else if (window.location.hash && window.location.hash !== "" && window.location.hash !== "#") {
+          window.history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+      }
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
@@ -72,7 +103,12 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", `#${id}`);
+      const targetHash = id === "hero-runway" ? "" : `#${id}`;
+      if (targetHash) {
+        window.history.pushState(null, "", targetHash);
+      } else {
+        window.history.pushState(null, "", window.location.pathname + window.location.search);
+      }
     }
   };
 

@@ -56,8 +56,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-1",
     offsetClass: "translate-y-1.5 sm:translate-y-3",
     brands: [
-      { id: "b1", name: "Gut2Go", category: "Nutrition", metric: "4.6x ROAS", logo: gut2goLogo },
-      { id: "b2", name: "Birckles", category: "D2C Apparel", metric: "5.4x ROAS", logo: bircklesLogo },
+      { id: "b1", name: "Gut2Go", category: "Gut Health", metric: "2x Revenue", logo: gut2goLogo },
+      { id: "b2", name: "Birckles", category: "Fashion", metric: "+350% Rev", logo: bircklesLogo },
     ],
   },
   // Col 2: Up offset
@@ -65,8 +65,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-2",
     offsetClass: "-translate-y-1.5 sm:-translate-y-3",
     brands: [
-      { id: "b3", name: "Kuhlteen", category: "Gen-Z Brand", metric: "-36% CPA", logo: kuhlteenLogo },
-      { id: "b4", name: "Sugar Knocker", category: "Ayurvedic Care", metric: "₹1.1Cr Vol", logo: sugarKnockerLogo },
+      { id: "b3", name: "KuhlTeen", category: "Teen Care", metric: "3x Revenue", logo: kuhlteenLogo },
+      { id: "b4", name: "Sugar Knocker", category: "Diabetes", metric: "Content Pipeline", logo: sugarKnockerLogo },
     ],
   },
   // Col 3: Down offset
@@ -74,8 +74,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-3",
     offsetClass: "translate-y-1 sm:translate-y-2",
     brands: [
-      { id: "b5", name: "Teaquila", category: "Energy Drinks", metric: "+128% Hold", logo: teaquilaLogo },
-      { id: "b6", name: "The ArtFlex", category: "Design Living", metric: "12m SLA", logo: theartLogo },
+      { id: "b5", name: "Teaquila", category: "Tea Wellness", metric: "2x Revenue", logo: teaquilaLogo },
+      { id: "b6", name: "The Art Flex", category: "Wall Art", metric: "-30% CAC", logo: theartLogo },
     ],
   },
   // Col 4: Up offset
@@ -83,8 +83,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-4",
     offsetClass: "-translate-y-2 sm:-translate-y-3.5",
     brands: [
-      { id: "b7", name: "HappyCysters", category: "Hormonal Health", metric: "₹48L/mo", logo: happyCystersLogo },
-      { id: "b8", name: "Bold Edge", category: "Media Scaling", metric: "₹92L/mo", logo: boldEdgeLogo },
+      { id: "b7", name: "Happy Cysters", category: "PCOS Care", metric: "Brand Launch", logo: happyCystersLogo },
+      { id: "b8", name: "BoldEdge", category: "Wellness", metric: "3.5x ROAS", logo: boldEdgeLogo },
     ],
   },
   // Col 5: Centerpiece Single Card
@@ -92,7 +92,7 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-5",
     offsetClass: "translate-y-0",
     brands: [
-      { id: "b9", name: "Inaya", category: "Skincare DTC", metric: "5.1x ROAS", logo: inayaLogo },
+      { id: "b9", name: "Inaya", category: "Jewellery", metric: "Winning Ads", logo: inayaLogo },
     ],
   },
   // Col 6: Up offset
@@ -100,8 +100,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-6",
     offsetClass: "-translate-y-1.5 sm:-translate-y-3",
     brands: [
-      { id: "b10", name: "LoveDK", category: "Personal Care", metric: "3.9x MER", logo: lovedkLogo },
-      { id: "b11", name: "Imsafe", category: "Hygiene Tech", metric: "Audited SLA", logo: imsafeLogo, hasTilt: true },
+      { id: "b10", name: "LoveDK", category: "Jewellery", metric: "3.6x ROAS", logo: lovedkLogo },
+      { id: "b11", name: "I'm Safe", category: "Safety Tech", metric: "2x CVR", logo: imsafeLogo, hasTilt: true },
     ],
   },
   // Col 7: Down offset
@@ -109,8 +109,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-7",
     offsetClass: "translate-y-2 sm:translate-y-3.5",
     brands: [
-      { id: "b12", name: "Ecosys Cleaners", category: "Eco Solutions", metric: "6.2x Angle", logo: ecosysLogo },
-      { id: "b13", name: "Pure Wiff", category: "Fragrance DTC", metric: "₹35L/mo", logo: pureWiffLogo },
+      { id: "b12", name: "Ecosys", category: "Laundry", metric: "Winning Ads", logo: ecosysLogo },
+      { id: "b13", name: "Pure Wiff", category: "Fragrance", metric: "3x Sales", logo: pureWiffLogo },
     ],
   },
   // Col 8: Up offset
@@ -118,8 +118,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-8",
     offsetClass: "-translate-y-2 sm:-translate-y-3",
     brands: [
-      { id: "b14", name: "Casorro", category: "Luxury Living", metric: "4.8x ROAS", logo: casorroLogo },
-      { id: "b15", name: "Drewknot", category: "Fashion DTC", metric: "3.7x MER", logo: drewknotLogo },
+      { id: "b14", name: "Casorro", category: "Perfumery", metric: "+200% ROAS", logo: casorroLogo },
+      { id: "b15", name: "Drewknot", category: "Footwear", metric: "2.2x ROAS", logo: drewknotLogo },
     ],
   },
   // Col 9: Down offset
@@ -127,8 +127,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-9",
     offsetClass: "translate-y-1.5 sm:translate-y-3",
     brands: [
-      { id: "b16", name: "FarmZen", category: "Organic Agri", metric: "₹65L/mo", logo: farmzenLogo },
-      { id: "b17", name: "Getto", category: "Urban Mobility", metric: "-42% CAC", logo: gettoLogo },
+      { id: "b16", name: "Farmzen", category: "Agri-Tech", metric: "₹1.2Cr Pipeline", logo: farmzenLogo },
+      { id: "b17", name: "Getto", category: "60 Min Fashion", metric: "-30% CAC", logo: gettoLogo },
     ],
   },
   // Col 10: Up offset
@@ -136,8 +136,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-10",
     offsetClass: "-translate-y-1.5 sm:-translate-y-2.5",
     brands: [
-      { id: "b18", name: "Humara Pandit", category: "Spiritual Tech", metric: "₹80L/mo", logo: humaraPanditLogo },
-      { id: "b19", name: "KM20", category: "Active Gear", metric: "5.8x ROAS", logo: km20Logo },
+      { id: "b18", name: "Humara Pandit", category: "Astrology", metric: "5x Leads", logo: humaraPanditLogo },
+      { id: "b19", name: "KM20", category: "Liver Care", metric: "9x Revenue", logo: km20Logo },
     ],
   },
   // Col 11: Single Centerpiece
@@ -145,7 +145,7 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-11",
     offsetClass: "translate-y-0",
     brands: [
-      { id: "b20", name: "LoanPaar", category: "FinTech Scale", metric: "₹2.4Cr Vol", logo: loanpaarLogo },
+      { id: "b20", name: "LoanPaar", category: "Loan Advice", metric: "2x Leads", logo: loanpaarLogo },
     ],
   },
   // Col 12: Up offset
@@ -153,8 +153,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-12",
     offsetClass: "-translate-y-2 sm:-translate-y-3.5",
     brands: [
-      { id: "b21", name: "Oszea", category: "Wellness DTC", metric: "4.2x ROAS", logo: oszeaLogo },
-      { id: "b22", name: "TruSense", category: "Diagnostics", metric: "+95% Ret.", logo: truSenseLogo },
+      { id: "b21", name: "Oszea", category: "Footwear", metric: "11x Revenue", logo: oszeaLogo },
+      { id: "b22", name: "Trusense", category: "AV Tech", metric: "5x ROAS", logo: truSenseLogo },
     ],
   },
   // Col 13: Down offset
@@ -162,8 +162,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-13",
     offsetClass: "translate-y-2 sm:translate-y-3",
     brands: [
-      { id: "b23", name: "Tulips", category: "Personal Hygiene", metric: "₹1.8Cr Vol", logo: tulipsLogo },
-      { id: "b24", name: "UltraMile", category: "Auto & Tires", metric: "3.4x MER", logo: ultraMileLogo },
+      { id: "b23", name: "Tulips", category: "Hygiene", metric: "-60% CAC", logo: tulipsLogo },
+      { id: "b24", name: "Ultramile", category: "Tyres B2B", metric: "₹80L Pipeline", logo: ultraMileLogo },
     ],
   },
   // Col 14: Up offset
@@ -171,8 +171,8 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-14",
     offsetClass: "-translate-y-1.5 sm:-translate-y-3",
     brands: [
-      { id: "b25", name: "V2 Edibles", category: "FMCG Nutrition", metric: "+140% LTV", logo: v2EdiblesLogo },
-      { id: "b26", name: "Zoci", category: "Modern Retail", metric: "4.5x ROAS", logo: zociLogo },
+      { id: "b25", name: "V2 Edibles", category: "A2 Ghee", metric: "Content Pipeline", logo: v2EdiblesLogo },
+      { id: "b26", name: "Zoci", category: "Jewellery", metric: "4.5x ROAS", logo: zociLogo },
     ],
   },
   // Col 15: Clean anchor
@@ -180,7 +180,7 @@ const BRAND_COLUMNS: BrandColumn[] = [
     id: "col-15",
     offsetClass: "translate-y-1 sm:translate-y-2",
     brands: [
-      { id: "b27", name: "Aaina", category: "Ethnic Apparel", metric: "5.2x ROAS", logo: aainaLogo },
+      { id: "b27", name: "Label Aaina", category: "Sleepwear", metric: "+300% Rev", logo: aainaLogo },
     ],
   },
 ];
@@ -379,9 +379,10 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
 
   return (
     <section
-      id="trusted-by"
+      id="proof"
       className="relative w-full bg-[#FAFAFD] text-[#1A0042] selection:bg-[#573681] selection:text-white py-16 sm:py-20 lg:py-24 select-none overflow-hidden"
     >
+      <span id="trusted-by" className="sr-only pointer-events-none" aria-hidden="true" />
       {/* Ambient background vertical technical grid lines */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
         <div className="max-w-[1440px] h-full mx-auto grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 px-4 sm:px-6">

@@ -466,7 +466,7 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
 
   return (
     <section 
-      id="proof" 
+      id="case-studies" 
       ref={sectionRef} 
       className="relative w-full py-20 sm:py-28 lg:py-36 bg-textured-wash text-[#1A0042] border-t border-[#1A0042]/10 overflow-hidden"
     >

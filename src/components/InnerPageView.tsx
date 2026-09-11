@@ -20,7 +20,7 @@ interface InnerPageViewProps {
 }
 
 export function InnerPageView({ pageKey, onNavigate, onOpenDemoModal }: InnerPageViewProps) {
-  const page = INNER_PAGES_DATA[pageKey] || INNER_PAGES_DATA["script-dna"];
+  const page = INNER_PAGES_DATA[pageKey] || INNER_PAGES_DATA["case-aerosleep"];
   const IconComponent = page.icon;
 
   useEffect(() => {
