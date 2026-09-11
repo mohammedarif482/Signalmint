@@ -341,9 +341,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             {/* Top Bold Grotesque Header */}
             <div>
               <div className="font-display font-bold text-[10px] xs:text-[11px] sm:text-[12.5px] lg:text-[13.5px] uppercase tracking-tight text-white leading-[1.25]">
-                For performance-first<br />
-                founders &amp;<br />
-                marketers.
+                For brands that<br />
+                measure in revenue,<br />
+                not reach.
               </div>
             </div>
 
