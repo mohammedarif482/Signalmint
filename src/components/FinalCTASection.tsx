@@ -176,12 +176,7 @@ export function FinalCTASection({ onOpenDemoModal }: FinalCTASectionProps) {
 
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#573681]" />
-              <span>Typically start in 2–3 weeks</span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#573681]" />
-              <span>No long-term contract for first 60 days</span>
+              <span>Typically start in 7–10 days</span>
             </div>
           </div>
         </div>

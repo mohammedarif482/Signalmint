@@ -228,6 +228,17 @@ html.lenis, html.lenis body {
   animation-play-state: paused;
 }
 
+/* Desktop & tablet continuous brand canopy loop marquee */
+.animate-brand-canopy {
+  display: flex;
+  width: max-content;
+  animation: marquee 52s linear infinite;
+}
+
+.animate-brand-canopy:hover {
+  animation-play-state: paused;
+}
+
 /* ========================================================================= */
 /* DEDICATED SEPARATED FOOTER & INNER-PAGE TEXTURED BACKGROUNDS              */
 /* ========================================================================= */

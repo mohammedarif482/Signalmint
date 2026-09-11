@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Client Brand Logos from assets/trustedby/
 import aainaLogo from "../assets/trustedby/Aaina Logo.png";
@@ -30,8 +29,6 @@ import tulipsLogo from "../assets/trustedby/Tulips Logo.png";
 import ultraMileLogo from "../assets/trustedby/UltraMile Logo.png";
 import v2EdiblesLogo from "../assets/trustedby/V2 Edibles Logo.svg";
 import zociLogo from "../assets/trustedby/Zoci Logo.jpg";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface TrustedByProps {
   onOpenDemoModal?: () => void;
@@ -368,70 +365,7 @@ function BrandLogoCard({
 }
 
 export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedByProps = {}) {
-  const runwayRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const textBlockRef = useRef<HTMLDivElement>(null);
   const [activeBrand, setActiveBrand] = useState<BrandPartner | null>(null);
-
-  useEffect(() => {
-    const runway = runwayRef.current;
-    const sticky = stickyRef.current;
-    const track = trackRef.current;
-    const textBlock = textBlockRef.current;
-    if (!runway || !sticky || !track || !textBlock) return;
-
-    const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
-
-      // DESKTOP & TABLET: Pinned Horizontal Masonry Scroll
-      mm.add("(min-width: 640px)", () => {
-        const getScrollDistance = () => Math.max(0, track.scrollWidth - window.innerWidth + 140);
-
-        const scrubTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: runway,
-            start: "top top",
-            end: () => `+=${getScrollDistance() * 0.95}`,
-            pin: true,
-            scrub: 0.8,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        // Horizontal scrub of the entire staggered masonry canopy
-        scrubTl.to(
-          track,
-          {
-            x: () => -getScrollDistance(),
-            ease: "none",
-            duration: 1,
-          },
-          0
-        );
-
-        // Subtly sharpen title block as user scrolls in
-        scrubTl.fromTo(
-          textBlock,
-          { opacity: 0.9, y: -6 },
-          { opacity: 1, y: 0, ease: "power2.out", duration: 0.3 },
-          0
-        );
-      });
-
-      // Refresh ScrollTrigger when window resizes
-      const handleResize = () => {
-        ScrollTrigger.refresh();
-      };
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, runway);
-
-    return () => ctx.revert();
-  }, []);
 
   const renderLogoCard = (brand: BrandPartner, keyPrefix = "") => (
     <BrandLogoCard
@@ -445,149 +379,148 @@ export function TrustedBySection({ onOpenDemoModal: _onOpenDemoModal }: TrustedB
 
   return (
     <section
-      ref={runwayRef}
       id="trusted-by"
-      className="relative w-full bg-[#FAFAFD] text-[#1A0042] selection:bg-[#573681] selection:text-white"
+      className="relative w-full bg-[#FAFAFD] text-[#1A0042] selection:bg-[#573681] selection:text-white py-16 sm:py-20 lg:py-24 select-none overflow-hidden"
     >
-      {/* Pinned Full-Viewport Stage */}
-      <div
-        ref={stickyRef}
-        className="relative h-[100dvh] min-h-[520px] sm:min-h-0 w-full overflow-hidden flex flex-col justify-center items-center py-6 sm:py-8 lg:py-10 select-none"
-      >
-        {/* Ambient background vertical technical grid lines */}
-        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
-          <div className="max-w-[1440px] h-full mx-auto grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 px-4 sm:px-6">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <div
-                key={i}
-                className="h-full border-r border-[#1A0042]/5 relative"
-              >
-                {(i === 2 || i === 5 || i === 8 || i === 10) && (
-                  <div className="absolute top-1/3 right-[-1px] w-[2px] h-6 bg-[#573681]/30" />
-                )}
-                {(i === 1 || i === 7) && (
-                  <div className="absolute top-2/3 right-[-1px] w-[2px] h-6 bg-[#573681]/30" />
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Soft ambient violet & obsidian wash radials for glass depth */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[900px] h-[350px] sm:h-[520px] bg-gradient-to-tr from-[#E7E6FB]/70 via-[#F1EDFD]/45 to-[#E0D7FA]/60 rounded-full filter blur-[80px] sm:blur-[120px] opacity-75 pointer-events-none" />
+      {/* Ambient background vertical technical grid lines */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+        <div className="max-w-[1440px] h-full mx-auto grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 px-4 sm:px-6">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div
+              key={i}
+              className="h-full border-r border-[#1A0042]/5 relative"
+            >
+              {(i === 2 || i === 5 || i === 8 || i === 10) && (
+                <div className="absolute top-1/3 right-[-1px] w-[2px] h-6 bg-[#573681]/30" />
+              )}
+              {(i === 1 || i === 7) && (
+                <div className="absolute top-2/3 right-[-1px] w-[2px] h-6 bg-[#573681]/30" />
+              )}
+            </div>
+          ))}
         </div>
 
-        {/* ------------------------------------------------------------------- */}
-        {/* 1. TITLE ON TOP                                                     */}
-        {/* ------------------------------------------------------------------- */}
-        <div
-          ref={textBlockRef}
-          className="relative z-20 max-w-4xl mx-auto px-4 text-center w-full shrink-0 mb-3 sm:mb-4 lg:mb-6"
-        >
-          <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] flex items-center justify-center gap-2 mb-2 sm:mb-2.5">
-            <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
-            <span>PORTFOLIO // 27+ D2C &amp; ENTERPRISE BRANDS</span>
+        {/* Soft ambient violet & obsidian wash radials for glass depth */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[900px] h-[350px] sm:h-[520px] bg-gradient-to-tr from-[#E7E6FB]/70 via-[#F1EDFD]/45 to-[#E0D7FA]/60 rounded-full filter blur-[80px] sm:blur-[120px] opacity-75 pointer-events-none" />
+      </div>
+
+      {/* ------------------------------------------------------------------- */}
+      {/* 1. TITLE ON TOP                                                     */}
+      {/* ------------------------------------------------------------------- */}
+      <div className="relative z-20 max-w-4xl mx-auto px-4 text-center w-full shrink-0 mb-4 sm:mb-6 lg:mb-8">
+        <div className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#573681] flex items-center justify-center gap-2 mb-2 sm:mb-2.5">
+          <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse" />
+          <span>PORTFOLIO // 27+ D2C &amp; ENTERPRISE BRANDS</span>
+        </div>
+        <h2 className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-tight sm:leading-[1.08]">
+          TRUSTED BY BRANDS FROM VARIOUS INDUSTRIES
+        </h2>
+      </div>
+
+      {/* ------------------------------------------------------------------- */}
+      {/* 2. MASONRY HORIZONTAL CANOPY LOOP (One Direction Continuous Loop)   */}
+      {/* ------------------------------------------------------------------- */}
+      <div className="relative z-10 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0px,black_40px,black_calc(100%-40px),transparent_100%)]">
+        {/* ================================================================= */}
+        {/* A. MOBILE 3-ROW STREAMING CANOPY (Screens < sm, flowing in 1 dir) */}
+        {/* ================================================================= */}
+        <div className="sm:hidden w-full select-none space-y-3 py-4">
+          {/* Row 1: Flowing Left */}
+          <div className="w-full overflow-hidden py-2">
+            <div
+              className="flex items-center gap-2.5 animate-brand-marquee w-max"
+              style={{ animationDuration: "34s" }}
+            >
+              {[...ROW_1, ...ROW_1].map((brand, idx) => (
+                <div key={`mob-r1-${brand.id}-${idx}`} className="w-[84px] xs:w-[94px] shrink-0 p-1">
+                  {renderLogoCard(brand, `mob-r1-${idx}-`)}
+                </div>
+              ))}
+            </div>
           </div>
-          <h2 className="font-display font-black text-xl xs:text-2xl sm:text-2xl lg:text-[1.85rem] text-[#1A0042] uppercase tracking-tight leading-tight sm:leading-[1.08]">
-            TRUSTED BY BRANDS FROM VARIOUS INDUSTRIES
-          </h2>
+
+          {/* Row 2: Flowing Left (Unified in one direction) */}
+          <div className="w-full overflow-hidden py-2">
+            <div
+              className="flex items-center gap-2.5 animate-brand-marquee w-max"
+              style={{ animationDuration: "38s" }}
+            >
+              {[...ROW_2, ...ROW_2].map((brand, idx) => (
+                <div key={`mob-r2-${brand.id}-${idx}`} className="w-[84px] xs:w-[94px] shrink-0 p-1">
+                  {renderLogoCard(brand, `mob-r2-${idx}-`)}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 3: Flowing Left */}
+          <div className="w-full overflow-hidden py-2">
+            <div
+              className="flex items-center gap-2.5 animate-brand-marquee w-max"
+              style={{ animationDuration: "32s" }}
+            >
+              {[...ROW_3, ...ROW_3].map((brand, idx) => (
+                <div key={`mob-r3-${brand.id}-${idx}`} className="w-[84px] xs:w-[94px] shrink-0 p-1">
+                  {renderLogoCard(brand, `mob-r3-${idx}-`)}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* ------------------------------------------------------------------- */}
-        {/* 2. MASONRY PINTEREST "ONE UP, ONE DOWN" HORIZONTAL CANOPY           */}
-        {/* ------------------------------------------------------------------- */}
-        <div className="relative z-10 w-full flex items-center overflow-hidden py-2 sm:py-3 [mask-image:linear-gradient(to_right,transparent_0px,black_28px,black_calc(100%-28px),transparent_100%)]">
-          {/* ================================================================= */}
-          {/* A. MOBILE 3-ROW STREAMING CANOPY (Screens < sm: 9 Brands Per Row) */}
-          {/* ================================================================= */}
-          <div className="sm:hidden w-full overflow-hidden select-none py-1 space-y-2 xs:space-y-2.5">
-            {/* Row 1: Flowing Left */}
-            <div className="w-full overflow-hidden">
-              <div
-                className="flex items-center gap-2 xs:gap-2.5 animate-brand-marquee w-max"
-                style={{ animationDuration: "34s" }}
-              >
-                {[...ROW_1, ...ROW_1].map((brand, idx) => (
-                  <div key={`mob-r1-${brand.id}-${idx}`} className="w-[82px] xs:w-[92px] shrink-0">
-                    {renderLogoCard(brand, `mob-r1-${idx}-`)}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Row 2: Flowing Right (Reverse) */}
-            <div className="w-full overflow-hidden">
-              <div
-                className="flex items-center gap-2 xs:gap-2.5 animate-brand-marquee-reverse w-max"
-                style={{ animationDuration: "38s" }}
-              >
-                {[...ROW_2, ...ROW_2].map((brand, idx) => (
-                  <div key={`mob-r2-${brand.id}-${idx}`} className="w-[82px] xs:w-[92px] shrink-0">
-                    {renderLogoCard(brand, `mob-r2-${idx}-`)}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Row 3: Flowing Left */}
-            <div className="w-full overflow-hidden">
-              <div
-                className="flex items-center gap-2 xs:gap-2.5 animate-brand-marquee w-max"
-                style={{ animationDuration: "32s" }}
-              >
-                {[...ROW_3, ...ROW_3].map((brand, idx) => (
-                  <div key={`mob-r3-${brand.id}-${idx}`} className="w-[82px] xs:w-[92px] shrink-0">
-                    {renderLogoCard(brand, `mob-r3-${idx}-`)}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* ================================================================= */}
-          {/* B. DESKTOP & TABLET MASONRY HORIZONTAL SCROLL (Screens >= sm)     */}
-          {/* ================================================================= */}
+        {/* ================================================================= */}
+        {/* B. DESKTOP & TABLET MASONRY CONTINUOUS LOOP (Screens >= sm)       */}
+        {/* ================================================================= */}
+        <div className="hidden sm:block w-full overflow-hidden">
           <div
-            ref={trackRef}
-            className="hidden sm:flex items-center gap-3 sm:gap-3.5 lg:gap-4 will-change-transform w-max px-8 sm:px-12 lg:px-16 py-2"
+            className="flex items-center animate-brand-canopy w-max"
+            style={{ animationDuration: "54s" }}
           >
-            {BRAND_COLUMNS.map((col) => (
+            {[0, 1].map((copyIdx) => (
               <div
-                key={col.id}
-                className={`w-[130px] sm:w-[146px] lg:w-[162px] flex flex-col justify-center gap-2.5 sm:gap-3 lg:gap-3.5 shrink-0 will-change-transform ${col.offsetClass}`}
+                key={`desktop-copy-${copyIdx}`}
+                className="flex items-center gap-3 sm:gap-3.5 lg:gap-4 shrink-0 pr-3 sm:pr-3.5 lg:pr-4 py-8 sm:py-12 lg:py-14"
               >
-                {col.brands.map((brand) => renderLogoCard(brand, "desk-"))}
+                {BRAND_COLUMNS.map((col) => (
+                  <div
+                    key={`desk-${copyIdx}-${col.id}`}
+                    className={`w-[132px] sm:w-[148px] lg:w-[164px] flex flex-col justify-center gap-2.5 sm:gap-3 lg:gap-3.5 shrink-0 will-change-transform ${col.offsetClass}`}
+                  >
+                    {col.brands.map((brand) => renderLogoCard(brand, `desk-${copyIdx}-`))}
+                  </div>
+                ))}
               </div>
             ))}
           </div>
         </div>
+      </div>
 
-        {/* ------------------------------------------------------------------- */}
-        {/* 3. INTERACTIVE TELEMETRY HOVER / TAP PILL (Below the canopy)        */}
-        {/* ------------------------------------------------------------------- */}
-        <div className="h-8 sm:h-9 flex items-center justify-center relative z-20 px-4 shrink-0 mt-6 sm:mt-8 lg:mt-10">
-          {activeBrand ? (
-            <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1 rounded-full bg-white/95 backdrop-blur-md border border-[#573681]/30 shadow-md animate-fade-in max-w-full truncate">
-              <img
-                src={activeBrand.logo}
-                alt={activeBrand.name}
-                className="h-3 sm:h-3.5 w-auto max-w-[50px] object-contain shrink-0"
-              />
-              <span className="font-sans font-bold text-[11px] sm:text-xs text-[#1A0042] truncate">
-                {activeBrand.name}
-              </span>
-              <span className="text-[10px] font-mono text-[#1A0042]/50 hidden sm:inline">
-                // {activeBrand.category}
-              </span>
-              <span className="px-1.5 py-0.5 rounded bg-[#573681]/10 text-[#573681] font-mono text-[9.5px] sm:text-[10px] font-bold shrink-0">
-                {activeBrand.metric}
-              </span>
-            </div>
-          ) : (
-            <div className="inline-flex items-center text-[9.5px] sm:text-[10.5px] font-mono text-[#1A0042]/45 tracking-wider text-center">
-              <span>TAP OR HOVER ANY BRAND TO INSPECT VERIFIED SCALE METRICS</span>
-            </div>
-          )}
-        </div>
+      {/* ------------------------------------------------------------------- */}
+      {/* 3. INTERACTIVE TELEMETRY HOVER / TAP PILL (Below the canopy)        */}
+      {/* ------------------------------------------------------------------- */}
+      <div className="h-8 sm:h-9 flex items-center justify-center relative z-20 px-4 shrink-0 mt-4 sm:mt-6">
+        {activeBrand ? (
+          <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1 rounded-full bg-white/95 backdrop-blur-md border border-[#573681]/30 shadow-md animate-fade-in max-w-full truncate">
+            <img
+              src={activeBrand.logo}
+              alt={activeBrand.name}
+              className="h-3 sm:h-3.5 w-auto max-w-[50px] object-contain shrink-0"
+            />
+            <span className="font-sans font-bold text-[11px] sm:text-xs text-[#1A0042] truncate">
+              {activeBrand.name}
+            </span>
+            <span className="text-[10px] font-mono text-[#1A0042]/50 hidden sm:inline">
+              // {activeBrand.category}
+            </span>
+            <span className="px-1.5 py-0.5 rounded bg-[#573681]/10 text-[#573681] font-mono text-[9.5px] sm:text-[10px] font-bold shrink-0">
+              {activeBrand.metric}
+            </span>
+          </div>
+        ) : (
+          <div className="inline-flex items-center text-[9.5px] sm:text-[10.5px] font-mono text-[#1A0042]/45 tracking-wider text-center">
+            <span>TAP OR HOVER ANY BRAND TO INSPECT VERIFIED SCALE METRICS</span>
+          </div>
+        )}
       </div>
     </section>
   );

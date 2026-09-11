@@ -539,27 +539,6 @@ export function CaseStudiesSection({ onOpenDemoModal, onNavigate }: CaseStudiesS
             />
           ))}
         </div>
-
-        {/* Bottom Banner Callout */}
-        <div className="mt-16 sm:mt-20 p-5 xs:p-6 sm:p-8 rounded-2xl bg-[#E7E6FB]/50 border border-[#1A0042]/10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center md:text-left">
-            <div className="font-mono text-[11px] font-bold uppercase text-[#573681] tracking-wider">
-              ZERO ESTIMATION // AUDITED DATA ONLY
-            </div>
-            <p className="font-sans text-sm sm:text-base text-[#1A0042] font-semibold">
-              Every metric above is verified through Shopify settled revenue and Meta Graph API telemetry.
-            </p>
-          </div>
-
-          <button
-            onClick={onOpenDemoModal}
-            className="w-full sm:w-auto justify-center shrink-0 px-6 py-3 rounded-xl bg-[#573681] hover:bg-[#1A0042] text-white font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2 active:scale-95"
-          >
-            <span>Bring Us Your Ad Account</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-
       </div>
     </section>
   );

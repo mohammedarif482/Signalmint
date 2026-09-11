@@ -15,11 +15,11 @@ interface HeroSectionProps {
 
 const PROOF_METRICS = [
   { text: "Audited 200+ D2C Accounts", highlight: false },
-  { text: "₹500M+ Ad Spend Under Management", highlight: false },
+  { text: "₹5Cr+ Ad Spend Under Management", highlight: false },
   { text: "3.2x Avg ROAS Improvement", highlight: true },
   { text: "40+ Active DTC Brands", highlight: false },
-  { text: "Sub-12min Pacing Intervention", highlight: false },
-  { text: "Zero Estimation // Graph API Verified", highlight: true },
+  { text: "24hrs Audit", highlight: false },
+  { text: "Zero Estimation // Data Driven Results", highlight: true },
 ];
 
 export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
@@ -359,7 +359,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
               ref={narrativeTextRef}
               className="font-display font-semibold text-sm xs:text-base sm:text-2xl lg:text-[1.85rem] text-[#1A0042] leading-[1.3] tracking-tight"
             >
-              We read the signal in your ad spend before it burns the budget.
+              Catching the Signal in your ads that Mint you money.
             </p>
           </div>
         </div>
@@ -379,9 +379,9 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             {/* Top Bold Grotesque Header */}
             <div>
               <div className="font-display font-bold text-[10px] xs:text-[11px] sm:text-[12.5px] lg:text-[13.5px] uppercase tracking-tight text-[#1A0042] leading-[1.25]">
-                FOR PERFORMANCE-FIRST<br />
-                FOUNDERS &amp;<br />
-                MARKETERS.
+                For brands that<br />
+                measure in revenue,<br />
+                not reach.
               </div>
             </div>
 
