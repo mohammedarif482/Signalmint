@@ -351,7 +351,7 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
 
             <div className="flex items-center justify-between text-[10px] font-mono text-[#1A0042]/60 px-1">
               <span>BOM-01 // AUDIT PIPELINE</span>
-              <span>AI NATIVE, PERFORMANCE MARKETING</span>
+              <span>AI NATIVE-PERFORMANCE MARKETING</span>
             </div>
           </div>
         </div>

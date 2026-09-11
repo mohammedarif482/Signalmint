@@ -335,14 +335,14 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Eyebrow: AI NATIVE, PERFORMANCE MARKETING */}
+        {/* Eyebrow: AI NATIVE-PERFORMANCE MARKETING */}
         <div
           ref={eyebrowRef}
           id="hero-eyebrow"
           className="absolute top-11 sm:top-20 lg:top-[5.5rem] left-6 sm:left-11 lg:left-14 w-[calc(100vw-3rem)] sm:w-[532px] lg:w-[662px] flex justify-end z-20 pointer-events-none"
         >
           <span className="font-mono font-bold tracking-[0.11em] sm:tracking-[0.14em] text-[9.5px] sm:text-xs lg:text-[13px] text-[#1A0042] uppercase inline-block text-right whitespace-nowrap">
-            AI NATIVE, PERFORMANCE MARKETING
+            AI NATIVE-PERFORMANCE MARKETING
           </span>
         </div>
 
