@@ -301,3 +301,28 @@ html.lenis, html.lenis body {
   pointer-events: none;
   z-index: 0;
 }
+
+/* Animated Social Icons Keyframes (matching react-animated-social-icons physics) */
+@keyframes social-bounce {
+  15% { transform: translateY(4px) scale(0.96); }
+  40% { transform: translateY(-4px) scale(1.08); }
+  60% { transform: translateY(1.5px) scale(1.02); }
+  100% { transform: translateY(0) scale(1.06); }
+}
+
+@keyframes social-float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3.5px); }
+}
+
+.animate-social-bounce,
+.group:hover .group-hover\:animate-social-bounce,
+.hover\:animate-social-bounce:hover {
+  animation: social-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-social-float,
+.group:hover .group-hover\:animate-social-float,
+.hover\:animate-social-float:hover {
+  animation: social-float 0.5s ease-in-out alternate infinite;
+}

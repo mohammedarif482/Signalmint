@@ -268,7 +268,7 @@ export function ServicesSection({ onOpenDemoModal }: ServicesSectionProps) {
               <div className="pt-4 flex flex-wrap items-center gap-4">
                 <div className="p-4 rounded-xl bg-white border border-[#1A0042]/15 shadow-sm">
                   <div className="font-mono text-xs text-[#1A0042]/60 uppercase font-semibold">HOOK VELOCITY</div>
-                  <div className="font-display font-extrabold text-2xl text-emerald-600">+44% Hook Rate Lift</div>
+                  <div className="font-display font-extrabold text-2xl text-emerald-600">+120% Hook Rate Lift</div>
                   <div className="text-xs text-[#1A0042]/75">Across first 3 production cycles</div>
                 </div>
                 <button

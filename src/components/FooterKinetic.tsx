@@ -4,6 +4,7 @@ import signalMintLogo from "../assets/signalmintlogo.svg";
 import footerMapImg from "../assets/footer-map.png";
 import genericTechnoFontUrl from "../assets/font/GenericTechno.otf";
 import type { InnerPageKey } from "../data/innerPagesData";
+import { AnimatedSocialIcon } from "./AnimatedSocialIcon";
 
 interface FooterKineticProps {
   onOpenDemoModal?: () => void;
@@ -466,20 +467,21 @@ export function FooterKinetic({ onOpenDemoModal: _onOpenDemoModal, onOpenInnerPa
               <div className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A0042]/50 mb-3">
                 INTELLIGENCE FEEDS &amp; REPO
               </div>
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-3 pt-1">
                 {/* Instagram */}
                 <a
                   href="https://www.instagram.com/signalmint.in/"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-9 h-9 rounded-full border border-[#1A0042]/20 bg-white/50 flex items-center justify-center text-[#1A0042] hover:bg-[#573681] hover:text-white hover:border-[#573681] transition-all duration-200 group shadow-2xs"
+                  className="w-10 h-10 rounded-full bg-white/90 border border-[#1A0042]/15 text-[#1A0042] hover:text-white hover:bg-gradient-to-tr hover:from-[#FA7E1E] hover:via-[#D62976] hover:to-[#962FBF] hover:border-transparent transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 active:translate-y-0 active:scale-95 flex items-center justify-center group cursor-pointer"
                   aria-label="SignalMint on Instagram"
                 >
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                  </svg>
+                  <AnimatedSocialIcon
+                    brandName="instagram"
+                    animation="bounce"
+                    width="19px"
+                    defaultColor="currentColor"
+                  />
                 </a>
 
                 {/* LinkedIn */}
@@ -487,12 +489,15 @@ export function FooterKinetic({ onOpenDemoModal: _onOpenDemoModal, onOpenInnerPa
                   href="https://www.linkedin.com/company/signalmint/"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-9 h-9 rounded-full border border-[#1A0042]/20 bg-white/50 flex items-center justify-center text-[#1A0042] hover:bg-[#573681] hover:text-white hover:border-[#573681] transition-all duration-200 group shadow-2xs"
+                  className="w-10 h-10 rounded-full bg-white/90 border border-[#1A0042]/15 text-[#1A0042] hover:text-white hover:bg-[#0A66C2] hover:border-transparent transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 active:translate-y-0 active:scale-95 flex items-center justify-center group cursor-pointer"
                   aria-label="SignalMint on LinkedIn"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 40 40" fill="currentColor">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M18.2847 17.978H20.7607V19.2114C21.1174 18.502 22.032 17.8647 23.406 17.8647C26.04 17.8647 26.6654 19.2767 26.6654 21.8674V26.6654H23.9987V22.4574C23.9987 20.982 23.642 20.15 22.734 20.15C21.4747 20.15 20.9514 21.0467 20.9514 22.4567V26.6654H18.2847V17.978ZM13.712 26.552H16.3787V17.8647H13.712V26.552ZM16.7607 15.032C16.7608 15.2555 16.7165 15.4769 16.6303 15.6831C16.5441 15.8893 16.4178 16.0764 16.2587 16.2334C15.9363 16.5538 15.4999 16.7331 15.0454 16.732C14.5916 16.7317 14.1562 16.5528 13.8334 16.234C13.6748 16.0765 13.549 15.8892 13.4629 15.683C13.3769 15.4767 13.3324 15.2555 13.332 15.032C13.332 14.5807 13.512 14.1487 13.834 13.83C14.1566 13.5108 14.5922 13.3318 15.046 13.332C15.5007 13.332 15.9367 13.5114 16.2587 13.83C16.58 14.1487 16.7607 14.5807 16.7607 15.032Z" />
-                  </svg>
+                  <AnimatedSocialIcon
+                    brandName="linkedin"
+                    animation="bounce"
+                    width="18px"
+                    defaultColor="currentColor"
+                  />
                 </a>
 
                 {/* WhatsApp */}
@@ -500,12 +505,15 @@ export function FooterKinetic({ onOpenDemoModal: _onOpenDemoModal, onOpenInnerPa
                   href="https://wa.me/917045451951"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-9 h-9 rounded-full border border-[#1A0042]/20 bg-white/50 flex items-center justify-center text-[#1A0042] hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-200 group shadow-2xs"
+                  className="w-10 h-10 rounded-full bg-white/90 border border-[#1A0042]/15 text-[#1A0042] hover:text-white hover:bg-[#25D366] hover:border-transparent transition-all duration-300 shadow-xs hover:shadow-md hover:-translate-y-1 active:translate-y-0 active:scale-95 flex items-center justify-center group cursor-pointer"
                   aria-label="SignalMint on WhatsApp"
                 >
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.983.536 1.777.818 2.796.818 3.181 0 5.767-2.586 5.767-5.767.001-3.181-2.584-5.767-5.767-5.767zm7.411 5.766c.001 4.09-3.325 7.417-7.412 7.417-1.246 0-2.428-.316-3.472-.888l-4.558 1.196 1.222-4.449a7.378 7.378 0 0 1-1.026-3.276c0-4.089 3.326-7.416 7.413-7.416 4.088.001 7.413 3.328 7.413 7.416zm-4.707 2.115c-.172-.086-.983-.485-1.135-.541-.153-.056-.264-.086-.375.086s-.43 0.541-.527.653c-.097.112-.194.126-.366.04-.172-.086-.728-.268-1.386-.855-.512-.456-.858-1.02-0.958-1.192s-.011-.265.076-.351c.078-.078.172-.203.258-.305.086-.102.115-.172.172-.287.057-.115.029-.215-.014-.301s-.375-.905-.515-1.239c-.136-.326-.274-.282-.375-.287-.097-.005-.208-.006-.32-.006s-.293.042-.446.208c-.153.167-.585.572-.585 1.395 0 .823.599 1.618.683 1.732.084.115 1.179 1.8 2.856 2.524.4.172.712.275.955.352.401.128.766.11 1.054.067.322-.048.983-.402 1.122-.79.139-.387.139-.719.097-.79-.041-.07-.152-.113-.324-.199z"/>
-                  </svg>
+                  <AnimatedSocialIcon
+                    brandName="whatsapp"
+                    animation="bounce"
+                    width="19px"
+                    defaultColor="currentColor"
+                  />
                 </a>
               </div>
             </div>
@@ -765,6 +773,10 @@ export function FooterKinetic({ onOpenDemoModal: _onOpenDemoModal, onOpenInnerPa
         <div className="py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[11px] font-sans text-[#1A0042]/65">
           <div>
             &copy; 2026 SignalMint. Built for performance-first founders &amp; media buyers.
+          </div>
+
+          <div className="text-[#1A0042]/55 text-[10.5px]">
+            SignalMint is an entity under <span className="font-semibold text-[#1A0042]/75">Apexway Technologies Pvt. Ltd.</span>
           </div>
 
           <div className="text-[#1A0042]/50 font-mono text-[9.5px]">

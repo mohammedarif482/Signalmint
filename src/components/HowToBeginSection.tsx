@@ -403,7 +403,7 @@ export function HowToBeginSection({ onOpenDemoModal }: HowToBeginSectionProps) {
                 {/* Floating Metric Badge */}
                 <rect x="25" y="170" width="105" height="24" rx="6" fill="#FFFFFF" fillOpacity="0.2" stroke="#FFFFFF" strokeOpacity="0.35" />
                 <text x="77" y="186" fill="#FDE047" fontSize="9" fontFamily="'Montserrat', sans-serif" fontWeight="bold" textAnchor="middle" letterSpacing="0.08em">
-                  [HOOK LIFT: +44%]
+                  [HOOK LIFT: +120%]
                 </text>
               </svg>
             }

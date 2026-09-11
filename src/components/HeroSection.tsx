@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
 import { SplitText } from "gsap/SplitText";
-import { Play } from "lucide-react";
-import heroBgImage from "../assets/herobg.jpeg";
-import demoThumbnailImage from "../assets/demothumbnail.jpeg";
+import heroBgImage from "../assets/herobg.png";
 
 gsap.registerPlugin(ScrollTrigger, Observer, SplitText);
 
@@ -23,8 +21,6 @@ const PROOF_METRICS = [
 ];
 
 export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
-  const [showVideoModal, setShowVideoModal] = useState(false);
-
   const runwayRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLDivElement>(null);
@@ -33,8 +29,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
   const narrativeTextRef = useRef<HTMLParagraphElement>(null);
   const cardLeftRef = useRef<HTMLDivElement>(null);
   const cardLeftInnerRef = useRef<HTMLDivElement>(null);
-  const videoCardRef = useRef<HTMLDivElement>(null);
-  const videoCardInnerRef = useRef<HTMLDivElement>(null);
   const scrollPillRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const bgInnerRef = useRef<HTMLDivElement>(null);
@@ -154,7 +148,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
       // 5. BOTTOM CARDS & SCROLL PILL DISSOLVE DOWNWARD (12% to 50% scroll)
       const cardElements = [
         cardLeftRef.current,
-        videoCardRef.current,
         scrollPillRef.current,
       ].filter(Boolean);
 
@@ -194,19 +187,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         const rotXCard = gsap.quickTo(cardLeftInnerRef.current, "rotationX", { duration: 0.7, ease: "power2.out" });
         const rotYCard = gsap.quickTo(cardLeftInnerRef.current, "rotationY", { duration: 0.7, ease: "power2.out" });
 
-        const xVideo = videoCardInnerRef.current
-          ? gsap.quickTo(videoCardInnerRef.current, "x", { duration: 0.65, ease: "power2.out" })
-          : null;
-        const yVideo = videoCardInnerRef.current
-          ? gsap.quickTo(videoCardInnerRef.current, "y", { duration: 0.65, ease: "power2.out" })
-          : null;
-        const rotXVideo = videoCardInnerRef.current
-          ? gsap.quickTo(videoCardInnerRef.current, "rotationX", { duration: 0.65, ease: "power2.out" })
-          : null;
-        const rotYVideo = videoCardInnerRef.current
-          ? gsap.quickTo(videoCardInnerRef.current, "rotationY", { duration: 0.65, ease: "power2.out" })
-          : null;
-
         const xNarrative = narrativeInnerRef.current
           ? gsap.quickTo(narrativeInnerRef.current, "x", { duration: 0.8, ease: "power2.out" })
           : null;
@@ -236,14 +216,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             rotXCard(normY * -5);
             rotYCard(normX * 6);
 
-            // Floating video card floats with heightened responsiveness
-            if (xVideo && yVideo && rotXVideo && rotYVideo) {
-              xVideo(normX * -20);
-              yVideo(normY * -15);
-              rotXVideo(normY * -6);
-              rotYVideo(normX * 8);
-            }
-
             // Editorial narrative shifts gently
             if (xNarrative && yNarrative) {
               xNarrative(normX * -9);
@@ -257,12 +229,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
             rotXCard(0);
             rotYCard(0);
 
-            if (xVideo && yVideo && rotXVideo && rotYVideo) {
-              xVideo(0);
-              yVideo(0);
-              rotXVideo(0);
-              rotYVideo(0);
-            }
 
             if (xNarrative && yNarrative) {
               xNarrative(0);
@@ -313,25 +279,21 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
       {/* PINNED INNER VIEWPORT (100vh Viewport pinned via GSAP) */}
       <div
         ref={viewportRef}
-        className="h-screen w-full overflow-hidden relative select-none"
+        className="h-screen h-[100dvh] w-full overflow-hidden relative select-none"
       >
         {/* ========================================================================= */}
-        {/* BACKGROUND LAYER: Full-screen Editorial Visual (herobg.jpeg)              */}
+        {/* BACKGROUND LAYER: Full-screen Editorial Visual (herobg.png)               */}
         {/* ========================================================================= */}
         <div
           ref={bgRef}
-          className="absolute inset-0 z-0 origin-center pointer-events-none overflow-hidden bg-[#E7E6FB]"
+          className="absolute inset-0 z-0 origin-center pointer-events-none overflow-hidden bg-[#0a0c1f]"
         >
-          <div ref={bgInnerRef} className="w-full h-full will-change-transform scale-[1.06]">
+          <div ref={bgInnerRef} className="w-full h-full will-change-transform">
             <img
               src={heroBgImage}
               alt="SignalMint Hero Background"
-              className="w-full h-full object-cover object-center select-none"
+              className="w-full h-full object-fill object-center select-none"
             />
-
-            {/* Faint ambient atmospheric tint ensuring text readability */}
-            <div className="absolute inset-0 bg-[#1A0042]/5 mix-blend-multiply pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#E7E6FB]/30 via-transparent to-[#E7E6FB]/20 pointer-events-none" />
           </div>
         </div>
 
@@ -404,52 +366,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* ========================================================================= */}
-        {/* BOTTOM-RIGHT FLOATING VIDEO CARD (Commented out per request)             */}
-        {/* ========================================================================= */}
-        {/*
-        <div
-          ref={videoCardRef}
-          id="hero-video-card"
-          onClick={() => setShowVideoModal(true)}
-          className="absolute bottom-8 sm:bottom-8 lg:bottom-10 right-3 sm:right-10 lg:right-14 z-20 [perspective:1000px] cursor-pointer group"
-        >
-          <div
-            ref={videoCardInnerRef}
-            className="w-[42vw] max-w-[165px] sm:max-w-none sm:w-48 lg:w-52 h-[195px] sm:h-auto bg-white/85 backdrop-blur-xl p-1 rounded-2xl border-2 border-[#f59e0b]/70 sm:border-[#1A0042]/10 shadow-[0_8px_24px_rgba(245,158,11,0.2)] sm:shadow-[0_12px_30px_rgba(26,0,66,0.06)] transition-transform duration-300 hover:scale-[1.03] will-change-transform flex flex-col overflow-hidden"
-          >
-            <div className="relative flex-1 sm:aspect-video rounded-xl overflow-hidden bg-[#1A0042] shadow-inner group-hover:shadow-md transition-shadow">
-              <img
-                src={demoThumbnailImage}
-                alt="See How We Audit Walkthrough Preview"
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-
-              <div className="hidden sm:flex absolute top-1.5 left-1.5 items-center gap-1 px-1.5 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[8px] font-mono font-bold text-[#1A0042] uppercase shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>HOW WE AUDIT</span>
-              </div>
-
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-                <div className="w-8 h-8 rounded-full bg-white/95 text-[#573681] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                  <Play className="w-3.5 h-3.5 fill-[#573681] ml-0.5" />
-                </div>
-                <span className="font-sans font-black text-[9.5px] tracking-wider text-white uppercase drop-shadow-md">
-                  PLAY
-                </span>
-              </div>
-            </div>
-
-            <div className="hidden sm:flex p-1.5 pt-2 items-center justify-between font-mono text-[9px] text-[#1A0042]">
-              <span className="font-bold uppercase tracking-wider">AUDIT DEEP-DIVE</span>
-              <span className="text-[#573681] font-bold flex items-center gap-0.5">
-                PLAY <span>▶</span>
-              </span>
-            </div>
-          </div>
-        </div>
-        */}
 
         {/* ========================================================================= */}
         {/* BOTTOM SCROLL INDICATOR: ⌄ SCROLL TO CONTINUE (Desktop only)               */}
@@ -527,65 +443,6 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* 2-Min Demo Video Modal Walkthrough */}
-      {showVideoModal && (
-        <div
-          onClick={() => setShowVideoModal(false)}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-white/15 backdrop-blur-xs animate-in fade-in duration-200"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-[#FAFAFD] border border-[#1A0042]/20 rounded-2xl max-w-lg w-full p-6 sm:p-7 shadow-2xl relative"
-          >
-            <button
-              onClick={() => setShowVideoModal(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#E7E6FB] text-[#1A0042] font-mono text-sm font-bold flex items-center justify-center hover:bg-[#1A0042] hover:text-white transition-colors cursor-pointer"
-            >
-              ✕
-            </button>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#573681] animate-pulse"></span>
-              <span className="font-mono text-xs font-bold text-[#573681] uppercase">
-                SEE HOW WE AUDIT (2:04)
-              </span>
-            </div>
-            <h3 className="font-display font-bold text-xl text-[#1A0042] mb-3">
-              How we diagnose account bleed &amp; creative fatigue before spending a dollar
-            </h3>
-            <div className="aspect-video bg-[#E7E6FB] rounded-xl border border-[#1A0042]/10 flex flex-col items-center justify-center p-6 text-center mb-4 relative overflow-hidden group">
-              <img
-                src={demoThumbnailImage}
-                alt="Walkthrough Video Frame"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-[#1A0042]/35" />
-              <div className="w-14 h-14 rounded-full bg-[#573681] text-white flex items-center justify-center shadow-lg mb-3 z-10 hover:scale-110 transition-transform cursor-pointer">
-                <Play className="w-6 h-6 fill-white ml-0.5" />
-              </div>
-              <p className="font-mono text-xs text-white font-medium z-10 drop-shadow-sm">
-                Watch our analysts break down a real D2C account architecture, uncover hidden audience cannibalization, and isolate winning hooks.
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <button
-                onClick={() => {
-                  setShowVideoModal(false);
-                  onOpenDemoModal?.();
-                }}
-                className="flex-1 py-3 rounded-xl bg-[#573681] text-white font-mono text-xs font-bold uppercase hover:bg-[#1A0042] transition-colors cursor-pointer"
-              >
-                Book a 30-Min Audit
-              </button>
-              <button
-                onClick={() => setShowVideoModal(false)}
-                className="px-4 py-3 rounded-xl border border-[#1A0042]/15 text-[#1A0042] font-mono text-xs font-bold hover:bg-[#E7E6FB] transition-colors cursor-pointer"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

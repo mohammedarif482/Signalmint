@@ -287,7 +287,7 @@ export function DualAgentPinned({ onOpenDemoModal }: DualAgentPinnedProps) {
                 <div className="flex items-stretch gap-2.5 sm:gap-3.5 pt-1 sm:pt-2">
                   <div className="px-3 py-1.5 sm:px-4 sm:py-3 rounded-2xl bg-white/80 backdrop-blur-md border border-[#1A0042]/12 shadow-xs shrink-0 flex flex-col justify-center">
                     <div className="font-mono text-[7.5px] xs:text-[8px] sm:text-[9px] text-[#1A0042]/60 uppercase font-semibold tracking-wider">HOOK VELOCITY</div>
-                    <div className="font-display font-extrabold text-xs xs:text-sm sm:text-lg lg:text-xl text-[#573681] leading-none mt-1">+44% Hook Lift</div>
+                    <div className="font-display font-extrabold text-xs xs:text-sm sm:text-lg lg:text-xl text-[#573681] leading-none mt-1">+120% Hook Lift</div>
                   </div>
 
                   <button
