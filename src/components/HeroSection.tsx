@@ -321,7 +321,7 @@ export function HeroSection({ onOpenDemoModal }: HeroSectionProps) {
               ref={narrativeTextRef}
               className="font-display font-medium text-sm xs:text-base sm:text-2xl lg:text-[1.85rem] text-white leading-[1.3] tracking-tight"
             >
-              We read the <span className="text-[#C084FC] font-semibold">signal</span> in your ad spend before it burns the budget.
+              Catching the <span className="text-[#C084FC] font-semibold">Signal</span> in your ads to <span className="text-[#C084FC] font-semibold">Mint</span> you money.
             </p>
           </div>
         </div>
