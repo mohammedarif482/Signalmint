@@ -356,17 +356,6 @@ export function HeaderHUD({ onOpenDemoModal }: HeaderHUDProps) {
           </div>
         </div>
       )}
-
-      {/* 2. RIGHT EDGE VERTICAL SPINE BADGE (Desktop/Tablet Only) */}
-      <aside
-        className="hidden sm:block fixed right-0 top-20 z-40 bg-[#FAF7F2] px-2.5 sm:px-3 py-3.5 sm:py-6 rounded-l-xl border-l border-y border-[#1A0042]/15 shadow-sm pointer-events-auto select-none transition-transform duration-200 hover:-translate-x-0.5 group"
-        title="SignalMint Performance Marketing Agency"
-      >
-        <div className="[writing-mode:vertical-rl] text-[9.5px] sm:text-[11px] font-sans uppercase tracking-[0.08em] text-[#1A0042] flex items-center gap-2 font-black cursor-default">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#573681] mb-0.5"></span>
-          <span>AUDIT-FIRST AGENCY</span>
-        </div>
-      </aside>
     </>
   );
 }
